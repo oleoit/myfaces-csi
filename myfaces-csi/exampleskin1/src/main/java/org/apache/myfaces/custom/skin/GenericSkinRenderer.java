@@ -78,7 +78,8 @@ public class GenericSkinRenderer extends SkinRenderer {
 	}
 
 	@Override
-	public void addStyleClassesToComponent(FacesContext context, UIComponent component)
+	public void addStyleClassesToComponent(FacesContext context, 
+			UIComponent component, RenderingContext arc)
 			throws IOException {
 
 		// The task here is first check if the component is appropiate to
@@ -96,10 +97,12 @@ public class GenericSkinRenderer extends SkinRenderer {
 			if ("javax.faces.component.html".equals(component.getClass()
 					.getPackage().getName())) {
 				// 1. get a Rendering Context
+				/*
 				RenderingContext arc = RenderingContext.getCurrentInstance();
 				if (arc == null)
 					throw new IllegalStateException(("NO_RENDERINGCONTEXT"));
-
+				*/
+				/*
 				if (HtmlMessage.class.isAssignableFrom(component.getClass())) {
 					this.encodeHtmlMessage(context, component, arc);
 				} else if (HtmlMessages.class.isAssignableFrom(component
@@ -130,7 +133,9 @@ public class GenericSkinRenderer extends SkinRenderer {
 						.getClass())) {
 					// the same that previous
 					this.encodeHtmlSelectOneOrMany(context, component, arc);
-				} else if (HtmlPanelGrid.class.isAssignableFrom(component
+				} else 
+				
+				if (HtmlPanelGrid.class.isAssignableFrom(component
 						.getClass())) {
 					// the same that previous
 					this.encodeHtmlPanelGrid(context, component, arc);
@@ -138,7 +143,9 @@ public class GenericSkinRenderer extends SkinRenderer {
 						.getClass())) {
 					// the same that previous
 					this.encodeHtmlDataTable(context, component, arc);
-				} else {
+				} else
+				*/	
+				 {
 					this.encodeGenericComponent(context, component, arc);
 				}
 				// TODO: add dataTable
@@ -147,17 +154,19 @@ public class GenericSkinRenderer extends SkinRenderer {
 			// Check if is a tomahawk component
 			if ("org.apache.myfaces.component.html.ext".equals(component.getClass()
 					.getPackage().getName())) {
-				RenderingContext arc = RenderingContext.getCurrentInstance();
-				if (arc == null)
-					throw new IllegalStateException(("NO_RENDERINGCONTEXT"));
-				
+				//RenderingContext arc = RenderingContext.getCurrentInstance();
+				//if (arc == null)
+				//	throw new IllegalStateException(("NO_RENDERINGCONTEXT"));
+				/*
 				if (org.apache.myfaces.component.html.ext.HtmlMessage.class.isAssignableFrom(component.getClass())) {
 					this.encodeHtmlMessage(context, component, arc);
 				} else if (HtmlMessages.class.isAssignableFrom(component
 						.getClass())) {
 					// the same that previous
 					this.encodeHtmlMessage(context, component, arc);
-				} else if (org.apache.myfaces.component.html.ext.HtmlSelectOneListbox.class
+				} else 
+				
+				if (org.apache.myfaces.component.html.ext.HtmlSelectOneListbox.class
 						.isAssignableFrom(component.getClass())) {
 					// the same that previous
 					this.encodeHtmlSelectOneOrMany(context, component, arc);
@@ -181,7 +190,9 @@ public class GenericSkinRenderer extends SkinRenderer {
 						.getClass())) {
 					// the same that previous
 					this.encodeHtmlSelectOneOrMany(context, component, arc);
-				} else if (org.apache.myfaces.component.html.ext.HtmlPanelGrid.class.isAssignableFrom(component
+				} else
+				
+				 if (org.apache.myfaces.component.html.ext.HtmlPanelGrid.class.isAssignableFrom(component
 						.getClass())) {
 					// the same that previous
 					this.encodeHtmlPanelGrid(context, component, arc);
@@ -189,134 +200,16 @@ public class GenericSkinRenderer extends SkinRenderer {
 						.getClass())) {
 					// the same that previous
 					this.encodeHtmlDataTable(context, component, arc);
-				} else {
+				} else 
+				*/{
 					this.encodeGenericComponent(context, component, arc);
 				}
 			}						
 		}
 	}
 
-	// For use in jsf 1.2
-	public void encodeHtmlColumn(FacesContext context, UIComponent component,
-			RenderingContext arc) throws IOException {
 
-		String footerStyleClass = null;
-		String headerStyleClass = null;
 
-		String baseStyleClass = "af|"
-				+ StringUtils.replaceChars(component.getClass().getName(), '.',
-						'_');
-
-		footerStyleClass = baseStyleClass + "::footer";
-		headerStyleClass = baseStyleClass + "::header";
-
-		renderStyleClass(component, context, arc, footerStyleClass,
-				"footerClass");
-		renderStyleClass(component, context, arc, headerStyleClass,
-				"headerClass");
-	}
-
-	public void encodeHtmlPanelGrid(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-
-		this.encodeGenericComponent(context, component, arc);
-
-		String footerStyleClass = null;
-		String headerStyleClass = null;
-		String rowStyleClass = null;
-
-		String baseStyleClass = "af|"
-				+ StringUtils.replaceChars(component.getClass().getName(), '.',
-						'_');
-
-		footerStyleClass = baseStyleClass + "::footer";
-		headerStyleClass = baseStyleClass + "::header";
-		rowStyleClass = baseStyleClass + "::row";
-
-		renderStyleClass(component, context, arc, footerStyleClass,
-				"footerClass");
-		renderStyleClass(component, context, arc, headerStyleClass,
-				"headerClass");
-
-		Map m = component.getAttributes();
-		String oldRowClasses = (String) m.get("rowClasses");
-		List<String> list = parseStyleClassListComma(oldRowClasses);
-		if (list == null){
-			renderStyleClass(component, context, arc, rowStyleClass,
-			"rowClasses");			
-		}else{
-			String def = arc.getStyleClass(rowStyleClass);
-			String [] l1 = new String[list.size()];			
-			int length = 0;
-			for (int i = 0; i < l1.length; i++){
-				if (!list.get(i).contains(def)){
-					l1[i] = list.get(i)+" "+def;
-					length += l1[i].length() + 1;
-				}
-			}
-			
-			StringBuilder builder = new StringBuilder(length);
-			for (int i = 0; i < l1.length; i++) {
-				if (l1[i] != null) {
-					if (builder.length() != 0)
-						builder.append(',');
-					builder.append(l1[i]);
-				}
-			}
-			component.getAttributes().put("rowClasses", builder.toString());
-		}
-	}
-
-	public void encodeHtmlDataTable(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-
-		this.encodeGenericComponent(context, component, arc);
-
-		String footerStyleClass = null;
-		String headerStyleClass = null;
-		String rowStyleClass = null;
-
-		String baseStyleClass = "af|"
-				+ StringUtils.replaceChars(component.getClass().getName(), '.',
-						'_');
-
-		footerStyleClass = baseStyleClass + "::footer";
-		headerStyleClass = baseStyleClass + "::header";
-		rowStyleClass = baseStyleClass + "::row";
-
-		renderStyleClass(component, context, arc, footerStyleClass,
-				"footerClass");
-		renderStyleClass(component, context, arc, headerStyleClass,
-				"headerClass");
-
-		Map m = component.getAttributes();
-		String oldRowClasses = (String) m.get("rowClasses");
-		List<String> list = parseStyleClassListComma(oldRowClasses);
-		if (list == null){
-			renderStyleClass(component, context, arc, rowStyleClass,
-			"rowClasses");			
-		}else{
-			String def = arc.getStyleClass(rowStyleClass);
-			String [] l1 = new String[list.size()];			
-			int length = 0;
-			for (int i = 0; i < l1.length; i++){
-				if (!list.get(i).contains(def)){
-					l1[i] = list.get(i)+" "+def;
-					length += l1[i].length() + 1;
-				}
-			}
-			
-			StringBuilder builder = new StringBuilder(length);
-			for (int i = 0; i < l1.length; i++) {
-				if (l1[i] != null) {
-					if (builder.length() != 0)
-						builder.append(',');
-					builder.append(l1[i]);
-				}
-			}
-			component.getAttributes().put("rowClasses", builder.toString());
-		}
-	}
 
 	public static List<String> parseStyleClassListComma(String styleClass) {
 		if (styleClass == null)
@@ -349,53 +242,16 @@ public class GenericSkinRenderer extends SkinRenderer {
 		return styleClasses;
 	}
 
-	public void encodeHtmlSelectOneOrMany(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-
-		this.encodeGenericComponent(context, component, arc);
-
-		String disabledStyleClass = null;
-		String enabledStyleClass = null;
-
-		String baseStyleClass = "af|"
-				+ StringUtils.replaceChars(component.getClass().getName(), '.',
-						'_');
-
-		disabledStyleClass = baseStyleClass + "::disabled";
-		enabledStyleClass = baseStyleClass + "::enabled";
-
-		renderStyleClass(component, context, arc, disabledStyleClass,
-				"disabledClass");
-		renderStyleClass(component, context, arc, enabledStyleClass,
-				"enabledClass");
-	}
-
-	public void encodeHtmlMessage(FacesContext context, UIComponent component,
-			RenderingContext arc) throws IOException {
-
-		this.encodeGenericComponent(context, component, arc);
-
-		// now add fatal, info, error and warn StyleClass
-		String fatalStyleClass = null;
-		String infoStyleClass = null;
-		String errorStyleClass = null;
-		String warnStyleClass = null;
-
-		String baseStyleClass = "af|"
-				+ StringUtils.replaceChars(component.getClass().getName(), '.',
-						'_');
-
-		fatalStyleClass = baseStyleClass + "::fatal";
-		infoStyleClass = baseStyleClass + "::info";
-		errorStyleClass = baseStyleClass + "::error";
-		warnStyleClass = baseStyleClass + "::warn";
-
-		renderStyleClass(component, context, arc, fatalStyleClass, "fatalClass");
-		renderStyleClass(component, context, arc, infoStyleClass, "infoClass");
-		renderStyleClass(component, context, arc, errorStyleClass, "errorClass");
-		renderStyleClass(component, context, arc, warnStyleClass, "warnClass");
-	}
-
+	/*
+	 * This method look if the component has 3 common methods:
+	 * 
+	 * 1. getStyleClass
+	 * 2. isReadonly
+	 * 3. isDisabled
+	 * 
+	 * And associate to properly css classes
+	 * 
+	 */
 	public void encodeGenericComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 

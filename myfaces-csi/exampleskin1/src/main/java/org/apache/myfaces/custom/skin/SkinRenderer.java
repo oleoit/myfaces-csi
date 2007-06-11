@@ -101,14 +101,19 @@ public abstract class SkinRenderer extends Renderer {
 	}
 
 	
-	public abstract void addStyleClassesToComponent(FacesContext context, UIComponent component)
+	public abstract void addStyleClassesToComponent(FacesContext context, 
+			UIComponent component, RenderingContext arc)
 		throws IOException;
 	
 	@Override
 	public void encodeBegin(FacesContext context, UIComponent component)
 			throws IOException {
 		
-		this.addStyleClassesToComponent(context, component);
+		RenderingContext arc = RenderingContext.getCurrentInstance();
+		if (arc == null)
+			throw new IllegalStateException(("NO_RENDERINGCONTEXT"));		
+		
+		this.addStyleClassesToComponent(context, component,arc);
 		
 		// Call encode of delegate or parent
 		if (_delegate == null) {
@@ -271,4 +276,5 @@ public abstract class SkinRenderer extends Renderer {
 		// context.getResponseWriter().writeAttribute("class",
 		// builder.toString(), null);
 	}
+
 }

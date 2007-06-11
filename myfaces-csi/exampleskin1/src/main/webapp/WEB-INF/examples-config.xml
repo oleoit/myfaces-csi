@@ -54,7 +54,53 @@
   </render-kit>  
   
   <render-kit>
-  	<render-kit-id>SkinRenderKit</render-kit-id>
+  	<description>
+	  	This RenderKit encapsulate the original HTML_BASIC RenderKit
+  		and add Trinidad Skinning support to this classes.
+  	</description>
+  	<render-kit-id>SkinRenderKit</render-kit-id>  	 
 	<render-kit-class>org.apache.myfaces.custom.skin.SkinRenderKit</render-kit-class>
+	<renderer>			
+		<component-family>javax.faces.Message</component-family>
+		<renderer-type>javax.faces.Message</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlMessageSkinRenderer</renderer-class>
+	</renderer>
+	<renderer>			
+		<component-family>javax.faces.Messages</component-family>
+		<renderer-type>javax.faces.Messages</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlMessageSkinRenderer</renderer-class>
+	</renderer>	
+	<!-- HtmlSelectOneXX -->
+	<renderer>				
+		<component-family>javax.faces.SelectOne</component-family>
+		<renderer-type>javax.faces.Listbox</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlSelectOneOrManySkinRenderer</renderer-class>
+	</renderer>		
+	<renderer>				
+		<component-family>javax.faces.SelectOne</component-family>
+		<renderer-type>javax.faces.Menu</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlSelectOneOrManySkinRenderer</renderer-class>
+	</renderer>		
+	<renderer>				
+		<component-family>javax.faces.SelectOne</component-family>
+		<renderer-type>javax.faces.Radio</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlSelectOneOrManySkinRenderer</renderer-class>
+	</renderer>		
+	<!-- HtmlSelectManyXX -->
+	<renderer>				
+		<component-family>javax.faces.SelectMany</component-family>
+		<renderer-type>javax.faces.Checkbox</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlSelectOneOrManySkinRenderer</renderer-class>
+	</renderer>		
+	<renderer>				
+		<component-family>javax.faces.SelectMany</component-family>
+		<renderer-type>javax.faces.Listbox</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlSelectOneOrManySkinRenderer</renderer-class>
+	</renderer>		
+	<renderer>				
+		<component-family>javax.faces.SelectMany</component-family>
+		<renderer-type>javax.faces.Menu</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlSelectOneOrManySkinRenderer</renderer-class>
+	</renderer>			
   </render-kit>
 </faces-config>
