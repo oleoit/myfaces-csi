@@ -58,7 +58,7 @@ public class SkinRenderKit extends RenderKit implements
 	public RenderKit _delegate;
 	
 	public Map _map;
-
+	
 	public SkinRenderKit(){
 		RenderKitFactory factory = (RenderKitFactory)
 		    FactoryFinder.getFactory(FactoryFinder.RENDER_KIT_FACTORY);		
@@ -79,11 +79,13 @@ public class SkinRenderKit extends RenderKit implements
 			Renderer renderer) {
 		//In this case, first check if this class inherits from
 		//SkinRenderer class
-		if (SkinRenderer.class.isAssignableFrom(renderer.getClass())){
+		log.info("addRenderer "+renderer.getClass());
+		if (SkinRenderer.class.isAssignableFrom(renderer.getClass())){		
 			SkinRenderer sr = (SkinRenderer) renderer;
 			_map.put(family+";"+rendererType, sr);		
-		}		
-		_delegate.addRenderer(family, rendererType, renderer);
+		}else{
+			_delegate.addRenderer(family, rendererType, renderer);
+		}
 	}
 
 	@Override
