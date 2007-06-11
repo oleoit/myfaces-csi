@@ -56,16 +56,16 @@ public class SkinRenderKitFactory extends RenderKitFactory {
             }
         }
         log.info("renderKitId " + renderKitId + " added");
-        if (renderKitId.equals("HTML_BASIC")){
-        	_renderkits.put(renderKitId, new SkinRenderKit(renderKit));
-        }else{
+        //if (renderKitId.equals("HTML_BASIC")){
+        //	_renderkits.put(renderKitId, new SkinRenderKit(renderKit));
+        //}else{
         	//Do not encapsulate a renderer
         	//TODO: It should be better to add another behavior through xml files
         	//but for now i let this as is 
-        	_renderkits.put(renderKitId, renderKit);
-        }
+        	//_renderkits.put(renderKitId, renderKit);
+        //}
         		
-        //_renderkits.put(renderKitId, renderKit);
+        _renderkits.put(renderKitId, renderKit);
 	}
 
 	/*
@@ -96,5 +96,4 @@ public class SkinRenderKitFactory extends RenderKitFactory {
 	public Iterator getRenderKitIds() {
         return _renderkits.keySet().iterator();
 	}
-
 }

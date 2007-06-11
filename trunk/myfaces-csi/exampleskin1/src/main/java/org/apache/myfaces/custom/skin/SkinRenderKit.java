@@ -28,12 +28,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.faces.FactoryFinder;
 import javax.faces.application.ViewHandler;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseStream;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.RenderKit;
+import javax.faces.render.RenderKitFactory;
 import javax.faces.render.Renderer;
 import javax.faces.render.ResponseStateManager;
 
@@ -57,6 +59,15 @@ public class SkinRenderKit extends RenderKit implements
 	
 	public Map _map;
 
+	public SkinRenderKit(){
+		RenderKitFactory factory = (RenderKitFactory)
+		    FactoryFinder.getFactory(FactoryFinder.RENDER_KIT_FACTORY);		
+		_delegate = factory.getRenderKit(FacesContext.getCurrentInstance(), 
+				RenderKitFactory.HTML_BASIC_RENDER_KIT); 
+		_map = new HashMap();
+		log.info("SkinRenderer Created:" + _delegate);
+	}
+	
 	public SkinRenderKit(RenderKit delegate) {
 		log.info("SkinRenderer Created:" + delegate);
 		_delegate = delegate;
