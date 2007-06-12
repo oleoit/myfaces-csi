@@ -63,7 +63,7 @@
   		that is registered its base renderer in HTML_BASIC.
   	</description>
   	<render-kit-id>SkinRenderKit</render-kit-id>  	 
-	<render-kit-class>org.apache.myfaces.custom.skin.SkinRenderKit</render-kit-class>
+	<render-kit-class>org.apache.myfaces.trinidadinternal.renderkit.core.SkinRenderKit</render-kit-class>
 	<!-- BEGIN: javax.faces.component.html -->
 	<renderer>
 		<component-family>javax.faces.Command</component-family>
@@ -287,11 +287,14 @@
 	
 	<!-- BEGIN: org.apache.myfaces.custom.calendar -->		
 	<renderer>
-			<!-- TODO: Create appropiate class to delegate, inherits DisplayValueOnlyCapable-->
 		<component-family>javax.faces.Input</component-family>
 		<renderer-type>org.apache.myfaces.Calendar</renderer-type>
-		<renderer-class>org.apache.myfaces.custom.skin.GenericSkinRenderer</renderer-class>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlInputCalendarSkinRenderer</renderer-class>
 	</renderer>		
 	<!-- END: org.apache.myfaces.custom.calendar -->				
+	
+	<!-- BEGIN: org.apache.myfaces.custom.datascroller -->		
+	<!-- END: org.apache.myfaces.custom.datascroller -->		
+		
   </render-kit>
 </faces-config>

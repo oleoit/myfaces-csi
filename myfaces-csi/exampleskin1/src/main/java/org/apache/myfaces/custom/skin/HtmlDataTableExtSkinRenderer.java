@@ -1,13 +1,13 @@
 package org.apache.myfaces.custom.skin;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
+import java.util.Iterator;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.myfaces.custom.column.HtmlColumn;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
 public class HtmlDataTableExtSkinRenderer extends GenericSkinRenderer {
@@ -62,5 +62,30 @@ public class HtmlDataTableExtSkinRenderer extends GenericSkinRenderer {
 		renderStyleClass(component, context, arc, rowStyleClass,
 				"rowStyleClass");
 		renderStyleClass(component, context, arc, styleClass, "styleClass");
+		
+		//Now set column styles
+        for (Iterator iter = component.getChildren().iterator(); iter.hasNext();)
+        {
+            UIComponent child = (UIComponent) iter.next();
+            
+            if (child instanceof HtmlColumn){
+            	//Add styleClass attributes
+            	HtmlColumn col = (HtmlColumn) child;
+            	//footerstyleClass
+            	//headerstyleClass
+            	//styleClass
+            	baseStyleClass = "af|"
+    				+ StringUtils.replaceChars(col.getClass().getName(), '.',
+    						'_');            	
+            	styleClass = baseStyleClass + "::class";
+            	String footerstyleClass = baseStyleClass + "::footer";
+            	String headerstyleClass = baseStyleClass + "::header";            	
+            	
+            	renderStyleClass(child, context, arc, styleClass, "styleClass");
+            	renderStyleClass(child, context, arc, footerstyleClass, "footerstyleClass");
+            	renderStyleClass(child, context, arc, headerstyleClass, "headerstyleClass");
+            }
+        }
+		
 	}
 }
