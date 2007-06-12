@@ -308,11 +308,53 @@
 		<renderer-class>org.apache.myfaces.custom.skin.HtmlDataListExtSkinRenderer</renderer-class>
 	</renderer>		
 	<!-- END: org.apache.myfaces.custom.datalist -->		
-
 	
 	<!-- BEGIN: org.apache.myfaces.custom.datascroller -->		
+	<renderer>
+		<component-family>javax.faces.Panel</component-family>
+		<renderer-type>org.apache.myfaces.DataScroller</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlDataScrollerExtSkinRenderer</renderer-class>
+	</renderer>			
 	<!-- END: org.apache.myfaces.custom.datascroller -->		
 	
-		
+	<!-- BEGIN: org.apache.myfaces.custom.date -->
+	<renderer>
+		<component-family>javax.faces.Input</component-family>
+		<renderer-type>org.apache.myfaces.Date</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.GenericSkinRenderer</renderer-class>
+	</renderer>	
+	<!-- END: org.apache.myfaces.custom.date -->
+
+	<!-- BEGIN: org.apache.myfaces.custom.fileupload -->
+	<renderer>
+		<component-family>javax.faces.Input</component-family>
+		<renderer-type>org.apache.myfaces.FileUpload</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.GenericSkinRenderer</renderer-class>
+	</renderer>	
+	<!-- END: org.apache.myfaces.custom.fileupload -->
+	
+	<!-- BEGIN: org.apache.myfaces.custom.htmlTag -->
+	<!-- I don't believe that someone wants that this tag should be skinnized -->
+	<!-- END: org.apache.myfaces.custom.htmlTag -->
+	
+	<!-- BEGIN: org.apache.myfaces.custom.inputHtml -->
+	<renderer>
+		<component-family>javax.faces.Input</component-family>
+		<renderer-type>org.apache.myfaces.InputHtml</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlInputBaseExtSkinRenderer</renderer-class>
+	</renderer>	
+	<!-- END: org.apache.myfaces.custom.inputHtml -->
+	
+	<!-- BEGIN: org.apache.myfaces.custom.inputTextHelp -->
+	<renderer>
+		<component-family>javax.faces.Input</component-family>
+		<renderer-type>org.apache.myfaces.TextHelp</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlInputBaseExtSkinRenderer</renderer-class>
+	</renderer>	
+	<!-- END: org.apache.myfaces.custom.inputTextHelp -->
+	
+	<!-- BEGIN: org.apache.myfaces.custom.layout -->	
+	<!-- END: org.apache.myfaces.custom.layout -->
+	
   </render-kit>
 </faces-config>
