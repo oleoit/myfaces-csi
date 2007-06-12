@@ -39,7 +39,6 @@
 				</h:selectOneRadio>				
 			</h:form>
 			
-			<t:column ></t:column>
 			<!-- 
 				</tr:panelPage>
 			</tr:form>

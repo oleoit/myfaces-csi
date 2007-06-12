@@ -68,7 +68,7 @@ public class HtmlDataTableExtSkinRenderer extends GenericSkinRenderer {
         {
             UIComponent child = (UIComponent) iter.next();
             
-            if (child instanceof HtmlColumn){
+            if (HtmlColumn.class.isAssignableFrom(child.getClass())){
             	//Add styleClass attributes
             	HtmlColumn col = (HtmlColumn) child;
             	//footerstyleClass

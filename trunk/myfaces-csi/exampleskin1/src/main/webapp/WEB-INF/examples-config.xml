@@ -292,9 +292,27 @@
 		<renderer-class>org.apache.myfaces.custom.skin.HtmlInputCalendarSkinRenderer</renderer-class>
 	</renderer>		
 	<!-- END: org.apache.myfaces.custom.calendar -->				
+		
+	<!-- BEGIN: org.apache.myfaces.custom.collapsiblepanel -->		
+	<renderer>
+		<component-family>javax.faces.Panel</component-family>
+		<renderer-type>org.apache.myfaces.CollapsiblePanel</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.GenericSkinRenderer</renderer-class>
+	</renderer>	
+	<!-- END: org.apache.myfaces.custom.collapsiblepanel -->		
+	
+	<!-- BEGIN: org.apache.myfaces.custom.datalist -->		
+	<renderer>
+		<component-family>javax.faces.Data</component-family>
+		<renderer-type>org.apache.myfaces.List</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlDataListExtSkinRenderer</renderer-class>
+	</renderer>		
+	<!-- END: org.apache.myfaces.custom.datalist -->		
+
 	
 	<!-- BEGIN: org.apache.myfaces.custom.datascroller -->		
 	<!-- END: org.apache.myfaces.custom.datascroller -->		
+	
 		
   </render-kit>
 </faces-config>
