@@ -68,6 +68,8 @@ public abstract class SkinRenderer extends Renderer {
 	 */
 	private static final Log log = LogFactory.getLog(SkinRenderer.class);
 
+	private String componentTag = null;
+	
 	/**
 	 * Constructor
 	 * 
@@ -111,7 +113,15 @@ public abstract class SkinRenderer extends Renderer {
 		
 		RenderingContext arc = RenderingContext.getCurrentInstance();
 		if (arc == null)
-			throw new IllegalStateException(("NO_RENDERINGCONTEXT"));		
+			throw new IllegalStateException(("NO_RENDERINGCONTEXT"));
+		
+		if (this.getComponentTag() != null){
+			log.info("componentTag:"+this.getComponentTag());
+		}
+		
+		if (component.getAttributes().containsKey("componentTag")){
+			log.info("componentTag:");
+		}
 		
 		this.addStyleClassesToComponent(context, component,arc);
 		
@@ -275,6 +285,14 @@ public abstract class SkinRenderer extends Renderer {
 		component.getAttributes().put("styleClass", builder.toString());
 		// context.getResponseWriter().writeAttribute("class",
 		// builder.toString(), null);
+	}
+
+	public String getComponentTag() {
+		return componentTag;
+	}
+
+	public void setComponentTag(String componentTag) {
+		this.componentTag = componentTag;
 	}
 
 }

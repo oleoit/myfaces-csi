@@ -63,7 +63,7 @@ public class SkinRenderKit extends RenderKit implements
 		RenderKitFactory factory = (RenderKitFactory)
 		    FactoryFinder.getFactory(FactoryFinder.RENDER_KIT_FACTORY);		
 		_delegate = factory.getRenderKit(FacesContext.getCurrentInstance(), 
-				RenderKitFactory.HTML_BASIC_RENDER_KIT); 
+				RenderKitFactory.HTML_BASIC_RENDER_KIT);
 		_map = new HashMap();
 		log.info("SkinRenderer Created:" + _delegate);
 	}
@@ -108,6 +108,8 @@ public class SkinRenderKit extends RenderKit implements
 			//For now i want to define a generic renderer wrapper
 			//to components not defined. It should not harm anyone
 			r = _delegate.getRenderer(family, rendererType);
+			return r;
+			/*
 			if (r != null){
 				SkinRenderer sr = new GenericSkinRenderer(r); 
 				_map.put(family+";"+rendererType, sr);
@@ -115,6 +117,7 @@ public class SkinRenderKit extends RenderKit implements
 			}else{
 				return r;
 			}
+			*/
 		}else{
 			//I get a renderer
 			if (SkinRenderer.class.isAssignableFrom(r.getClass())){

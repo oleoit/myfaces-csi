@@ -10,35 +10,40 @@ import javax.faces.context.FacesContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlDataTableSkinRenderer extends GenericSkinRenderer{
+public class HtmlPanelGridExtSkinRenderer extends GenericSkinRenderer {
 
 	@Override
-	public void addStyleClassesToComponent(FacesContext context, UIComponent component, RenderingContext arc) throws IOException {
-		// TODO Auto-generated method stub
-		this.encodeHtmlDataTable(context, component, arc);
+	public void addStyleClassesToComponent(FacesContext context,
+			UIComponent component, RenderingContext arc) throws IOException {
+		this.encodeHtmlPanelGrid(context, component, arc);
 	}
 
-	public void encodeHtmlDataTable(FacesContext context,
+	public void encodeHtmlPanelGrid(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
 		this.encodeGenericComponent(context, component, arc);
 
+		String displayValueOnlyStyleClass = null;
 		String footerStyleClass = null;
 		String headerStyleClass = null;
 		String rowStyleClass = null;
+		
 
 		String baseStyleClass = "af|"
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 
+		displayValueOnlyStyleClass = baseStyleClass + "::displayValueOnly";
 		footerStyleClass = baseStyleClass + "::footer";
 		headerStyleClass = baseStyleClass + "::header";
 		rowStyleClass = baseStyleClass + "::row";
 
+		renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
+			"displayValueOnlyStyleClass");		
 		renderStyleClass(component, context, arc, footerStyleClass,
-				"footerClass");
+			"footerClass");
 		renderStyleClass(component, context, arc, headerStyleClass,
-				"headerClass");
+			"headerClass");
 
 		Map m = component.getAttributes();
 		String oldRowClasses = (String) m.get("rowClasses");
@@ -67,6 +72,6 @@ public class HtmlDataTableSkinRenderer extends GenericSkinRenderer{
 			}
 			component.getAttributes().put("rowClasses", builder.toString());
 		}
-	}
+	}	
 	
 }
