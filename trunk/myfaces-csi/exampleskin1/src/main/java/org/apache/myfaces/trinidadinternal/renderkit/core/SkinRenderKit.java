@@ -1,4 +1,4 @@
-package org.apache.myfaces.custom.skin;
+package org.apache.myfaces.trinidadinternal.renderkit.core;
 
 /*
  *  Licensed to the Apache Software Foundation (ASF) under one
@@ -18,7 +18,6 @@ package org.apache.myfaces.custom.skin;
  *  specific language governing permissions and limitations
  *  under the License.
  */
-
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -41,14 +40,17 @@ import javax.faces.render.ResponseStateManager;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.myfaces.custom.skin.SkinRenderer;
+import org.apache.myfaces.trinidad.context.PartialPageContext;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 import org.apache.myfaces.trinidad.logging.TrinidadLogger;
 import org.apache.myfaces.trinidad.render.ExtendedRenderKitService;
 import org.apache.myfaces.trinidadinternal.application.StateManagerImpl;
 import org.apache.myfaces.trinidadinternal.context.DialogServiceImpl;
 import org.apache.myfaces.trinidadinternal.context.TrinidadPhaseListener;
-import org.apache.myfaces.trinidadinternal.renderkit.core.CoreRenderingContext;
+import org.apache.myfaces.trinidadinternal.renderkit.core.ppr.PartialPageContextImpl;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.PartialPageUtils;
+import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.XhtmlRenderer;
 
 public class SkinRenderKit extends RenderKit implements
 		ExtendedRenderKitService {
@@ -56,18 +58,18 @@ public class SkinRenderKit extends RenderKit implements
 	private static final Log log = LogFactory.getLog(SkinRenderKit.class);
 
 	public RenderKit _delegate;
-	
+
 	public Map _map;
-	
-	public SkinRenderKit(){
-		RenderKitFactory factory = (RenderKitFactory)
-		    FactoryFinder.getFactory(FactoryFinder.RENDER_KIT_FACTORY);		
-		_delegate = factory.getRenderKit(FacesContext.getCurrentInstance(), 
+
+	public SkinRenderKit() {
+		RenderKitFactory factory = (RenderKitFactory) FactoryFinder
+				.getFactory(FactoryFinder.RENDER_KIT_FACTORY);
+		_delegate = factory.getRenderKit(FacesContext.getCurrentInstance(),
 				RenderKitFactory.HTML_BASIC_RENDER_KIT);
 		_map = new HashMap();
 		log.info("SkinRenderer Created:" + _delegate);
 	}
-	
+
 	public SkinRenderKit(RenderKit delegate) {
 		log.info("SkinRenderer Created:" + delegate);
 		_delegate = delegate;
@@ -77,13 +79,13 @@ public class SkinRenderKit extends RenderKit implements
 	@Override
 	public void addRenderer(String family, String rendererType,
 			Renderer renderer) {
-		//In this case, first check if this class inherits from
-		//SkinRenderer class
-		log.info("addRenderer "+renderer.getClass());
-		if (SkinRenderer.class.isAssignableFrom(renderer.getClass())){		
+		// In this case, first check if this class inherits from
+		// SkinRenderer class
+		log.info("addRenderer " + renderer.getClass());
+		if (SkinRenderer.class.isAssignableFrom(renderer.getClass())) {
 			SkinRenderer sr = (SkinRenderer) renderer;
-			_map.put(family+";"+rendererType, sr);		
-		}else{
+			_map.put(family + ";" + rendererType, sr);
+		} else {
 			_delegate.addRenderer(family, rendererType, renderer);
 		}
 	}
@@ -102,42 +104,38 @@ public class SkinRenderKit extends RenderKit implements
 
 	@Override
 	public Renderer getRenderer(String family, String rendererType) {
-		//First get a renderer from here
-		Renderer r = (Renderer)_map.get(family+";"+rendererType);
-		if (r == null){
-			//For now i want to define a generic renderer wrapper
-			//to components not defined. It should not harm anyone
+		// First get a renderer from here
+		Renderer r = (Renderer) _map.get(family + ";" + rendererType);
+		if (r == null) {
+			// For now i want to define a generic renderer wrapper
+			// to components not defined. It should not harm anyone
 			r = _delegate.getRenderer(family, rendererType);
 			return r;
 			/*
-			if (r != null){
-				SkinRenderer sr = new GenericSkinRenderer(r); 
-				_map.put(family+";"+rendererType, sr);
-				return sr;				
-			}else{
-				return r;
-			}
-			*/
-		}else{
-			//I get a renderer
-			if (SkinRenderer.class.isAssignableFrom(r.getClass())){
-				//check if it has a delegate renderer
+			 * if (r != null){ SkinRenderer sr = new GenericSkinRenderer(r);
+			 * _map.put(family+";"+rendererType, sr); return sr; }else{ return
+			 * r; }
+			 */
+		} else {
+			// I get a renderer
+			if (SkinRenderer.class.isAssignableFrom(r.getClass())) {
+				// check if it has a delegate renderer
 				SkinRenderer sr = (SkinRenderer) r;
-				if (sr.getDelegate() == null){
-					//set a proper delegate
+				if (sr.getDelegate() == null) {
+					// set a proper delegate
 					r = _delegate.getRenderer(family, rendererType);
-					if (r != null){
+					if (r != null) {
 						sr.setDelegate(r);
 						return sr;
-					}else{
+					} else {
 						return r;
 					}
 				}
 				return sr;
-			}else{
+			} else {
 				return r;
 			}
-		}		
+		}
 	}
 
 	@Override
@@ -214,24 +212,21 @@ public class SkinRenderKit extends RenderKit implements
 				.getClass())) {
 			((ExtendedRenderKitService) _delegate).encodeFinally(context);
 			return;
-		}		
-		
-	    // Get the state token from the StateManager (if one is available)
-	    String stateToken = StateManagerImpl.getStateToken(context);
-	    // And push it onto the DialogService (in case we launched anything)
-	    DialogServiceImpl.writeCurrentStateToken(context, stateToken);
-	    
-	    RenderingContext arc = RenderingContext.getCurrentInstance();
-	    if (arc != null)
-	    {
-	      arc.release();
-	    }
-	    else
-	    {
-	      _LOG.warning("ADFRENDERINGCONTEXT_NOT_AVAILABLE");
-	    }
+		}
+
+		// Get the state token from the StateManager (if one is available)
+		String stateToken = StateManagerImpl.getStateToken(context);
+		// And push it onto the DialogService (in case we launched anything)
+		DialogServiceImpl.writeCurrentStateToken(context, stateToken);
+
+		RenderingContext arc = RenderingContext.getCurrentInstance();
+		if (arc != null) {
+			arc.release();
+		} else {
+			_LOG.warning("ADFRENDERINGCONTEXT_NOT_AVAILABLE");
+		}
 	}
-	
+
 	public void encodeScripts(FacesContext context) throws IOException {
 		// TODO Auto-generated method stub
 		if (ExtendedRenderKitService.class.isAssignableFrom(_delegate
@@ -239,77 +234,87 @@ public class SkinRenderKit extends RenderKit implements
 			((ExtendedRenderKitService) _delegate).encodeScripts(context);
 			return;
 		}
-		//There is no encodeScripts because there is 
-		/*
-	    List<DialogRequest> dialogList = _getDialogList(context, false);
-	    boolean hasDialog = ((dialogList != null) && !dialogList.isEmpty());
-	    List<String> scriptList = _getScriptList(context, false);
-	    boolean hasScript = ((scriptList != null) && !scriptList.isEmpty());
+		List<DialogRequest> dialogList = _getDialogList(context, false);
+		boolean hasDialog = ((dialogList != null) && !dialogList.isEmpty());
+		List<String> scriptList = _getScriptList(context, false);
+		boolean hasScript = ((scriptList != null) && !scriptList.isEmpty());
 
-	    if (hasDialog || hasScript)
-	    {
-	      RenderingContext arc = RenderingContext.getCurrentInstance();
-	      if (hasDialog)
-	        DialogRequest.addDependencies(context, arc);
+		if (hasDialog || hasScript) {
+			RenderingContext arc = RenderingContext.getCurrentInstance();
+			if (hasDialog)
+				DialogRequest.addDependencies(context, arc);
 
-	      // =-=AEW How to pick a proper ID?
+			// =-=AEW How to pick a proper ID?
 
-	      // Write out a script;  let PPR know to use it
-	      String scriptId = "::launchScript";
-	      PartialPageContext ppContext = arc.getPartialPageContext();
-	      // TODO: Create the span with a bogus component where
-	      // getClientId() returns the scriptId;  this avoids
-	      // the need to downcast - you just need to
-	      // call addPartialTarget().  Or, come up with a better
-	      // PPR api to make it simpler
-	      PartialPageContextImpl ppImpl = (PartialPageContextImpl) ppContext;
-	      if (ppImpl != null)
-	      {
-	        ppImpl.addRenderedPartialTarget(scriptId);
-	        ppImpl.pushRenderedPartialTarget(scriptId);
-	      }
+			// Write out a script; let PPR know to use it
+			String scriptId = "::launchScript";
+			PartialPageContext ppContext = arc.getPartialPageContext();
+			// TODO: Create the span with a bogus component where
+			// getClientId() returns the scriptId; this avoids
+			// the need to downcast - you just need to
+			// call addPartialTarget(). Or, come up with a better
+			// PPR api to make it simpler
+			PartialPageContextImpl ppImpl = (PartialPageContextImpl) ppContext;
+			if (ppImpl != null) {
+				ppImpl.addRenderedPartialTarget(scriptId);
+				ppImpl.pushRenderedPartialTarget(scriptId);
+			}
 
-	      ResponseWriter out = context.getResponseWriter();
+			ResponseWriter out = context.getResponseWriter();
 
-	      out.startElement("script", null);
-	      out.writeAttribute("id", scriptId, null);
+			out.startElement("script", null);
+			out.writeAttribute("id", scriptId, null);
 
-	      XhtmlRenderer.renderScriptDeferAttribute(context, arc);
+			XhtmlRenderer.renderScriptDeferAttribute(context, arc);
 
-	      // And render each dialog launch that we need
-	      if (hasDialog)
-	      {
-	        for (DialogRequest dialog : dialogList)
-	        {
-	          dialog.renderLaunchJavascript(context, arc);
-	        }
-	      }
+			// And render each dialog launch that we need
+			if (hasDialog) {
+				for (DialogRequest dialog : dialogList) {
+					dialog.renderLaunchJavascript(context, arc);
+				}
+			}
 
-	      if (hasScript)
-	      {
-	        for (String script : scriptList)
-	        {
-	          out.write(script);
-	        }
-	      }
+			if (hasScript) {
+				for (String script : scriptList) {
+					out.write(script);
+				}
+			}
 
-	      out.endElement("script");
-	      if (hasDialog)
-	        dialogList.clear();
-	      if (hasScript)
-	        scriptList.clear();
+			out.endElement("script");
+			if (hasDialog)
+				dialogList.clear();
+			if (hasScript)
+				scriptList.clear();
 
-	      if (ppImpl != null)
-	        ppImpl.popRenderedPartialTarget();
-	    }
-		*/
+			if (ppImpl != null)
+				ppImpl.popRenderedPartialTarget();
+		}
 	}
+
+	@SuppressWarnings("unchecked")
+	private List<DialogRequest> _getDialogList(FacesContext context,
+			boolean createIfNew) {
+		Map<String, Object> requestMap = context.getExternalContext()
+				.getRequestMap();
+
+		List<DialogRequest> l = (List<DialogRequest>) requestMap
+				.get(_DIALOG_LIST_KEY);
+
+		if ((l == null) && createIfNew) {
+			l = new ArrayList<DialogRequest>();
+			requestMap.put(_DIALOG_LIST_KEY, l);
+		}
+
+		return l;
+	}
+
+	static private final String _DIALOG_LIST_KEY = "org.apache.myfaces.trinidadinternal.renderkit.DialogList";
 
 	public boolean isStateless(FacesContext context) {
 		if (ExtendedRenderKitService.class.isAssignableFrom(_delegate
-				.getClass())) {			
+				.getClass())) {
 			return ((ExtendedRenderKitService) _delegate).isStateless(context);
-		}		
+		}
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -317,42 +322,44 @@ public class SkinRenderKit extends RenderKit implements
 	public boolean shortCircuitRenderView(FacesContext context)
 			throws IOException {
 		if (ExtendedRenderKitService.class.isAssignableFrom(_delegate
-				.getClass())) {			
-			return ((ExtendedRenderKitService) _delegate).shortCircuitRenderView(context);
+				.getClass())) {
+			return ((ExtendedRenderKitService) _delegate)
+					.shortCircuitRenderView(context);
 		}
 
 		// TODO Auto-generated method stub
-	    if (PartialPageUtils.isPartialRequest(context))
-	    {
-	      Map<String, Object> requestMap = 
-	        context.getExternalContext().getRequestMap();
+		if (PartialPageUtils.isPartialRequest(context)) {
+			Map<String, Object> requestMap = context.getExternalContext()
+					.getRequestMap();
 
-	      UIViewRoot originalRoot = (UIViewRoot) requestMap.get(
-	                         TrinidadPhaseListener.INITIAL_VIEW_ROOT_KEY);
-	      // If we're doing a partial update, and the page has changed, switch to a
-	      // full page context.
-	      if (context.getViewRoot() != originalRoot)
-	      {
-	        ViewHandler vh = context.getApplication().getViewHandler();
+			UIViewRoot originalRoot = (UIViewRoot) requestMap
+					.get(TrinidadPhaseListener.INITIAL_VIEW_ROOT_KEY);
+			// If we're doing a partial update, and the page has changed, switch
+			// to a
+			// full page context.
+			if (context.getViewRoot() != originalRoot) {
+				ViewHandler vh = context.getApplication().getViewHandler();
 
-	        String viewId = context.getViewRoot().getViewId();
-	        String redirect = vh.getActionURL(context, viewId);
-	        context.getExternalContext().redirect(redirect);
-	        if (_LOG.isFine())
-	        {
-	          _LOG.fine("Page navigation to {0} happened during a PPR request " +
-	                    "on {1};  Apache Trinidad is forcing a redirect.",
-	                    new String[]{viewId, originalRoot.getViewId()});
-	        }
+				String viewId = context.getViewRoot().getViewId();
+				String redirect = vh.getActionURL(context, viewId);
+				context.getExternalContext().redirect(redirect);
+				if (_LOG.isFine()) {
+					_LOG
+							.fine(
+									"Page navigation to {0} happened during a PPR request "
+											+ "on {1};  Apache Trinidad is forcing a redirect.",
+									new String[] { viewId,
+											originalRoot.getViewId() });
+				}
 
-	        return true;
-	      }
-	    }
+				return true;
+			}
+		}
 		return false;
 	}
 
-	static private final TrinidadLogger _LOG =
-		     TrinidadLogger.createTrinidadLogger(SkinRenderKit.class);
-	
-	//END METHODS INHERITED FROM ExtendedRenderKitService
+	static private final TrinidadLogger _LOG = TrinidadLogger
+			.createTrinidadLogger(SkinRenderKit.class);
+
+	// END METHODS INHERITED FROM ExtendedRenderKitService
 }

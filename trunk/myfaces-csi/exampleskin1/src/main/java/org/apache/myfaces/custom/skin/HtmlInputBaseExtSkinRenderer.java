@@ -21,7 +21,7 @@ public class HtmlInputBaseExtSkinRenderer extends GenericSkinRenderer {
 	public void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 		// TODO Auto-generated method stub
-		this.encodeHtmlSelectOneOrMany(context, component, arc);
+		this.encodeHtmlInputBaseExt(context, component, arc);
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class HtmlInputBaseExtSkinRenderer extends GenericSkinRenderer {
 	 * @param arc
 	 * @throws IOException
 	 */
-	public void encodeHtmlSelectOneOrMany(FacesContext context,
+	public void encodeHtmlInputBaseExt(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
 		this.encodeGenericComponent(context, component, arc);
