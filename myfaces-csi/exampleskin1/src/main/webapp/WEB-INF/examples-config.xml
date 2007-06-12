@@ -353,8 +353,88 @@
 	</renderer>	
 	<!-- END: org.apache.myfaces.custom.inputTextHelp -->
 	
-	<!-- BEGIN: org.apache.myfaces.custom.layout -->	
+	<!-- BEGIN: org.apache.myfaces.custom.layout -->
+	<renderer>
+		<component-family>javax.faces.Panel</component-family>
+		<renderer-type>org.apache.myfaces.Layout</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlPanelLayoutExtSkinRenderer</renderer-class>
+	</renderer>		
 	<!-- END: org.apache.myfaces.custom.layout -->
 	
+	<!-- BEGIN: org.apache.myfaces.custom.navigation -->
+	<!-- END: org.apache.myfaces.custom.navigation -->
+
+	<!-- BEGIN: org.apache.myfaces.custom.navmenu -->
+	<!-- END: org.apache.myfaces.custom.navmenu -->
+	
+	<!-- BEGIN: org.apache.myfaces.custom.newspaper -->
+	<renderer>
+		<component-family>javax.faces.Data</component-family>
+		<renderer-type>org.apache.myfaces.HtmlNewspaperTable</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlNewspaperExtSkinRenderer</renderer-class>
+	</renderer>			
+	<!-- END: org.apache.myfaces.custom.newspaper -->
+	
+	<!-- BEGIN: org.apache.myfaces.custom.popup -->
+	<renderer>
+		<component-family>javax.faces.Panel</component-family>
+		<renderer-type>org.apache.myfaces.Popup</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.GenericSkinRenderer</renderer-class>
+	</renderer>
+	<!-- END: org.apache.myfaces.custom.popup -->
+	
+	<!-- BEGIN: org.apache.myfaces.custom.schedule -->
+	<renderer>
+		<component-family>javax.faces.Panel</component-family>
+		<renderer-type>org.apache.myfaces.Schedule</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlScheduleSkinRenderer</renderer-class>
+	</renderer>	
+	<!-- END: org.apache.myfaces.custom.schedule -->
+	
+	<!-- BEGIN: org.apache.myfaces.custom.selectOneCountry -->	
+	<renderer>				
+		<component-family>javax.faces.SelectOne</component-family>
+		<renderer-type>org.apache.myfaces.SelectOneCountryRenderer</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlSelectOneOrManyExtSkinRenderer</renderer-class>
+	</renderer>		
+	<!-- END: org.apache.myfaces.custom.selectOneCountry -->	
+	
+	<!-- BEGIN: org.apache.myfaces.custom.selectOneLanguage -->
+	<renderer>				
+		<component-family>javax.faces.SelectOne</component-family>
+		<renderer-type>org.apache.myfaces.SelectOneLanguageRenderer</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlSelectOneOrManyExtSkinRenderer</renderer-class>
+	</renderer>			
+	<!-- END: org.apache.myfaces.custom.selectOneLanguage -->
+	
+	<!-- BEGIN: org.apache.myfaces.custom.sortheader -->
+	<renderer>				
+		<component-family>javax.faces.Command</component-family>
+		<renderer-type>org.apache.myfaces.SortHeader</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlCommandSortHeaderSkinRenderer</renderer-class>
+	</renderer>				
+	<!-- END: org.apache.myfaces.custom.sortheader -->
+	
+	<!-- BEGIN: org.apache.myfaces.custom.swapimage -->	
+	<renderer>
+		<component-family>javax.faces.Graphic</component-family>
+		<renderer-type>org.apache.myfaces.SwapImage</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.GenericSkinRenderer</renderer-class>
+	</renderer>
+	<!-- END: org.apache.myfaces.custom.swapimage -->
+	
+	<!-- BEGIN: org.apache.myfaces.custom.tabbedpane -->		
+	<renderer>
+		<component-family>javax.faces.Panel</component-family>
+		<renderer-type>org.apache.myfaces.TabbedPane</renderer-type>
+		<renderer-class>org.apache.myfaces.custom.skin.HtmlPanelTabbedSkinRenderer</renderer-class>
+	</renderer>	
+	<!-- END: org.apache.myfaces.custom.tabbedpane -->
+	
+	<!-- BEGIN: org.apache.myfaces.custom.tree -->		
+	<!-- END: org.apache.myfaces.custom.tree -->
+	
+	<!-- BEGIN: org.apache.myfaces.custom.tree2 -->		
+	<!-- END: org.apache.myfaces.custom.tree2 -->
   </render-kit>
 </faces-config>

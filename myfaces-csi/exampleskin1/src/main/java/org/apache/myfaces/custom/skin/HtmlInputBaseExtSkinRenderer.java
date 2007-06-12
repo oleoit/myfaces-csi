@@ -41,13 +41,12 @@ public class HtmlInputBaseExtSkinRenderer extends GenericSkinRenderer {
 			UIComponent component, RenderingContext arc) throws IOException {
 
 		this.encodeGenericComponent(context, component, arc);
-		String displayValueOnlyStyleClass = null;
 
 		String baseStyleClass = "af|"
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 
-		displayValueOnlyStyleClass = baseStyleClass + "::displayValueOnly";		
+		String displayValueOnlyStyleClass = baseStyleClass + "::displayValueOnly";		
 
 		renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
 				"displayValueOnlyStyleClass");		
