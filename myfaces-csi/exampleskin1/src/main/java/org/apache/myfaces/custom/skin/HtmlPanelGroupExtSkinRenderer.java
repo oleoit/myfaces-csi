@@ -27,9 +27,7 @@ public class HtmlPanelGroupExtSkinRenderer extends GenericSkinRenderer {
 	/**
 	 * Apply the following css class style attributes:
 	 * 
-	 * disabledClass
 	 * displayValueOnlyStyleClass
-	 * enabledClass
 	 * styleClass
 	 * 
 	 * @param context

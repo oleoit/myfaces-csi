@@ -38,7 +38,6 @@
 					  <f:selectItem id="item5" itemLabel="Web" itemValue="5" />
 				</h:selectOneRadio>				
 			</h:form>
-			
 			<!-- 
 				</tr:panelPage>
 			</tr:form>
