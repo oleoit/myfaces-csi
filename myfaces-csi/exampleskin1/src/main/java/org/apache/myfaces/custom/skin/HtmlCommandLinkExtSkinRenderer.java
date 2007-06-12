@@ -10,12 +10,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlSelectOneOrManySkinRenderer extends GenericSkinRenderer {
+public class HtmlCommandLinkExtSkinRenderer extends GenericSkinRenderer {
 
 	/**
 	 * The log factory used to debug messages
 	 */
-	private static final Log log = LogFactory.getLog(HtmlSelectOneOrManySkinRenderer.class);	
+	private static final Log log = LogFactory.getLog(HtmlCommandLinkExtSkinRenderer.class);	
 		
 	@Override
 	public void addStyleClassesToComponent(FacesContext context,
@@ -24,25 +24,34 @@ public class HtmlSelectOneOrManySkinRenderer extends GenericSkinRenderer {
 		this.encodeHtmlSelectOneOrMany(context, component, arc);
 	}
 
+	/**
+	 * Apply the following css class style attributes:
+	 * 
+	 * disabledStyleClass
+	 * styleClass
+	 * 
+	 * @param context
+	 * @param component
+	 * @param arc
+	 * @throws IOException
+	 */
 	public void encodeHtmlSelectOneOrMany(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
-		this.encodeGenericComponent(context, component, arc);
-		
+		String styleClass = null;
 		String disabledStyleClass = null;
-		String enabledStyleClass = null;
-
+		
 		String baseStyleClass = "af|"
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 
+		styleClass = baseStyleClass + "::class";
 		disabledStyleClass = baseStyleClass + "::disabled";
-		enabledStyleClass = baseStyleClass + "::enabled";
 
+		renderStyleClass(component, context, arc, styleClass,
+				"styleClass");		
 		renderStyleClass(component, context, arc, disabledStyleClass,
-				"disabledClass");
-		renderStyleClass(component, context, arc, enabledStyleClass,
-				"enabledClass");
+				"disabledStyleClass");
 		
 	}	
 }
