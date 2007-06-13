@@ -1,0 +1,49 @@
+/*
+ *  Licensed to the Apache Software Foundation (ASF) under one
+ *  or more contributor license agreements.  See the NOTICE file
+ *  distributed with this work for additional information
+ *  regarding copyright ownership.  The ASF licenses this file
+ *  to you under the Apache License, Version 2.0 (the
+ *  "License"); you may not use this file except in compliance
+ *  with the License.  You may obtain a copy of the License at
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ *  Unless required by applicable law or agreed to in writing,
+ *  software distributed under the License is distributed on an
+ *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ *  KIND, either express or implied.  See the License for the
+ *  specific language governing permissions and limitations
+ *  under the License.
+ */
+
+/*
+ * This example apply some general properties over components
+ * in order to probe myfaces skins.
+ */
+
+af|javax_faces_component_html_HtmlOutputLabel::class
+{
+	font-family: verdana,arial,helvetica,sans-serif; 
+}
+
+af|javax_faces_component_html_HtmlOutputLink::class:hover
+{
+	font-family: verdana,arial,helvetica,sans-serif; 
+ 	text-decoration: underline overline; 
+ 	color: red;
+}
+
+af|javax_faces_component_html_HtmlPanelGrid::class
+{
+}
+
+af|javax_faces_component_html_HtmlPanelGrid::row
+{
+	color: red;
+}
+
+af|javax_faces_component_html_HtmlInputText::class:focus
+{
+	background: rgb(194,252,251);
+}
