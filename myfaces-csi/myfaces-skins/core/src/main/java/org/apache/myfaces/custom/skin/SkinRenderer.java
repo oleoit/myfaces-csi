@@ -20,35 +20,15 @@ package org.apache.myfaces.custom.skin;
  */
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import javax.faces.component.UIComponent;
-import javax.faces.component.html.HtmlDataTable;
-import javax.faces.component.html.HtmlMessage;
-import javax.faces.component.html.HtmlMessages;
-import javax.faces.component.html.HtmlPanelGrid;
-import javax.faces.component.html.HtmlSelectManyCheckbox;
-import javax.faces.component.html.HtmlSelectManyListbox;
-import javax.faces.component.html.HtmlSelectManyMenu;
-import javax.faces.component.html.HtmlSelectOneListbox;
-import javax.faces.component.html.HtmlSelectOneMenu;
-import javax.faces.component.html.HtmlSelectOneRadio;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.ConverterException;
 import javax.faces.render.Renderer;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.myfaces.trinidad.component.UIXComponent;
 import org.apache.myfaces.trinidad.context.RenderingContext;
-import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.OutputUtils;
-import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.SkinSelectors;
-import org.apache.myfaces.component.html.ext.HtmlGraphicImage;
 
 /**
  * This class encapsulate Renderers of other RenderKits and add trinidad

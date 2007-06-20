@@ -27,18 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.faces.component.UIComponent;
-import javax.faces.component.html.HtmlDataTable;
-import javax.faces.component.html.HtmlMessage;
-import javax.faces.component.html.HtmlMessages;
-import javax.faces.component.html.HtmlPanelGrid;
-import javax.faces.component.html.HtmlSelectManyCheckbox;
-import javax.faces.component.html.HtmlSelectManyListbox;
-import javax.faces.component.html.HtmlSelectManyMenu;
-import javax.faces.component.html.HtmlSelectOneListbox;
-import javax.faces.component.html.HtmlSelectOneMenu;
-import javax.faces.component.html.HtmlSelectOneRadio;
 import javax.faces.context.FacesContext;
-import javax.faces.convert.ConverterException;
 import javax.faces.render.Renderer;
 
 import org.apache.commons.lang.StringUtils;
@@ -48,7 +37,6 @@ import org.apache.myfaces.trinidad.component.UIXComponent;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.OutputUtils;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.SkinSelectors;
-import org.apache.myfaces.component.html.ext.HtmlGraphicImage;
 
 /**
  * This class encapsulate Renderers of other RenderKits and add trinidad
@@ -93,118 +81,7 @@ public class GenericSkinRenderer extends SkinRenderer {
 		if (UIXComponent.class.isAssignableFrom(component.getClass())) {
 			// Nothing because is a trinidad component.
 		} else {
-			// Check if is a basic component
-			if ("javax.faces.component.html".equals(component.getClass()
-					.getPackage().getName())) {
-				// 1. get a Rendering Context
-				/*
-				RenderingContext arc = RenderingContext.getCurrentInstance();
-				if (arc == null)
-					throw new IllegalStateException(("NO_RENDERINGCONTEXT"));
-				*/
-				/*
-				if (HtmlMessage.class.isAssignableFrom(component.getClass())) {
-					this.encodeHtmlMessage(context, component, arc);
-				} else if (HtmlMessages.class.isAssignableFrom(component
-						.getClass())) {
-					// the same that previous
-					this.encodeHtmlMessage(context, component, arc);
-				} else if (HtmlSelectOneListbox.class
-						.isAssignableFrom(component.getClass())) {
-					// the same that previous
-					this.encodeHtmlSelectOneOrMany(context, component, arc);
-				} else if (HtmlSelectOneMenu.class.isAssignableFrom(component
-						.getClass())) {
-					// the same that previous
-					this.encodeHtmlSelectOneOrMany(context, component, arc);
-				} else if (HtmlSelectOneRadio.class.isAssignableFrom(component
-						.getClass())) {
-					// the same that previous
-					this.encodeHtmlSelectOneOrMany(context, component, arc);
-				} else if (HtmlSelectManyCheckbox.class
-						.isAssignableFrom(component.getClass())) {
-					// the same that previous
-					this.encodeHtmlSelectOneOrMany(context, component, arc);
-				} else if (HtmlSelectManyListbox.class
-						.isAssignableFrom(component.getClass())) {
-					// the same that previous
-					this.encodeHtmlSelectOneOrMany(context, component, arc);
-				} else if (HtmlSelectManyMenu.class.isAssignableFrom(component
-						.getClass())) {
-					// the same that previous
-					this.encodeHtmlSelectOneOrMany(context, component, arc);
-				} else 
-				
-				if (HtmlPanelGrid.class.isAssignableFrom(component
-						.getClass())) {
-					// the same that previous
-					this.encodeHtmlPanelGrid(context, component, arc);
-				} else if (HtmlDataTable.class.isAssignableFrom(component
-						.getClass())) {
-					// the same that previous
-					this.encodeHtmlDataTable(context, component, arc);
-				} else
-				*/	
-				 {
-					this.encodeGenericComponent(context, component, arc);
-				}
-				// TODO: add dataTable
-				// TODO: column en JSF 1.2 has another properties
-			}
-			// Check if is a tomahawk component
-			if ("org.apache.myfaces.component.html.ext".equals(component.getClass()
-					.getPackage().getName())) {
-				//RenderingContext arc = RenderingContext.getCurrentInstance();
-				//if (arc == null)
-				//	throw new IllegalStateException(("NO_RENDERINGCONTEXT"));
-				/*
-				if (org.apache.myfaces.component.html.ext.HtmlMessage.class.isAssignableFrom(component.getClass())) {
-					this.encodeHtmlMessage(context, component, arc);
-				} else if (HtmlMessages.class.isAssignableFrom(component
-						.getClass())) {
-					// the same that previous
-					this.encodeHtmlMessage(context, component, arc);
-				} else 
-				
-				if (org.apache.myfaces.component.html.ext.HtmlSelectOneListbox.class
-						.isAssignableFrom(component.getClass())) {
-					// the same that previous
-					this.encodeHtmlSelectOneOrMany(context, component, arc);
-				} else if (org.apache.myfaces.component.html.ext.HtmlSelectOneMenu.class.isAssignableFrom(component
-						.getClass())) {
-					// the same that previous
-					this.encodeHtmlSelectOneOrMany(context, component, arc);
-				} else if (org.apache.myfaces.component.html.ext.HtmlSelectOneRadio.class.isAssignableFrom(component
-						.getClass())) {
-					// the same that previous
-					this.encodeHtmlSelectOneOrMany(context, component, arc);
-				} else if (org.apache.myfaces.component.html.ext.HtmlSelectManyCheckbox.class
-						.isAssignableFrom(component.getClass())) {
-					// the same that previous
-					this.encodeHtmlSelectOneOrMany(context, component, arc);
-				} else if (org.apache.myfaces.component.html.ext.HtmlSelectManyListbox.class
-						.isAssignableFrom(component.getClass())) {
-					// the same that previous
-					this.encodeHtmlSelectOneOrMany(context, component, arc);
-				} else if (org.apache.myfaces.component.html.ext.HtmlSelectManyMenu.class.isAssignableFrom(component
-						.getClass())) {
-					// the same that previous
-					this.encodeHtmlSelectOneOrMany(context, component, arc);
-				} else
-				
-				 if (org.apache.myfaces.component.html.ext.HtmlPanelGrid.class.isAssignableFrom(component
-						.getClass())) {
-					// the same that previous
-					this.encodeHtmlPanelGrid(context, component, arc);
-				} else if (org.apache.myfaces.component.html.ext.HtmlDataTable.class.isAssignableFrom(component
-						.getClass())) {
-					// the same that previous
-					this.encodeHtmlDataTable(context, component, arc);
-				} else 
-				*/{
-					this.encodeGenericComponent(context, component, arc);
-				}
-			}						
+			this.encodeGenericComponent(context, component, arc);
 		}
 	}
 
