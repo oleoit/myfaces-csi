@@ -10,6 +10,7 @@
 <%@ taglib
 	uri="http://myfaces.apache.org/tomahawk"
 	prefix="t"%>
+<%@ taglib uri="http://myfaces.apache.org/trinidad/html" prefix="trh"%>
 <html>
 
 <!--
@@ -32,12 +33,12 @@
  * under the License.
  */
 //-->
-
+<f:view>
 <%@include file="inc/head.inc"%>
 
 <body>
 
-<f:view>
+
 
 	<f:loadBundle
 		basename="org.apache.myfaces.examples.resource.example_messages"

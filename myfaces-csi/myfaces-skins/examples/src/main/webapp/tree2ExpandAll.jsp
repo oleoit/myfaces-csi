@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 <%@ taglib uri="http://myfaces.apache.org/tomahawk" prefix="t"%>
+<%@ taglib uri="http://myfaces.apache.org/trinidad/html" prefix="trh"%>
 
 <!--
 /*
@@ -23,12 +24,12 @@
  */
 //-->
 <html>
-
+<f:view>
 <%@include file="inc/head.inc" %>
 
 <body>
 
-<f:view>
+
 
 	<h:form>
     <span style="font-family:verdana">
