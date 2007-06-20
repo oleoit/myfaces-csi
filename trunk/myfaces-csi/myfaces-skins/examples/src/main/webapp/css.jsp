@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 <%@ taglib uri="http://myfaces.apache.org/tomahawk" prefix="t"%>
+<%@ taglib uri="http://myfaces.apache.org/trinidad/html" prefix="trh"%>
 <!--
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -30,6 +31,7 @@
     <head>
         <meta HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
         <title>MyFaces - the free JSF Implementation</title>
+        <trh:styleSheet/>
         <t:stylesheet path="/css/basic.css"/>
     </head>
 
