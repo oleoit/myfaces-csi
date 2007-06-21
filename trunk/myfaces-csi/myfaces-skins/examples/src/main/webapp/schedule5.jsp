@@ -25,9 +25,10 @@
 
 <html>
 <f:view>
+
 <%@include file="/inc/head.inc"%>
+
 <body>
-<f:view>
 	<h:form>
 		<!--  The schedule itself -->
 		<t:div style="position: absolute; left: 220px; top: 5px; right: 5px;">
@@ -66,6 +67,6 @@
 		    <jsp:include page="inc/mbean_source.jsp"/>
 		</t:div>
 	</h:form>
-</f:view>
 </body>
+</f:view>
 </html>

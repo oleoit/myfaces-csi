@@ -24,11 +24,12 @@
 //-->
 
 <html>
+<f:view>
 <head>
 <meta HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=UTF-8" />
 <title>MyFaces - the free JSF Implementation</title>
-<link rel="stylesheet" type="text/css" href="css/basic.css" />
 <trh:styleSheet/>
+<link rel="stylesheet" type="text/css" href="css/basic.css" />
 <style>
 table.background td.evenReddish,
 table.background td.unevenReddish,
@@ -55,7 +56,7 @@ table.background td.freeReddish {
   </style>
 </head>
 <body>
-<f:view>
+
 	<h:form>
 		<!--  The schedule itself -->
 		<t:div style="position: absolute; left: 220px; top: 5px; right: 5px;">
@@ -83,6 +84,6 @@ table.background td.freeReddish {
 		</t:div>
 	</h:form>
 
-</f:view>
 </body>
+</f:view>
 </html>

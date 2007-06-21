@@ -6,8 +6,6 @@
 
 <html>
 
-<%@include file="inc/head.inc" %>
-
 <!--
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -79,10 +77,11 @@
         </h:form>
     </h:panelGroup>
     <jsp:include page="inc/mbean_source.jsp"/>
-</f:view>
+
 
 <%@include file="inc/page_footer.jsp" %>
 
 </body>
+</f:view>
 
 </html>
