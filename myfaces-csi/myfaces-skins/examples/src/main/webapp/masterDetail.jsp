@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 <%@ taglib uri="http://myfaces.apache.org/tomahawk" prefix="t"%>
 <%@ taglib uri="http://myfaces.apache.org/trinidad/html" prefix="trh"%>
+
 <html>
 
 	<!--
@@ -25,10 +26,12 @@
  * under the License.
  */
 //-->
-		<f:view>
-	<%@include file="inc/head.inc"%>
 
-	<body>
+<f:view>
+	
+<%@include file="inc/head.inc"%>
+
+<body>
 
 
 
@@ -105,10 +108,8 @@
 
             <jsp:include page="inc/mbean_source.jsp"/>
 
-        </f:view>
-
 		<%@include file="inc/page_footer.jsp"%>
 
 	</body>
-
+	</f:view>
 </html>
