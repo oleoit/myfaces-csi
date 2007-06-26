@@ -75,7 +75,7 @@ public class GenericSkinRenderer extends SkinRenderer {
 		// property
 		// to do it.
 
-		log.info("SkinRenderer:" + component.toString() + " "
+		log.debug("SkinRenderer:" + component.toString() + " "
 				+ this._delegate.toString());
 
 		if (UIXComponent.class.isAssignableFrom(component.getClass())) {
@@ -132,7 +132,7 @@ public class GenericSkinRenderer extends SkinRenderer {
 	public void encodeGenericComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
-		log.info("Component class" + component.getClass().getName());
+		log.debug("Component class " + component.getClass().getName());
 
 		// 2. the skin class for this component looks like this:
 		// af|javax_faces_component_html_HtmlXXX::class
