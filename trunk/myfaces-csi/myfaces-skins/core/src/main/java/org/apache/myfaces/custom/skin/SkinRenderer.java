@@ -26,6 +26,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.ConverterException;
 import javax.faces.render.Renderer;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.myfaces.trinidad.context.RenderingContext;
@@ -49,7 +50,7 @@ public abstract class SkinRenderer extends Renderer {
 	private static final Log log = LogFactory.getLog(SkinRenderer.class);
 
 	private String componentTag = null;
-	
+
 	/**
 	 * Constructor
 	 * 
@@ -60,8 +61,8 @@ public abstract class SkinRenderer extends Renderer {
 	public SkinRenderer(Renderer delegate) {
 		_delegate = delegate;
 	}
-	
-	public SkinRenderer(){		
+
+	public SkinRenderer() {
 	}
 
 	@Override
@@ -82,29 +83,27 @@ public abstract class SkinRenderer extends Renderer {
 		}
 	}
 
-	
-	public abstract void addStyleClassesToComponent(FacesContext context, 
-			UIComponent component, RenderingContext arc)
-		throws IOException;
-	
+	public abstract void addStyleClassesToComponent(FacesContext context,
+			UIComponent component, RenderingContext arc) throws IOException;
+
 	@Override
 	public void encodeBegin(FacesContext context, UIComponent component)
 			throws IOException {
-		
+
 		RenderingContext arc = RenderingContext.getCurrentInstance();
 		if (arc == null)
 			throw new IllegalStateException(("NO_RENDERINGCONTEXT"));
-		
-		if (this.getComponentTag() != null){
-			log.info("componentTag:"+this.getComponentTag());
+
+		if (this.getComponentTag() != null) {
+			log.info("componentTag:" + this.getComponentTag());
 		}
-		
-		if (component.getAttributes().containsKey("componentTag")){
+
+		if (component.getAttributes().containsKey("componentTag")) {
 			log.info("componentTag:");
 		}
-		
-		this.addStyleClassesToComponent(context, component,arc);
-		
+
+		this.addStyleClassesToComponent(context, component, arc);
+
 		// Call encode of delegate or parent
 		if (_delegate == null) {
 			super.encodeBegin(context, component);
@@ -112,7 +111,6 @@ public abstract class SkinRenderer extends Renderer {
 			_delegate.encodeBegin(context, component);
 		}
 	}
-
 
 	@Override
 	public void encodeChildren(FacesContext context, UIComponent component)
@@ -179,24 +177,29 @@ public abstract class SkinRenderer extends Renderer {
 			throws IOException {
 		if (styleClass != null) {
 			styleClass = arc.getStyleClass(styleClass);
-			// log.info("Writing styleClass:" + styleClass+" to
-			// "+component.toString());
-			String oldStyle = (String) component.getAttributes().get(
-					"styleClass");
 
-			if (oldStyle != null) {
-				if (oldStyle.equals("")) {
-					component.getAttributes().put("styleClass", styleClass);
+			if (styleClass != null) {
+				// log.info("Writing styleClass:" + styleClass+" to
+				// "+component.toString());
+				String oldStyle = (String) component.getAttributes().get(
+						"styleClass");
+
+				if (oldStyle != null) {
+					if (oldStyle.equals("")) {
+						component.getAttributes().put("styleClass", styleClass);
+					} else if (!StringUtils.contains(oldStyle, styleClass)) {
+						// Do not set the component, because it has another
+						// class
+						// already set
+
+						component.getAttributes().put("styleClass",
+								oldStyle + " " + styleClass);
+
+					}
 				} else {
-					// Do not set the component, because it has another class
-					// already set
-					component.getAttributes().put("styleClass",
-							oldStyle + " " + styleClass);
-
-				}
-			} else {
-				if (styleClass != null){
-					component.getAttributes().put("styleClass", styleClass);
+					if (styleClass != null) {
+						component.getAttributes().put("styleClass", styleClass);
+					}
 				}
 			}
 		}
@@ -207,23 +210,29 @@ public abstract class SkinRenderer extends Renderer {
 			String property) throws IOException {
 		if (styleClass != null) {
 			styleClass = arc.getStyleClass(styleClass);
-			// log.info("Writing styleClass:" + styleClass+" to
-			// "+component.toString());
-			String oldStyle = (String) component.getAttributes().get(property);
 
-			if (oldStyle != null) {
-				if (oldStyle.equals("")) {
-					component.getAttributes().put(property, styleClass);
+			if (styleClass != null) {
+				// log.info("Writing styleClass:" + styleClass+" to
+				// "+component.toString());
+				String oldStyle = (String) component.getAttributes().get(
+						property);
+
+				if (oldStyle != null) {
+					if (oldStyle.equals("")) {
+						component.getAttributes().put(property, styleClass);
+					} else if (!StringUtils.contains(oldStyle, styleClass)) {
+						// Do not set the component, because it has another
+						// class
+						// already set
+
+						component.getAttributes().put(property,
+								oldStyle + " " + styleClass);
+
+					}
 				} else {
-					// Do not set the component, because it has another class
-					// already set
-					component.getAttributes().put(property,
-							oldStyle + " " + styleClass);
-
-				}
-			} else {
-				if (styleClass != null){
-					component.getAttributes().put(property, styleClass);
+					if (styleClass != null) {
+						component.getAttributes().put(property, styleClass);
+					}
 				}
 			}
 		}
