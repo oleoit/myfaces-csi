@@ -13,7 +13,7 @@
 	<application>
 		<!-- Use the Skin RenderKit -->		
 		<default-render-kit-id>SkinRenderKit</default-render-kit-id> 
-	    <state-manager>org.apache.myfaces.application.jsp.JspStateManagerImpl</state-manager>
+	    <!--  <state-manager>org.apache.myfaces.application.jsp.JspStateManagerImpl</state-manager>  -->
 	</application>
 		
 	<factory>
