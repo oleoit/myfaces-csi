@@ -178,7 +178,11 @@ public abstract class SkinRenderer extends Renderer {
 		if (styleClass != null) {
 			styleClass = arc.getStyleClass(styleClass);
 
-			if (styleClass != null) {
+			if (styleClass != null) {				
+				if (styleClass.startsWith("af_")){
+					//no styleClass found
+					return;
+				}				
 				// log.info("Writing styleClass:" + styleClass+" to
 				// "+component.toString());
 				String oldStyle = (String) component.getAttributes().get(
@@ -212,6 +216,10 @@ public abstract class SkinRenderer extends Renderer {
 			styleClass = arc.getStyleClass(styleClass);
 
 			if (styleClass != null) {
+				if (styleClass.startsWith("af_")){
+					//no styleClass found
+					return;
+				}
 				// log.info("Writing styleClass:" + styleClass+" to
 				// "+component.toString());
 				String oldStyle = (String) component.getAttributes().get(

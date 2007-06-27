@@ -40,12 +40,14 @@
     <h:commandButton value="set rowCount"/>
 
     <h:panelGroup id="body">
-    
-        <t:dataTable id="data"
+
+<!-- 
                 styleClass="scrollerTable"
                 headerClass="standardTable_Header"
                 footerClass="standardTable_Header"
-                rowClasses="standardTable_Row1,standardTable_Row2"
+                rowClasses="standardTable_Row1,standardTable_Row2"                
+ -->    
+        <t:dataTable id="data"
                 columnClasses="standardTable_Column,standardTable_ColumnCentered,standardTable_Column"
                 var="car"
                 value="#{scrollerList.list}"
