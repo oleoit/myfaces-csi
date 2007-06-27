@@ -28,7 +28,10 @@
         </family>
         <render-kit-id>
             org.apache.myfaces.trinidad.desktop
-        </render-kit-id>
+        </render-kit-id>        
+        <extends>
+        	myfaces_skins.desktop
+        </extends>
         <style-sheet-name>
             skins/example/exampleSkin.css
         </style-sheet-name>
