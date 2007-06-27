@@ -12,7 +12,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.myfaces.custom.column.HtmlColumn;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-
 public class HtmlDataTableExtSkinRenderer extends GenericSkinRenderer {
 
 	@Override
@@ -57,67 +56,74 @@ public class HtmlDataTableExtSkinRenderer extends GenericSkinRenderer {
 		renderStyleClass(component, context, arc, bodyStyleClass,
 				"bodyStyleClass");
 		renderStyleClass(component, context, arc, footerStyleClass,
-				"footerStyleClass");
+				"footerClass");
 		renderStyleClass(component, context, arc, headerStyleClass,
-				"headerStyleClass");
+				"headerClass");
 		renderStyleClass(component, context, arc, rowGroupStyleClass,
 				"rowGroupStyleClass");
-		//renderStyleClass(component, context, arc, rowStyleClass,
-		//		"rowStyleClass");
+		// renderStyleClass(component, context, arc, rowStyleClass,
+		// "rowStyleClass");
 		renderStyleClass(component, context, arc, styleClass, "styleClass");
-				
+
 		Map m = component.getAttributes();
 		String oldRowClasses = (String) m.get("rowClasses");
 		List<String> list = parseStyleClassListComma(oldRowClasses);
-		if (list == null){
+		if (list == null) {
 			renderStyleClass(component, context, arc, rowStyleClass,
-			"rowClasses");			
-		}else{
+					"rowClasses");
+		} else {
 			String def = arc.getStyleClass(rowStyleClass);
-			String [] l1 = new String[list.size()];			
-			int length = 0;
-			for (int i = 0; i < l1.length; i++){
-				if (!list.get(i).contains(def)){
-					l1[i] = list.get(i)+" "+def;
-					length += l1[i].length() + 1;
+			if (def.startsWith("af_")) {
+				//Nothing to do
+			} else {
+				String[] l1 = new String[list.size()];
+				int length = 0;
+				for (int i = 0; i < l1.length; i++) {
+					if (!list.get(i).contains(def)) {
+						l1[i] = list.get(i) + " " + def;
+						length += l1[i].length() + 1;
+					}else{
+						l1[i] = list.get(i);
+						length += l1[i].length() + 1;
+					}
 				}
-			}
-			
-			StringBuilder builder = new StringBuilder(length);
-			for (int i = 0; i < l1.length; i++) {
-				if (l1[i] != null) {
-					if (builder.length() != 0)
-						builder.append(',');
-					builder.append(l1[i]);
+
+				StringBuilder builder = new StringBuilder(length);
+				for (int i = 0; i < l1.length; i++) {
+					if (l1[i] != null) {
+						if (builder.length() != 0)
+							builder.append(',');
+						builder.append(l1[i]);
+					}
 				}
+				component.getAttributes().put("rowClasses", builder.toString());
 			}
-			component.getAttributes().put("rowClasses", builder.toString());
 		}
-		
-		
-		//Now set column styles
-        for (Iterator iter = component.getChildren().iterator(); iter.hasNext();)
-        {
-            UIComponent child = (UIComponent) iter.next();
-            
-            if (HtmlColumn.class.isAssignableFrom(child.getClass())){
-            	//Add styleClass attributes
-            	HtmlColumn col = (HtmlColumn) child;
-            	//footerstyleClass
-            	//headerstyleClass
-            	//styleClass
-            	baseStyleClass = "af|"
-    				+ StringUtils.replaceChars(col.getClass().getName(), '.',
-    						'_');            	
-            	styleClass = baseStyleClass + "::class";
-            	String footerstyleClass = baseStyleClass + "::footer";
-            	String headerstyleClass = baseStyleClass + "::header";            	
-            	
-            	renderStyleClass(child, context, arc, styleClass, "styleClass");
-            	renderStyleClass(child, context, arc, footerstyleClass, "footerstyleClass");
-            	renderStyleClass(child, context, arc, headerstyleClass, "headerstyleClass");
-            }
-        }
-		
+
+		// Now set column styles
+		for (Iterator iter = component.getChildren().iterator(); iter.hasNext();) {
+			UIComponent child = (UIComponent) iter.next();
+
+			if (HtmlColumn.class.isAssignableFrom(child.getClass())) {
+				// Add styleClass attributes
+				HtmlColumn col = (HtmlColumn) child;
+				// footerstyleClass
+				// headerstyleClass
+				// styleClass
+				baseStyleClass = "af|"
+						+ StringUtils.replaceChars(col.getClass().getName(),
+								'.', '_');
+				styleClass = baseStyleClass + "::class";
+				String footerstyleClass = baseStyleClass + "::footer";
+				String headerstyleClass = baseStyleClass + "::header";
+
+				renderStyleClass(child, context, arc, styleClass, "styleClass");
+				renderStyleClass(child, context, arc, footerstyleClass,
+						"footerstyleClass");
+				renderStyleClass(child, context, arc, headerstyleClass,
+						"headerstyleClass");
+			}
+		}
+
 	}
 }
