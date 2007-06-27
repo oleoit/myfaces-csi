@@ -44,31 +44,31 @@ import org.apache.myfaces.trinidad.render.DialogRenderKitService;
 import org.apache.myfaces.trinidad.render.ExtendedRenderKitService;
 
 public class SkinRenderKit extends RenderKit implements DialogRenderKitService,
-	ExtendedRenderKitService {
+		ExtendedRenderKitService {
 
 	private static final Log log = LogFactory.getLog(SkinRenderKit.class);
 
 	private CoreRenderKit _delegate;
-	
+
 	private Map _map;
 
 	public SkinRenderKit() {
 		super();
 		RenderKitFactory factory = (RenderKitFactory) FactoryFinder
-		.getFactory(FactoryFinder.RENDER_KIT_FACTORY);
-		_delegate = (CoreRenderKit) factory.getRenderKit(FacesContext.getCurrentInstance(),
-				CoreRenderKit.BASE_RENDER_KIT_ID);
-		
-		_map = new ConcurrentHashMap(64, 0.75f, 1);		
-		
+				.getFactory(FactoryFinder.RENDER_KIT_FACTORY);
+		_delegate = (CoreRenderKit) factory.getRenderKit(FacesContext
+				.getCurrentInstance(), CoreRenderKit.BASE_RENDER_KIT_ID);
+
+		_map = new ConcurrentHashMap(64, 0.75f, 1);
+
 	}
-	
-	private CoreRenderKit getDelegateRenderKit(){
-		if (_delegate == null){
-		RenderKitFactory factory = (RenderKitFactory) FactoryFinder
-		.getFactory(FactoryFinder.RENDER_KIT_FACTORY);
-		_delegate = (CoreRenderKit) factory.getRenderKit(FacesContext.getCurrentInstance(),
-				CoreRenderKit.BASE_RENDER_KIT_ID);
+
+	private CoreRenderKit getDelegateRenderKit() {
+		if (_delegate == null) {
+			RenderKitFactory factory = (RenderKitFactory) FactoryFinder
+					.getFactory(FactoryFinder.RENDER_KIT_FACTORY);
+			_delegate = (CoreRenderKit) factory.getRenderKit(FacesContext
+					.getCurrentInstance(), CoreRenderKit.BASE_RENDER_KIT_ID);
 		}
 		return _delegate;
 	}
@@ -77,7 +77,6 @@ public class SkinRenderKit extends RenderKit implements DialogRenderKitService,
 			Renderer renderer) {
 		// In this case, first check if this class inherits from
 		// SkinRenderer class
-		log.info("addRenderer " + renderer.getClass());
 		if (SkinRenderer.class.isAssignableFrom(renderer.getClass())) {
 			SkinRenderer sr = (SkinRenderer) renderer;
 			_map.put(family + ";" + rendererType, sr);
@@ -92,8 +91,8 @@ public class SkinRenderKit extends RenderKit implements DialogRenderKitService,
 
 	public ResponseWriter createResponseWriter(Writer writer,
 			String contentTypeList, String characterEncoding) {
-		return getDelegateRenderKit().createResponseWriter(writer, contentTypeList,
-				characterEncoding);
+		return getDelegateRenderKit().createResponseWriter(writer,
+				contentTypeList, characterEncoding);
 	}
 
 	public Renderer getRenderer(String family, String rendererType) {
@@ -111,7 +110,8 @@ public class SkinRenderKit extends RenderKit implements DialogRenderKitService,
 				SkinRenderer sr = (SkinRenderer) r;
 				if (sr.getDelegate() == null) {
 					// set a proper delegate
-					r = getDelegateRenderKit().getRenderer(family, rendererType);
+					r = getDelegateRenderKit()
+							.getRenderer(family, rendererType);
 					if (r != null) {
 						sr.setDelegate(r);
 						return sr;
@@ -133,7 +133,7 @@ public class SkinRenderKit extends RenderKit implements DialogRenderKitService,
 	// METHODS INHERITED FROM ExtendedRenderKitService
 	// The idea here is to implement or delegate the methods to appropiate
 	// ExtendedRenderKitService.
-	
+
 	// Delegate pattern to CoreRenderKit
 
 	static private final TrinidadLogger _LOG = TrinidadLogger
@@ -143,8 +143,11 @@ public class SkinRenderKit extends RenderKit implements DialogRenderKitService,
 		return getDelegateRenderKit().isReturning(arg0, arg1);
 	}
 
-	public boolean launchDialog(FacesContext arg0, UIViewRoot arg1, UIComponent arg2, Map<String, Object> arg3, boolean arg4, Map<String, Object> arg5) {
-		return getDelegateRenderKit().launchDialog(arg0, arg1, arg2, arg3, arg4, arg5);
+	public boolean launchDialog(FacesContext arg0, UIViewRoot arg1,
+			UIComponent arg2, Map<String, Object> arg3, boolean arg4,
+			Map<String, Object> arg5) {
+		return getDelegateRenderKit().launchDialog(arg0, arg1, arg2, arg3,
+				arg4, arg5);
 	}
 
 	public boolean returnFromDialog(FacesContext arg0, Object arg1) {
@@ -175,7 +178,7 @@ public class SkinRenderKit extends RenderKit implements DialogRenderKitService,
 		return getDelegateRenderKit().isStateless(arg0);
 	}
 
-	public boolean shortCircuitRenderView(FacesContext arg0) throws IOException {		
+	public boolean shortCircuitRenderView(FacesContext arg0) throws IOException {
 		return getDelegateRenderKit().shortCircuitRenderView(arg0);
 	}
 
