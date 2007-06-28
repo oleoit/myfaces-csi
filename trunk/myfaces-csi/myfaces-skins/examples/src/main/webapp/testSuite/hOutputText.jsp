@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 <%@ taglib uri="http://myfaces.apache.org/tomahawk" prefix="t"%>
+<%@ taglib uri="http://myfaces.apache.org/trinidad/html" prefix="trh"%>
 <!--
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -29,6 +30,7 @@
       <t:htmlTag value="title">
         <h:outputText value="h:outputText" />
       </t:htmlTag>
+      <trh:styleSheet/>
     </t:documentHead>
     <t:documentBody>
       <h:outputText value="h:outputText" />
@@ -47,11 +49,11 @@
       <h:outputText value=" | " />
       <h:outputText id="notEscape" escape="false" value="10 &gt; 5" />
       <h:outputText value=" | " />
-      <h:outputText id="utf8charEscaped" value="äüöß" escape="true" /> 
+      <h:outputText id="utf8charEscaped" value="ï¿½ï¿½ï¿½ï¿½" escape="true" /> 
       <h:outputText value=" | " />
-      <h:outputText id="utf8charNotEscaped" value="äüöß" escape="false" /> 
+      <h:outputText id="utf8charNotEscaped" value="ï¿½ï¿½ï¿½ï¿½" escape="false" /> 
       <h:outputText value=" | " />
-      <h:outputText id="utf8char" value="äüöß" /> 
+      <h:outputText id="utf8char" value="ï¿½ï¿½ï¿½ï¿½" /> 
       <h:outputText value=" | " />
       <h:outputText id="utf8charInEscapedFormat" value="&#228;&#252;&#246;&#223;" escape="false" /> 
 
