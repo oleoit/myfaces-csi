@@ -146,7 +146,7 @@
 			</component-family>
 			<renderer-type>javax.faces.Checkbox</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.GenericSkinRenderer
+				org.apache.myfaces.custom.skin.HtmlSelectBooleanSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>

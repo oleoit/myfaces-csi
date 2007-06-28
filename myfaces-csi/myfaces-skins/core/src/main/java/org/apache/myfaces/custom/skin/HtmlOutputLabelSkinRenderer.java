@@ -68,6 +68,7 @@ public class HtmlOutputLabelSkinRenderer extends SkinRenderer {
 		Map attributes = component.getAttributes();
 		String styleClass = (String) attributes.get("styleClass");
 		String requiredStyleClass = null;
+		String disabledStyleClass = null;
 
 		String forComponent = (String) component.getAttributes().get("for");
 
@@ -84,6 +85,14 @@ public class HtmlOutputLabelSkinRenderer extends SkinRenderer {
 								// its necesary to add the attributes of
 								// required styleClass
 								requiredStyleClass = baseStyleClass + "::required";
+								otherStyles++;
+							}
+						}
+						
+						o = (Boolean) c.getAttributes().get("disabled");
+						if (o != null) {
+							if (o.equals(Boolean.TRUE)) {
+								disabledStyleClass = baseStyleClass + "::disabled";
 								otherStyles++;
 							}
 						}
@@ -107,7 +116,7 @@ public class HtmlOutputLabelSkinRenderer extends SkinRenderer {
 		else
 			userStyleClassCount = parsedStyleClasses.size();
 
-		String[] styleClasses = new String[userStyleClassCount + 2];
+		String[] styleClasses = new String[userStyleClassCount + 3];
 		int i = 0;
 		if (parsedStyleClasses != null) {
 			while (i < userStyleClassCount) {
@@ -120,6 +129,7 @@ public class HtmlOutputLabelSkinRenderer extends SkinRenderer {
 
 		styleClasses[i++] = contentStyleClass;
 		styleClasses[i++] = requiredStyleClass;
+		styleClasses[i++] = disabledStyleClass;
 
 		// 3. set the property styleClass, setting it.
 		if (otherStyles > 0) {

@@ -21,6 +21,10 @@ package org.apache.myfaces.custom.skin;
 
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.List;
+import java.util.Map;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -29,6 +33,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.OutputUtils;
+import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.SkinSelectors;
 
 public class HtmlSelectOneOrManySkinRenderer extends GenericSkinRenderer {
 
@@ -47,7 +53,7 @@ public class HtmlSelectOneOrManySkinRenderer extends GenericSkinRenderer {
 	public void encodeHtmlSelectOneOrMany(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
-		this.encodeGenericComponent(context, component, arc);
+		this.encodeGenericWithRequiredComponent(context, component, arc);
 		
 		String disabledStyleClass = null;
 		String enabledStyleClass = null;
@@ -65,4 +71,5 @@ public class HtmlSelectOneOrManySkinRenderer extends GenericSkinRenderer {
 				"enabledClass");
 		
 	}	
+		
 }

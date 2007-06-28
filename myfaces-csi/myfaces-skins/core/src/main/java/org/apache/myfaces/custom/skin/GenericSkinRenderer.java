@@ -243,4 +243,156 @@ public class GenericSkinRenderer extends SkinRenderer {
 			renderStyleClass(component, context, arc, contentStyleClass);
 		}
 	}
+	
+	/*
+	 * This method look if the component has 4 common methods:
+	 * 
+	 * 1. getStyleClass
+	 * 2. isReadonly
+	 * 3. isDisabled
+	 * 4. isRequired
+	 * 
+	 * And associate to properly css classes
+	 * 
+	 */
+	public void encodeGenericWithRequiredComponent(FacesContext context,
+			UIComponent component, RenderingContext arc) throws IOException {
+
+		log.debug("Component class " + component.getClass().getName());
+
+		// 2. the skin class for this component looks like this:
+		// af|javax_faces_component_html_HtmlXXX::class
+
+		String contentStyleClass = component.getClass().getName();
+
+		//Map<String, String> m = arc.getSkin().getStyleClassMap(arc);
+
+		String baseStyleClass = "af|"
+				+ StringUtils.replaceChars(contentStyleClass, '.', '_');
+
+		Method method;
+		// Check it has a getStyleClass property
+		contentStyleClass = null;
+		try {
+			method = component.getClass().getMethod("getStyleClass",
+					(Class[]) null);
+			contentStyleClass = baseStyleClass + "::class";
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			// Nothing happends
+			// e.printStackTrace();
+		}
+
+		int otherStyles = 0;
+
+		// Its necesary to add other style properties like
+		// p_AFReadOnly and p_AFDisabled
+		Map attributes = component.getAttributes();
+		String styleClass = (String) attributes.get("styleClass");
+		String disabledStyleClass = null;
+		String readOnlyStyleClass = null;
+		String requiredStyleClass = null;
+
+		try {
+			method = component.getClass().getMethod("isReadonly",
+					(Class[]) null);
+			if ((Boolean) method.invoke(component, (Object[]) null)) {
+				readOnlyStyleClass = SkinSelectors.STATE_READ_ONLY;
+				otherStyles += 1;
+			}
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			// Nothing happends
+			// e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// Nothing happends
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// Nothing happends
+			e.printStackTrace();
+		}
+
+		try {
+			method = component.getClass().getMethod("isDisabled",
+					(Class[]) null);
+			if ((Boolean) method.invoke(component, (Object[]) null)) {
+				disabledStyleClass = SkinSelectors.STATE_DISABLED;
+				otherStyles += 1;
+			}
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			// Nothing happends
+			// e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// Nothing happends
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// Nothing happends
+			e.printStackTrace();
+		}
+		
+		try {
+			method = component.getClass().getMethod("isRequired",
+					(Class[]) null);
+			if ((Boolean) method.invoke(component, (Object[]) null)) {
+				requiredStyleClass = baseStyleClass + "::required"; 
+				otherStyles += 1;
+			}
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			// Nothing happends
+			// e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// Nothing happends
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// Nothing happends
+			e.printStackTrace();
+		}
+		
+		List<String> parsedStyleClasses = OutputUtils
+				.parseStyleClassList(styleClass);
+		int userStyleClassCount;
+		if (parsedStyleClasses == null)
+			userStyleClassCount = (styleClass == null) ? 0 : 1;
+		else
+			userStyleClassCount = parsedStyleClasses.size();
+
+		String[] styleClasses = new String[userStyleClassCount + 4];
+		int i = 0;
+		if (parsedStyleClasses != null) {
+			while (i < userStyleClassCount) {
+				styleClasses[i] = parsedStyleClasses.get(i);
+				i++;
+			}
+		} else if (styleClass != null) {
+			styleClasses[i++] = styleClass;
+		}
+
+		styleClasses[i++] = contentStyleClass;
+		styleClasses[i++] = disabledStyleClass;
+		styleClasses[i++] = readOnlyStyleClass;
+		styleClasses[i++] = requiredStyleClass;
+
+		// 3. set the property styleClass, setting it.
+		if (otherStyles > 0) {
+			renderStyleClasses(component, context, arc, styleClasses);
+		} else {
+			renderStyleClass(component, context, arc, contentStyleClass);
+		}
+	}	
+	
+	
 }
