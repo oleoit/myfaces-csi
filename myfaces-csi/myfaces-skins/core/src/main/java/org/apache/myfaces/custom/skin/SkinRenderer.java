@@ -264,9 +264,13 @@ public abstract class SkinRenderer extends Renderer {
 		for (int i = 0; i < styleClasses.length; i++) {
 			if (styleClasses[i] != null) {
 				String styleClass = arc.getStyleClass(styleClasses[i]);
+				if (styleClass.startsWith("af_")){
+					//No add any that startsWith af_
+					styleClass = null;
+				}
 				if (styleClass != null)
 					length += styleClass.length() + 1;
-				styleClasses[i] = styleClass;
+				styleClasses[i] = styleClass;				
 			}
 		}
 
