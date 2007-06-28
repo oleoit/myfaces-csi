@@ -28,7 +28,124 @@
 	documentVersion="${trinidad-version}" version="2.0">
 
 	<styleSheet>
+		<!-- BEGIN: javax.faces.component.html -->	
+		<style selector="af|javax_faces_component_html_HtmlCommandButton::class">
+    		<includeStyle name="AFDefaultFont"/>
+  		</style> 			
+		<style selector="af|javax_faces_component_html_HtmlCommandLink::class:link">
+    		<includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFLinkForeground"/>
+  		</style> 
+		<style selector="af|javax_faces_component_html_HtmlCommandLink::class:active">
+    		<includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFActiveLinkForeground"/>
+  		</style> 
+		<style selector="af|javax_faces_component_html_HtmlCommandLink::class:visited">
+    		<includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFVisitedLinkForeground"/>   
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlDataTable::class">
+    		<property name="border-collapse">collapse</property>
+  		</style>
 
+  		<!-- HtmlForm does not have global selector -->
+  		<!-- HtmlGraphicImage does not have global selector -->
+  		
+  		<!-- TODO: exist style option if the input field is required, add this -->
+		<style selector="af|javax_faces_component_html_HtmlInputSecret::class">
+			<includeStyle name="AFFormControlContent"/>
+  		</style> 			
+		<style selector="af|javax_faces_component_html_HtmlInputText::class">
+			<includeStyle name="AFFormControlContent"/>
+  		</style> 			
+		<style selector="af|javax_faces_component_html_HtmlInputTextarea::class">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlMessage::class">
+    		<includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFVeryDarkForeground"/>
+  		</style> 			
+		<style selector="af|javax_faces_component_html_HtmlMessage::error">
+    		<includeStyle selector=".AFHeaderLevelOne"/>
+    		<includeStyle name="AFErrorTextForeground"/>
+  		</style> 			
+  		<style selector="af|javax_faces_component_html_HtmlMessage::info">
+  		    <includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFDarkForeground"/>
+    		<includeStyle name="MessageBoxMargin"/>
+  		</style> 			
+		<style selector="af|javax_faces_component_html_HtmlMessages::class">
+    		<includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFVeryDarkForeground"/>
+  		</style> 			
+		<style selector="af|javax_faces_component_html_HtmlMessages::error">
+    		<includeStyle selector=".AFHeaderLevelOne"/>
+    		<includeStyle name="AFErrorTextForeground"/>
+  		</style> 			
+  		<style selector="af|javax_faces_component_html_HtmlMessages::info">
+  		    <includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFDarkForeground"/>
+    		<includeStyle name="MessageBoxMargin"/>
+  		</style> 			
+		<style selector="af|javax_faces_component_html_HtmlOutputFormat::class">
+		    <includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFTextForeground"/>			
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlOutputLabel::class">
+			<includeStyle name="AFLabel"/>
+  		</style>   		
+		<style selector="af|javax_faces_component_html_HtmlOutputLabel::required">
+			<includeStyle name="AFRequiredLabel"/>
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlOutputLink::class:link">
+    		<includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFLinkForeground"/>
+  		</style> 
+		<style selector="af|javax_faces_component_html_HtmlOutputLink::class:active">
+    		<includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFActiveLinkForeground"/>
+  		</style> 
+		<style selector="af|javax_faces_component_html_HtmlOutputLink::class:visited">
+    		<includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFVisitedLinkForeground"/>   
+  		</style> 
+		<style selector="af|javax_faces_component_html_HtmlOutputText::class">
+		    <includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFTextForeground"/>			
+  		</style>
+  		<!-- PanelGrid and PanelGroup should be more studied -->
+		<style selector="af|javax_faces_component_html_HtmlPanelGrid::class">
+		    <includeStyle name="AFDefaultFont"/>
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlPanelGroup::class">
+		    <includeStyle name="AFDefaultFont"/>
+  		</style>
+		<!-- SelectXX should be more studied -->
+		<style selector="af|javax_faces_component_html_HtmlSelectBooleanCheckbox::class">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlSelectManyCheckbox::class">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlSelectManyListbox::class">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlSelectManyMenu::class">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlSelectOneListbox::class">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlSelectOneMenu::class">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlSelectOneRadio::class">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+  		
+  		
+		<!-- END: javax.faces.component.html -->  		
+  		  		
 	</styleSheet>
 
 </styleSheetDocument>

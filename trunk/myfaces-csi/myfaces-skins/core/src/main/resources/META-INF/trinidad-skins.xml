@@ -26,6 +26,9 @@
         <family>
             myfaces_skins
         </family>
+        <extends>
+        	simple.desktop
+        </extends>
         <render-kit-id>
             org.apache.myfaces.trinidad.desktop
         </render-kit-id>

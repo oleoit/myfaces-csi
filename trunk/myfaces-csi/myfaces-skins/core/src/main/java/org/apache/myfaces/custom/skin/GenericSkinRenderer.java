@@ -139,7 +139,7 @@ public class GenericSkinRenderer extends SkinRenderer {
 
 		String contentStyleClass = component.getClass().getName();
 
-		Map<String, String> m = arc.getSkin().getStyleClassMap(arc);
+		//Map<String, String> m = arc.getSkin().getStyleClassMap(arc);
 
 		String baseStyleClass = "af|"
 				+ StringUtils.replaceChars(contentStyleClass, '.', '_');
