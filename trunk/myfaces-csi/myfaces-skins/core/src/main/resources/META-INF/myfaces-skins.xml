@@ -61,6 +61,16 @@
 		<style selector="af|javax_faces_component_html_HtmlInputTextarea::class">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
+		<style selector="af|javax_faces_component_html_HtmlInputSecret::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style> 			
+		<style selector="af|javax_faces_component_html_HtmlInputText::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style> 			
+		<style selector="af|javax_faces_component_html_HtmlInputTextarea::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style>
+  		
 		<style selector="af|javax_faces_component_html_HtmlMessage::class">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFVeryDarkForeground"/>
@@ -96,6 +106,9 @@
   		</style>   		
 		<style selector="af|javax_faces_component_html_HtmlOutputLabel::required">
 			<includeStyle name="AFRequiredLabel"/>
+  		</style>
+  		<style selector="af|javax_faces_component_html_HtmlOutputLabel::disabled">
+  			<includeStyle name="AFLabelDisabled"/>
   		</style>
 		<style selector="af|javax_faces_component_html_HtmlOutputLink::class:link">
     		<includeStyle name="AFDefaultFont"/>
@@ -143,6 +156,27 @@
 			<includeStyle name="AFFormControlContent"/>
   		</style>
   		
+		<style selector="af|javax_faces_component_html_HtmlSelectBooleanCheckbox::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlSelectManyCheckbox::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlSelectManyListbox::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlSelectManyMenu::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlSelectOneListbox::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlSelectOneMenu::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style>
+		<style selector="af|javax_faces_component_html_HtmlSelectOneRadio::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style>
   		
 		<!-- END: javax.faces.component.html -->  		
   		  		

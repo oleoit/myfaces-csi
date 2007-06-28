@@ -64,7 +64,7 @@ public class HtmlInputExtSkinRenderer extends GenericSkinRenderer {
 	public void encodeHtmlSelectOneOrMany(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
-		this.encodeGenericComponent(context, component, arc);
+		this.encodeGenericWithRequiredComponent(context, component, arc);
 		String displayValueOnlyStyleClass = null;
 
 		String baseStyleClass = "af|"

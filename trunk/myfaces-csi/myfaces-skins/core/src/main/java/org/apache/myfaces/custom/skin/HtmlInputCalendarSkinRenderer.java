@@ -63,7 +63,7 @@ public class HtmlInputCalendarSkinRenderer extends GenericSkinRenderer {
 	public void encodeHtmlInputBaseExt(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
-		this.encodeGenericComponent(context, component, arc);
+		this.encodeGenericWithRequiredComponent(context, component, arc);
 
 		String baseStyleClass = "af|"
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',

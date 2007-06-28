@@ -21,6 +21,10 @@ package org.apache.myfaces.custom.skin;
 
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.List;
+import java.util.Map;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -29,46 +33,20 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.OutputUtils;
+import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.SkinSelectors;
 
-public class HtmlInputBaseExtSkinRenderer extends GenericSkinRenderer {
+public class HtmlSelectBooleanSkinRenderer extends GenericSkinRenderer {
 
 	/**
 	 * The log factory used to debug messages
 	 */
-	private static final Log log = LogFactory.getLog(HtmlInputBaseExtSkinRenderer.class);	
+	private static final Log log = LogFactory.getLog(HtmlSelectBooleanSkinRenderer.class);	
 		
 	@Override
 	public void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
-		// TODO Auto-generated method stub
-		this.encodeHtmlInputBaseExt(context, component, arc);
-	}
-
-	/**
-	 * Apply the following css class style attributes:
-	 * 
-	 * disabledClass
-	 * displayValueOnlyStyleClass
-	 * enabledClass
-	 * styleClass
-	 * 
-	 * @param context
-	 * @param component
-	 * @param arc
-	 * @throws IOException
-	 */
-	public void encodeHtmlInputBaseExt(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-
 		this.encodeGenericWithRequiredComponent(context, component, arc);
-
-		String baseStyleClass = "af|"
-				+ StringUtils.replaceChars(component.getClass().getName(), '.',
-						'_');
-
-		String displayValueOnlyStyleClass = baseStyleClass + "::displayValueOnly";		
-
-		renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
-				"displayValueOnlyStyleClass");		
-	}	
+	}
+	
 }
