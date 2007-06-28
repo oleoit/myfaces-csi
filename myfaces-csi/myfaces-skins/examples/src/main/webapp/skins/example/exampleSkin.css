@@ -22,10 +22,16 @@
  * in order to probe myfaces skins.
  */
 
+.AFRequiredLabel:alias {
+	font-style: italic;
+}
+
+/*
 af|javax_faces_component_html_HtmlOutputLabel::class
 {
-	font-family: verdana,arial,helvetica,sans-serif; 
+	color: red;
 }
+*/
 
 af|javax_faces_component_html_HtmlOutputLink::class:hover
 {

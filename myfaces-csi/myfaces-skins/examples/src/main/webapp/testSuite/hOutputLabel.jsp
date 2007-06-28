@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 <%@ taglib uri="http://myfaces.apache.org/tomahawk" prefix="t"%>
+<%@ taglib uri="http://myfaces.apache.org/trinidad/html" prefix="trh"%>
 <!--
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -29,6 +30,7 @@
       <t:htmlTag value="title">
         <h:outputText value="#{view.viewId}" />
       </t:htmlTag>
+      <trh:styleSheet/>
     </t:documentHead>
     <t:documentBody>
       <h:outputText value="Running test #{view.viewId}" />
@@ -39,12 +41,16 @@
 
       <!-- Testing h:outputLabel -->
       <h:form id="outputLabelForm">
-        <h:outputLabel for="inputText" value="Label A"/>
-        <h:inputText id="inputText" value="input Value"/>
+        <h:panelGrid columns="2">
+	        <h:outputLabel for="inputText" value="Label A"/>
+    	    <h:inputText id="inputText" value="input Value" required="true"/>        
+        </h:panelGrid>
       </h:form>
       <h:form id="outputLabelWithAttributesForm">
-        <h:outputLabel for="inputTextB" value="Label B" tabindex="2" title="Title"/>
-        <h:inputText id="inputTextB" value="input Value"/>
+      	<h:panelGrid columns="2">
+        	<h:outputLabel for="inputTextB" value="Label B" tabindex="2" title="Title"/>
+        	<h:inputText id="inputTextB" value="input Value"/>
+        </h:panelGrid>
       </h:form>
 
 
