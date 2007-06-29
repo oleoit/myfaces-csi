@@ -27,6 +27,27 @@ Seeing that necessity, this project provide a way to add trinidad skins features
   # When you use non trinidad components with trinidad. 
   # When you have a project made with other component library (just html, tomahawk or sandbox components), and you want to add skins facilities.
 
+=== Source code ===
+
+The code is available on the svn of the project as the name of myfaces-skins.
+
+It has two subprojects:
+
+  # core: The main library. It works with trinidad-1.0.2-SNAPSHOT and toma
+  # examples: A copy 
+
+This project is released upon the Apache 2.0 license, and it will be donated to Apache Software Foundation after it is finished.
+
+== Patches required to run ==
+
+The code needs to apply some patches in order to fix some features in tomahawk and trinidad. I have posted these patches in jira of myfaces, but until the commiters of that project accept this changes, I provide this in /patches directory of the svn of this project.
+
+The list of the patches needed are this:
+
+  # patch1.patch: fix HtmlCommandLinkRenderer.java on trinidad-impl project (need to run <t:commandSortHeader>).
+  # patch2.patch: fix HtmlDataTable.java on tomahawk (make <t:commandSortHeader> run good).
+  #patch3.patch: fix HtmlDataTable.java on tomahawk (correct ClassCastException).
+
 == Tutorial about how to use tiles or facelets + tomahawk ==
 
 == Solve some issues of myfaces ==
