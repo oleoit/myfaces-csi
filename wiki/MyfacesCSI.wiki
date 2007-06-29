@@ -8,15 +8,15 @@ The project has 3 main objectives:
 
 1. Extends trinidad skins capabilities to non trinidad components (tomahawk of base jsf html component library).
 
-2. Make a tutorial about how to use tiles or facelets + tomahawk
+2. Make a tutorial about how to use tiles or facelets + tomahawk.
 
-3. Solve some issues of myfaces
+3. Solve some issues of myfaces.
 
 I made this pages for tasks of documenting the work done.
 
 = Details =
 
-  # == Extends trinidad skins capabilities to non trinidad components ==
+== 1. Extends trinidad skins capabilities to non trinidad components ==
 
 Actually, trinidad-1.0.1 supports combine other non trinidad components. Trinidad has a cool way to do skins, but if you don't use trinidad components, you can't use this feature. You have to define the style css classes in each page of each non trinidad component, but you can define the css classes inside trinidad css or xss file where you create your custom skin. 
 
@@ -48,6 +48,6 @@ The list of the patches needed are this:
   # patch2.patch: fix HtmlDataTable.java on tomahawk (make <t:commandSortHeader> run good).
   #patch3.patch: fix HtmlDataTable.java on tomahawk (correct ClassCastException).
 
-  # == Tutorial about how to use tiles or facelets + tomahawk ==
+== 2. Tutorial about how to use tiles or facelets + tomahawk ==
 
-  # == Solve some issues of myfaces ==
+== 3. Solve some issues of myfaces ==
