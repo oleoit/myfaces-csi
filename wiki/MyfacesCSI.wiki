@@ -52,7 +52,7 @@ The list of the patches needed are this:
 
 Here is a class diagram from the core.
 
-[https://myfaces-csi.googlecode.com/svn/trunk/myfaces-csi/images/classdiagram1.jpg]
+[http://myfaces-csi.googlecode.com/svn/trunk/myfaces-csi/images/classdiagram1.jpg]
 
 The idea is simple. Apply decorator pattern on trinidad CoreRenderKit, creating a SkinRenderKit class, and create custom classes that extends from SkinRenderer that add skinning support for it (this class delegate the rendering task to proper Renderer).
 
