@@ -2,22 +2,31 @@
 
 = Introduction =
 
- This project is made as part of a Google Summer of Code 2007.
+This project is made as part of a Google Summer of Code 2007.
 
 The project has 3 main objectives:
 
-1. Extends trinidad skins capabilities no non trinidad components.
+1. Extends trinidad skins capabilities to non trinidad components (tomahawk of base jsf html component library).
 
 2. Make a tutorial about how to use tiles or facelets + tomahawk
 
 3. Solve some issues of myfaces
 
-  I made this pages for tasks of documenting the work done.
+I made this pages for tasks of documenting the work done.
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+== Extends trinidad skins capabilities to non trinidad components ==
 
+Actually, trinidad-1.0.1 supports combine other non trinidad components. Trinidad has a cool way to do skins, but if you don't use trinidad components, you can't use this feature. You have to define the style css classes in each page of each non trinidad component, but you can define the css classes inside trinidad css or xss file where you create your custom skin. 
+
+Seeing that necessity, this project provide a way to add trinidad skins features to non trinidad components. 
+
+=== Possible uses of this work ===
+
+  # When you use non trinidad components with trinidad. 
+  # When you have a project made with other component library (just html, tomahawk or sandbox components), and you want to add skins facilities.
+
+== Tutorial about how to use tiles or facelets + tomahawk ==
+
+== Solve some issues of myfaces ==
