@@ -1,0 +1,22 @@
+Index: src/main/java/org/apache/myfaces/component/html/ext/HtmlDataTable.java
+===================================================================
+--- src/main/java/org/apache/myfaces/component/html/ext/HtmlDataTable.java	(revision 550076)
++++ src/main/java/org/apache/myfaces/component/html/ext/HtmlDataTable.java	(working copy)
+@@ -1058,7 +1058,7 @@
+         if (vb != null)
+         {
+             vb.setValue(getFacesContext(), _sortColumn);
+-            _sortColumn = null;
++            //_sortColumn = null;
+         }
+ 
+         setSortColumnIndex(columnNameToIndex(sortColumn));
+@@ -1080,7 +1080,7 @@
+         if (vb != null)
+         {
+             vb.setValue(getFacesContext(), _sortAscending);
+-            _sortAscending = null;
++            //_sortAscending = null;
+         }
+     }
+ 

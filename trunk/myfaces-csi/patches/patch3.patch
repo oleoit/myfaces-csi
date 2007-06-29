@@ -1,0 +1,14 @@
+Index: src/main/java/org/apache/myfaces/component/html/ext/HtmlDataTable.java
+===================================================================
+--- src/main/java/org/apache/myfaces/component/html/ext/HtmlDataTable.java	(revision 550953)
++++ src/main/java/org/apache/myfaces/component/html/ext/HtmlDataTable.java	(working copy)
+@@ -777,7 +777,8 @@
+ 
+         if (isPreserveDataModel())
+         {
+-            values[2] = saveAttachedState(context, getSerializableDataModel());
++        	_preservedDataModel = getSerializableDataModel();
++            values[2] = saveAttachedState(context, _preservedDataModel);
+         }
+         else
+         {
