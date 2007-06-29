@@ -33,8 +33,8 @@ The code is available on the svn of the project as the name of myfaces-skins.
 
 It has two subprojects:
 
-  # core: The main library. It works with trinidad-1.0.2-SNAPSHOT and toma
-  # examples: A copy 
+  # core: The main library. It works with trinidad-1.0.2-SNAPSHOT and tomahawk
+  # examples: A copy of myfaces examples, with trinidad skin addition (made probes simpler and faster to me!!)
 
 This project is released upon the Apache 2.0 license, and it will be donated to Apache Software Foundation after it is finished.
 
