@@ -1,0 +1,23 @@
+#summary Main page of this project.
+
+= Introduction =
+
+ This project is made as part of a Google Summer of Code 2007.
+
+The project has 3 main objectives:
+
+1. Extends trinidad skins capabilities no non trinidad components.
+
+2. Make a tutorial about how to use tiles or facelets + tomahawk
+
+3. Solve some issues of myfaces
+
+  I made this pages for tasks of documenting the work done.
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
+
