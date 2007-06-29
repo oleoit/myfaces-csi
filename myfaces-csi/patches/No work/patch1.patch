@@ -1,0 +1,24 @@
+Index: core/src/main/java/org/apache/myfaces/custom/datascroller/HtmlDataScrollerRenderer.java
+===================================================================
+--- core/src/main/java/org/apache/myfaces/custom/datascroller/HtmlDataScrollerRenderer.java	(revision 550076)
++++ core/src/main/java/org/apache/myfaces/custom/datascroller/HtmlDataScrollerRenderer.java	(working copy)
+@@ -338,13 +338,14 @@
+         if(ondblclick != null){
+         	link.setOndblclick(ondblclick);
+         }
+-    	
++        
++        link.getChildren().add(facetComp);
++        
+         link.encodeBegin(facesContext);
+-        facetComp.encodeBegin(facesContext);
+-        if (facetComp.getRendersChildren())
+-            facetComp.encodeChildren(facesContext);
+-        facetComp.encodeEnd(facesContext);
++        if (link.getRendersChildren())
++            link.encodeChildren(facesContext);        
+         link.encodeEnd(facesContext);
++        
+     }
+ 
+     /**

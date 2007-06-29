@@ -1,0 +1,61 @@
+When you use dataScroller with Trinidad, you cannot press the facet buttons 
+that navigate through the component, because it render the link and not include the children 
+properly. 
+
+the solution is simple. It's just replace from this:
+
+    protected void renderFacet(FacesContext facesContext, HtmlDataScroller scroller,
+                               UIComponent facetComp, String facetName) throws IOException
+    {
+    	String onclick = scroller.getOnclick();
+    	String ondblclick = scroller.getOndblclick();
+
+    	HtmlCommandLink link = getLink(facesContext, scroller, facetName);
+        if(onclick != null){
+        	link.setOnclick(onclick);
+        }
+        if(ondblclick != null){
+        	link.setOndblclick(ondblclick);
+        }
+
+
+        link.encodeBegin(facesContext);
+        facetComp.encodeBegin(facesContext);
+        if (facetComp.getRendersChildren())
+            facetComp.encodeChildren(facesContext);
+        facetComp.encodeEnd(facesContext);
+        link.encodeEnd(facesContext);
+
+    }
+
+to this:
+
+    protected void renderFacet(FacesContext facesContext, HtmlDataScroller scroller,
+                               UIComponent facetComp, String facetName) throws IOException
+    {
+    	String onclick = scroller.getOnclick();
+    	String ondblclick = scroller.getOndblclick();
+
+    	HtmlCommandLink link = getLink(facesContext, scroller, facetName);
+        if(onclick != null){
+        	link.setOnclick(onclick);
+        }
+        if(ondblclick != null){
+        	link.setOndblclick(ondblclick);
+        }
+
+        link.getChildren().add(facetComp);
+        
+        link.encodeBegin(facesContext);
+        if (link.getRendersChildren())
+            link.encodeChildren(facesContext);        
+        link.encodeEnd(facesContext);
+
+    }
+
+the facet component is renderer inside the link component.
+
+
+
+Client-id : _idJsp12 is duplicated in the faces tree. Component : _idJsp0:_idJsp12, path: {Component-Path : [Class: javax.faces.component.UIViewRoot,ViewId: /pagedSortTable.jsp][Class: javax.faces.component.html.HtmlForm,Id: _idJsp0][Class: javax.faces.component.html.HtmlPanelGrid,Id: _idJsp11][Class: org.apache.myfaces.custom.datascroller.HtmlDataScroller,Id: scroll_1][Class: javax.faces.component.html.HtmlCommandLink,Id: scroll_1first][Class: org.apache.myfaces.component.html.ext.HtmlGraphicImage,Id: _idJsp12]}
+

@@ -1,0 +1,33 @@
+Index: src/main/java/org/apache/myfaces/trinidadinternal/renderkit/htmlBasic/HtmlCommandLinkRenderer.java
+===================================================================
+--- src/main/java/org/apache/myfaces/trinidadinternal/renderkit/htmlBasic/HtmlCommandLinkRenderer.java	(revision 550953)
++++ src/main/java/org/apache/myfaces/trinidadinternal/renderkit/htmlBasic/HtmlCommandLinkRenderer.java	(working copy)
+@@ -50,7 +50,19 @@
+     return true;
+   }
+ 
++  @SuppressWarnings("unchecked")
+   @Override
++  public void encodeBegin(FacesContext context,
++          UIComponent component) throws IOException
++  {
++	  super.encodeBegin(context,component);
++      Renderer renderer = createRenderer(component);
++	  renderer.encodeBegin(context, component);
++	  
++  }
++  
++  
++  @Override
+   public void encodeChildren(FacesContext context,
+                              UIComponent component) throws IOException
+   {
+@@ -65,7 +77,7 @@
+     // The tr:commandLink is not a rendersChildren component,
+     // but h:commandLink is.  Hence, the difference in behavior
+     Renderer renderer = createRenderer(component);
+-    renderer.encodeBegin(context, component);
++    //renderer.encodeBegin(context, component);
+ 
+     for(UIComponent child : (List<UIComponent>)component.getChildren())
+     {
