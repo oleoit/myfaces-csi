@@ -33,10 +33,11 @@
 	<f:loadBundle
 		basename="org.apache.myfaces.examples.resource.example_messages"
 		var="example_messages" />
-    <t:div id="subnavigation_outer">
-    <t:div id="subnavigation">
+
+    <t:div styleClass="AFPanelNavigationVerticalOuter">
+    <t:div styleClass="AFPanelNavigationVertical">		
         <h:form>
-    <t:panelNavigation2 id="nav1" layout="list" itemClass="mypage" activeItemClass="selected" openItemClass="selected" >
+    <t:panelNavigation2 id="nav1" layout="list" >
 		<t:commandNavigation2  value="#{example_messages['panelnav_products']}" action="go_panelnavigation_1" >
             <t:commandNavigation2 action="#{navigationMenu.getAction1}" actionListener="#{navigationMenu.actionListener}">
                 <f:verbatim>&#8250; </f:verbatim>
@@ -64,7 +65,6 @@
         </t:commandNavigation2>
         <t:commandNavigation2 value="#{example_messages['panelnav_contact']}" action="go_panelnavigation_1" actionListener="#{navigationMenu.actionListener}" />
     </t:panelNavigation2>
-        <f:verbatim><br/></f:verbatim>
     <t:panelNavigation2 id="nav2" layout="list" styleClass="mypage" >
         <t:commandNavigation2 value="MyAccount" action="go_panelnavigation_1" >
             <t:commandNavigation2 action="go_panelnavigation_1" >
@@ -83,9 +83,11 @@
 
     <jsp:include page="inc/mbean_source.jsp"/>
 
-</f:view>
+
 <%@include file="inc/page_footer.jsp"%>
 
 </body>
+
+</f:view>
 
 </html>

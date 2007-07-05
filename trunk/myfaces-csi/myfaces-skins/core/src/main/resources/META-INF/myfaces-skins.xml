@@ -54,7 +54,8 @@
   		<!-- TODO: exist style option if the input field is required, add this -->
 		<style selector="af|javax_faces_component_html_HtmlInputSecret::class">
 			<includeStyle name="AFFormControlContent"/>
-  		</style> 			
+  		</style>
+  		 			
 		<style selector="af|javax_faces_component_html_HtmlInputText::class">
 			<includeStyle name="AFFormControlContent"/>
   		</style> 			
@@ -331,7 +332,234 @@
   		</style>
 		
 		<!-- END: org.apache.myfaces.component.html.ext -->
+  		
+		<!-- BEGIN: org.apache.myfaces.custom.navigation -->		
+		
+		<!-- END: org.apache.myfaces.custom.navigation -->
+		
+		<!-- BEGIN: org.apache.myfaces.custom.navmenu.htmlnavmenu -->		
+				
+		<!-- HtmlPanelNavigationMenu is a component that have different ways to use
+		it (horizontal or vertical panel). Due to this reason, there is no way to
+		skin properly this component (CSS properties depends heavily on the 
+		context use it. I prefer do a global selector for horizontal and vertical
+		for simple skin instead (copied from the original example). -->
+		
+		<!-- Vertical PanelNavigation -->
+		
+		<style selector=".AFPanelNavigationVerticalOuter">
+			<property name="float">left</property>
+			<property name="width">220px</property>
+			<property name="padding">0px</property>
+			<property name="margin">0px 0px 0px 0px</property>
+  		</style>		
+				
+		<style selector=".AFPanelNavigationVertical">
+			<property name="margin-left">0px</property>
+			<property name="margin-right">20px</property>
+			<property name="padding">0px 0px 20px 0px</property>
+			<property name="border">1px solid #546359</property>
+			<property name="background-color">#EAF4F4</property>
+  		</style>		
+  		
+		<style selector=".AFPanelNavigationVertical ul">
+			<property name="list-style-type">none</property>
+			<property name="padding">0px</property>
+			<property name="margin">0px</property>
+		</style>  		
   		  		
+		<style selector=".AFPanelNavigationVertical li">
+			<property name="display">inline</property>
+			<property name="padding">0px</property>
+			<property name="margin">0px</property>
+		</style>
+		
+		<style selector=".AFPanelNavigationVertical ul li a">
+			<property name="display">block</property>		
+			<property name="background-color">#D1E4E4</property>
+			<property name="color">#294747</property>
+			<property name="text-decoration">none</property>
+			<property name="border-bottom">1px solid #87A8A8</property>
+			<property name="display">block</property>
+			<property name="padding">2px 20px</property>
+			<property name="margin">0px</property>		
+		</style>
+		
+		<style selector=".AFPanelNavigationVertical ul li a:visited">		
+			<property name="color">#294747</property>
+		</style>		
+		<style selector=".AFPanelNavigationVertical ul li a:hover">				
+			<property name="color">#FFFFFF</property>
+			<property name="background-color">#87A8A8</property>
+		</style>		
+		<style selector=".AFPanelNavigationVertical ul li a:active">		
+			<property name="color">#294747</property>
+		</style>		
+		<style selector=".AFPanelNavigationVertical ul li a:selected">		
+			<property name="font-weight">bold</property>
+			<property name="color">#294747</property>
+			<property name="background-color">#FFFFFF</property>		
+		</style>
+		
+		<style selector=".AFPanelNavigationVertical ul ul li a">		
+			<property name="padding">2px 20px 2px 25px</property>			
+			<property name="margin">0px</property>		
+			<property name="background-color">#FFFFFF</property>		
+		</style>
+		<style selector=".AFPanelNavigationVertical ul ul li ul li a">		
+			<property name="padding">2px 20px 2px 30px</property>
+			<property name="margin">0px</property>
+		</style>
+		
+		<!-- Horizontal PanelNavigation -->		
+		<!-- 
+		<style selector=".AFPanelNavigationHorizontal">
+			<property name="margin">0</property>
+			<property name="padding">0</property>
+			<property name="height">60px</property>
+			<property name="width">800px</property>
+  		</style>		
+
+		<style selector=".AFPanelNavigationHorizontal ul">
+			<property name="margin">0</property>
+			<property name="padding">0</property>
+  		</style>		
+  		
+		<style selector=".AFPanelNavigationHorizontal ul li ul">
+			<property name="margin">0</property>
+			<property name="padding">0</property>
+			<property name="display">none</property>
+  		</style>		
+		
+		<style selector=".AFPanelNavigationHorizontal ul a">
+			<property name="text-decoration">none</property>
+  		</style>		
+  		
+		<style selector=".AFPanelNavigationHorizontal ul li">
+			<property name="margin">0</property>
+			<property name="padding">5px</property>
+			<property name="display">block</property>
+			<property name="float">left</property>
+  		</style>
+ 
+		<style selector=".AFPanelNavigationHorizontal ul li.off ul">		
+		    <property name="position">absolute</property>
+		    <property name="top">36px</property>
+    		<property name="*top">44px</property>/*reposition for IE*/    
+    		<property name="background">#224d6f</property>    
+    		<property name="left">13px</property>
+    		<property name="*left">15px</property>
+    		<property name="width">740px</property>    		
+		</style>
+		
+		<style selector=".AFPanelNavigationHorizontal ul li.on ul">		
+		    <property name="position">absolute</property>
+		    <property name="top">36px</property>
+    		<property name="*top">44px</property>/*reposition for IE*/    
+    		<property name="background">#f90</property>    
+    		<property name="left">13px</property>
+    		<property name="*left">15px</property>
+    		<property name="width">740px</property>  
+    		<property name="display">block</property>  		
+    	</style>
+
+		<style
+			selector=".AFPanelNavigationHorizontal ul li.on:hover ul">
+			<property name="background">#224d6f</property>
+		</style>
+
+		<style
+			selector=".AFPanelNavigationHorizontal ul li.on:over ul">
+			<property name="background">#224d6f</property>
+		</style>
+
+		<style selector=".AFPanelNavigationHorizontal ul li a">
+			<property name="color">#224d6f</property>
+			<property name="font-weight">bold</property>
+			<property name="display">block</property>
+			<property name="padding">5</property>
+		</style>
+
+		<style selector=".AFPanelNavigationHorizontal ul li.on a">
+			<property name="background">#fff</property>
+			<property name="background">#f90</property>
+		</style>
+ 
+		<style selector=".AFPanelNavigationHorizontal ul li.on ul a">
+			<property name="float">left</property>
+			<property name="border">0</property>
+			<property name="color">#f90</property>
+			<property name="width">auto</property>
+		</style>
+
+		<style selector=".AFPanelNavigationHorizontal ul li.off ul a">
+			<property name="float">left</property>			
+			<property name="border">0</property>
+			<property name="color">#f90</property>
+			<property name="width">auto</property>
+		</style>
+
+		<style
+			selector=".AFPanelNavigationHorizontal ul li.on:hover ul a">
+			<property name="background">#224d6f</property>
+		</style>
+
+		<style
+			selector=".AFPanelNavigationHorizontal ul li.over ul li a">
+			<property name="background">#224d6f</property>
+		</style>
+
+		<style
+			selector=".AFPanelNavigationHorizontal ul li:hover ul">
+			<property name="display">block</property>
+			<property name="z-index">6000</property>
+		</style>
+
+		<style selector=".AFPanelNavigationHorizontal ul li.over ul">
+			<property name="display">block</property>
+			<property name="z-index">6000</property>
+		</style>
+
+		<style
+			selector=".AFPanelNavigationHorizontal ul li.off a:hover">
+			<property name="background">#29497b</property>
+			<property name="color">#f90</property>
+		</style>
+
+		<style selector=".AFPanelNavigationHorizontal ul li:hover a">
+			<property name="background">#29497b</property>
+			<property name="color">#f90</property>
+		</style>
+
+		<style selector=".AFPanelNavigationHorizontal ul li.over a">
+			<property name="background">#29497b</property>
+			<property name="color">#f90</property>
+		</style>
+
+		<style
+			selector=".AFPanelNavigationHorizontal ul li.off a:hover">
+			<property name="color">#f90</property>
+		</style>
+
+		<style
+			selector=".AFPanelNavigationHorizontal ul li.on a:hover">
+			<property name="color">#f90</property>
+		</style>
+
+		<style selector=".AFPanelNavigationHorizontal ul li.off ul a">
+			<property name="display">block</property>
+			<property name="background">#224d6f</property>
+			<property name="color">#fff</property>
+		</style>
+		<style selector=".AFPanelNavigationHorizontal ul li.on ul a">
+			<property name="display">block</property>
+			<property name="background">#f90</property>
+			<property name="color">#fff</property>
+		</style>
+		 -->
+		 
+		<!-- END: org.apache.myfaces.custom.navmenu.htmlnavmenu -->		  		
+
 	</styleSheet>
 
 </styleSheetDocument>

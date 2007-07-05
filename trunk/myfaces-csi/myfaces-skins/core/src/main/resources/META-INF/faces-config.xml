@@ -438,10 +438,24 @@
 		<!-- END: org.apache.myfaces.custom.layout -->
 
 		<!-- BEGIN: org.apache.myfaces.custom.navigation -->
+		<renderer>
+			<component-family>javax.faces.Panel</component-family>
+			<renderer-type>org.apache.myfaces.Navigation</renderer-type>
+			<renderer-class>
+				org.apache.myfaces.custom.skin.HtmlNavigationExtSkinRenderer
+			</renderer-class>
+		</renderer>		
 		<!-- END: org.apache.myfaces.custom.navigation -->
 
-		<!-- BEGIN: org.apache.myfaces.custom.navmenu -->
-		<!-- END: org.apache.myfaces.custom.navmenu -->
+		<!-- BEGIN: org.apache.myfaces.custom.navmenu.htmlnavmenu -->
+		<renderer>
+			<component-family>javax.faces.Panel</component-family>
+			<renderer-type>org.apache.myfaces.NavigationMenu</renderer-type>
+			<renderer-class>
+				org.apache.myfaces.custom.skin.HtmlNavigationExtSkinRenderer
+			</renderer-class>
+		</renderer>
+		<!-- END: org.apache.myfaces.custom.navmenu.htmlnavmenu -->
 
 		<!-- BEGIN: org.apache.myfaces.custom.newspaper -->
 		<renderer>

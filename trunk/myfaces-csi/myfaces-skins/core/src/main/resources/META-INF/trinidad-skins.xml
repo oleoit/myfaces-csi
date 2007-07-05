@@ -19,12 +19,13 @@
 	   
 -->
 <skins xmlns="http://myfaces.apache.org/trinidad/skin">
+
     <skin>
         <id>
-            myfaces_skins.desktop
+            myfaces_skins.css
         </id>
         <family>
-            myfaces_skins
+            myfaces_skins_css
         </family>
         <extends>
         	simple.desktop
@@ -33,9 +34,25 @@
             org.apache.myfaces.trinidad.desktop
         </render-kit-id>
         <style-sheet-name>
+            myfaces-skins.css
+        </style-sheet-name>
+    </skin>
+    
+    <skin>
+        <id>
+            myfaces_skins.desktop
+        </id>
+        <family>
+            myfaces_skins
+        </family>
+        <extends>
+        	myfaces_skins.css
+        </extends>
+        <render-kit-id>
+            org.apache.myfaces.trinidad.desktop
+        </render-kit-id>
+        <style-sheet-name>
             myfaces-skins.xml
         </style-sheet-name>
-        <extends>
-        </extends>
     </skin>
 </skins>
