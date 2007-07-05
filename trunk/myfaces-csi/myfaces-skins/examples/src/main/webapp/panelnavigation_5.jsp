@@ -32,8 +32,8 @@
     <f:loadBundle
         basename="org.apache.myfaces.examples.resource.example_messages"
         var="example_messages"/>
-    <t:div id="subnavigation_outer">
-        <t:div id="subnavigation">
+    <t:div styleClass="AFPanelNavigationVerticalOuter">
+    	<t:div styleClass="AFPanelNavigationVertical">
             <h:form>
                 <t:panelNavigation2 id="nav1" layout="list" itemClass="mypage" activeItemClass="selected"
                                     openItemClass="selected">

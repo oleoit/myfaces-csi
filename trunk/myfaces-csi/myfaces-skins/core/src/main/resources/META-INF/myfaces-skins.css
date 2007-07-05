@@ -19,9 +19,9 @@
 */
 
 /*
-	In this file I define things that don't work inside myfaces-skins.xml
-	(Ex: li:hover or li.off:hover)
-
+	In this file I define other things that could be defined in 
+	myfaces-skins.xml, but it's more easy to define in css style
+	syntax.
 */
 
 
