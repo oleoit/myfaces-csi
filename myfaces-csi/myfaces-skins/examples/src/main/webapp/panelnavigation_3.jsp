@@ -35,8 +35,8 @@
 		var="example_messages" />
 
     <h:outputText value="test" />
-    <t:div id="subnavigation_outer">
-    <t:div id="subnavigation">
+    <t:div styleClass="AFPanelNavigationVerticalOuter">
+    <t:div styleClass="AFPanelNavigationVertical">
     <t:panelNavigation2 id="nav1" layout="list" itemClass="mypage" activeItemClass="selected" openItemClass="selected" >
         <t:navigationMenuItems value="#{navigationMenu.panelNavigationItems}" />
     </t:panelNavigation2>
