@@ -93,7 +93,10 @@ af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::class
 
 af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::first
 {
-	background-color: aqua;
+	background: url("http://localhost:8080/myfaces-skins/images/arrow-first.gif");  
+    background-repeat: no-repeat;
+	width: 10px;
+	height:10px;	
 }
 
 af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::last
@@ -123,6 +126,10 @@ af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::fastr
 
 af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::paginatorActiveColumn
 {
+	font-weight:bold;
+}
+
+.clase1 ul li.off:hover{
 	font-weight:bold;
 }
 

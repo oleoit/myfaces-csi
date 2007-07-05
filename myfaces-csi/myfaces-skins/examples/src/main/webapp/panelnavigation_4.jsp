@@ -33,7 +33,7 @@
     <f:loadBundle basename="org.apache.myfaces.examples.resource.example_messages"
                   var="example_messages"/>
 
-    <t:div id="hNav_outer">
+    <t:div styleClass="AFPanelNavigationHorizontal">
         <t:panelNavigation2 id="nav1" layout="list" itemClass="off" activeItemClass="on" openItemClass="on"
                             renderAll="true">
             <t:commandNavigation2 value="#{example_messages['panelnav_products']}" style="padding-left: 0px;">

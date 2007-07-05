@@ -19,5 +19,6 @@
 	   
 -->
 <trinidad-config xmlns="http://myfaces.apache.org/trinidad/config">
-  <skin-family>myfaces_skins</skin-family> 
+	<skin-family>myfaces_skins_css</skin-family> 
+   <skin-family>myfaces_skins</skin-family> 
 </trinidad-config>
