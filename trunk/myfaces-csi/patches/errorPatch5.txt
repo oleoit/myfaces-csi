@@ -1,0 +1,6 @@
+2007-07-04 20:19:29,790 ERROR [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/myfaces-skins].[jsp]] Servlet.service() for servlet jsp threw exception
+java.lang.ClassCastException: org.apache.myfaces.component.html.ext.HtmlOutputText cannot be cast to org.apache.myfaces.custom.navmenu.htmlnavmenu.HtmlCommandNavigationItem
+	at org.apache.myfaces.custom.navmenu.htmlnavmenu.HtmlPanelNavigationMenu.restoreOpenActiveStates(HtmlPanelNavigationMenu.java:93)
+	at org.apache.myfaces.custom.navmenu.htmlnavmenu.HtmlPanelNavigationMenu.restoreOpenActiveStates(HtmlPanelNavigationMenu.java:105)
+	at org.apache.myfaces.custom.navmenu.htmlnavmenu.HtmlPanelNavigationMenu.encodeBegin(HtmlPanelNavigationMenu.java:71)
+	at javax.faces.webapp.UIComponentTag.encodeBegin(UIComponentTag.java:467)

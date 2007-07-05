@@ -1,0 +1,153 @@
+Index: src/main/java/org/apache/myfaces/trinidadinternal/skin/SkinCSSDocumentHandler.java
+===================================================================
+--- src/main/java/org/apache/myfaces/trinidadinternal/skin/SkinCSSDocumentHandler.java	(revision 553353)
++++ src/main/java/org/apache/myfaces/trinidadinternal/skin/SkinCSSDocumentHandler.java	(working copy)
+@@ -97,7 +97,11 @@
+   {
+     if (selectors == null)
+       return;
+-      
++     
++    if (_constants != null){
++    	_resolveConstants();
++    }
++    
+     int selectorNum = selectors.size();
+     
+     for (int i = 0; i < selectorNum; i++)
+@@ -114,7 +118,7 @@
+     _inStyleRule = false;
+     _propertyNodeList = null;
+   }
+-
++  
+    /**
+     * Call this when a property name/value is found.
+     * e.g., given the selectors/properties:
+@@ -182,11 +186,110 @@
+       {
+         _parseCustomAtRule(_AT_PLATFORM, atRule);        
+       }
++      else if (atRule.startsWith(_AT_CONSTANTS)){
++    	  _parseConstantsAtRule(_AT_CONSTANTS, atRule);
++      }
+       // for now, ignore other atRules in a skinning css file
+       
+     }
+   }
+ 
++  /** 
++   * Get the atRule, and save the constants in the context
++   */  
++  private void _parseConstantsAtRule(String type, String atRule)
++  {
++	  
++	  String content = _getAtRuleContent(atRule);
++	  if (_constants == null)
++	  {
++		  _constants = new HashMap<String,String>();
++	  }
++	  
++	  try
++	  {
++		int start = 0;
++		int end = -1;
++		char c;
++		String constant = null;
++		String value = null;
++		
++		while (end+1 < content.length())
++		{
++			//get the constant
++			do 
++			{
++				end ++;
++				c = content.charAt(end);	  		
++			} while (c != ':' && end+1 < content.length());
++	  	
++			constant = content.substring(start,end).trim();
++			
++			// get the value	  	
++			start = end+1;
++			if (!(end+1 < content.length()) )
++				break;
++			do 
++			{
++				end++;
++				c = content.charAt(end);
++			}while (c != ';' && end+1 < content.length());
++	  	
++			if (c != ';')
++			{
++				//End of content
++				end++;
++			}
++	  	
++			value = content.substring(start,end).trim();
++	  	
++			//Put the value into the List of constants
++			if ("".equals(constant)) 
++				break;
++			
++			_constants.put(constant, value);
++			
++			start = end+1;
++		}
++	  }catch(ArrayIndexOutOfBoundsException e){
++		  //do nothing
++	  }
++  }
++  
++  /**
++   * Try to get the values from the Map, if it is found, then
++   * replace its value with the constant value
++   *
++   */
++  private void _resolveConstants()
++  {
++	  
++	  List<PropertyNode> newNodes = new ArrayList<PropertyNode>();
++	  List<PropertyNode> oldNodes = new ArrayList<PropertyNode>();
++	  for (PropertyNode node : _propertyNodeList){
++		try 
++		{
++			String newVal = _constants.get(node.getValue());
++			if (newVal != null)
++			{
++				oldNodes.add(node);
++				newNodes.add(new PropertyNode(node.getName(),newVal));
++			}
++		}catch(NullPointerException e)
++		{
++			//should not happen, but doesn't affect
++		}		
++	  }	  
++	  
++	  _propertyNodeList.removeAll(oldNodes);
++	  _propertyNodeList.addAll(newNodes);
++  }
++
++  
++  
++
++  
++  
+   /** Get the atRule, and send its contents through the SkinCSSParser
+    * again, using the current DocumentHandler object. The start/end
+    * callbacks will be called again, but in the context of the atRule.
+@@ -462,11 +565,13 @@
+ 
+   private static String _AT_AGENT = "@agent";
+   private static String _AT_PLATFORM = "@platform";
+-
++  private static String _AT_CONSTANTS = "@constants";
++  
+   // below are properties that we set and reset 
+   // as the methods of this documentHandler get called.
+   private boolean _inStyleRule = false;
+-  private List<PropertyNode> _propertyNodeList = null;
++  private List<PropertyNode> _propertyNodeList = null;  
++  private Map<String,String> _constants = null;  
+   // we build this list as we parse the skinning css file. We use this 
+   // list to create a list of SkinStyleSheetNodes
+   private List <CompleteSelectorNode> _completeSelectorNodeList = 
