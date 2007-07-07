@@ -58,7 +58,7 @@ public class HtmlSelectOneOrManySkinRenderer extends GenericSkinRenderer {
 		String disabledStyleClass = null;
 		String enabledStyleClass = null;
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 

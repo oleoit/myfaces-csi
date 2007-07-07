@@ -49,7 +49,7 @@ public class HtmlPanelLayoutExtSkinRenderer extends GenericSkinRenderer {
 		String navigationStyleClass = null;
 		
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 

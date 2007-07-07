@@ -63,7 +63,7 @@ public class HtmlDataListExtSkinRenderer extends GenericSkinRenderer {
 		this.encodeGenericComponent(context, component, arc);
 		String itemStyleClass = null;
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 

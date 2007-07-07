@@ -48,7 +48,7 @@ public class HtmlNewspaperExtSkinRenderer extends GenericSkinRenderer {
 		String rowStyleClass = null;
 		
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 

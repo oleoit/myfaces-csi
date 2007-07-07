@@ -62,7 +62,7 @@ public class HtmlDataTableExtSkinRenderer extends GenericSkinRenderer {
 		String rowStyleClass = null;
 		String styleClass = null;
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 
@@ -71,7 +71,7 @@ public class HtmlDataTableExtSkinRenderer extends GenericSkinRenderer {
 		headerStyleClass = baseStyleClass + "::header";
 		rowGroupStyleClass = baseStyleClass + "::rowGroup";
 		rowStyleClass = baseStyleClass + "::row";
-		styleClass = baseStyleClass + "::class";
+		styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 
 		renderStyleClass(component, context, arc, bodyStyleClass,
 				"bodyStyleClass");
@@ -130,10 +130,10 @@ public class HtmlDataTableExtSkinRenderer extends GenericSkinRenderer {
 				// footerstyleClass
 				// headerstyleClass
 				// styleClass
-				baseStyleClass = "af|"
+				baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 						+ StringUtils.replaceChars(col.getClass().getName(),
 								'.', '_');
-				styleClass = baseStyleClass + "::class";
+				styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 				String footerstyleClass = baseStyleClass + "::footer";
 				String headerstyleClass = baseStyleClass + "::header";
 

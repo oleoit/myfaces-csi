@@ -41,7 +41,7 @@ public class HtmlDataScrollerExtSkinRenderer extends SkinRenderer {
 	public void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 
@@ -55,7 +55,7 @@ public class HtmlDataScrollerExtSkinRenderer extends SkinRenderer {
 		String paginatorColumnClass = baseStyleClass + "::paginatorColumn";
 		String paginatorTableClass = baseStyleClass + "::paginatorTable";
 		String previousStyleClass = baseStyleClass + "::previous";
-		String styleClass = baseStyleClass + "::class";
+		String styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 
 		renderStyleClass(component, context, arc, fastfStyleClass,
 				"fastfStyleClass");

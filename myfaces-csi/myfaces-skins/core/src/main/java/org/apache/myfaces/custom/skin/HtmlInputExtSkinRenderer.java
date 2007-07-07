@@ -67,7 +67,7 @@ public class HtmlInputExtSkinRenderer extends GenericSkinRenderer {
 		this.encodeGenericWithRequiredComponent(context, component, arc);
 		String displayValueOnlyStyleClass = null;
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 
@@ -100,7 +100,7 @@ public class HtmlInputExtSkinRenderer extends GenericSkinRenderer {
 
 		Map<String, String> m = arc.getSkin().getStyleClassMap(arc);
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(contentStyleClass, '.', '_');
 
 		Method method;
@@ -109,7 +109,7 @@ public class HtmlInputExtSkinRenderer extends GenericSkinRenderer {
 		try {
 			method = component.getClass().getMethod("getStyleClass",
 					(Class[]) null);
-			contentStyleClass = baseStyleClass + "::class";
+			contentStyleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 		} catch (SecurityException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

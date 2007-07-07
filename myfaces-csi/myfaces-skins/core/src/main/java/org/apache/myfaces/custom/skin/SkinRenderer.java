@@ -20,6 +20,8 @@ package org.apache.myfaces.custom.skin;
  */
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -30,6 +32,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.skin.Icon;
+import org.apache.myfaces.trinidadinternal.skin.icon.ContextImageIcon;
 
 /**
  * This class encapsulate Renderers of other RenderKits and add trinidad
@@ -287,7 +291,93 @@ public abstract class SkinRenderer extends Renderer {
 		// context.getResponseWriter().writeAttribute("class",
 		// builder.toString(), null);
 	}
-
+	
+	protected void _setIconDirection(FacesContext context,
+			UIComponent component, RenderingContext arc, String styleClass,
+			String getProperty,String setProperty) {
+		
+		//This case is something strange. The style properties that
+		//i set throught component.getAttributes.put(....) works, but
+		//the image properties like in HtmlTree NOT!!!!
+				
+		Method method;		
+		String oldIcon = null;
+		// Check it has a getStyleClass property
+		try {
+			method = component.getClass().getMethod(getProperty,
+					(Class[]) null);
+			oldIcon = (String) method.invoke(component, (Object[]) null);			
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			log.debug("SecurityException"+e.getMessage());
+			return;
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			// Nothing happends
+			// e.printStackTrace();
+			log.debug("NoSuchMethodException"+e.getMessage());
+			return;
+		} catch (InvocationTargetException e) {
+			// Nothing happends
+			log.debug("InvocationTargetException"+e.getMessage());
+			return;
+		}catch (IllegalAccessException e) {
+			// Nothing happends
+			log.debug("IllegalAccessException"+e.getMessage());
+			return;
+		}
+						
+		// if the user specified a icon path for this property
+		if (oldIcon == null) {		
+			//log.info("ICON NULO:"+arc.getIcon(styleClass)+" "+arc.getSkin().getIcon(styleClass));
+			Icon icon = arc.getIcon(styleClass);			
+			if (icon != null) {
+				String value = null;
+				String baseContextPath = context.getExternalContext().getRequestContextPath() + '/';
+				
+				//For now i substract the request context path
+				if (icon instanceof ContextImageIcon){
+					value = (String) icon.getImageURI(context, arc);
+					if (value.startsWith(baseContextPath)){
+						value = value.substring(baseContextPath.length()-1);
+					}
+				}else{
+					value = (String) icon.getImageURI(context, arc);
+				}
+				//log.info("ICON PATH:"+value);
+				
+				//I have to substract the base 
+				
+				// Check it has a getStyleClass property
+				try {
+					Class [] classes = new Class[] {String.class};
+					method = component.getClass().getMethod(setProperty,
+							classes);
+					Object [] params = new Object[] {value};
+					method.invoke(component, params);			
+				} catch (SecurityException e) {
+					// TODO Auto-generated catch block
+					log.debug("SecurityException"+e.getMessage());
+					return;
+				} catch (NoSuchMethodException e) {
+					// TODO Auto-generated catch block
+					// Nothing happends
+					// e.printStackTrace();
+					log.debug("NoSuchMethodException"+e.getMessage());
+					return;
+				} catch (InvocationTargetException e) {
+					// Nothing happends
+					log.debug("InvocationTargetException"+e.getMessage());
+					return;
+				}catch (IllegalAccessException e) {
+					// Nothing happends
+					log.debug("IllegalAccessException"+e.getMessage());
+					return;
+				}			
+			}
+		}
+	}
+	
 	public String getComponentTag() {
 		return componentTag;
 	}

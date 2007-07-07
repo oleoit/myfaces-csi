@@ -61,11 +61,11 @@ public class HtmlCommandLinkExtSkinRenderer extends GenericSkinRenderer {
 		String styleClass = null;
 		String disabledStyleClass = null;
 		
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 
-		styleClass = baseStyleClass + "::class";
+		styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 		disabledStyleClass = baseStyleClass + "::disabled";
 
 		renderStyleClass(component, context, arc, styleClass,

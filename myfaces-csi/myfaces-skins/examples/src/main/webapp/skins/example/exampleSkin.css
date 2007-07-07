@@ -133,3 +133,48 @@ af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::paginatorActiveColum
 	font-weight:bold;
 }
 
+af|org_apache_myfaces_custom_tree_HtmlTree::nodeClose-icon:rtl
+{
+	content:url(/images/blue-folder-closed.png);
+}
+
+af|org_apache_myfaces_custom_tree_HtmlTree::nodeOpen-icon:rtl
+{
+	content:url(/images/blue-folder-open.gif);
+}
+
+af|org_apache_myfaces_custom_tree_HtmlTree::class
+{
+	color: blue;
+}
+
+/* Possible images paths */
+/* works! */
+.cabecera-icon:rtl
+{
+	content:url(/images/logo_mini.jpg);	
+}
+
+/* works! */
+.cabecera1-icon
+{
+	content:url(/images/logo_mini.jpg);	
+}
+
+/* no work */
+.cabecera2
+{
+	content:url(/images/logo_mini.jpg);	
+}
+
+/* no work */
+.cabecera3:alias
+{
+	content:url(/images/logo_mini.jpg);	
+}
+
+/* no work */
+.cabecera4:alias:rtl
+{
+	content:url(/images/logo_mini.jpg);	
+}

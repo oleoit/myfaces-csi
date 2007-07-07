@@ -63,7 +63,7 @@ public class HtmlScheduleSkinRenderer extends GenericSkinRenderer {
 	public void encodeSchedule(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 

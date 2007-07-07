@@ -69,7 +69,7 @@ public class HtmlSelectBooleanExtSkinRenderer extends GenericSkinRenderer {
 		this.encodeGenericWithRequiredComponent(context, component, arc);
 		String displayValueOnlyStyleClass = null;
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 

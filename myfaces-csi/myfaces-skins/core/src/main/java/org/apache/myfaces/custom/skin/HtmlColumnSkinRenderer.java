@@ -43,7 +43,7 @@ public class HtmlColumnSkinRenderer extends SkinRenderer{
 		String footerStyleClass = null;
 		String headerStyleClass = null;
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 
