@@ -37,7 +37,7 @@
     <t:div styleClass="AFPanelNavigationVerticalOuter">
     <t:div styleClass="AFPanelNavigationVertical">		
         <h:form>
-    <t:panelNavigation2 id="nav1" layout="list" >
+    <t:panelNavigation2 id="nav1" layout="list" itemClass="mypage" activeItemClass="selected" openItemClass="selected" >
 		<t:commandNavigation2  value="#{example_messages['panelnav_products']}" action="go_panelnavigation_1" >
             <t:commandNavigation2 action="#{navigationMenu.getAction1}" actionListener="#{navigationMenu.actionListener}">
                 <f:verbatim>&#8250; </f:verbatim>

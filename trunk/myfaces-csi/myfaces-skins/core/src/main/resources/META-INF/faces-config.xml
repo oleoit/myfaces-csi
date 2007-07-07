@@ -60,7 +60,7 @@
 			<component-family>javax.faces.Graphic</component-family>
 			<renderer-type>javax.faces.Image</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.GenericSkinRenderer
+				org.apache.myfaces.custom.skin.HtmlGraphicImageSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
@@ -219,7 +219,7 @@
 			<component-family>javax.faces.Graphic</component-family>
 			<renderer-type>org.apache.myfaces.Image</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.GenericSkinRenderer
+				org.apache.myfaces.custom.skin.HtmlGraphicImageSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
@@ -544,9 +544,18 @@
 		<!-- END: org.apache.myfaces.custom.tabbedpane -->
 
 		<!-- BEGIN: org.apache.myfaces.custom.tree -->
+		<renderer>		
+            <component-family>org.apache.myfaces.HtmlTree</component-family>
+            <renderer-type>org.apache.myfaces.HtmlTree</renderer-type>		
+			<renderer-class>
+				org.apache.myfaces.custom.skin.HtmlTreeExtSkinRenderer
+			</renderer-class>
+		</renderer>		
 		<!-- END: org.apache.myfaces.custom.tree -->
 
 		<!-- BEGIN: org.apache.myfaces.custom.tree2 -->
+		<!-- This component don't have CSS properties. Because is highly customizable,
+		I cannot pre-stylize what should be inside the component. -->
 		<!-- END: org.apache.myfaces.custom.tree2 -->
 
 	</render-kit>

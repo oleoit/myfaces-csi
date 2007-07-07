@@ -43,7 +43,7 @@ public class HtmlNavigationExtSkinRenderer extends SkinRenderer {
 	public void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 
@@ -54,7 +54,7 @@ public class HtmlNavigationExtSkinRenderer extends SkinRenderer {
 		// disabledStyleClass just apply to t:panelNavigation2
 		String disabledStyleClass = baseStyleClass + "::disabled";
 		String styleClass = baseStyleClass + "::styleClass";
-		//String divStyleClass = baseStyleClass + "::class";
+		//String divStyleClass = baseStyleClass + SkinConstants.STYLE_CLASS;
 		//String outerStyleClass = baseStyleClass + "::outer";
 
 		renderStyleClass(component, context, arc, itemStyleClass, "itemClass");

@@ -55,7 +55,7 @@ public class HtmlMessageSkinRenderer extends GenericSkinRenderer {
 		String errorStyleClass = null;
 		String warnStyleClass = null;
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 

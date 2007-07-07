@@ -47,7 +47,7 @@ public class HtmlPanelGridSkinRenderer extends GenericSkinRenderer {
 		String headerStyleClass = null;
 		String rowStyleClass = null;
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 

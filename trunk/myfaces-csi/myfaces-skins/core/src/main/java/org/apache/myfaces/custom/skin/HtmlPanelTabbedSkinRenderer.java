@@ -64,7 +64,7 @@ public class HtmlPanelTabbedSkinRenderer extends GenericSkinRenderer {
 	public void encodeHtmlSelectOneOrMany(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 		
@@ -74,7 +74,7 @@ public class HtmlPanelTabbedSkinRenderer extends GenericSkinRenderer {
 		String inactiveSubStyleClass = baseStyleClass + "::inactiveSub";
 		String inactiveTabStyleClass = baseStyleClass + "::next";
 		String tabContentStyleClass = baseStyleClass + "::paginatorActiveColumn";
-		String styleClass = baseStyleClass + "::class";
+		String styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 
 		renderStyleClass(component, context, arc, activeSubStyleClass, "fastfStyleClass");
 		renderStyleClass(component, context, arc, activeTabStyleClass, "fastrStyleClass");		

@@ -62,7 +62,7 @@ public class HtmlInputBaseExtSkinRenderer extends GenericSkinRenderer {
 
 		this.encodeGenericWithRequiredComponent(context, component, arc);
 
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 

@@ -58,10 +58,10 @@ public class HtmlOutputLabelSkinRenderer extends SkinRenderer {
 
 		String contentStyleClass = component.getClass().getName();
 		
-		String baseStyleClass = "af|"
+		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 			+ StringUtils.replaceChars(contentStyleClass, '.', '_');
 		
-		contentStyleClass = baseStyleClass + "::class";		
+		contentStyleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;		
 		
 		int otherStyles = 0;
 
