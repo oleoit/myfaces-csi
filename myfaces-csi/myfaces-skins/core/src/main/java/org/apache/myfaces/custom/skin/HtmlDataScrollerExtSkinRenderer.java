@@ -38,7 +38,7 @@ public class HtmlDataScrollerExtSkinRenderer extends SkinRenderer {
 			.getLog(HtmlDataScrollerExtSkinRenderer.class);
 
 	@Override
-	public void addStyleClassesToComponent(FacesContext context,
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
 		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE

@@ -36,13 +36,6 @@ public class HtmlScheduleSkinRenderer extends GenericSkinRenderer {
 	 * The log factory used to debug messages
 	 */
 	private static final Log log = LogFactory.getLog(HtmlScheduleSkinRenderer.class);	
-		
-	@Override
-	public void addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		// TODO Auto-generated method stub
-		this.encodeSchedule(context, component, arc);
-	}
 
 	/**
 	 * Apply the following css class style attributes:
@@ -59,10 +52,10 @@ public class HtmlScheduleSkinRenderer extends GenericSkinRenderer {
 	 * @param component
 	 * @param arc
 	 * @throws IOException
-	 */
-	public void encodeSchedule(FacesContext context,
+	 */	
+	@Override
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
-
 		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
@@ -72,12 +65,12 @@ public class HtmlScheduleSkinRenderer extends GenericSkinRenderer {
 		String contentStyleClass = baseStyleClass + "::content";
 		String dateStyleClass = baseStyleClass + "::date";
 		String dayStyleClass = baseStyleClass + "::day";
-		String entryStyleClass = baseStyleClass + "::entry";		
-		String evenStyleClass = baseStyleClass + "::even";		
+		String entryStyleClass = baseStyleClass + "::entry";
+		String evenStyleClass = baseStyleClass + "::even";
 		String foregroundStyleClass = baseStyleClass + "::foreground";
-		String freeStyleClass = baseStyleClass + "::free";		
+		String freeStyleClass = baseStyleClass + "::free";
 		String gutterStyleClass = baseStyleClass + "::gutter";
-		String headerStyleClass = baseStyleClass + "::header";		
+		String headerStyleClass = baseStyleClass + "::header";
 		String holidayStyleClass = baseStyleClass + "::holiday";
 		String hoursStyleClass = baseStyleClass + "::hours";
 		String inactiveDayStyleClass = baseStyleClass + "::inactiveDay";
@@ -90,52 +83,43 @@ public class HtmlScheduleSkinRenderer extends GenericSkinRenderer {
 		String titleStyleClass = baseStyleClass + "::title";
 		String unevenStyleClass = baseStyleClass + "::uneven";
 		String weekStyleClass = baseStyleClass + "::week";
-		
+
 		renderStyleClass(component, context, arc, backgroundStyleClass,
 				"backgroundClass");
 		renderStyleClass(component, context, arc, columnStyleClass,
-			"columnClass");		
+				"columnClass");
 		renderStyleClass(component, context, arc, contentStyleClass,
-			"contentClass");		
-		renderStyleClass(component, context, arc, dateStyleClass,
-			"dateClass");		
-		renderStyleClass(component, context, arc, dayStyleClass,
-			"dayClass");		
-		renderStyleClass(component, context, arc, entryStyleClass,
-			"entryClass");
-		renderStyleClass(component, context, arc, evenStyleClass,
-			"evenClass");				
+				"contentClass");
+		renderStyleClass(component, context, arc, dateStyleClass, "dateClass");
+		renderStyleClass(component, context, arc, dayStyleClass, "dayClass");
+		renderStyleClass(component, context, arc, entryStyleClass, "entryClass");
+		renderStyleClass(component, context, arc, evenStyleClass, "evenClass");
 		renderStyleClass(component, context, arc, foregroundStyleClass,
-			"foregroundClass");
-		renderStyleClass(component, context, arc, freeStyleClass,
-			"freeClass");				
+				"foregroundClass");
+		renderStyleClass(component, context, arc, freeStyleClass, "freeClass");
 		renderStyleClass(component, context, arc, gutterStyleClass,
-			"gutterClass");
+				"gutterClass");
 		renderStyleClass(component, context, arc, headerStyleClass,
-			"headerClass");				
+				"headerClass");
 		renderStyleClass(component, context, arc, holidayStyleClass,
-			"holidayClass");				
-		renderStyleClass(component, context, arc, hoursStyleClass,
-			"hoursClass");
+				"holidayClass");
+		renderStyleClass(component, context, arc, hoursStyleClass, "hoursClass");
 		renderStyleClass(component, context, arc, inactiveDayStyleClass,
-			"inactiveDayClass");				
+				"inactiveDayClass");
 		renderStyleClass(component, context, arc, minutesStyleClass,
-			"minutesClass");				
-		renderStyleClass(component, context, arc, monthStyleClass,
-			"monthClass");				
+				"minutesClass");
+		renderStyleClass(component, context, arc, monthStyleClass, "monthClass");
 		renderStyleClass(component, context, arc, selectedStyleClass,
-			"selectedClass");				
+				"selectedClass");
 		renderStyleClass(component, context, arc, selectedEntryStyleClass,
-			"selectedEntryClass");				
+				"selectedEntryClass");
 		renderStyleClass(component, context, arc, subtitleStyleClass,
-			"subtitleClass");				
-		renderStyleClass(component, context, arc, textStyleClass,
-			"textClass");				
-		renderStyleClass(component, context, arc, titleStyleClass,
-			"titleClass");				
+				"subtitleClass");
+		renderStyleClass(component, context, arc, textStyleClass, "textClass");
+		renderStyleClass(component, context, arc, titleStyleClass, "titleClass");
 		renderStyleClass(component, context, arc, unevenStyleClass,
-			"unevenClass");
-		renderStyleClass(component, context, arc, weekStyleClass,
-			"weekClass");				
-	}	
+				"unevenClass");
+		renderStyleClass(component, context, arc, weekStyleClass, "weekClass");
+	}
+
 }

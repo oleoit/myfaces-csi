@@ -38,13 +38,6 @@ public class HtmlPanelTabbedSkinRenderer extends GenericSkinRenderer {
 	private static final Log log = LogFactory
 			.getLog(HtmlPanelTabbedSkinRenderer.class);
 
-	@Override
-	public void addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		// TODO Auto-generated method stub
-		this.encodeHtmlSelectOneOrMany(context, component, arc);
-	}
-
 	/**
 	 * Apply the following css class style attributes:
 	 *
@@ -60,28 +53,36 @@ public class HtmlPanelTabbedSkinRenderer extends GenericSkinRenderer {
 	 * @param component
 	 * @param arc
 	 * @throws IOException
-	 */
-	public void encodeHtmlSelectOneOrMany(FacesContext context,
+	 */	
+	@Override
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
-
 		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
-		
+
 		String activeSubStyleClass = baseStyleClass + "::activeSub";
 		String activeTabStyleClass = baseStyleClass + "::activeTab";
 		String disabledTabStyleClass = baseStyleClass + "::disabledTab";
 		String inactiveSubStyleClass = baseStyleClass + "::inactiveSub";
 		String inactiveTabStyleClass = baseStyleClass + "::next";
-		String tabContentStyleClass = baseStyleClass + "::paginatorActiveColumn";
+		String tabContentStyleClass = baseStyleClass
+				+ "::paginatorActiveColumn";
 		String styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 
-		renderStyleClass(component, context, arc, activeSubStyleClass, "fastfStyleClass");
-		renderStyleClass(component, context, arc, activeTabStyleClass, "fastrStyleClass");		
-		renderStyleClass(component, context, arc, disabledTabStyleClass, "firstStyleClass");		
-		renderStyleClass(component, context, arc, inactiveSubStyleClass, "lastStyleClass");
-		renderStyleClass(component, context, arc, inactiveTabStyleClass, "nextStyleClass");		
-		renderStyleClass(component, context, arc, tabContentStyleClass, "paginatorActiveColumnClass");
+		renderStyleClass(component, context, arc, activeSubStyleClass,
+				"activeSubStyleClass");
+		renderStyleClass(component, context, arc, activeTabStyleClass,
+				"activeTabStyleClass");
+		renderStyleClass(component, context, arc, disabledTabStyleClass,
+				"disabledTabStyleClass");
+		renderStyleClass(component, context, arc, inactiveSubStyleClass,
+				"inactiveSubStyleClass");
+		renderStyleClass(component, context, arc, inactiveTabStyleClass,
+				"inactiveTabStyleClass");
+		renderStyleClass(component, context, arc, tabContentStyleClass,
+				"tabContentStyleClass");
 		renderStyleClass(component, context, arc, styleClass, "styleClass");
 	}
+
 }

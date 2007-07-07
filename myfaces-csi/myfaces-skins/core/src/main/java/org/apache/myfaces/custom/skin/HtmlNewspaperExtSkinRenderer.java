@@ -33,14 +33,8 @@ import org.apache.myfaces.trinidad.context.RenderingContext;
 public class HtmlNewspaperExtSkinRenderer extends GenericSkinRenderer {
 
 	@Override
-	public void addStyleClassesToComponent(FacesContext context,
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
-		this.encodeHtmlPanelGrid(context, component, arc);
-	}
-
-	public void encodeHtmlPanelGrid(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-
 		this.encodeGenericComponent(context, component, arc);
 
 		String footerStyleClass = null;
@@ -88,6 +82,6 @@ public class HtmlNewspaperExtSkinRenderer extends GenericSkinRenderer {
 			}
 			component.getAttributes().put("rowClasses", builder.toString());
 		}
-	}	
+	}
 	
 }

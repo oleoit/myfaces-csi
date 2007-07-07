@@ -36,30 +36,21 @@ public class HtmlDataListExtSkinRenderer extends GenericSkinRenderer {
 	 * The log factory used to debug messages
 	 */
 	private static final Log log = LogFactory.getLog(HtmlDataListExtSkinRenderer.class);	
-		
-	@Override
-	public void addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		// TODO Auto-generated method stub
-		this.encodeHtmlInputBaseExt(context, component, arc);
-	}
 
 	/**
 	 * Apply the following css class style attributes:
 	 * 
-	 * disabledClass
-	 * displayValueOnlyStyleClass
-	 * enabledClass
-	 * styleClass
+	 * itemStyleClass
 	 * 
 	 * @param context
 	 * @param component
 	 * @param arc
 	 * @throws IOException
-	 */
-	public void encodeHtmlInputBaseExt(FacesContext context,
+	 */	
+	@Override
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
-
+		// TODO Auto-generated method stub
 		this.encodeGenericComponent(context, component, arc);
 		String itemStyleClass = null;
 
@@ -71,5 +62,7 @@ public class HtmlDataListExtSkinRenderer extends GenericSkinRenderer {
 
 		renderStyleClass(component, context, arc, itemStyleClass,
 				"itemStyleClass");		
-	}	
+
+	}
+
 }

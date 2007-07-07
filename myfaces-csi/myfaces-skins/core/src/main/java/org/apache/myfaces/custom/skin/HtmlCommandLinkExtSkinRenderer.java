@@ -38,26 +38,9 @@ public class HtmlCommandLinkExtSkinRenderer extends GenericSkinRenderer {
 	private static final Log log = LogFactory.getLog(HtmlCommandLinkExtSkinRenderer.class);	
 		
 	@Override
-	public void addStyleClassesToComponent(FacesContext context,
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
-		// TODO Auto-generated method stub
-		this.encodeHtmlSelectOneOrMany(context, component, arc);
-	}
-
-	/**
-	 * Apply the following css class style attributes:
-	 * 
-	 * disabledStyleClass
-	 * styleClass
-	 * 
-	 * @param context
-	 * @param component
-	 * @param arc
-	 * @throws IOException
-	 */
-	public void encodeHtmlSelectOneOrMany(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-
+		
 		String styleClass = null;
 		String disabledStyleClass = null;
 		
@@ -66,12 +49,11 @@ public class HtmlCommandLinkExtSkinRenderer extends GenericSkinRenderer {
 						'_');
 
 		styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
-		disabledStyleClass = baseStyleClass + "::disabled";
+		disabledStyleClass = baseStyleClass + SkinConstants.DISABLED_CLASS_SUFFIX;
 
 		renderStyleClass(component, context, arc, styleClass,
 				"styleClass");		
 		renderStyleClass(component, context, arc, disabledStyleClass,
 				"disabledStyleClass");
-		
-	}	
+	}
 }

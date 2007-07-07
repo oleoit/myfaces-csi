@@ -33,15 +33,8 @@ import org.apache.myfaces.trinidad.context.RenderingContext;
 public class HtmlDataTableSkinRenderer extends GenericSkinRenderer {
 
 	@Override
-	public void addStyleClassesToComponent(FacesContext context,
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
-		// TODO Auto-generated method stub
-		this.encodeHtmlDataTable(context, component, arc);
-	}
-
-	public void encodeHtmlDataTable(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-
 		this.encodeGenericComponent(context, component, arc);
 
 		String footerStyleClass = null;

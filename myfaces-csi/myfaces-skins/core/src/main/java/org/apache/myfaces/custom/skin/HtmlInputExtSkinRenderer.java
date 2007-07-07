@@ -42,13 +42,6 @@ public class HtmlInputExtSkinRenderer extends GenericSkinRenderer {
 	 * The log factory used to debug messages
 	 */
 	private static final Log log = LogFactory.getLog(HtmlInputExtSkinRenderer.class);	
-		
-	@Override
-	public void addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		// TODO Auto-generated method stub
-		this.encodeHtmlSelectOneOrMany(context, component, arc);
-	}
 
 	/**
 	 * Apply the following css class style attributes:
@@ -60,10 +53,10 @@ public class HtmlInputExtSkinRenderer extends GenericSkinRenderer {
 	 * @param component
 	 * @param arc
 	 * @throws IOException
-	 */
-	public void encodeHtmlSelectOneOrMany(FacesContext context,
+	 */	
+	@Override
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
-
 		this.encodeGenericWithRequiredComponent(context, component, arc);
 		String displayValueOnlyStyleClass = null;
 
@@ -75,9 +68,9 @@ public class HtmlInputExtSkinRenderer extends GenericSkinRenderer {
 
 		renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
 				"displayValueOnlyStyleClass");		
-	}	
+	}
 	
-	/*
+	/**
 	 * This method look if the component has 3 common methods:
 	 * 
 	 * 1. getStyleClass
@@ -111,10 +104,8 @@ public class HtmlInputExtSkinRenderer extends GenericSkinRenderer {
 					(Class[]) null);
 			contentStyleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
 			// Nothing happends
 			// e.printStackTrace();
 		}
@@ -136,10 +127,8 @@ public class HtmlInputExtSkinRenderer extends GenericSkinRenderer {
 				otherStyles += 1;
 			}
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
 			// Nothing happends
 			// e.printStackTrace();
 		} catch (InvocationTargetException e) {
@@ -160,10 +149,8 @@ public class HtmlInputExtSkinRenderer extends GenericSkinRenderer {
 				otherStyles += 1;
 			}
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
 			// Nothing happends
 			// e.printStackTrace();
 		} catch (InvocationTargetException e) {
@@ -186,10 +173,8 @@ public class HtmlInputExtSkinRenderer extends GenericSkinRenderer {
 				}
 			}
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
 			// Nothing happends
 			// e.printStackTrace();
 		} catch (InvocationTargetException e) {

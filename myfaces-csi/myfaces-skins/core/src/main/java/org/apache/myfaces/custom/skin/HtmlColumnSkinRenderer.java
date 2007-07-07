@@ -30,16 +30,9 @@ import org.apache.myfaces.trinidad.context.RenderingContext;
 
 public class HtmlColumnSkinRenderer extends SkinRenderer{
 
-	@Override
-	public void addStyleClassesToComponent(FacesContext context, UIComponent component, RenderingContext arc) throws IOException {
-		// TODO Auto-generated method stub
-		this.encodeHtmlColumn(context, component, arc);
-	}
-
 	// For use in jsf 1.2
-	public void encodeHtmlColumn(FacesContext context, UIComponent component,
-			RenderingContext arc) throws IOException {
-
+	@Override
+	protected void addStyleClassesToComponent(FacesContext context, UIComponent component, RenderingContext arc) throws IOException {
 		String footerStyleClass = null;
 		String headerStyleClass = null;
 
@@ -55,4 +48,5 @@ public class HtmlColumnSkinRenderer extends SkinRenderer{
 		renderStyleClass(component, context, arc, headerStyleClass,
 				"headerClass");
 	}
+
 }
