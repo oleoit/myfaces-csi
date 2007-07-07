@@ -33,14 +33,8 @@ import org.apache.myfaces.trinidad.context.RenderingContext;
 public class HtmlPanelLayoutExtSkinRenderer extends GenericSkinRenderer {
 
 	@Override
-	public void addStyleClassesToComponent(FacesContext context,
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
-		this.encodeHtmlPanelGrid(context, component, arc);
-	}
-
-	public void encodeHtmlPanelGrid(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-
 		this.encodeGenericComponent(context, component, arc);
 
 		String bodyStyleClass = null;
@@ -66,8 +60,6 @@ public class HtmlPanelLayoutExtSkinRenderer extends GenericSkinRenderer {
 			"headerClass");
 		renderStyleClass(component, context, arc, navigationStyleClass,
 			"navigationClass");
-		
-
-	}	
+	}
 	
 }

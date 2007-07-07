@@ -32,14 +32,8 @@ import org.apache.myfaces.trinidad.context.RenderingContext;
 public class HtmlPanelGridExtSkinRenderer extends GenericSkinRenderer {
 
 	@Override
-	public void addStyleClassesToComponent(FacesContext context,
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
-		this.encodeHtmlPanelGrid(context, component, arc);
-	}
-
-	public void encodeHtmlPanelGrid(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-
 		this.encodeGenericComponent(context, component, arc);
 
 		String displayValueOnlyStyleClass = null;
@@ -91,6 +85,6 @@ public class HtmlPanelGridExtSkinRenderer extends GenericSkinRenderer {
 			}
 			component.getAttributes().put("rowClasses", builder.toString());
 		}
-	}	
+	}
 	
 }

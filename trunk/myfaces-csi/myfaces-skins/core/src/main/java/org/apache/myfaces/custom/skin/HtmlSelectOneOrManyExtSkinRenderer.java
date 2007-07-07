@@ -42,13 +42,6 @@ public class HtmlSelectOneOrManyExtSkinRenderer extends GenericSkinRenderer {
 	 * The log factory used to debug messages
 	 */
 	private static final Log log = LogFactory.getLog(HtmlSelectOneOrManyExtSkinRenderer.class);	
-		
-	@Override
-	public void addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		// TODO Auto-generated method stub
-		this.encodeHtmlSelectOneOrMany(context, component, arc);
-	}
 
 	/**
 	 * Apply the following css class style attributes:
@@ -63,12 +56,10 @@ public class HtmlSelectOneOrManyExtSkinRenderer extends GenericSkinRenderer {
 	 * @param arc
 	 * @throws IOException
 	 */
-	public void encodeHtmlSelectOneOrMany(FacesContext context,
+	@Override
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
-
 		this.encodeGenericWithRequiredComponent(context, component, arc);
-		
-		
 		
 		String disabledStyleClass = null;
 		String enabledStyleClass = null;
@@ -78,7 +69,7 @@ public class HtmlSelectOneOrManyExtSkinRenderer extends GenericSkinRenderer {
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 
-		disabledStyleClass = baseStyleClass + "::disabled";
+		disabledStyleClass = baseStyleClass + SkinConstants.DISABLED_CLASS_SUFFIX;
 		enabledStyleClass = baseStyleClass + "::enabled";
 		displayValueOnlyStyleClass = baseStyleClass + "::displayValueOnly";		
 
@@ -88,8 +79,6 @@ public class HtmlSelectOneOrManyExtSkinRenderer extends GenericSkinRenderer {
 				"enabledClass");
 		renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
 				"displayValueOnlyStyleClass");
-		
-		
-	}	
+	}
 			
 }

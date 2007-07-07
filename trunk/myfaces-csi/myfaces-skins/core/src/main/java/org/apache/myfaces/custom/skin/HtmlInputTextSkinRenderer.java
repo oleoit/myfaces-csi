@@ -56,7 +56,7 @@ public class HtmlInputTextSkinRenderer extends GenericSkinRenderer {
 	 * @throws IOException
 	 */	
 	@Override
-	public void addStyleClassesToComponent(FacesContext context,
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 		// TODO Auto-generated method stub
 		this.encodeGenericWithRequiredComponent(context, component, arc);

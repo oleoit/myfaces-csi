@@ -36,13 +36,6 @@ public class HtmlPanelGroupExtSkinRenderer extends GenericSkinRenderer {
 	 * The log factory used to debug messages
 	 */
 	private static final Log log = LogFactory.getLog(HtmlPanelGroupExtSkinRenderer.class);	
-		
-	@Override
-	public void addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		// TODO Auto-generated method stub
-		this.encodeHtmlSelectOneOrMany(context, component, arc);
-	}
 
 	/**
 	 * Apply the following css class style attributes:
@@ -54,10 +47,10 @@ public class HtmlPanelGroupExtSkinRenderer extends GenericSkinRenderer {
 	 * @param component
 	 * @param arc
 	 * @throws IOException
-	 */
-	public void encodeHtmlSelectOneOrMany(FacesContext context,
+	 */	
+	@Override
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
-
 		this.encodeGenericComponent(context, component, arc);
 		String displayValueOnlyStyleClass = null;
 
@@ -69,5 +62,6 @@ public class HtmlPanelGroupExtSkinRenderer extends GenericSkinRenderer {
 
 		renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
 				"displayValueOnlyStyleClass");		
-	}	
+	}
+
 }

@@ -66,7 +66,7 @@ public class GenericSkinRenderer extends SkinRenderer {
 	}
 
 	@Override
-	public void addStyleClassesToComponent(FacesContext context, 
+	protected void addStyleClassesToComponent(FacesContext context, 
 			UIComponent component, RenderingContext arc)
 			throws IOException {
 

@@ -44,15 +44,8 @@ public class HtmlSelectOneOrManySkinRenderer extends GenericSkinRenderer {
 	private static final Log log = LogFactory.getLog(HtmlSelectOneOrManySkinRenderer.class);	
 		
 	@Override
-	public void addStyleClassesToComponent(FacesContext context,
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
-		// TODO Auto-generated method stub
-		this.encodeHtmlSelectOneOrMany(context, component, arc);
-	}
-
-	public void encodeHtmlSelectOneOrMany(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-
 		this.encodeGenericWithRequiredComponent(context, component, arc);
 		
 		String disabledStyleClass = null;
@@ -62,7 +55,7 @@ public class HtmlSelectOneOrManySkinRenderer extends GenericSkinRenderer {
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
 						'_');
 
-		disabledStyleClass = baseStyleClass + "::disabled";
+		disabledStyleClass = baseStyleClass + SkinConstants.DISABLED_CLASS_SUFFIX;
 		enabledStyleClass = baseStyleClass + "::enabled";
 
 		renderStyleClass(component, context, arc, disabledStyleClass,
@@ -70,6 +63,6 @@ public class HtmlSelectOneOrManySkinRenderer extends GenericSkinRenderer {
 		renderStyleClass(component, context, arc, enabledStyleClass,
 				"enabledClass");
 		
-	}	
-		
+	}
+
 }

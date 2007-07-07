@@ -40,7 +40,7 @@ public class HtmlNavigationExtSkinRenderer extends SkinRenderer {
 			.getLog(HtmlNavigationExtSkinRenderer.class);
 
 	@Override
-	public void addStyleClassesToComponent(FacesContext context,
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
 		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
@@ -52,7 +52,7 @@ public class HtmlNavigationExtSkinRenderer extends SkinRenderer {
 		String activeItemStyleClass = baseStyleClass + "::active";
 		String separatorStyleClass = baseStyleClass + "::separator";
 		// disabledStyleClass just apply to t:panelNavigation2
-		String disabledStyleClass = baseStyleClass + "::disabled";
+		String disabledStyleClass = baseStyleClass + SkinConstants.DISABLED_CLASS_SUFFIX;
 		String styleClass = baseStyleClass + "::styleClass";
 		//String divStyleClass = baseStyleClass + SkinConstants.STYLE_CLASS;
 		//String outerStyleClass = baseStyleClass + "::outer";

@@ -31,15 +31,7 @@ import org.apache.myfaces.trinidad.context.RenderingContext;
 public class HtmlCommandSortHeaderSkinRenderer extends GenericSkinRenderer{
 
 	@Override
-	public void addStyleClassesToComponent(FacesContext context, UIComponent component, RenderingContext arc) throws IOException {
-		// TODO Auto-generated method stub
-		this.encodeHtmlColumn(context, component, arc);
-	}
-
-	// For use in jsf 1.2
-	public void encodeHtmlColumn(FacesContext context, UIComponent component,
-			RenderingContext arc) throws IOException {
-
+	protected void addStyleClassesToComponent(FacesContext context, UIComponent component, RenderingContext arc) throws IOException {
 		this.encodeGenericComponent(context, component, arc);
 		/*
 		String footerStyleClass = null;
@@ -58,4 +50,5 @@ public class HtmlCommandSortHeaderSkinRenderer extends GenericSkinRenderer{
 				"headerClass");
 		*/
 	}
+
 }

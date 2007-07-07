@@ -87,7 +87,7 @@ public abstract class SkinRenderer extends Renderer {
 		}
 	}
 
-	public abstract void addStyleClassesToComponent(FacesContext context,
+	protected abstract void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException;
 
 	@Override
@@ -176,7 +176,7 @@ public abstract class SkinRenderer extends Renderer {
 	 * @param styleClass
 	 *            the style class
 	 */
-	static public void renderStyleClass(UIComponent component,
+	protected static void renderStyleClass(UIComponent component,
 			FacesContext context, RenderingContext arc, String styleClass)
 			throws IOException {
 		if (styleClass != null) {
@@ -213,7 +213,7 @@ public abstract class SkinRenderer extends Renderer {
 		}
 	}
 
-	static public void renderStyleClass(UIComponent component,
+	protected static void renderStyleClass(UIComponent component,
 			FacesContext context, RenderingContext arc, String styleClass,
 			String property) throws IOException {
 		if (styleClass != null) {
@@ -261,7 +261,7 @@ public abstract class SkinRenderer extends Renderer {
 	 * @param styleClasses
 	 *            the style classes
 	 */
-	static public void renderStyleClasses(UIComponent component,
+	protected static void renderStyleClasses(UIComponent component,
 			FacesContext context, RenderingContext arc, String[] styleClasses)
 			throws IOException {
 		int length = 0;

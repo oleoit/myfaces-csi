@@ -34,17 +34,14 @@ import org.apache.myfaces.trinidad.context.RenderingContext;
 
 public class HtmlDataTableExtSkinRenderer extends GenericSkinRenderer {
 
-	@Override
-	public void addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		// TODO Auto-generated method stub
-		this.encodeHtmlDataTable(context, component, arc);
-	}
-
 	/**
 	 * Apply the following css class style attributes:
 	 * 
-	 * bodyStyleClass footerClass headerClass rowGroupStyleClass rowStyleClass
+	 * bodyStyleClass 
+	 * footerstyleClass 
+	 * headerstyleClass 
+	 * rowGroupStyleClass 
+	 * rowStyleClass
 	 * styleClass
 	 * 
 	 * @param context
@@ -52,9 +49,9 @@ public class HtmlDataTableExtSkinRenderer extends GenericSkinRenderer {
 	 * @param arc
 	 * @throws IOException
 	 */
-	public void encodeHtmlDataTable(FacesContext context,
+	@Override
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
-
 		String bodyStyleClass = null;
 		String footerStyleClass = null;
 		String headerStyleClass = null;
@@ -144,6 +141,5 @@ public class HtmlDataTableExtSkinRenderer extends GenericSkinRenderer {
 						"headerstyleClass");
 			}
 		}
-
 	}
 }

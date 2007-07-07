@@ -53,7 +53,7 @@ public class HtmlOutputLabelSkinRenderer extends SkinRenderer {
 	 * @throws IOException
 	 */
 	@Override
-	public void addStyleClassesToComponent(FacesContext context,
+	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
 		String contentStyleClass = component.getClass().getName();
@@ -92,7 +92,7 @@ public class HtmlOutputLabelSkinRenderer extends SkinRenderer {
 						o = (Boolean) c.getAttributes().get("disabled");
 						if (o != null) {
 							if (o.equals(Boolean.TRUE)) {
-								disabledStyleClass = baseStyleClass + "::disabled";
+								disabledStyleClass = baseStyleClass + SkinConstants.DISABLED_CLASS_SUFFIX;
 								otherStyles++;
 							}
 						}
