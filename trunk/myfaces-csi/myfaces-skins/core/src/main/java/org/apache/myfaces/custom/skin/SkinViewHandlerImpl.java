@@ -31,7 +31,12 @@ import javax.faces.context.FacesContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-
+/**
+ * This class is not necessary for skins, but I let this if some day I need it. 
+ * 
+ * @author Leonardo
+ *
+ */
 public class SkinViewHandlerImpl extends ViewHandler {
 
 	private static final Log _LOG = LogFactory

@@ -30,7 +30,14 @@ import javax.faces.render.RenderKitFactory;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
+/**
+ * This class only do what a RenderKitFactory should do. It's not 
+ * necesary to use this class, but for historic reasons, I prefer
+ * to let this as is.
+ * 
+ * @author Leonardo
+ *
+ */
 public class SkinRenderKitFactory extends RenderKitFactory {
 
 	private static final Log log = LogFactory.getLog(SkinRenderKitFactory.class);

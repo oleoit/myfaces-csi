@@ -30,6 +30,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
+/**
+ * 
+ * @author Leonardo
+ *
+ */
 public class HtmlDataListExtSkinRenderer extends GenericSkinRenderer {
 
 	/**
@@ -50,7 +55,6 @@ public class HtmlDataListExtSkinRenderer extends GenericSkinRenderer {
 	@Override
 	protected void addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
-		// TODO Auto-generated method stub
 		this.encodeGenericComponent(context, component, arc);
 		String itemStyleClass = null;
 

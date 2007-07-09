@@ -75,9 +75,6 @@ public class GenericSkinRenderer extends SkinRenderer {
 		// property
 		// to do it.
 
-		log.debug("SkinRenderer:" + component.toString() + " "
-				+ this._delegate.toString());
-
 		if (UIXComponent.class.isAssignableFrom(component.getClass())) {
 			// Nothing because is a trinidad component.
 		} else {
@@ -132,8 +129,6 @@ public class GenericSkinRenderer extends SkinRenderer {
 	public void encodeGenericComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
-		log.debug("Component class " + component.getClass().getName());
-
 		// 2. the skin class for this component looks like this:
 		// af|javax_faces_component_html_HtmlXXX::class
 
@@ -152,10 +147,9 @@ public class GenericSkinRenderer extends SkinRenderer {
 					(Class[]) null);
 			contentStyleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// Nothing happends
+			//e.printStackTrace();
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
 			// Nothing happends
 			// e.printStackTrace();
 		}
@@ -177,18 +171,17 @@ public class GenericSkinRenderer extends SkinRenderer {
 				otherStyles += 1;
 			}
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// Nothing happends
+			//e.printStackTrace();
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
 			// Nothing happends
 			// e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			// Nothing happends
-			e.printStackTrace();
+			//e.printStackTrace();
 		} catch (IllegalAccessException e) {
 			// Nothing happends
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 		try {
@@ -199,18 +192,17 @@ public class GenericSkinRenderer extends SkinRenderer {
 				otherStyles += 1;
 			}
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// Nothing happends
+			// e.printStackTrace();
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
 			// Nothing happends
 			// e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			// Nothing happends
-			e.printStackTrace();
+			// e.printStackTrace();
 		} catch (IllegalAccessException e) {
 			// Nothing happends
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 
 		List<String> parsedStyleClasses = OutputUtils
@@ -278,10 +270,9 @@ public class GenericSkinRenderer extends SkinRenderer {
 					(Class[]) null);
 			contentStyleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// Nothing happends
+			//e.printStackTrace();
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
 			// Nothing happends
 			// e.printStackTrace();
 		}
@@ -304,18 +295,16 @@ public class GenericSkinRenderer extends SkinRenderer {
 				otherStyles += 1;
 			}
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
 			// Nothing happends
 			// e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			// Nothing happends
-			e.printStackTrace();
+			//e.printStackTrace();
 		} catch (IllegalAccessException e) {
 			// Nothing happends
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 		try {
@@ -326,10 +315,9 @@ public class GenericSkinRenderer extends SkinRenderer {
 				otherStyles += 1;
 			}
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// Nothing happends
+			//e.printStackTrace();
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
 			// Nothing happends
 			// e.printStackTrace();
 		} catch (InvocationTargetException e) {
@@ -348,10 +336,8 @@ public class GenericSkinRenderer extends SkinRenderer {
 				otherStyles += 1;
 			}
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
 			// Nothing happends
 			// e.printStackTrace();
 		} catch (InvocationTargetException e) {

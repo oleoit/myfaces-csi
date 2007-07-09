@@ -30,6 +30,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
+/**
+ * 
+ * @author Leonardo
+ *
+ */
 public class HtmlMessageSkinRenderer extends GenericSkinRenderer {
 
 	/**
