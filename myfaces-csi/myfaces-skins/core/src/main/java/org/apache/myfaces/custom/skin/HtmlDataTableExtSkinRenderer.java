@@ -32,6 +32,11 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.myfaces.custom.column.HtmlColumn;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
+/**
+ * 
+ * @author Leonardo
+ *
+ */
 public class HtmlDataTableExtSkinRenderer extends GenericSkinRenderer {
 
 	/**

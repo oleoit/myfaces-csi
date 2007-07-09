@@ -28,6 +28,11 @@ import javax.faces.context.FacesContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
+/**
+ * 
+ * @author Leonardo Uribe
+ *
+ */
 public class HtmlColumnSkinRenderer extends SkinRenderer{
 
 	// For use in jsf 1.2

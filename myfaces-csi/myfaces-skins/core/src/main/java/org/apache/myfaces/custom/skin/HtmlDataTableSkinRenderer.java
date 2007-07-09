@@ -30,6 +30,11 @@ import javax.faces.context.FacesContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
+/**
+ * 
+ * @author Leonardo
+ *
+ */
 public class HtmlDataTableSkinRenderer extends GenericSkinRenderer {
 
 	@Override

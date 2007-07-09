@@ -42,7 +42,14 @@ import org.apache.myfaces.custom.skin.SkinRenderer;
 import org.apache.myfaces.trinidad.logging.TrinidadLogger;
 import org.apache.myfaces.trinidad.render.DialogRenderKitService;
 import org.apache.myfaces.trinidad.render.ExtendedRenderKitService;
-
+/**
+ * 
+ * The objective of this clas is decorate CoreRenderKit class, for
+ * decorate with properly SkinRenderer classes the original renderers.
+ * 
+ * @author Leonardo
+ *
+ */
 public class SkinRenderKit extends RenderKit implements DialogRenderKitService,
 		ExtendedRenderKitService {
 
