@@ -456,6 +456,15 @@
 			</renderer-class>
 		</renderer>
 		<!-- END: org.apache.myfaces.custom.navmenu.htmlnavmenu -->
+		
+		<!-- BEGIN: org.apache.myfaces.custom.navmenu.jscookmenu -->
+        <renderer>
+            <component-family>javax.faces.Command</component-family>
+            <renderer-type>org.apache.myfaces.JSCookMenu</renderer-type>
+            <renderer-class>org.apache.myfaces.custom.skin.HtmlJsCookMenuSkinRenderer</renderer-class>
+        </renderer>		
+
+		<!-- END: org.apache.myfaces.custom.navmenu.jscookmenu -->
 
 		<!-- BEGIN: org.apache.myfaces.custom.newspaper -->
 		<renderer>
