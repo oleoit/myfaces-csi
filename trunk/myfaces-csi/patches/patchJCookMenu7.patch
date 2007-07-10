@@ -1,0 +1,20 @@
+Index: core/src/main/resources/org/apache/myfaces/custom/navmenu/jscookmenu/resource/MyFacesHack.js
+===================================================================
+--- core/src/main/resources/org/apache/myfaces/custom/navmenu/jscookmenu/resource/MyFacesHack.js	(revision 554492)
++++ core/src/main/resources/org/apache/myfaces/custom/navmenu/jscookmenu/resource/MyFacesHack.js	(working copy)
+@@ -27,7 +27,14 @@
+             // Link is a JSF action
+             var dummyForm = document.forms[target];
+             dummyForm.elements['jscook_action'].value = link;
+-            dummyForm.submit();
++			if (typeof submitForm=="undefined") {
++				//No Trinidad
++				dummyForm.submit();
++			} else {
++				//Trinidad style
++	            var mysource = dummyForm.name+':jscook_action';
++    	        submitForm(dummyForm.name,1,{source:mysource});		
++			}
+         }
+     }
+ 
