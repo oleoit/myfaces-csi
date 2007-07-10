@@ -54,6 +54,26 @@ af|javax_faces_component_html_HtmlInputText::class:focus
 	background: rgb(194,252,251);
 }
 
+af|javax_faces_component_html_HtmlInputTextarea::class:focus
+{
+	background: rgb(194,252,251);
+}
+
+af|javax_faces_component_html_HtmlInputSecret::class:focus
+{
+	background: rgb(194,252,251);
+}
+
+@constants
+{
+	background-focus  :  rgb(194,252,251)
+}
+
+af|javax_faces_component_html_HtmlSelectOneMenu::class:focus
+{
+	background: background-focus   
+}
+
 /* Replace table skin css definition */
 
 af|org_apache_myfaces_component_html_ext_HtmlDataTable::class
@@ -161,20 +181,4 @@ af|org_apache_myfaces_custom_tree_HtmlTree::class
 	content:url(/images/logo_mini.jpg);	
 }
 
-/* no work */
-.cabecera2
-{
-	content:url(/images/logo_mini.jpg);	
-}
 
-/* no work */
-.cabecera3:alias
-{
-	content:url(/images/logo_mini.jpg);	
-}
-
-/* no work */
-.cabecera4:alias:rtl
-{
-	content:url(/images/logo_mini.jpg);	
-}

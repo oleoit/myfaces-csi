@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://myfaces.apache.org/tomahawk" prefix="t"%>
 <%@ taglib uri="http://myfaces.apache.org/trinidad/html" prefix="trh"%>
+<%@ taglib uri="http://myfaces.apache.org/trinidad" prefix="tr"%>
 
 <!--
 /*
@@ -32,7 +33,7 @@
 <body>
 
 
-	<h:form>
+	<h:form id="form1">
 	<f:loadBundle
 		basename="org.apache.myfaces.examples.resource.example_messages"
 		var="example_messages" />
@@ -103,14 +104,14 @@
         <t:navigationMenuItem id="nav_3"
             itemLabel="Apache MyFaces Home" action="http://myfaces.apache.org" />
 	</t:jscookMenu>
-
-    <h:outputText value="<p>Dynamic binding: </p>" escape="false"/>
-
+</h:form>
+<h:form id="form2">
+	<h:outputText value="<p>Dynamic binding: </p>" escape="false"/>
+	
     <t:jscookMenu id="menu2" layout="hbr" theme="ThemeOffice" styleLocation="css/jscookmenu">
-        <t:navigationMenuItems id="navitems" value="#{navigationMenu.panelNavigationItems}" />
+        < t:navigationMenuItems id="navitems" value="#{navigationMenu.panelNavigationItems}" />
     </t:jscookMenu>
 </h:form>
-
 <jsp:include page="inc/mbean_source.jsp"/>
 
 </f:view>
