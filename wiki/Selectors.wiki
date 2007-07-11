@@ -101,4 +101,11 @@ Notes:
 This components are contained in the package org.apache.myfaces.custom and are components contributed by developers.
 
 || *Component*     || *Selector Base Name* || *Properties* || *Extends* ||
+|| t:collapsiblePanel || t|collapsiblePanel || ::style || `AFDefaultFont` ||
+|| t:column || t|column || ::style, ::footer, ::header ||  ||
+|| t:columns || t|columns || ::style, ::footer, ::header ||  ||
+|| t:commandNavigation || t|commandNavigation || ::style ||  ||
+|| t:commandNavigation2 || t|commandNavigation2 || ::style||  ||
+|| t:commandSortHeader || t|commandSortHeader || ::style ||  ||
+|| t:dataList || t|dataList || ::style, ::item ||  ||
 
