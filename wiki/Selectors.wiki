@@ -60,6 +60,9 @@ In JSP or JSPX file:
 <h:graphicImage url="xxx-icon"/>
 }}}
 
+2. h|outputLabel try to look the component referenced by `for` attribute, if this component has attributes disabled or readonly set to true, it apply ::disabled and
+::readonly styles to styleClass attribute.
+
 == Tomahawk Extended HTML Selectors ==
 
 This components are direct extensions of JSF HTML component library. In general, some components here have user and role support.
@@ -90,5 +93,6 @@ This components are direct extensions of JSF HTML component library. In general,
 Notes:
 
 1. t:graphicImage works the same as h:graphicImage
+2. t:outputLabel works the same as h:outputLabel
 
 == Tomahawk Custom Selectors ==
