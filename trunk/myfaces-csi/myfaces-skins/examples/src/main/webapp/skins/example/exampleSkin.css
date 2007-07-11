@@ -77,7 +77,7 @@ h|selectOneMenu::style:focus
 
 /* Replace table skin css definition */
 
-af|org_apache_myfaces_component_html_ext_HtmlDataTable::style
+t|dataTable::style
 {
 	font-family : verdana, Geneva, Arial, Helvetica, sans-serif;
 	font-size: 12px;
@@ -88,7 +88,7 @@ af|org_apache_myfaces_component_html_ext_HtmlDataTable::style
     width: 400px;		
 }
 
-af|org_apache_myfaces_component_html_ext_HtmlDataTable::header
+t|dataTable::header
 {
 	color: #000000;
     background-color: #FFDD00;
@@ -97,22 +97,22 @@ af|org_apache_myfaces_component_html_ext_HtmlDataTable::header
     border: none;
 }
 
-af|org_apache_myfaces_component_html_ext_HtmlDataTable::footer
+t|dataTable::footer
 {
     background-color: #FFFFE0;	
 }
 
-af|org_apache_myfaces_component_html_ext_HtmlDataTable::row
+t|dataTable::row
 {
     background-color: #FFFFE0;
 }
 
-af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::style
+t|dataScroller::style
 {
     padding-left:20px;
 }
 
-af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::first
+t|dataScroller::first
 {
 	background: url("http://localhost:8080/myfaces-skins/images/arrow-first.gif");  
     background-repeat: no-repeat;
@@ -120,32 +120,32 @@ af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::first
 	height:10px;	
 }
 
-af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::last
+t|dataScroller::last
 {
 	background-color: aqua;
 }
 
-af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::next
+t|dataScroller::next
 {
 	background-color: aqua;
 }
 
-af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::previous
+t|dataScroller::previous
 {
 	background-color: aqua;
 }
 
-af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::fastf
+t|dataScroller::fastf
 {
 	background-color: aqua;
 }
 
-af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::fastr
+t|dataScroller::fastr
 {
 	background-color: aqua;
 }
 
-af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::paginatorActiveColumn
+t|dataScroller::paginatorActiveColumn
 {
 	font-weight:bold;
 }
@@ -154,17 +154,17 @@ af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::paginatorActiveColum
 	font-weight:bold;
 }
 
-af|org_apache_myfaces_custom_tree_HtmlTree::nodeClose-icon:rtl
+t|tree::nodeClose-icon:rtl
 {
 	content:url(/images/blue-folder-closed.png);
 }
 
-af|org_apache_myfaces_custom_tree_HtmlTree::nodeOpen-icon:rtl
+t|tree::nodeOpen-icon:rtl
 {
 	content:url(/images/blue-folder-open.gif);
 }
 
-af|org_apache_myfaces_custom_tree_HtmlTree::style
+t|tree::style
 {
 	color: blue;
 }

@@ -51,7 +51,6 @@
   		<!-- HtmlForm does not have global selector -->
   		<!-- HtmlGraphicImage does not have global selector -->
   		
-  		<!-- TODO: exist style option if the input field is required, add this -->
 		<style selector="h|inputSecret::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
@@ -77,6 +76,7 @@
     		<includeStyle name="AFVeryDarkForeground"/>
   		</style> 			
 		<style selector="h|message::error">
+			<includeStyle name="AFDefaultFont"/>
     		<includeStyle selector=".AFHeaderLevelOne"/>
     		<includeStyle name="AFErrorTextForeground"/>
   		</style> 			
@@ -85,11 +85,19 @@
     		<includeStyle name="AFDarkForeground"/>
     		<includeStyle name="MessageBoxMargin"/>
   		</style> 			
+		<style selector="h|message::fatal">  		
+			<includeStyle name="AFDefaultFont"/>
+		</style>
+		<style selector="h|message::warn">  		
+			<includeStyle name="AFDefaultFont"/>
+		</style>
+		
 		<style selector="h|messages::style">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFVeryDarkForeground"/>
   		</style> 			
 		<style selector="h|messages::error">
+			<includeStyle name="AFDefaultFont"/>		
     		<includeStyle selector=".AFHeaderLevelOne"/>
     		<includeStyle name="AFErrorTextForeground"/>
   		</style> 			
@@ -98,6 +106,13 @@
     		<includeStyle name="AFDarkForeground"/>
     		<includeStyle name="MessageBoxMargin"/>
   		</style> 			
+		<style selector="h|messages::fatal">  		
+			<includeStyle name="AFDefaultFont"/>
+		</style>
+		<style selector="h|messages::warn">  		
+			<includeStyle name="AFDefaultFont"/>
+		</style>
+  		
 		<style selector="h|outputFormat::style">
 		    <includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFTextForeground"/>			
@@ -140,7 +155,7 @@
 		<style selector="h|panelGroup::style">
 		    <includeStyle name="AFDefaultFont"/>
   		</style>
-		<!-- SelectXX should be more studied -->
+
 		<style selector="h|selectBooleanCheckbox::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
@@ -184,7 +199,6 @@
 		<style selector="h|selectOneRadio::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
-  		
 		<!-- END: javax.faces.component.html -->  		
 
 		<!-- BEGIN: org.apache.myfaces.component.html.ext -->
@@ -203,142 +217,165 @@
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFVisitedLinkForeground"/>   
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlDataTable::style">
+		<style selector="t|dataTable::style">
     		<property name="border-collapse">collapse</property>
   		</style>
 
   		<!-- HtmlForm does not have global selector -->
   		<!-- HtmlGraphicImage does not have global selector -->
   		
-  		<!-- TODO: exist style option if the input field is required, add this -->
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlInputSecret::style">
+		<style selector="t|inputSecret::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style> 			
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlInputText::style">
+		<style selector="t|inputText::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style> 			
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlInputTextarea::style">
+		<style selector="t|inputTextarea::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlInputSecret::required">
+		<style selector="t|inputSecret::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style> 			
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlInputText::required">
+		<style selector="t|inputText::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style> 			
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlInputTextarea::required">
+		<style selector="t|inputTextarea::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
   		
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlMessage::style">
+		<style selector="t|message::style">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFVeryDarkForeground"/>
   		</style> 			
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlMessage::error">
+		<style selector="t|message::error">
     		<includeStyle selector=".AFHeaderLevelOne"/>
     		<includeStyle name="AFErrorTextForeground"/>
   		</style> 			
-  		<style selector="af|org_apache_myfaces_component_html_ext_HtmlMessage::info">
+  		<style selector="t|message::info">
   		    <includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFDarkForeground"/>
     		<includeStyle name="MessageBoxMargin"/>
   		</style> 			
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlMessages::style">
+		<style selector="t|messages::style">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFVeryDarkForeground"/>
   		</style> 			
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlMessages::error">
+		<style selector="t|messages::error">
     		<includeStyle selector=".AFHeaderLevelOne"/>
     		<includeStyle name="AFErrorTextForeground"/>
   		</style> 			
-  		<style selector="af|org_apache_myfaces_component_html_ext_HtmlMessages::info">
+  		<style selector="t|messages::info">
   		    <includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFDarkForeground"/>
     		<includeStyle name="MessageBoxMargin"/>
   		</style> 			
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputFormat::style">
-		    <includeStyle name="AFDefaultFont"/>
-    		<includeStyle name="AFTextForeground"/>			
-  		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLabel::style">
+		<style selector="t|outputLabel::style">
 			<includeStyle name="AFLabel"/>
   		</style>   		
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLabel::required">
+		<style selector="t|outputLabel::required">
 			<includeStyle name="AFRequiredLabel"/>
   		</style>
-  		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLabel::disabled">
+  		<style selector="t|outputLabel::disabled">
   			<includeStyle name="AFLabelDisabled"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLink::style:link">
-    		<includeStyle name="AFDefaultFont"/>
-    		<includeStyle name="AFLinkForeground"/>
-  		</style> 
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLink::style:active">
-    		<includeStyle name="AFDefaultFont"/>
-    		<includeStyle name="AFActiveLinkForeground"/>
-  		</style> 
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLink::style:visited">
-    		<includeStyle name="AFDefaultFont"/>
-    		<includeStyle name="AFVisitedLinkForeground"/>   
-  		</style> 
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputText::style">
+		<style selector="t|outputText::style">
 		    <includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFTextForeground"/>			
   		</style>
   		<!-- PanelGrid and PanelGroup should be more studied -->
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlPanelGrid::style">
+		<style selector="t|panelGrid::style">
 		    <includeStyle name="AFDefaultFont"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlPanelGroup::style">
+		<style selector="t|panelGroup::style">
 		    <includeStyle name="AFDefaultFont"/>
   		</style>
 		<!-- SelectXX should be more studied -->
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectBooleanCheckbox::style">
+		<style selector="t|selectBooleanCheckbox::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectManyCheckbox::style">
+		<style selector="t|selectManyCheckbox::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectManyListbox::style">
+		<style selector="t|selectManyListbox::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectManyMenu::style">
+		<style selector="t|selectManyMenu::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectOneListbox::style">
+		<style selector="t|selectOneListbox::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectOneMenu::style">
+		<style selector="t|selectOneMenu::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectOneRadio::style">
+		<style selector="t|selectOneRadio::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
   		
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectBooleanCheckbox::required">
+		<style selector="t|selectBooleanCheckbox::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectManyCheckbox::required">
+		<style selector="t|selectManyCheckbox::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectManyListbox::required">
+		<style selector="t|selectManyListbox::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectManyMenu::required">
+		<style selector="t|selectManyMenu::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectOneListbox::required">
+		<style selector="t|selectOneListbox::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectOneMenu::required">
+		<style selector="t|selectOneMenu::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectOneRadio::required">
+		<style selector="t|selectOneRadio::required">
 			<includeStyle name="AFRequiredContent"/>
-  		</style>
-		
+  		</style>		
 		<!-- END: org.apache.myfaces.component.html.ext -->
   		
+  		<!-- BEGIN: org.apache.myfaces.custom.collapsiblepanel -->
+		<style selector="t|collapsiblePanel::style">
+		    <includeStyle name="AFDefaultFont"/>
+  		</style>  		
+  		<!-- BEGIN: org.apache.myfaces.custom.collapsiblepanel -->
+
+		<style selector="t|inputCalendar::style">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+		<style selector="t|inputCalendar::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style>
+
+		<style selector="t|inputDate::style">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+		<style selector="t|inputDate::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style>
+
+		<style selector="t|inputFileUpload::style">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+		<style selector="t|inputFileUpload::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style>
+
+		<style selector="t|inputHtml::style">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+		<style selector="t|inputHtml::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style>
+
+		<style selector="t|inputTextHelp::style">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+		<style selector="t|inputTextHelp::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style>
+  		  		
 		<!-- BEGIN: org.apache.myfaces.custom.navigation -->				
 		<!-- END: org.apache.myfaces.custom.navigation -->
 		
@@ -416,6 +453,20 @@
 		</style>
 				 
 		<!-- END: org.apache.myfaces.custom.navmenu.htmlnavmenu -->		  		
+
+		<style selector="t|selectOneCountry::style">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>  		
+		<style selector="t|selectOneCountry::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style>
+		<style selector="t|selectOneLanguage::style">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>  		
+		<style selector="t|selectOneLanguage::required">
+			<includeStyle name="AFRequiredContent"/>
+  		</style>
+
 
 	</styleSheet>
 
