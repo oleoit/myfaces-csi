@@ -108,5 +108,17 @@ This components are contained in the package org.apache.myfaces.custom and are c
 || t:commandNavigation2 || t|commandNavigation2 || ::style||  ||
 || t:commandSortHeader || t|commandSortHeader || ::style ||  ||
 || t:dataList || t|dataList || ::style, ::item ||  ||
-|| t:inputCalendar || t|inputCalendar || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
 || t:dataScroller || t|dataScroller || ::style, ::fastf, ::fastr, ::first, ::last, ::next, ::previous, ::paginatorActiveColumn, ::paginatorColumn, ::paginatorTable ||  ||
+|| t:inputCalendar || t|inputCalendar || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:inputDate || t|inputDate || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:inputFileUpload || t|inputFileUpload || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:inputHtml || t|inputHtml || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, AFRequiredContent(::required)`||
+|| t:inputTextHelp || t|inputTextHelp || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:jscookMenu || t|jscookMenu || ::theme || ||
+
+
+
+Notes:
+
+1. The tld of t:jscookMenu define that a theme is required, so define a default theme
+does not work. For define a t:jscookMenu, you may need to write some javascript for the theme, so it's not fit well with the skin. Anyway, you can define css classes in the skin file that uses the theme.
