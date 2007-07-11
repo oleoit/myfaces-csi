@@ -59,7 +59,7 @@ public class HtmlInputCalendarSkinRenderer extends GenericSkinRenderer {
 	 * @throws IOException
 	 */	
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 		this.encodeGenericWithRequiredComponent(context, component, arc);
 
@@ -74,17 +74,17 @@ public class HtmlInputCalendarSkinRenderer extends GenericSkinRenderer {
 		String popupButtonStyleClass = baseStyleClass + "::popupButton";
 		String weekRowStyleClass = baseStyleClass + "::weekRow";		
 		
-		renderStyleClass(component, context, arc, currentDayCellStyleClass,
+		_renderStyleClass(component, context, arc, currentDayCellStyleClass,
 				"currentDayCellClass");
-		renderStyleClass(component, context, arc, dayCellStyleClass,
+		_renderStyleClass(component, context, arc, dayCellStyleClass,
 			"dayCellClass");		
-		renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
+		_renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
 			"displayValueOnlyStyleClass");		
-		renderStyleClass(component, context, arc, monthYearRowStyleClass,
+		_renderStyleClass(component, context, arc, monthYearRowStyleClass,
 			"monthYearRowClass");		
-		renderStyleClass(component, context, arc, popupButtonStyleClass,
+		_renderStyleClass(component, context, arc, popupButtonStyleClass,
 			"popupButtonStyleClass");		
-		renderStyleClass(component, context, arc, weekRowStyleClass,
+		_renderStyleClass(component, context, arc, weekRowStyleClass,
 			"weekRowClass");				
 	}
 

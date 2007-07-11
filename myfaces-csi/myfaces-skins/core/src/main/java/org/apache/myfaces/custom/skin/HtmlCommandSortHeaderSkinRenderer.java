@@ -36,7 +36,7 @@ import org.apache.myfaces.trinidad.context.RenderingContext;
 public class HtmlCommandSortHeaderSkinRenderer extends GenericSkinRenderer{
 
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context, UIComponent component, RenderingContext arc) throws IOException {
+	protected void _addStyleClassesToComponent(FacesContext context, UIComponent component, RenderingContext arc) throws IOException {
 		this.encodeGenericComponent(context, component, arc);
 		/*
 		String footerStyleClass = null;

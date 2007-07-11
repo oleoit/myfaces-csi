@@ -32,112 +32,112 @@
 			<component-family>javax.faces.Command</component-family>
 			<renderer-type>javax.faces.Button</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.GenericSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlCommandButtonSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.Command</component-family>
 			<renderer-type>javax.faces.Link</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.GenericSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlCommandLinkSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.Data</component-family>
 			<renderer-type>javax.faces.Table</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.HtmlDataTableSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlDataTableSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.Form</component-family>
 			<renderer-type>javax.faces.Form</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.GenericSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlFormSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.Graphic</component-family>
 			<renderer-type>javax.faces.Image</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.HtmlGraphicImageSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlGraphicImageSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.Input</component-family>
 			<renderer-type>javax.faces.Secret</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.GenericSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlInputSecretSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.Input</component-family>
 			<renderer-type>javax.faces.Text</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.GenericSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlInputTextSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.Input</component-family>
 			<renderer-type>javax.faces.Textarea</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.GenericSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlInputTextAreaSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.Message</component-family>
 			<renderer-type>javax.faces.Message</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.HtmlMessageSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlMessageSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.Messages</component-family>
 			<renderer-type>javax.faces.Messages</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.HtmlMessageSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlMessagesSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.Output</component-family>
 			<renderer-type>javax.faces.Format</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.GenericSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlOutputFormatSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.Output</component-family>
 			<renderer-type>javax.faces.Label</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.HtmlOutputLabelSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlOutputLabelSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.Output</component-family>
 			<renderer-type>javax.faces.Link</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.GenericSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlOutputLinkSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.Output</component-family>
 			<renderer-type>javax.faces.Text</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.GenericSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlOutputTextSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.Panel</component-family>
 			<renderer-type>javax.faces.Grid</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.HtmlPanelGridSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlPanelGridSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.Panel</component-family>
 			<renderer-type>javax.faces.Group</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.GenericSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlPanelGroupSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
@@ -146,49 +146,49 @@
 			</component-family>
 			<renderer-type>javax.faces.Checkbox</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.HtmlSelectBooleanSkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlSelectBooleanCheckboxSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.SelectMany</component-family>
 			<renderer-type>javax.faces.Checkbox</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.HtmlSelectOneOrManySkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlSelectManyCheckboxSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.SelectMany</component-family>
 			<renderer-type>javax.faces.Listbox</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.HtmlSelectOneOrManySkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlSelectManyListboxSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.SelectMany</component-family>
 			<renderer-type>javax.faces.Menu</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.HtmlSelectOneOrManySkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlSelectManyMenuSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.SelectOne</component-family>
 			<renderer-type>javax.faces.Listbox</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.HtmlSelectOneOrManySkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlSelectOneListboxSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.SelectOne</component-family>
 			<renderer-type>javax.faces.Menu</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.HtmlSelectOneOrManySkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlSelectOneMenuSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>
 			<component-family>javax.faces.SelectOne</component-family>
 			<renderer-type>javax.faces.Radio</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.HtmlSelectOneOrManySkinRenderer
+				org.apache.myfaces.custom.skin.html.HtmlSelectOneRadioSkinRenderer
 			</renderer-class>
 		</renderer>
 		<!-- END: javax.faces.component.html -->
@@ -198,7 +198,7 @@
 			<component-family>javax.faces.Command</component-family>
 			<renderer-type>org.apache.myfaces.Button</renderer-type>
 			<renderer-class>
-				org.apache.myfaces.custom.skin.GenericSkinRenderer
+				org.apache.myfaces.custom.skin.html.ext.HtmlCommandButtonSkinRenderer
 			</renderer-class>
 		</renderer>
 		<renderer>

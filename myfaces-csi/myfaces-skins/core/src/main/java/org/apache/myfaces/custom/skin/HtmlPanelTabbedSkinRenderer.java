@@ -55,7 +55,7 @@ public class HtmlPanelTabbedSkinRenderer extends GenericSkinRenderer {
 	 * @throws IOException
 	 */	
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
@@ -70,19 +70,19 @@ public class HtmlPanelTabbedSkinRenderer extends GenericSkinRenderer {
 				+ "::paginatorActiveColumn";
 		String styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 
-		renderStyleClass(component, context, arc, activeSubStyleClass,
+		_renderStyleClass(component, context, arc, activeSubStyleClass,
 				"activeSubStyleClass");
-		renderStyleClass(component, context, arc, activeTabStyleClass,
+		_renderStyleClass(component, context, arc, activeTabStyleClass,
 				"activeTabStyleClass");
-		renderStyleClass(component, context, arc, disabledTabStyleClass,
+		_renderStyleClass(component, context, arc, disabledTabStyleClass,
 				"disabledTabStyleClass");
-		renderStyleClass(component, context, arc, inactiveSubStyleClass,
+		_renderStyleClass(component, context, arc, inactiveSubStyleClass,
 				"inactiveSubStyleClass");
-		renderStyleClass(component, context, arc, inactiveTabStyleClass,
+		_renderStyleClass(component, context, arc, inactiveTabStyleClass,
 				"inactiveTabStyleClass");
-		renderStyleClass(component, context, arc, tabContentStyleClass,
+		_renderStyleClass(component, context, arc, tabContentStyleClass,
 				"tabContentStyleClass");
-		renderStyleClass(component, context, arc, styleClass, "styleClass");
+		_renderStyleClass(component, context, arc, styleClass, "styleClass");
 	}
 
 }

@@ -43,7 +43,7 @@ public class HtmlMessageSkinRenderer extends GenericSkinRenderer {
 	private static final Log log = LogFactory.getLog(HtmlMessageSkinRenderer.class);	
 	
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 		this.encodeGenericComponent(context, component, arc);
 
@@ -62,10 +62,10 @@ public class HtmlMessageSkinRenderer extends GenericSkinRenderer {
 		errorStyleClass = baseStyleClass + "::error";
 		warnStyleClass = baseStyleClass + "::warn";
 
-		renderStyleClass(component, context, arc, fatalStyleClass, "fatalClass");
-		renderStyleClass(component, context, arc, infoStyleClass, "infoClass");
-		renderStyleClass(component, context, arc, errorStyleClass, "errorClass");
-		renderStyleClass(component, context, arc, warnStyleClass, "warnClass");
+		_renderStyleClass(component, context, arc, fatalStyleClass, "fatalClass");
+		_renderStyleClass(component, context, arc, infoStyleClass, "infoClass");
+		_renderStyleClass(component, context, arc, errorStyleClass, "errorClass");
+		_renderStyleClass(component, context, arc, warnStyleClass, "warnClass");
 	}
 	
 }

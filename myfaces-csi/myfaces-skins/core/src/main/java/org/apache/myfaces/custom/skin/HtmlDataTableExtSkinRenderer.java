@@ -55,7 +55,7 @@ public class HtmlDataTableExtSkinRenderer extends GenericSkinRenderer {
 	 * @throws IOException
 	 */
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 		String bodyStyleClass = null;
 		String footerStyleClass = null;
@@ -75,23 +75,23 @@ public class HtmlDataTableExtSkinRenderer extends GenericSkinRenderer {
 		rowStyleClass = baseStyleClass + "::row";
 		styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 
-		renderStyleClass(component, context, arc, bodyStyleClass,
+		_renderStyleClass(component, context, arc, bodyStyleClass,
 				"bodyStyleClass");
-		renderStyleClass(component, context, arc, footerStyleClass,
+		_renderStyleClass(component, context, arc, footerStyleClass,
 				"footerClass");
-		renderStyleClass(component, context, arc, headerStyleClass,
+		_renderStyleClass(component, context, arc, headerStyleClass,
 				"headerClass");
-		renderStyleClass(component, context, arc, rowGroupStyleClass,
+		_renderStyleClass(component, context, arc, rowGroupStyleClass,
 				"rowGroupStyleClass");
 		// renderStyleClass(component, context, arc, rowStyleClass,
 		// "rowStyleClass");
-		renderStyleClass(component, context, arc, styleClass, "styleClass");
+		_renderStyleClass(component, context, arc, styleClass, "styleClass");
 
 		Map m = component.getAttributes();
 		String oldRowClasses = (String) m.get("rowClasses");
 		List<String> list = parseStyleClassListComma(oldRowClasses);
 		if (list == null) {
-			renderStyleClass(component, context, arc, rowStyleClass,
+			_renderStyleClass(component, context, arc, rowStyleClass,
 					"rowClasses");
 		} else {
 			String def = arc.getStyleClass(rowStyleClass);
@@ -139,10 +139,10 @@ public class HtmlDataTableExtSkinRenderer extends GenericSkinRenderer {
 				String footerstyleClass = baseStyleClass + "::footer";
 				String headerstyleClass = baseStyleClass + "::header";
 
-				renderStyleClass(child, context, arc, styleClass, "styleClass");
-				renderStyleClass(child, context, arc, footerstyleClass,
+				_renderStyleClass(child, context, arc, styleClass, "styleClass");
+				_renderStyleClass(child, context, arc, footerstyleClass,
 						"footerstyleClass");
-				renderStyleClass(child, context, arc, headerstyleClass,
+				_renderStyleClass(child, context, arc, headerstyleClass,
 						"headerstyleClass");
 			}
 		}

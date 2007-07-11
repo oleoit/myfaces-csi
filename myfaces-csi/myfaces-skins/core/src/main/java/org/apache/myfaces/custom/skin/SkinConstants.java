@@ -22,7 +22,7 @@ package org.apache.myfaces.custom.skin;
 public class SkinConstants {
 
 	public final static String DEFAULT_NAMESPACE = "af|";
-	public final static String STYLE_CLASS_SUFFIX = "::class";
+	public final static String STYLE_CLASS_SUFFIX = "::style";
 	public final static String DISABLED_CLASS_SUFFIX = "::disabled";
 	
 }

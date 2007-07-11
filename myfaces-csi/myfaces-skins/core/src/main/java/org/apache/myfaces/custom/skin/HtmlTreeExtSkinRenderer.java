@@ -39,7 +39,7 @@ public class HtmlTreeExtSkinRenderer extends SkinRenderer {
 			.getLog(HtmlTreeExtSkinRenderer.class);
 
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 	
 		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
@@ -74,13 +74,13 @@ public class HtmlTreeExtSkinRenderer extends SkinRenderer {
 		String iconChildLast = baseStyleClass + "::ChildLast-icon:rtl";
 		
 		
-		renderStyleClass(component, context, arc, nodeClass, "nodeClass");
-		renderStyleClass(component, context, arc, selectedNodeClass,
+		_renderStyleClass(component, context, arc, nodeClass, "nodeClass");
+		_renderStyleClass(component, context, arc, selectedNodeClass,
 				"selectedNodeClass");
-		renderStyleClass(component, context, arc, headerClass, "headerClass");
-		renderStyleClass(component, context, arc, footerClass, "footerClass");
-		renderStyleClass(component, context, arc, iconClass, "iconClass");
-		renderStyleClass(component, context, arc, styleClass, "styleClass");
+		_renderStyleClass(component, context, arc, headerClass, "headerClass");
+		_renderStyleClass(component, context, arc, footerClass, "footerClass");
+		_renderStyleClass(component, context, arc, iconClass, "iconClass");
+		_renderStyleClass(component, context, arc, styleClass, "styleClass");
 
 		_setIconDirection(context, component, arc, iconLine, "getIconLine","setIconLine");
 		_setIconDirection(context, component, arc, iconNoLine, "getIconLine","setIconLine");		

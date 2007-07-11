@@ -54,7 +54,7 @@ public class HtmlScheduleSkinRenderer extends GenericSkinRenderer {
 	 * @throws IOException
 	 */	
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
 				+ StringUtils.replaceChars(component.getClass().getName(), '.',
@@ -84,42 +84,42 @@ public class HtmlScheduleSkinRenderer extends GenericSkinRenderer {
 		String unevenStyleClass = baseStyleClass + "::uneven";
 		String weekStyleClass = baseStyleClass + "::week";
 
-		renderStyleClass(component, context, arc, backgroundStyleClass,
+		_renderStyleClass(component, context, arc, backgroundStyleClass,
 				"backgroundClass");
-		renderStyleClass(component, context, arc, columnStyleClass,
+		_renderStyleClass(component, context, arc, columnStyleClass,
 				"columnClass");
-		renderStyleClass(component, context, arc, contentStyleClass,
+		_renderStyleClass(component, context, arc, contentStyleClass,
 				"contentClass");
-		renderStyleClass(component, context, arc, dateStyleClass, "dateClass");
-		renderStyleClass(component, context, arc, dayStyleClass, "dayClass");
-		renderStyleClass(component, context, arc, entryStyleClass, "entryClass");
-		renderStyleClass(component, context, arc, evenStyleClass, "evenClass");
-		renderStyleClass(component, context, arc, foregroundStyleClass,
+		_renderStyleClass(component, context, arc, dateStyleClass, "dateClass");
+		_renderStyleClass(component, context, arc, dayStyleClass, "dayClass");
+		_renderStyleClass(component, context, arc, entryStyleClass, "entryClass");
+		_renderStyleClass(component, context, arc, evenStyleClass, "evenClass");
+		_renderStyleClass(component, context, arc, foregroundStyleClass,
 				"foregroundClass");
-		renderStyleClass(component, context, arc, freeStyleClass, "freeClass");
-		renderStyleClass(component, context, arc, gutterStyleClass,
+		_renderStyleClass(component, context, arc, freeStyleClass, "freeClass");
+		_renderStyleClass(component, context, arc, gutterStyleClass,
 				"gutterClass");
-		renderStyleClass(component, context, arc, headerStyleClass,
+		_renderStyleClass(component, context, arc, headerStyleClass,
 				"headerClass");
-		renderStyleClass(component, context, arc, holidayStyleClass,
+		_renderStyleClass(component, context, arc, holidayStyleClass,
 				"holidayClass");
-		renderStyleClass(component, context, arc, hoursStyleClass, "hoursClass");
-		renderStyleClass(component, context, arc, inactiveDayStyleClass,
+		_renderStyleClass(component, context, arc, hoursStyleClass, "hoursClass");
+		_renderStyleClass(component, context, arc, inactiveDayStyleClass,
 				"inactiveDayClass");
-		renderStyleClass(component, context, arc, minutesStyleClass,
+		_renderStyleClass(component, context, arc, minutesStyleClass,
 				"minutesClass");
-		renderStyleClass(component, context, arc, monthStyleClass, "monthClass");
-		renderStyleClass(component, context, arc, selectedStyleClass,
+		_renderStyleClass(component, context, arc, monthStyleClass, "monthClass");
+		_renderStyleClass(component, context, arc, selectedStyleClass,
 				"selectedClass");
-		renderStyleClass(component, context, arc, selectedEntryStyleClass,
+		_renderStyleClass(component, context, arc, selectedEntryStyleClass,
 				"selectedEntryClass");
-		renderStyleClass(component, context, arc, subtitleStyleClass,
+		_renderStyleClass(component, context, arc, subtitleStyleClass,
 				"subtitleClass");
-		renderStyleClass(component, context, arc, textStyleClass, "textClass");
-		renderStyleClass(component, context, arc, titleStyleClass, "titleClass");
-		renderStyleClass(component, context, arc, unevenStyleClass,
+		_renderStyleClass(component, context, arc, textStyleClass, "textClass");
+		_renderStyleClass(component, context, arc, titleStyleClass, "titleClass");
+		_renderStyleClass(component, context, arc, unevenStyleClass,
 				"unevenClass");
-		renderStyleClass(component, context, arc, weekStyleClass, "weekClass");
+		_renderStyleClass(component, context, arc, weekStyleClass, "weekClass");
 	}
 
 }

@@ -53,7 +53,7 @@ public class HtmlOutputLabelSkinRenderer extends SkinRenderer {
 	 * @throws IOException
 	 */
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
 		String contentStyleClass = component.getClass().getName();
@@ -133,9 +133,9 @@ public class HtmlOutputLabelSkinRenderer extends SkinRenderer {
 
 		// 3. set the property styleClass, setting it.
 		if (otherStyles > 0) {
-			renderStyleClasses(component, context, arc, styleClasses);
+			_renderStyleClasses(component, context, arc, styleClasses);
 		} else {
-			renderStyleClass(component, context, arc, contentStyleClass);
+			_renderStyleClass(component, context, arc, contentStyleClass);
 		}
 	}
 }

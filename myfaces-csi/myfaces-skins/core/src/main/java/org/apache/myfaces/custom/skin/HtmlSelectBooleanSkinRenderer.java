@@ -44,7 +44,7 @@ public class HtmlSelectBooleanSkinRenderer extends GenericSkinRenderer {
 	private static final Log log = LogFactory.getLog(HtmlSelectBooleanSkinRenderer.class);	
 		
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 		this.encodeGenericWithRequiredComponent(context, component, arc);
 	}

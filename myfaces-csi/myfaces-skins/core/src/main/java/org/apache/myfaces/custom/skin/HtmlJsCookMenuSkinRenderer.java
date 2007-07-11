@@ -47,7 +47,7 @@ public class HtmlJsCookMenuSkinRenderer extends SkinRenderer {
 			.getLog(HtmlJsCookMenuSkinRenderer.class);
 
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
 		log.info("Rendering... javascript_location:"+(String) component.getAttributes().get(JSFAttr.JAVASCRIPT_LOCATION));
@@ -58,7 +58,7 @@ public class HtmlJsCookMenuSkinRenderer extends SkinRenderer {
 
 		String theme = baseStyleClass + "::theme";
 
-		renderStyleClass(component, context, arc, theme,
+		_renderReplaceStyleClass(component, context, arc, theme,
 				"theme");
 	}
 	

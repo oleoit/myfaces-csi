@@ -29,22 +29,22 @@
 
 	<styleSheet>
 		<!-- BEGIN: javax.faces.component.html -->	
-		<style selector="af|javax_faces_component_html_HtmlCommandButton::class">
+		<style selector="h|commandButton::style">
     		<includeStyle name="AFDefaultFont"/>
   		</style> 			
-		<style selector="af|javax_faces_component_html_HtmlCommandLink::class:link">
+		<style selector="h|commandLink::style:link">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFLinkForeground"/>
   		</style> 
-		<style selector="af|javax_faces_component_html_HtmlCommandLink::class:active">
+		<style selector="h|commandLink::style:active">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFActiveLinkForeground"/>
   		</style> 
-		<style selector="af|javax_faces_component_html_HtmlCommandLink::class:visited">
+		<style selector="h|commandLink::style:visited">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFVisitedLinkForeground"/>   
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlDataTable::class">
+		<style selector="h|dataTable::style">
     		<property name="border-collapse">collapse</property>
   		</style>
 
@@ -52,152 +52,158 @@
   		<!-- HtmlGraphicImage does not have global selector -->
   		
   		<!-- TODO: exist style option if the input field is required, add this -->
-		<style selector="af|javax_faces_component_html_HtmlInputSecret::class">
+		<style selector="h|inputSecret::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
   		 			
-		<style selector="af|javax_faces_component_html_HtmlInputText::class">
+		<style selector="h|inputText::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style> 			
-		<style selector="af|javax_faces_component_html_HtmlInputTextarea::class">
+		<style selector="h|inputTextarea::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlInputSecret::required">
+		<style selector="h|inputSecret::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style> 			
-		<style selector="af|javax_faces_component_html_HtmlInputText::required">
+		<style selector="h|inputText::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style> 			
-		<style selector="af|javax_faces_component_html_HtmlInputTextarea::required">
+		<style selector="h|inputTextarea::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
   		
-		<style selector="af|javax_faces_component_html_HtmlMessage::class">
+		<style selector="h|message::style">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFVeryDarkForeground"/>
   		</style> 			
-		<style selector="af|javax_faces_component_html_HtmlMessage::error">
+		<style selector="h|message::error">
     		<includeStyle selector=".AFHeaderLevelOne"/>
     		<includeStyle name="AFErrorTextForeground"/>
   		</style> 			
-  		<style selector="af|javax_faces_component_html_HtmlMessage::info">
+  		<style selector="h|message::info">
   		    <includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFDarkForeground"/>
     		<includeStyle name="MessageBoxMargin"/>
   		</style> 			
-		<style selector="af|javax_faces_component_html_HtmlMessages::class">
+		<style selector="h|messages::style">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFVeryDarkForeground"/>
   		</style> 			
-		<style selector="af|javax_faces_component_html_HtmlMessages::error">
+		<style selector="h|messages::error">
     		<includeStyle selector=".AFHeaderLevelOne"/>
     		<includeStyle name="AFErrorTextForeground"/>
   		</style> 			
-  		<style selector="af|javax_faces_component_html_HtmlMessages::info">
+  		<style selector="h|messages::info">
   		    <includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFDarkForeground"/>
     		<includeStyle name="MessageBoxMargin"/>
   		</style> 			
-		<style selector="af|javax_faces_component_html_HtmlOutputFormat::class">
+		<style selector="h|outputFormat::style">
 		    <includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFTextForeground"/>			
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlOutputLabel::class">
+		<style selector="h|outputLabel::style">
 			<includeStyle name="AFLabel"/>
   		</style>   		
-		<style selector="af|javax_faces_component_html_HtmlOutputLabel::required">
+		<style selector="h|outputLabel::required">
 			<includeStyle name="AFRequiredLabel"/>
   		</style>
-  		<style selector="af|javax_faces_component_html_HtmlOutputLabel::disabled">
+  		<style selector="h|outputLabel::disabled">
   			<includeStyle name="AFLabelDisabled"/>
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlOutputLink::class:link">
+		<style selector="h|outputLink::style:link">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFLinkForeground"/>
   		</style> 
-		<style selector="af|javax_faces_component_html_HtmlOutputLink::class:active">
+		<style selector="h|outputLink::style:active">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFActiveLinkForeground"/>
   		</style> 
-		<style selector="af|javax_faces_component_html_HtmlOutputLink::class:visited">
+		<style selector="h|outputLink::style:visited">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFVisitedLinkForeground"/>   
   		</style> 
-		<style selector="af|javax_faces_component_html_HtmlOutputText::class">
+		<style selector="h|outputText::style">
 		    <includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFTextForeground"/>			
   		</style>
+  		
+		<style selector="h|outputText::style">
+		    <includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFTextForeground"/>			
+  		</style>
+  		
   		<!-- PanelGrid and PanelGroup should be more studied -->
-		<style selector="af|javax_faces_component_html_HtmlPanelGrid::class">
+		<style selector="h|panelGrid::style">
 		    <includeStyle name="AFDefaultFont"/>
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlPanelGroup::class">
+		<style selector="h|panelGroup::style">
 		    <includeStyle name="AFDefaultFont"/>
   		</style>
 		<!-- SelectXX should be more studied -->
-		<style selector="af|javax_faces_component_html_HtmlSelectBooleanCheckbox::class">
+		<style selector="h|selectBooleanCheckbox::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlSelectManyCheckbox::class">
+		<style selector="h|selectManyCheckbox::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlSelectManyListbox::class">
+		<style selector="h|selectManyListbox::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlSelectManyMenu::class">
+		<style selector="h|selectManyMenu::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlSelectOneListbox::class">
+		<style selector="h|selectOneListbox::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlSelectOneMenu::class">
+		<style selector="h|selectOneMenu::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlSelectOneRadio::class">
+		<style selector="h|selectOneRadio::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
   		
-		<style selector="af|javax_faces_component_html_HtmlSelectBooleanCheckbox::required">
+		<style selector="h|selectBooleanCheckbox::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlSelectManyCheckbox::required">
+		<style selector="h|selectManyCheckbox::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlSelectManyListbox::required">
+		<style selector="h|selectManyListbox::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlSelectManyMenu::required">
+		<style selector="h|selectManyMenu::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlSelectOneListbox::required">
+		<style selector="h|selectOneListbox::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlSelectOneMenu::required">
+		<style selector="h|selectOneMenu::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
-		<style selector="af|javax_faces_component_html_HtmlSelectOneRadio::required">
+		<style selector="h|selectOneRadio::required">
 			<includeStyle name="AFRequiredContent"/>
   		</style>
   		
 		<!-- END: javax.faces.component.html -->  		
 
 		<!-- BEGIN: org.apache.myfaces.component.html.ext -->
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlCommandButton::class">
+		<style selector="t|commandButton::style">
     		<includeStyle name="AFDefaultFont"/>
   		</style> 			
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlCommandLink::class:link">
+		<style selector="t|commandLink::style:link">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFLinkForeground"/>
   		</style> 
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlCommandLink::class:active">
+		<style selector="t|commandLink::style:active">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFActiveLinkForeground"/>
   		</style> 
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlCommandLink::class:visited">
+		<style selector="t|commandLink::style:visited">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFVisitedLinkForeground"/>   
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlDataTable::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlDataTable::style">
     		<property name="border-collapse">collapse</property>
   		</style>
 
@@ -205,13 +211,13 @@
   		<!-- HtmlGraphicImage does not have global selector -->
   		
   		<!-- TODO: exist style option if the input field is required, add this -->
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlInputSecret::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlInputSecret::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style> 			
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlInputText::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlInputText::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style> 			
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlInputTextarea::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlInputTextarea::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
 		<style selector="af|org_apache_myfaces_component_html_ext_HtmlInputSecret::required">
@@ -224,7 +230,7 @@
 			<includeStyle name="AFRequiredContent"/>
   		</style>
   		
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlMessage::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlMessage::style">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFVeryDarkForeground"/>
   		</style> 			
@@ -237,7 +243,7 @@
     		<includeStyle name="AFDarkForeground"/>
     		<includeStyle name="MessageBoxMargin"/>
   		</style> 			
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlMessages::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlMessages::style">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFVeryDarkForeground"/>
   		</style> 			
@@ -250,11 +256,11 @@
     		<includeStyle name="AFDarkForeground"/>
     		<includeStyle name="MessageBoxMargin"/>
   		</style> 			
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputFormat::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputFormat::style">
 		    <includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFTextForeground"/>			
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLabel::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLabel::style">
 			<includeStyle name="AFLabel"/>
   		</style>   		
 		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLabel::required">
@@ -263,49 +269,49 @@
   		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLabel::disabled">
   			<includeStyle name="AFLabelDisabled"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLink::class:link">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLink::style:link">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFLinkForeground"/>
   		</style> 
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLink::class:active">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLink::style:active">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFActiveLinkForeground"/>
   		</style> 
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLink::class:visited">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputLink::style:visited">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFVisitedLinkForeground"/>   
   		</style> 
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputText::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlOutputText::style">
 		    <includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFTextForeground"/>			
   		</style>
   		<!-- PanelGrid and PanelGroup should be more studied -->
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlPanelGrid::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlPanelGrid::style">
 		    <includeStyle name="AFDefaultFont"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlPanelGroup::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlPanelGroup::style">
 		    <includeStyle name="AFDefaultFont"/>
   		</style>
 		<!-- SelectXX should be more studied -->
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectBooleanCheckbox::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectBooleanCheckbox::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectManyCheckbox::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectManyCheckbox::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectManyListbox::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectManyListbox::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectManyMenu::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectManyMenu::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectOneListbox::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectOneListbox::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectOneMenu::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectOneMenu::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectOneRadio::class">
+		<style selector="af|org_apache_myfaces_component_html_ext_HtmlSelectOneRadio::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
   		

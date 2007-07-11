@@ -56,7 +56,7 @@ public class HtmlInputBaseExtSkinRenderer extends GenericSkinRenderer {
 	 * @throws IOException
 	 */	
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 		this.encodeGenericWithRequiredComponent(context, component, arc);
 
@@ -66,7 +66,7 @@ public class HtmlInputBaseExtSkinRenderer extends GenericSkinRenderer {
 
 		String displayValueOnlyStyleClass = baseStyleClass + "::displayValueOnly";		
 
-		renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
+		_renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
 				"displayValueOnlyStyleClass");		
 	}
 

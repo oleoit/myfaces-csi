@@ -27,39 +27,40 @@
 }
 
 /*
-af|javax_faces_component_html_HtmlOutputLabel::class
+af|javax_faces_component_html_HtmlOutputLabel::style
 {
 	color: red;
 }
 */
 
-af|javax_faces_component_html_HtmlOutputLink::class:hover
+
+h|outputLink::style:hover
 {
 	font-family: verdana,arial,helvetica,sans-serif; 
  	text-decoration: inherit underline overline; 
  	color: red;
 }
 
-af|javax_faces_component_html_HtmlPanelGrid::class
+h|panelGrid::style
 {
 }
 
-af|javax_faces_component_html_HtmlPanelGrid::row
+h|panelGrid::row
 {
 	color: red;
 }
 
-af|javax_faces_component_html_HtmlInputText::class:focus
+h|inputText::style:focus
 {
 	background: rgb(194,252,251);
 }
 
-af|javax_faces_component_html_HtmlInputTextarea::class:focus
+h|inputTextarea::style:focus
 {
 	background: rgb(194,252,251);
 }
 
-af|javax_faces_component_html_HtmlInputSecret::class:focus
+h|inputSecret::style:focus
 {
 	background: rgb(194,252,251);
 }
@@ -69,14 +70,14 @@ af|javax_faces_component_html_HtmlInputSecret::class:focus
 	background-focus  :  rgb(194,252,251)
 }
 
-af|javax_faces_component_html_HtmlSelectOneMenu::class:focus
+h|selectOneMenu::style:focus
 {
 	background: background-focus   
 }
 
 /* Replace table skin css definition */
 
-af|org_apache_myfaces_component_html_ext_HtmlDataTable::class
+af|org_apache_myfaces_component_html_ext_HtmlDataTable::style
 {
 	font-family : verdana, Geneva, Arial, Helvetica, sans-serif;
 	font-size: 12px;
@@ -106,7 +107,7 @@ af|org_apache_myfaces_component_html_ext_HtmlDataTable::row
     background-color: #FFFFE0;
 }
 
-af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::class
+af|org_apache_myfaces_custom_datascroller_HtmlDataScroller::style
 {
     padding-left:20px;
 }
@@ -163,7 +164,7 @@ af|org_apache_myfaces_custom_tree_HtmlTree::nodeOpen-icon:rtl
 	content:url(/images/blue-folder-open.gif);
 }
 
-af|org_apache_myfaces_custom_tree_HtmlTree::class
+af|org_apache_myfaces_custom_tree_HtmlTree::style
 {
 	color: blue;
 }
@@ -180,5 +181,3 @@ af|org_apache_myfaces_custom_tree_HtmlTree::class
 {
 	content:url(/images/logo_mini.jpg);	
 }
-
-
