@@ -125,7 +125,7 @@ This components are contained in the package org.apache.myfaces.custom and are c
 || t:selectOneCountry   || t|selectOneCountry || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
 || t:selectOneLanguage   || t|selectOneLanguage || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
 || t:swapImage   || t|swapImage     || ::style || ||
-|| t:tree   || t|tree || ::style, ::node, ::selectedNode, ::header, ::footer, ::icon, ::line-icon:rtl, ::noLine-icon:rtl, ::nodeOpen-icon:rtl, nodeOpenFirst-icon:rtl, ::nodeOpenMiddle-icon:rtl, ::nodeOpenLast-icon:rtl, ::nodeClose-icon:rtl, ::nodeCloseFirst-icon:rtl, ::nodeCloseMiddle-icon:rtl, ::nodeCloseLast-icon:rtl, ::ChildFirst-icon:rtl, ::ChildMiddle-icon:rtl, ::ChildLast-icon:rtl || ||
+|| t:tree   || t|tree || ` ::style, ::node, ::selectedNode, ::header, ::footer, ::icon, ::line-icon:rtl, ::noLine-icon:rtl, ::nodeOpen-icon:rtl, nodeOpenFirst-icon:rtl, ::nodeOpenMiddle-icon:rtl, ::nodeOpenLast-icon:rtl, ::nodeClose-icon:rtl, ::nodeCloseFirst-icon:rtl, ::nodeCloseMiddle-icon:rtl, ::nodeCloseLast-icon:rtl, ::ChildFirst-icon:rtl, ::ChildMiddle-icon:rtl, ::ChildLast-icon:rtl `|| ||
 
 Notes:
 
