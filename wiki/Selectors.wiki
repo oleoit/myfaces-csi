@@ -11,9 +11,9 @@ The table conventions are these:
   * *Component*: Reference the component name in a jsp or jspx file.
   * *Selector Base Name*: the name used in the css skin file. For easy of use, its the same component name but replace `|` by `*`.
   * *Properties*: The property in what add default css selector. For easy of use, its name generally is the same css property name of the component minus `Class` suffix (styleClass --> `::style`).
-  * *Extends*: The global selectors that inherits css styling attributes. The words in italic are attributes defined.
+  * *Extends*: The global selectors that inherits css styling attributes. The words in italic are attributes defined. If you found a selector with a parentesis, it denotes that this selector apply for this property.
 
-Some components use the classes p_AFDisabled  p_AFReadonly inside :style property.
+Some components use the classes p_AFDisabled and  p_AFReadonly inside :style property.
 
 == JSF HTML Skin Selectors ==
 
@@ -23,12 +23,27 @@ Some components use the classes p_AFDisabled  p_AFReadonly inside :style propert
 || h:dataTable || h|datatable || ::style, ::footer, ::header, ::row|| _border-collapse:collapse_ || 
 || h:form   || h|form     || ::style   || ||
 || h:graphicImage   || h|graphicImage     || ::style || ||
+|| h:inputSecret   || h|inputSecret     || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| h:inputText   || h|inputText     || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| h:inputTextarea   || h|inputTextarea     || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| h:message || h|message || ::style, ::fatal, ::info, ::error, ::warn || `AFDefaultFont(All properties), AFVeryDarkForeground(::style), .AFHeaderLevelOne(::error), AFErrorTextForeground(::error), AFDarkForeground(::info), MessageBoxMargin(::info) `||
+|| h:messages || h|messages || ::style, ::fatal, ::info, ::error, ::warn || `AFDefaultFont(All properties), AFVeryDarkForeground(::style), .AFHeaderLevelOne(::error), AFErrorTextForeground(::error), AFDarkForeground(::info), MessageBoxMargin(::info) `||
+|| h:outputLabel || h|outputLabel || ::style, ::disabled, ::required  ||`AFLabel(::style), AFRequiredLabel(::disabled), AFLabelDisabled(::required) `||
+|| h:outputLink   || h|outputLink     || ::style   ||`AFDefaultFont, AFLinkForeground(::style:link), AFActiveLinkForeground(::style:active), AFVisitedLinkForeground(::style:visited)`  ||
 || h:outputText    || h|outputText      || ::style  ||`AFDefaultFont, AFTextForeground`||
-
+|| h:panelGrid   || h|panelGrid     || ::style, ::footer, ::header, ::row || `AFDefaultFont` ||
+|| h:panelGroup   || h|panelGroup     || ::style   || `AFDefaultFont` ||
+|| h:selectBooleanCheckbox   || h|selectBooleanCheckbox || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| h:selectManyCheckbox   || h|selectManyCheckbox || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| h:selectManyListbox   || h|selectManyListbox || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| h:selectManyMenu   || h|selectManyMenu || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| h:selectOneListbox   || h|selectOneListbox || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| h:selectOneMenu   || h|selectOneMenu || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| h:selectOneRadio   || h|selectOneRadio || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
 
 Notes:
 
-1. h:graphicImage can load images or icons referenced in a css skin file using selectors ending with -icon or -icon:rtl like this
+1. h:graphicImage can load images or icons referenced in a css skin file using selectors ending with -icon or -icon:rtl like this:
 
 In CSS skin file:
 
@@ -41,7 +56,11 @@ In CSS skin file:
 
 In JSP or JSPX file:
 
+{{{
 <h:graphicImage url="xxx-icon"/>
+}}}
 
 == Tomahawk Extended HTML Selectors ==
+
+
 
