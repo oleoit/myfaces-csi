@@ -92,7 +92,13 @@ This components are direct extensions of JSF HTML component library. In general,
 
 Notes:
 
-1. t:graphicImage works the same as h:graphicImage
-2. t:outputLabel works the same as h:outputLabel
+1. t:graphicImage works the same as h:graphicImage.
+
+2. t:outputLabel works the same as h:outputLabel.
 
 == Tomahawk Custom Selectors ==
+
+This components are contained in the package org.apache.myfaces.custom and are components contributed by developers.
+
+|| *Component*     || *Selector Base Name* || *Properties* || *Extends* ||
+
