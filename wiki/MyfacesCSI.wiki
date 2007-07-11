@@ -46,7 +46,10 @@ The list of the patches needed are this:
 
   # patch1.patch: fix `HtmlCommandLinkRenderer.java` on trinidad-impl project (need to run <t:commandSortHeader>).
   # patch2.patch: fix `HtmlDataTable.java` on tomahawk (make <t:commandSortHeader> run good).
-  #patch3.patch: fix `HtmlDataTable.java` on tomahawk (correct ClassCastException).
+  # patch3.patch: fix `HtmlDataTable.java` on tomahawk (correct ClassCastException).
+  # patch4.patch: fix pseudoclasses on trinidad (correct `CSSGenerationUtils`).
+  # patch5.patch: fix `HtmlPanelNavigationMenu.java` on tomahawk (correct ClassCastException).
+  # patchConstants6.patch: Add local constans to trinidad (modify `SkinCSSDocumentHandler.java`).
 
 == Implementation details ==
 
