@@ -6,6 +6,42 @@ This is a set of tables describing how selectors are implemented in the project
 
 = Details =
 
-|| Component     || Selector Base Name || properties || Extends ||
-|| h:outputText  || h|outputText       || ::style    || AFDefaultFont, AFTextForeground ||
+The table conventions are these:
+
+  * *Component*: Reference the component name in a jsp or jspx file.
+  * *Selector Base Name*: the name used in the css skin file. For easy of use, its the same component name but replace `|` by `*`.
+  * *Properties*: The property in what add default css selector. For easy of use, its name generally is the same css property name of the component minus `Class` suffix (styleClass --> `::style`).
+  * *Extends*: The global selectors that inherits css styling attributes. The words in italic are attributes defined.
+
+Some components use the classes p_AFDisabled  p_AFReadonly inside :style property.
+
+== JSF HTML Skin Selectors ==
+
+|| *Component*     || *Selector Base Name* || *Properties* || *Extends* ||
+|| h:commandButton || h|commandButton   || ::style   ||`AFDefaultFont, p_AFDisabled, p_AFReadonly` || 
+|| h:commandLink   || h|commandLink     || ::style   ||`AFDefaultFont, AFLinkForeground(::style:link), AFActiveLinkForeground(::style:active), AFVisitedLinkForeground(::style:visited)`  || 
+|| h:dataTable || h|datatable || ::style, ::footer, ::header, ::row|| _border-collapse:collapse_ || 
+|| h:form   || h|form     || ::style   || ||
+|| h:graphicImage   || h|graphicImage     || ::style || ||
+|| h:outputText    || h|outputText      || ::style  ||`AFDefaultFont, AFTextForeground`||
+
+
+Notes:
+
+1. h:graphicImage can load images or icons referenced in a css skin file using selectors ending with -icon or -icon:rtl like this
+
+In CSS skin file:
+
+{{{
+.xxx-icon
+{
+  content:url(/images/logo_mini.jpg);	
+}
+}}}
+
+In JSP or JSPX file:
+
+<h:graphicImage url="xxx-icon"/>
+
+== Tomahawk Extended HTML Selectors ==
 
