@@ -33,7 +33,7 @@ import org.apache.myfaces.trinidad.context.RenderingContext;
 public class HtmlNewspaperExtSkinRenderer extends GenericSkinRenderer {
 
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 		this.encodeGenericComponent(context, component, arc);
 
@@ -50,16 +50,16 @@ public class HtmlNewspaperExtSkinRenderer extends GenericSkinRenderer {
 		headerStyleClass = baseStyleClass + "::header";
 		rowStyleClass = baseStyleClass + "::row";
 
-		renderStyleClass(component, context, arc, footerStyleClass,
+		_renderStyleClass(component, context, arc, footerStyleClass,
 			"footerClass");
-		renderStyleClass(component, context, arc, headerStyleClass,
+		_renderStyleClass(component, context, arc, headerStyleClass,
 			"headerClass");
 
 		Map m = component.getAttributes();
 		String oldRowClasses = (String) m.get("rowClasses");
 		List<String> list = parseStyleClassListComma(oldRowClasses);
 		if (list == null){
-			renderStyleClass(component, context, arc, rowStyleClass,
+			_renderStyleClass(component, context, arc, rowStyleClass,
 			"rowClasses");			
 		}else{
 			String def = arc.getStyleClass(rowStyleClass);

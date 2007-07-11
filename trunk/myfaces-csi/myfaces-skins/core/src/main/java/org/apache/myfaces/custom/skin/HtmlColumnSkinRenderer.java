@@ -37,7 +37,7 @@ public class HtmlColumnSkinRenderer extends SkinRenderer{
 
 	// For use in jsf 1.2
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context, UIComponent component, RenderingContext arc) throws IOException {
+	protected void _addStyleClassesToComponent(FacesContext context, UIComponent component, RenderingContext arc) throws IOException {
 		String footerStyleClass = null;
 		String headerStyleClass = null;
 
@@ -48,9 +48,9 @@ public class HtmlColumnSkinRenderer extends SkinRenderer{
 		footerStyleClass = baseStyleClass + "::footer";
 		headerStyleClass = baseStyleClass + "::header";
 
-		renderStyleClass(component, context, arc, footerStyleClass,
+		_renderStyleClass(component, context, arc, footerStyleClass,
 				"footerClass");
-		renderStyleClass(component, context, arc, headerStyleClass,
+		_renderStyleClass(component, context, arc, headerStyleClass,
 				"headerClass");
 	}
 

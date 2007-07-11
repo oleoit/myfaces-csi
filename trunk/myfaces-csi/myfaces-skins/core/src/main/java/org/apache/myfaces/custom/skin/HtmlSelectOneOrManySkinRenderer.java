@@ -44,7 +44,7 @@ public class HtmlSelectOneOrManySkinRenderer extends GenericSkinRenderer {
 	private static final Log log = LogFactory.getLog(HtmlSelectOneOrManySkinRenderer.class);	
 		
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 		this.encodeGenericWithRequiredComponent(context, component, arc);
 		
@@ -58,9 +58,9 @@ public class HtmlSelectOneOrManySkinRenderer extends GenericSkinRenderer {
 		disabledStyleClass = baseStyleClass + SkinConstants.DISABLED_CLASS_SUFFIX;
 		enabledStyleClass = baseStyleClass + "::enabled";
 
-		renderStyleClass(component, context, arc, disabledStyleClass,
+		_renderStyleClass(component, context, arc, disabledStyleClass,
 				"disabledClass");
-		renderStyleClass(component, context, arc, enabledStyleClass,
+		_renderStyleClass(component, context, arc, enabledStyleClass,
 				"enabledClass");
 		
 	}

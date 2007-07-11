@@ -43,7 +43,7 @@ public class HtmlDataScrollerExtSkinRenderer extends SkinRenderer {
 			.getLog(HtmlDataScrollerExtSkinRenderer.class);
 
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
 		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
@@ -62,25 +62,25 @@ public class HtmlDataScrollerExtSkinRenderer extends SkinRenderer {
 		String previousStyleClass = baseStyleClass + "::previous";
 		String styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 
-		renderStyleClass(component, context, arc, fastfStyleClass,
+		_renderStyleClass(component, context, arc, fastfStyleClass,
 				"fastfStyleClass");
-		renderStyleClass(component, context, arc, fastrStyleClass,
+		_renderStyleClass(component, context, arc, fastrStyleClass,
 				"fastrStyleClass");
-		renderStyleClass(component, context, arc, firstStyleClass,
+		_renderStyleClass(component, context, arc, firstStyleClass,
 				"firstStyleClass");
-		renderStyleClass(component, context, arc, lastStyleClass,
+		_renderStyleClass(component, context, arc, lastStyleClass,
 				"lastStyleClass");
-		renderStyleClass(component, context, arc, nextStyleClass,
+		_renderStyleClass(component, context, arc, nextStyleClass,
 				"nextStyleClass");
-		renderStyleClass(component, context, arc, paginatorActiveColumnClass,
+		_renderStyleClass(component, context, arc, paginatorActiveColumnClass,
 				"paginatorActiveColumnClass");
-		renderStyleClass(component, context, arc, paginatorColumnClass,
+		_renderStyleClass(component, context, arc, paginatorColumnClass,
 				"paginatorColumnClass");
-		renderStyleClass(component, context, arc, paginatorTableClass,
+		_renderStyleClass(component, context, arc, paginatorTableClass,
 				"paginatorTableClass");
-		renderStyleClass(component, context, arc, previousStyleClass,
+		_renderStyleClass(component, context, arc, previousStyleClass,
 				"previousStyleClass");
-		renderStyleClass(component, context, arc, styleClass, "styleClass");
+		_renderStyleClass(component, context, arc, styleClass, "styleClass");
 
 	}
 

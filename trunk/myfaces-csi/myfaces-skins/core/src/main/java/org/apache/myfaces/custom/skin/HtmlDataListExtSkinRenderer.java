@@ -53,7 +53,7 @@ public class HtmlDataListExtSkinRenderer extends GenericSkinRenderer {
 	 * @throws IOException
 	 */	
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 		this.encodeGenericComponent(context, component, arc);
 		String itemStyleClass = null;
@@ -64,7 +64,7 @@ public class HtmlDataListExtSkinRenderer extends GenericSkinRenderer {
 
 		itemStyleClass = baseStyleClass + "::item";		
 
-		renderStyleClass(component, context, arc, itemStyleClass,
+		_renderStyleClass(component, context, arc, itemStyleClass,
 				"itemStyleClass");		
 
 	}

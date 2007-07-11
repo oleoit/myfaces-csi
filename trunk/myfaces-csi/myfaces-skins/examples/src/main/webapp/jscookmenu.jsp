@@ -37,7 +37,7 @@
 	<f:loadBundle
 		basename="org.apache.myfaces.examples.resource.example_messages"
 		var="example_messages" />
-    <t:jscookMenu layout="hbr" theme="ThemeOffice" styleLocation="css/jscookmenu">
+	  <t:jscookMenu layout="hbr" theme="ThemeOffice" styleLocation="css/jscookmenu">
 		<%/* Availaible jscookMenu themes: ThemeIE, ThemeMiniBlack, ThemeOffice, ThemePanel
              Availaible jscookMenu layout: hbr, hbl, hur, hul, vbr, vbl, vur, vul
              respect to Heng Yuan http://www.cs.ucla.edu/~heng/JSCookMenu
@@ -109,7 +109,7 @@
 	<h:outputText value="<p>Dynamic binding: </p>" escape="false"/>
 	
     <t:jscookMenu id="menu2" layout="hbr" theme="ThemeOffice" styleLocation="css/jscookmenu">
-        < t:navigationMenuItems id="navitems" value="#{navigationMenu.panelNavigationItems}" />
+        <t:navigationMenuItems id="navitems" value="#{navigationMenu.panelNavigationItems}" />
     </t:jscookMenu>
 </h:form>
 <jsp:include page="inc/mbean_source.jsp"/>

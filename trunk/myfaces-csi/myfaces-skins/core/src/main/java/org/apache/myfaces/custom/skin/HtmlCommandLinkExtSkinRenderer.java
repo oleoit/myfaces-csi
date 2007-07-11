@@ -43,7 +43,7 @@ public class HtmlCommandLinkExtSkinRenderer extends GenericSkinRenderer {
 	private static final Log log = LogFactory.getLog(HtmlCommandLinkExtSkinRenderer.class);	
 		
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 		
 		String styleClass = null;
@@ -56,9 +56,9 @@ public class HtmlCommandLinkExtSkinRenderer extends GenericSkinRenderer {
 		styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 		disabledStyleClass = baseStyleClass + SkinConstants.DISABLED_CLASS_SUFFIX;
 
-		renderStyleClass(component, context, arc, styleClass,
+		_renderStyleClass(component, context, arc, styleClass,
 				"styleClass");		
-		renderStyleClass(component, context, arc, disabledStyleClass,
+		_renderStyleClass(component, context, arc, disabledStyleClass,
 				"disabledStyleClass");
 	}
 }

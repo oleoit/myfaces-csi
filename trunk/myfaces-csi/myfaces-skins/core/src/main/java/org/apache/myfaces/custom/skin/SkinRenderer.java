@@ -54,6 +54,8 @@ public abstract class SkinRenderer extends Renderer {
 	private static final Log log = LogFactory.getLog(SkinRenderer.class);
 
 	private String componentTag = null;
+	
+	private String namespace = null;
 
 	/**
 	 * Constructor
@@ -87,7 +89,7 @@ public abstract class SkinRenderer extends Renderer {
 		}
 	}
 
-	protected abstract void addStyleClassesToComponent(FacesContext context,
+	protected abstract void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException;
 
 	@Override
@@ -98,15 +100,7 @@ public abstract class SkinRenderer extends Renderer {
 		if (arc == null)
 			throw new IllegalStateException(("NO_RENDERINGCONTEXT"));
 
-		if (this.getComponentTag() != null) {
-			log.info("componentTag:" + this.getComponentTag());
-		}
-
-		if (component.getAttributes().containsKey("componentTag")) {
-			log.info("componentTag:");
-		}
-
-		this.addStyleClassesToComponent(context, component, arc);
+		this._addStyleClassesToComponent(context, component, arc);
 
 		// Call encode of delegate or parent
 		if (_delegate == null) {
@@ -176,14 +170,14 @@ public abstract class SkinRenderer extends Renderer {
 	 * @param styleClass
 	 *            the style class
 	 */
-	protected static void renderStyleClass(UIComponent component,
+	protected void _renderStyleClass(UIComponent component,
 			FacesContext context, RenderingContext arc, String styleClass)
 			throws IOException {
 		if (styleClass != null) {
 			styleClass = arc.getStyleClass(styleClass);
 
 			if (styleClass != null) {				
-				if (styleClass.startsWith("af_")){
+				if (styleClass.startsWith((this.getNamespace()==null)?"af_":this.getNamespace())){
 					//no styleClass found
 					return;
 				}				
@@ -213,14 +207,14 @@ public abstract class SkinRenderer extends Renderer {
 		}
 	}
 
-	protected static void renderStyleClass(UIComponent component,
+	protected void _renderStyleClass(UIComponent component,
 			FacesContext context, RenderingContext arc, String styleClass,
 			String property) throws IOException {
 		if (styleClass != null) {
 			styleClass = arc.getStyleClass(styleClass);
 
 			if (styleClass != null) {
-				if (styleClass.startsWith("af_")){
+				if (styleClass.startsWith((this.getNamespace()==null)?"af_":this.getNamespace())){
 					//no styleClass found
 					return;
 				}
@@ -249,6 +243,35 @@ public abstract class SkinRenderer extends Renderer {
 			}
 		}
 	}
+	
+	protected void _renderReplaceStyleClass(UIComponent component,
+			FacesContext context, RenderingContext arc, String styleClass,
+			String property) throws IOException {
+		if (styleClass != null) {
+			styleClass = arc.getStyleClass(styleClass);
+
+			if (styleClass != null) {
+				if (styleClass.startsWith((this.getNamespace()==null)?"af_":this.getNamespace())){
+					//no styleClass found
+					return;
+				}
+				// log.info("Writing styleClass:" + styleClass+" to
+				// "+component.toString());
+				String oldStyle = (String) component.getAttributes().get(
+						property);
+
+				if (oldStyle != null) {
+					if (oldStyle.equals("")) {
+						component.getAttributes().put(property, styleClass);
+					}
+				} else {
+					if (styleClass != null) {
+						component.getAttributes().put(property, styleClass);
+					}
+				}
+			}
+		}
+	}	
 
 	/**
 	 * Render an array of CSS styleClasses as space-separated values. NOTE: the
@@ -261,14 +284,14 @@ public abstract class SkinRenderer extends Renderer {
 	 * @param styleClasses
 	 *            the style classes
 	 */
-	protected static void renderStyleClasses(UIComponent component,
+	protected void _renderStyleClasses(UIComponent component,
 			FacesContext context, RenderingContext arc, String[] styleClasses)
 			throws IOException {
 		int length = 0;
 		for (int i = 0; i < styleClasses.length; i++) {
 			if (styleClasses[i] != null) {
 				String styleClass = arc.getStyleClass(styleClasses[i]);
-				if (styleClass.startsWith("af_")){
+				if (styleClass.startsWith((this.getNamespace()==null)?"af_":this.getNamespace())){
 					//No add any that startsWith af_
 					styleClass = null;
 				}
@@ -308,11 +331,9 @@ public abstract class SkinRenderer extends Renderer {
 					(Class[]) null);
 			oldIcon = (String) method.invoke(component, (Object[]) null);			
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
 			log.debug("SecurityException"+e.getMessage());
 			return;
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
 			// Nothing happends
 			// e.printStackTrace();
 			log.debug("NoSuchMethodException"+e.getMessage());
@@ -356,11 +377,9 @@ public abstract class SkinRenderer extends Renderer {
 					Object [] params = new Object[] {value};
 					method.invoke(component, params);			
 				} catch (SecurityException e) {
-					// TODO Auto-generated catch block
 					log.debug("SecurityException"+e.getMessage());
 					return;
 				} catch (NoSuchMethodException e) {
-					// TODO Auto-generated catch block
 					// Nothing happends
 					// e.printStackTrace();
 					log.debug("NoSuchMethodException"+e.getMessage());
@@ -378,12 +397,20 @@ public abstract class SkinRenderer extends Renderer {
 		}
 	}
 	
-	public String getComponentTag() {
+	public String getComponentTag() {		
 		return componentTag;
 	}
 
 	public void setComponentTag(String componentTag) {
 		this.componentTag = componentTag;
+	}
+
+	public String getNamespace() {
+		return namespace;
+	}
+
+	public void setNamespace(String namespace) {
+		this.namespace = namespace;
 	}
 
 }

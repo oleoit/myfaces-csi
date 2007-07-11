@@ -33,7 +33,7 @@
       <trh:styleSheet/>
     </t:documentHead>
     <t:documentBody>
-      <h:outputText value="h:outputText" />
+      <h:outputText value="h:outputText" styleClass="h|outputText::class"/>
 
       <h:outputText id="outputText" 
         style="background-color: gray;" title="title" styleClass="class"

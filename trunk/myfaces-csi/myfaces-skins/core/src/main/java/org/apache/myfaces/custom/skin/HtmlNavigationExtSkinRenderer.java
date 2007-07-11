@@ -40,7 +40,7 @@ public class HtmlNavigationExtSkinRenderer extends SkinRenderer {
 			.getLog(HtmlNavigationExtSkinRenderer.class);
 
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
 		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
@@ -57,16 +57,16 @@ public class HtmlNavigationExtSkinRenderer extends SkinRenderer {
 		//String divStyleClass = baseStyleClass + SkinConstants.STYLE_CLASS;
 		//String outerStyleClass = baseStyleClass + "::outer";
 
-		renderStyleClass(component, context, arc, itemStyleClass, "itemClass");
-		renderStyleClass(component, context, arc, openItemStyleClass,
+		_renderStyleClass(component, context, arc, itemStyleClass, "itemClass");
+		_renderStyleClass(component, context, arc, openItemStyleClass,
 				"openItemClass");
-		renderStyleClass(component, context, arc, activeItemStyleClass,
+		_renderStyleClass(component, context, arc, activeItemStyleClass,
 				"activeItemClass");
-		renderStyleClass(component, context, arc, separatorStyleClass,
+		_renderStyleClass(component, context, arc, separatorStyleClass,
 				"separatorClass");
-		renderStyleClass(component, context, arc, disabledStyleClass,
+		_renderStyleClass(component, context, arc, disabledStyleClass,
 				"disabledStyleClass");
-		renderStyleClass(component, context, arc, styleClass, "styleClass");
+		_renderStyleClass(component, context, arc, styleClass, "styleClass");
 
 		/*
 		Map<String, Object> requestMap = context.getExternalContext()

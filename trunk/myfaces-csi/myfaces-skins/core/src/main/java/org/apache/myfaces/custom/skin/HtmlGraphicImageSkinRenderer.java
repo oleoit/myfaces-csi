@@ -59,7 +59,7 @@ public class HtmlGraphicImageSkinRenderer extends SkinRenderer {
 	 * 
 	 */
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context,
+	protected void _addStyleClassesToComponent(FacesContext context,
 			UIComponent component, RenderingContext arc) throws IOException {
 
 		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
@@ -68,7 +68,7 @@ public class HtmlGraphicImageSkinRenderer extends SkinRenderer {
 
 		String styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 
-		renderStyleClass(component, context, arc, styleClass, "styleClass");
+		_renderStyleClass(component, context, arc, styleClass, "styleClass");
 
 		if (component instanceof HtmlGraphicImage) {
 			_setIconWithHeightAndWidth(context, (HtmlGraphicImage) component,

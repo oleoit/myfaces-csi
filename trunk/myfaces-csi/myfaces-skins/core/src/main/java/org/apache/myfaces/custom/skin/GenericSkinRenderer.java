@@ -66,7 +66,7 @@ public class GenericSkinRenderer extends SkinRenderer {
 	}
 
 	@Override
-	protected void addStyleClassesToComponent(FacesContext context, 
+	protected void _addStyleClassesToComponent(FacesContext context, 
 			UIComponent component, RenderingContext arc)
 			throws IOException {
 
@@ -230,9 +230,9 @@ public class GenericSkinRenderer extends SkinRenderer {
 
 		// 3. set the property styleClass, setting it.
 		if (otherStyles > 0) {
-			renderStyleClasses(component, context, arc, styleClasses);
+			_renderStyleClasses(component, context, arc, styleClasses);
 		} else {
-			renderStyleClass(component, context, arc, contentStyleClass);
+			_renderStyleClass(component, context, arc, contentStyleClass);
 		}
 	}
 	
@@ -374,9 +374,9 @@ public class GenericSkinRenderer extends SkinRenderer {
 
 		// 3. set the property styleClass, setting it.
 		if (otherStyles > 0) {
-			renderStyleClasses(component, context, arc, styleClasses);
+			_renderStyleClasses(component, context, arc, styleClasses);
 		} else {
-			renderStyleClass(component, context, arc, contentStyleClass);
+			_renderStyleClass(component, context, arc, contentStyleClass);
 		}
 	}	
 	
