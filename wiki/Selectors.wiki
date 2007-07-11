@@ -115,8 +115,17 @@ This components are contained in the package org.apache.myfaces.custom and are c
 || t:inputHtml || t|inputHtml || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, AFRequiredContent(::required)`||
 || t:inputTextHelp || t|inputTextHelp || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
 || t:jscookMenu || t|jscookMenu || ::theme || ||
-
-
+|| t:newspaperTable || t|newspaperTable || ::style, ::header, ::footer, ::body, ::rowGroup, ::row || ||
+|| t:panelLayout || t|panelLayout || ::style, ::header, ::footer, ::navigation || ||
+|| t:panelNavigation || t|panelNavigation || ::style, ::item, ::active, ::open, ::separator || ||
+|| t:panelNavigation2 || t|panelNavigation || ::style, ::item, ::active, ::open, ::separator, ::disabled || ||
+|| t:panelTabbedPane || t|panelTabbedPane || ::style, ::activeTab, ::activeSub, ::disabledTab, ::inactiveSub, ::next, ::paginatorActiveColumn || ||
+|| t:popup || t|popup || ::style || ||
+|| t:schedule || t|schedule || ::background, ::column, ::content, ::date, ::day, ::entry, ::even, ::foreground, ::free, ::gutter, ::header, ::holiday, ::hours, ::inactiveDay, ::minutes, ::month, ::selected, ::selectedEntry, ::subtitle, ::text, ::title, ::uneven, ::week || ||
+|| t:selectOneCountry   || t|selectOneCountry || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:selectOneLanguage   || t|selectOneLanguage || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:swapImage   || t|swapImage     || ::style || ||
+|| t:tree   || t|tree || ::style, ::node, ::selectedNode, ::header, ::footer, ::icon, ::line-icon:rtl, ::noLine-icon:rtl, ::nodeOpen-icon:rtl, nodeOpenFirst-icon:rtl, ::nodeOpenMiddle-icon:rtl, ::nodeOpenLast-icon:rtl, ::nodeClose-icon:rtl, ::nodeCloseFirst-icon:rtl, ::nodeCloseMiddle-icon:rtl, ::nodeCloseLast-icon:rtl, ::ChildFirst-icon:rtl, ::ChildMiddle-icon:rtl, ::ChildLast-icon:rtl || ||
 
 Notes:
 
