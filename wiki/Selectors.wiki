@@ -70,11 +70,11 @@ This components are direct extensions of JSF HTML component library. In general,
 || *Component*     || *Selector Base Name* || *Properties* || *Extends* ||
 || t:commandButton || t|commandButton   || ::style   ||`AFDefaultFont, p_AFDisabled, p_AFReadonly` || 
 || t:commandLink   || t|commandLink     || ::style   ||`AFDefaultFont, AFLinkForeground(::style:link), AFActiveLinkForeground(::style:active), AFVisitedLinkForeground(::style:visited)`  || 
-|| t:dataTable || t|datatable || ::style, ::footer, ::header, ::row|| _border-collapse:collapse_ || 
+|| t:dataTable || t|datatable || ::style, ::footer, ::header, ::row, ::rowGroup|| _border-collapse:collapse_ || 
 || t:graphicImage   || t|graphicImage     || ::style || ||
-|| t:inputSecret   || t|inputSecret     || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
-|| t:inputText   || t|inputText     || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
-|| t:inputTextarea   || t|inputTextarea     || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:inputSecret   || t|inputSecret     || ::style, ::required, ::displayValueOnly || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:inputText   || t|inputText     || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:inputTextarea   || t|inputTextarea  || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
 || t:message || t|message || ::style, ::fatal, ::info, ::error, ::warn || `AFDefaultFont(All properties), AFVeryDarkForeground(::style), .AFHeaderLevelOne(::error), AFErrorTextForeground(::error), AFDarkForeground(::info), MessageBoxMargin(::info) `||
 || t:messages || t|messages || ::style, ::fatal, ::info, ::error, ::warn || `AFDefaultFont(All properties), AFVeryDarkForeground(::style), .AFHeaderLevelOne(::error), AFErrorTextForeground(::error), AFDarkForeground(::info), MessageBoxMargin(::info) `||
 || t:outputLabel || t|outputLabel || ::style, ::disabled, ::required  ||`AFLabel(::style), AFRequiredLabel(::disabled), AFLabelDisabled(::required) `||
@@ -82,13 +82,13 @@ This components are direct extensions of JSF HTML component library. In general,
 || t:outputText    || t|outputText      || ::style  ||`AFDefaultFont, AFTextForeground`||
 || t:panelGrid   || t|panelGrid     || ::style, ::footer, ::header, ::row || `AFDefaultFont` ||
 || t:panelGroup   || t|panelGroup     || ::style   || `AFDefaultFont` ||
-|| t:selectBooleanCheckbox   || t|selectBooleanCheckbox || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
-|| t:selectManyCheckbox   || t|selectManyCheckbox || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
-|| t:selectManyListbox   || t|selectManyListbox || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
-|| t:selectManyMenu   || t|selectManyMenu || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
-|| t:selectOneListbox   || t|selectOneListbox || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
-|| t:selectOneMenu   || t|selectOneMenu || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
-|| t:selectOneRadio   || t|selectOneRadio || ::style, ::required   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:selectBooleanCheckbox   || t|selectBooleanCheckbox || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:selectManyCheckbox   || t|selectManyCheckbox || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:selectManyListbox   || t|selectManyListbox || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:selectManyMenu   || t|selectManyMenu || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:selectOneListbox   || t|selectOneListbox || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:selectOneMenu   || t|selectOneMenu || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:selectOneRadio   || t|selectOneRadio || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
 
 Notes:
 
