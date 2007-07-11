@@ -108,4 +108,5 @@ This components are contained in the package org.apache.myfaces.custom and are c
 || t:commandNavigation2 || t|commandNavigation2 || ::style||  ||
 || t:commandSortHeader || t|commandSortHeader || ::style ||  ||
 || t:dataList || t|dataList || ::style, ::item ||  ||
-
+|| t:inputCalendar || t|inputCalendar || ::style, ::required, ::displayValueOnly   || `AFFormControlContent, p_AFDisabled, p_AFReadonly, AFRequiredContent(::required)`||
+|| t:dataScroller || t|dataScroller || ::style, ::fastf, ::fastr, ::first, ::last, ::next, ::previous, ::paginatorActiveColumn, ::paginatorColumn, ::paginatorTable ||  ||
