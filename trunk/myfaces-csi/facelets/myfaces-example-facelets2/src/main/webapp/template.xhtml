@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>Myfaces Example Facelets</title>
+	<link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/layout.css" />
+</head>
+
+<body>
+<t:div id="banner">
+	<ui:insert name="title">Myfaces Example Facelets</ui:insert>
+</t:div>
+<t:div id="leftcontent">
+	<ui:insert name="left">Left Menu</ui:insert>
+</t:div>
+<t:div id="centercontent">
+	<ui:insert name="body">Hello World Example!</ui:insert>
+</t:div>
+<t:div id="rightcontent">
+	<ui:insert name="right">Right Menu</ui:insert>
+</t:div>
+
+</body>
+
+</html>
