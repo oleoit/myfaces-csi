@@ -15,23 +15,22 @@
 <f:loadBundle
 	basename="org.apache.myfaces.examples.facelets.example_messages"
 	var="example_messages" />
-<t:div id="banner">
-	<ui:insert name="title">
+<!-- This template divide the page into 2 sections, top and center -->
+<t:div id="top_pane">
+	<ui:insert name="top">
+		<!-- The default top_pane -->
 		<t:graphicImage id="header_logo" url="images/logo_mini.jpg"
 			alt="#{example_messages['alt_logo']}" />
-		<h:outputText style="font-size:20px;color:#FFFFFF" escape="false" value="MyFaces - The free JavaServer&#8482; Faces Implementation"/>
+		<h:outputText style="font-size:20px;color:#FFFFFF" escape="false"
+			value="MyFaces - The free JavaServer&#8482; Faces Implementation" />
 	</ui:insert>
 </t:div>
-<t:div id="leftcontent">
-	<ui:insert name="left">Left Menu</ui:insert>
+<t:div id="center_full_pane">
+	<ui:insert name="center_full">
+		<!-- defautl for the center_full_pane -->
+		<t:outputText value="An example of Myfaces Faceletes" />
+	</ui:insert>
 </t:div>
-<t:div id="centercontent">
-	<ui:insert name="body">Hello World Example!</ui:insert>
-</t:div>
-<t:div id="rightcontent">
-	<ui:insert name="right">Right Menu</ui:insert>
-</t:div>
-
 </body>
 
 </html>
