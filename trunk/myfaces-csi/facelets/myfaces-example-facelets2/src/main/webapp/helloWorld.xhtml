@@ -2,23 +2,93 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
 <head>
-<title>Hello World</title>
+<title>Student List</title>
 </head>
 <body>
 <ui:composition template="/template.xhtml">
-
 	<ui:define name="body">
-		<h:form id="form">
-			<h:panelGrid id="grid" columns="2">
-				<h:outputText id="output1" value="Please enter your name" />
-				<h:inputText id="input1" value="#{helloWorldBacking.name}"
-					required="true" />
-				<h:commandButton id="button1" value="press me"
-					action="#{helloWorldBacking.send}" />
-				<h:message id="message1" for="input1" />
-			</h:panelGrid>
+		<h:form id="form2">
+			<h:panelGrid columns="1">
+				<t:dataTable 
+				id="data" 
+				var="student" 
+				preserveDataModel="true"
+				value="#{students.dataModel}" 
+				rows="#{students.rowsPerPage}"
+				sortColumn="#{students.dataModel.sort}"
+                sortAscending="#{students.dataModel.ascending}"
+                preserveSort="false">
+                	<f:facet name="header">
+                		<t:outputText value="#{example_messages['student_table_header']}"/>
+                	</f:facet>
+					<t:column>
+						<f:facet name="header">
+							<t:commandSortHeader columnName="Id" immediate="false"
+								arrow="true">
+								<h:outputText value="#{example_messages['student_id']}"/> 
+							</t:commandSortHeader>
+						</f:facet>
+						<t:outputText value="#{student.id}" />
+					</t:column>
+					<t:column>
+						<f:facet name="header">
+							<t:commandSortHeader columnName="Name" immediate="false"
+								arrow="true">
+								<h:outputText value="#{example_messages['student_name']}"/>
+							</t:commandSortHeader>
+						</f:facet>
+						<t:outputText value="#{student.name}" />
+					</t:column>					
+				</t:dataTable>
+        	    <t:dataScroller 
+            		id="scroll_1"
+                    for="data"
+                    fastStep="10"
+                    pageCountVar="pageCount"
+                    pageIndexVar="pageIndex"
+                    paginator="true"
+                    paginatorMaxPages="9"
+                    paginatorActiveColumnStyle="font-weight:bold;"
+                    immediate="true"
+                    >
+	                <f:facet name="first" >
+    	                <t:graphicImage url="images/arrow-first.gif" border="1" />
+        	        </f:facet>
+            	    <f:facet name="last">
+                	    <t:graphicImage url="images/arrow-last.gif" border="1" />
+	                </f:facet>
+    		        <f:facet name="previous">
+            	        <t:graphicImage url="images/arrow-previous.gif" border="1" />
+                	</f:facet>
+					<f:facet name="next">
+						<t:graphicImage url="images/arrow-next.gif" border="1" />
+					</f:facet>
+					<f:facet name="fastforward">
+						<t:graphicImage url="images/arrow-ff.gif" border="1" />
+					</f:facet>
+					<f:facet name="fastrewind">
+						<t:graphicImage url="images/arrow-fr.gif" border="1" />
+					</f:facet>
+				</t:dataScroller>
+				<t:dataScroller id="scroll_2" for="data" rowsCountVar="rowsCount"
+					displayedRowsCountVar="displayedRowsCountVar"
+					firstRowIndexVar="firstRowIndex" lastRowIndexVar="lastRowIndex"
+					pageCountVar="pageCount" pageIndexVar="pageIndex">
+					<h:outputFormat value="#{example_messages['dataScroller_pages']}"
+						styleClass="standard">
+						<f:param value="#{rowsCount}" />
+						<f:param value="#{displayedRowsCountVar}" />
+						<f:param value="#{firstRowIndex}" />
+						<f:param value="#{lastRowIndex}" />
+						<f:param value="#{pageIndex}" />
+						<f:param value="#{pageCount}" />
+					</h:outputFormat>
+				</t:dataScroller>
+
+			</h:panelGrid>		
 		</h:form>
 	</ui:define>
 </ui:composition>
