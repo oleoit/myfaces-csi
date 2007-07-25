@@ -14,7 +14,31 @@
 <body>
 <ui:composition>
 	<t:div id="left_pane">
-		<ui:insert name="left">Left Menu</ui:insert>
+		<ui:insert name="left">
+			<t:div id="subnavigation_outer">
+				<t:div id="subnavigation">
+					<h:form id="panelnav">
+						<t:panelNavigation2 id="nav1" layout="list" itemClass="mypage"
+							activeItemClass="selected" openItemClass="selected">
+							<t:commandNavigation2
+								value="#{example_messages['panelnav_student']}" action="go_list">
+								<t:commandNavigation2 action="go_create">
+									<f:verbatim>&#8250; </f:verbatim>
+									<t:outputText
+										value="#{example_messages['panelnav_create_student']}" />
+								</t:commandNavigation2>
+								<t:commandNavigation2 action="go_list" activeOnViewIds="/list_student.xhtml">
+									<f:verbatim>&#8250; </f:verbatim>
+									<t:outputText
+										value="#{example_messages['panelnav_list_students']}" />
+								</t:commandNavigation2>
+							</t:commandNavigation2>
+						</t:panelNavigation2>
+					</h:form>
+				</t:div>
+			</t:div>
+
+		</ui:insert>
 	</t:div>
 	<t:div id="center_pane">
 		<ui:insert name="center">Hello World Example!</ui:insert>

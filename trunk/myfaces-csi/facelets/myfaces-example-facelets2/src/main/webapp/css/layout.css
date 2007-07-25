@@ -1,0 +1,174 @@
+@CHARSET "ISO-8859-1";
+
+#top_pane {
+	background: #fff;
+	height: 40px;
+	border-top: 1px solid ;
+	border-right: 1px solid ;
+	border-left: 1px solid;
+	voice-family: "\"}\"";
+	voice-family: inherit;
+	border: 1px solid;
+	border-color: green;
+}
+
+#center_full_pane {
+	border: 1px solid ;
+	border-color: green;
+}
+
+#left_pane {
+	position: absolute;
+	left: 10px;
+	top: 50px;
+	width: 200px;
+	border: 1px solid;
+	border-color: green;	
+}
+
+#center_pane {
+	margin-left: 199px;
+	border: 1px solid;
+	voice-family: "\"}\"";
+	voice-family: inherit;
+	margin-left: 201px;
+	border-color: green;	
+}
+
+html>body #center_pane {
+	margin-left: 201px;
+}
+
+/*
+   ------------------------------------------------------------
+   Panelnavigation
+   ------------------------------------------------------------
+*/
+#subnavigation {
+margin-left: 0px;
+margin-right: 20px;
+padding: 0px 0px 20px 0px;
+border: 1px solid #546359;
+background-color: #EAF4F4;
+}
+
+#subnavigation_outer {
+float: left;
+width: 220px;
+padding: 0px;
+margin: 0px 0px 0px 0px;
+}
+#subnavigation_outer h1  {
+font-size: 1.5em;
+margin: 0px;
+padding: 0px 0px 15px 0px;
+}
+
+
+/**************************************************
+ * css layers and classes for list navigation list
+ **************************************************/
+#subnavigation ul li  a {
+display:block;
+background-color: #D1E4E4;
+color: #294747;
+text-decoration: none;
+border-bottom: 1px solid #87A8A8;
+padding: 2px 20px;
+margin: 0px;
+}
+
+#subnavigation ul li a:visited {color:#294747;}
+#subnavigation ul li a:hover {color: #FFFFFF;  background-color: #87A8A8;}
+#subnavigation ul li a:active { color:#294747;}
+
+#subnavigation ul li a.selected {
+font-weight: bold;
+color:#294747;
+background-color: #FFFFFF;
+}
+
+#subnavigation ul ul li a {
+padding: 2px 20px 2px 25px;
+margin: 0px;
+background-color: #FFFFFF;}
+
+#subnavigation ul ul li ul li a {
+padding: 2px 20px 2px 30px;
+margin: 0px;
+}
+
+#subnavigation ul {
+list-style-type: none;
+padding: 0px;
+margin: 0px;
+}
+
+#subnavigation li{
+margin: 0px;
+padding: 0px;
+display:inline;
+}
+
+#subnavigation ul.mypage li a {
+padding: 2px 20px 2px 20px;
+margin: 0px;
+background-color: #EAF4F4;
+}
+
+#subnavigation ul.mypage ul li a:hover {color: #FFFFFF;  background-color: #87A8A8;}
+
+
+.table_header{
+  background-color: #5abd42;
+}
+
+.table_row1
+{
+  background-color: #a9fcd2;
+}
+
+.table_row2
+{
+  background-color: #ffffff;
+}
+
+.table_col1
+{
+  width: 50px;
+}
+
+.table_col2
+{
+  width: 100px;
+}
+
+.table_col3
+{
+  width: 100px;
+}
+
+.table_col4
+{
+  width: 70px;
+}
+
+.table_col5
+{
+  width: 50px;
+}
+
+.panel_col1
+{
+	background-color: #a9fcd2;
+}
+
+.panel_col2
+{
+    background-color: #ffffff;
+}
+
+.panel_col3
+{
+    background-color: #ffffff;
+}

@@ -19,10 +19,11 @@
 <t:div id="top_pane">
 	<ui:insert name="top">
 		<!-- The default top_pane -->
-		<t:graphicImage id="header_logo" url="images/logo_mini.jpg"
-			alt="#{example_messages['alt_logo']}" />
-		<h:outputText style="font-size:20px;color:#FFFFFF" escape="false"
-			value="MyFaces - The free JavaServer&#8482; Faces Implementation" />
+		<t:panelGrid columns="2">
+			<t:graphicImage id="header_logo" url="images/logo_mini.jpg"
+				alt="#{example_messages['alt_logo']}" />
+			<h:outputText style="color:green" value="MyFaces - The free JavaServer&#8482; Faces Implementation. Facelets Example: Simple Student CRUD." />
+		</t:panelGrid>
 	</ui:insert>
 </t:div>
 <t:div id="center_full_pane">
