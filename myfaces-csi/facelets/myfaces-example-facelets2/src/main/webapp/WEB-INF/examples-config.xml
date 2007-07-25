@@ -46,6 +46,13 @@
 	<navigation-rule>
 		<from-view-id>/list_student.xhtml</from-view-id>
 		<navigation-case>
+			<from-outcome>go_create_wleft</from-outcome>
+			<to-view-id>/create_student_wleft.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
+	<navigation-rule>
+		<from-view-id>/list_student.xhtml</from-view-id>
+		<navigation-case>
 			<from-outcome>go_update</from-outcome>
 			<to-view-id>/update_student.xhtml</to-view-id>
 		</navigation-case>
@@ -57,6 +64,74 @@
 			<to-view-id>/list_student.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/list_student.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>go_student</from-outcome>
+			<to-view-id>/student.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/list_student.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>go_about</from-outcome>
+			<to-view-id>/about.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
+	
+	<!-- navigation rules for student.jsp -->
+	<navigation-rule>
+		<from-view-id>/student.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>go_create</from-outcome>
+			<to-view-id>/create_student.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/student.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>go_create_wleft</from-outcome>
+			<to-view-id>/create_student_wleft.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
+	<navigation-rule>
+		<from-view-id>/student.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>go_update</from-outcome>
+			<to-view-id>/update_student.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/student.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>go_list</from-outcome>
+			<to-view-id>/list_student.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/student.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>go_student</from-outcome>
+			<to-view-id>/student.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/student.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>go_about</from-outcome>
+			<to-view-id>/about.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- navigation rules for about.jsp (no left menu)-->	
+	<navigation-rule>
+		<from-view-id>/about.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>go_student</from-outcome>
+			<to-view-id>/student.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 	
 
 	<!-- navigation rules for create_student.jsp (no left menu)-->
@@ -67,8 +142,18 @@
 			<to-view-id>/list_student.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+
+	<!-- navigation rules for create_student_wleft.jsp (no left menu)-->
+	<navigation-rule>
+		<from-view-id>/create_student_wleft.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/list_student.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
 	
-	<!-- navigation rules for create_student.jsp (with left menu)-->
+	<!-- navigation rules for update_student.jsp (with left menu)-->
 	<navigation-rule>
 		<from-view-id>/update_student.xhtml</from-view-id>
 		<navigation-case>

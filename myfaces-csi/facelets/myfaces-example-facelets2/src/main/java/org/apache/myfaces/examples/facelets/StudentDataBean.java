@@ -64,6 +64,10 @@ public class StudentDataBean {
 		}
 		
 	}
+	
+	public void createStudent(Student s){
+		_students.add(s);
+	}
 
 	private DataPage<Student> getDataPage(int startRow, int pageSize) {
 		// access database here, or call EJB to do so
@@ -150,6 +154,26 @@ public class StudentDataBean {
                 return ascending ? c1.getId().compareTo(c2.getId()) : 
                 	c2.getId().compareTo(c1.getId());
             }
+            if (column.equals("Name"))
+            {
+                return ascending ? c1.getName().compareTo(c2.getName()) : 
+                	c2.getName().compareTo(c1.getName());
+            }
+            if (column.equals("LastName"))
+            {
+                return ascending ? c1.getLastName().compareTo(c2.getLastName()) : 
+                	c2.getLastName().compareTo(c1.getLastName());
+            }
+            if (column.equals("DateOfBirth"))
+            {
+                return ascending ? c1.getDateOfBirth().compareTo(c2.getDateOfBirth()) : 
+                	c2.getDateOfBirth().compareTo(c1.getDateOfBirth());
+            }
+            if (column.equals("Phone"))
+            {
+                return ascending ? c1.getPhone().compareTo(c2.getPhone()) : 
+                	c2.getPhone().compareTo(c1.getPhone());
+            }            
             else return 0;
 		}
 	}
