@@ -1,14 +1,8 @@
 package org.apache.myfaces.examples.facelets;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Student implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2814441871447686286L;
+public class CreateStudentBacking {
 
 	private String id;
 
@@ -20,13 +14,12 @@ public class Student implements Serializable {
 
 	private String phone;
 
-	public Student(String id, String name, String lastName, Date dateOfBirth, String phone) {
+	public CreateStudentBacking() {
 		super();
-		this.id = id;
-		this.name = name;
-		this.lastName = lastName;
-		this.dateOfBirth = dateOfBirth;
-		this.phone = phone;
+	}
+	
+	public String create(){
+		return "success";
 	}
 
 	public String getId() {
@@ -69,18 +62,4 @@ public class Student implements Serializable {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Student){
-			if (((Student) obj).getId().equals(this.getId())){
-				return true;
-			}else{
-				return false;
-			}
-		}else{
-			return false;
-		}
-	}
-	
-	
 }

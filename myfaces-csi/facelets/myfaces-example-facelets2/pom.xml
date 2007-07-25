@@ -144,13 +144,13 @@
 			<artifactId>el-api</artifactId>
 			<version>1.0</version>
 		</dependency>
-
+		
 		<dependency>
-			<groupId>el-impl</groupId>
-			<artifactId>el-impl</artifactId>
+			<groupId>javax.el</groupId>
+			<artifactId>el-ri</artifactId>
 			<version>1.0</version>
 		</dependency>
-
+		
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

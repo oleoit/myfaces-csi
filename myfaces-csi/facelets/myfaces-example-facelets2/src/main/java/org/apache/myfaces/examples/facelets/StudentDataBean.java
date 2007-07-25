@@ -1,10 +1,15 @@
 package org.apache.myfaces.examples.facelets;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 
 /*
@@ -34,15 +39,28 @@ public class StudentDataBean {
 	
 	private static final String DEFAULT_SORT_COLUMN = "Id";
 	
+	/**
+	 * The student that its necesary to update
+	 */
+	private Student updateStudent;
+	
 	public StudentDataBean(){
 		
 		_students = new ArrayList<Student>();
 		for (int i = 0; i < 200; i++)
 		{
-			_students.add(new Student("1"+i,"Henry"+i,"Ford"+i,12,i+"73748899"));
-			_students.add(new Student("2"+i,"John"+i,"Karmack"+i,13,i+"87394879"));
-			_students.add(new Student("3"+i,"Lucius"+i,"Kennedy"+i,14,i+"2238298"));
-			_students.add(new Student("4"+i,"Jay"+i,"Skywalker"+i,15,i+"2238298"));
+			SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");			
+			java.util.Date d1 = null;
+			try {
+				d1 = sf.parse("1980-11-30");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			_students.add(new Student("1"+i,"Henry"+i,"Ford"+i,d1,i+"73748899"));
+			_students.add(new Student("2"+i,"John"+i,"Karmack"+i,d1,i+"87394879"));
+			_students.add(new Student("3"+i,"Lucius"+i,"Kennedy"+i,d1,i+"2238298"));
+			_students.add(new Student("4"+i,"Jay"+i,"Skywalker"+i,d1,i+"2238298"));
 		}
 		
 	}
@@ -72,6 +90,44 @@ public class StudentDataBean {
 		return _dataModel;
 	}
 
+	public String update(){
+        FacesContext context = FacesContext.getCurrentInstance(); 
+        Map map = context.getExternalContext().getRequestParameterMap();
+        Object id = map.get("student");
+
+        for (Iterator it = _students.iterator(); it.hasNext();){
+        	Student s = (Student) it.next();
+        	if (s.getId().equals(id)){
+        		this.setUpdateStudent(s);
+        		break;
+        	}
+        }
+		return "go_update";
+	}
+	
+	public void setUpdateStudent(Student updateStudent) {
+		this.updateStudent = updateStudent;
+	}
+
+	public Student getUpdateStudent() {
+		return updateStudent;
+	}
+
+	public String remove(){	
+        FacesContext context = FacesContext.getCurrentInstance(); 
+        Map map = context.getExternalContext().getRequestParameterMap();
+        Object id = map.get("student");
+
+        for (Iterator it = _students.iterator(); it.hasNext();){
+        	Student s = (Student) it.next();
+        	if (s.getId().equals(id)){
+        		it.remove();
+        		break;
+        	}
+        }
+		return "go_list";
+	}
+	
 	private class StudentComparator implements Comparator{
 
 		private String column;
