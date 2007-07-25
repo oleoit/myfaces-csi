@@ -21,17 +21,25 @@
 						<t:panelNavigation2 id="nav1" layout="list" itemClass="mypage"
 							activeItemClass="selected" openItemClass="selected">
 							<t:commandNavigation2
-								value="#{example_messages['panelnav_student']}" action="go_list">
+								value="#{example_messages['panelnav_student']}" action="go_student">
 								<t:commandNavigation2 action="go_create">
 									<f:verbatim>&#8250; </f:verbatim>
 									<t:outputText
 										value="#{example_messages['panelnav_create_student']}" />
 								</t:commandNavigation2>
+								<t:commandNavigation2 action="go_create_wleft" activeOnViewIds="/create_student_wleft.xhtml">
+									<f:verbatim>&#8250; </f:verbatim>
+									<t:outputText
+										value="#{example_messages['panelnav_create_student_wleft']}" />
+								</t:commandNavigation2>								
 								<t:commandNavigation2 action="go_list" activeOnViewIds="/list_student.xhtml">
 									<f:verbatim>&#8250; </f:verbatim>
 									<t:outputText
 										value="#{example_messages['panelnav_list_students']}" />
 								</t:commandNavigation2>
+							</t:commandNavigation2>
+							<t:commandNavigation2
+								value="#{example_messages['about']}" action="go_about" activeOnViewIds="/about.xhtml">
 							</t:commandNavigation2>
 						</t:panelNavigation2>
 					</h:form>

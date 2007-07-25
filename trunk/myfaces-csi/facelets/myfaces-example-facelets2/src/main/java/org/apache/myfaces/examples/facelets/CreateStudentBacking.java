@@ -2,6 +2,8 @@ package org.apache.myfaces.examples.facelets;
 
 import java.util.Date;
 
+import javax.faces.context.FacesContext;
+
 public class CreateStudentBacking {
 
 	private String id;
@@ -19,6 +21,16 @@ public class CreateStudentBacking {
 	}
 	
 	public String create(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		StudentDataBean sdb = (StudentDataBean)context.getExternalContext().getSessionMap().get("students");
+
+		Student s = new Student(
+				this.getId(),
+				this.getName(),
+				this.getLastName(),
+				this.getDateOfBirth(),
+				this.getPhone());
+		sdb.createStudent(s);
 		return "success";
 	}
 
