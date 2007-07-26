@@ -160,12 +160,21 @@
 			<version>1.0</version>
 		</dependency>
 
+		<!-- NOTE THAT THIS DEPENDENCY IS NEEDED IF YOU RUN
+		THIS WITH TOMCAT, BUT I CANNOT FIND A MAVEN REPOSITORY 
+		THAT HAVE THIS!!!
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>el-ri</artifactId>
+			<version>1.0</version>
+		</dependency>
+ 		-->
+ 
 		<dependency>
 			<groupId>el-impl</groupId>
 			<artifactId>el-impl</artifactId>
 			<version>1.0</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>junit</groupId>

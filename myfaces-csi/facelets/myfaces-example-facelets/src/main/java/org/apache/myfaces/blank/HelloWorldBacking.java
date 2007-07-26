@@ -15,7 +15,7 @@
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License.
-*/
+ */
 package org.apache.myfaces.blank;
 
 /**
@@ -23,30 +23,35 @@ package org.apache.myfaces.blank;
  * 
  * @author <a href="mailto:matzew@apache.org">Matthias Weﬂendorf</a> 
  */
-public class HelloWorldBacking {
+public class HelloWorldBacking
+{
 
-    
     //properties
     private String name;
-    
+
     /**
      * default empty constructor
      */
-    public HelloWorldBacking(){   
+    public HelloWorldBacking()
+    {
     }
-    
+
     //-------------------getter & setter
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
-    public void setName(String name) {
+
+    public void setName(String name)
+    {
         this.name = name;
     }
-    
+
     /**
      * Method that is backed to a submit button of a form.
      */
-    public String send(){
+    public String send()
+    {
         //do real logic
         return ("success");
     }
