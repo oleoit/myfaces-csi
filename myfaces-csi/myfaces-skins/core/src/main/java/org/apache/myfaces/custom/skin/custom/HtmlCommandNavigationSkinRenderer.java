@@ -27,15 +27,18 @@ import javax.faces.context.FacesContext;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlCommandNavigationSkinRenderer extends AdapterSkinRenderer {
+public class HtmlCommandNavigationSkinRenderer extends AdapterSkinRenderer
+{
 
-	public HtmlCommandNavigationSkinRenderer() {
-		super("t", "commandNavigation");
-	}
+    public HtmlCommandNavigationSkinRenderer()
+    {
+        super("t", "commandNavigation");
+    }
 
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		_addStyleClass(context, component, arc);
-	}	
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
+        _addStyleClass(context, component, arc);
+    }
 }

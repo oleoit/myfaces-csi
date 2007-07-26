@@ -31,77 +31,95 @@ import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.custom.skin.SkinConstants;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlTreeSkinRenderer extends AdapterSkinRenderer {
-	
-	public HtmlTreeSkinRenderer() {
-		super("t", "tree");
-	}
+public class HtmlTreeSkinRenderer extends AdapterSkinRenderer
+{
 
-	/**
-	 * The log factory used to debug messages
-	 */
-	private static final Log log = LogFactory
-			.getLog(HtmlTreeSkinRenderer.class);
+    public HtmlTreeSkinRenderer()
+    {
+        super("t", "tree");
+    }
 
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-	
-		String baseStyleClass = this.getBaseStyleName(component);
+    /**
+     * The log factory used to debug messages
+     */
+    private static final Log log = LogFactory
+            .getLog(HtmlTreeSkinRenderer.class);
 
-		String nodeClass = baseStyleClass + "::node";
-		String selectedNodeClass = baseStyleClass + "::selectedNode";
-		String headerClass = baseStyleClass + "::header";
-		String footerClass = baseStyleClass + "::footer";
-		String iconClass = baseStyleClass + "::icon";
-		String styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
 
-		//In this case there already exists a icon defined in tomahawk
-		//only I have to check rtl icon
-		
-		String iconLine = baseStyleClass + "::line-icon:rtl";
-		String iconNoLine = baseStyleClass + "::noLine-icon:rtl";
-		
-		String iconNodeOpen = baseStyleClass + "::nodeOpen-icon:rtl";
-		String iconNodeOpenFirst = baseStyleClass + "::nodeOpenFirst-icon:rtl";
-		String iconNodeOpenMiddle = baseStyleClass + "::nodeOpenMiddle-icon:rtl";
-		String iconNodeOpenLast = baseStyleClass + "::nodeOpenLast-icon:rtl";
+        String baseStyleClass = this.getBaseStyleName(component);
 
-		String iconNodeClose = baseStyleClass + "::nodeClose-icon:rtl";
-		String iconNodeCloseFirst = baseStyleClass + "::nodeCloseFirst-icon:rtl";
-		String iconNodeCloseMiddle = baseStyleClass + "::nodeCloseMiddle-icon:rtl";
-		String iconNodeCloseLast = baseStyleClass + "::nodeCloseLast-icon:rtl";
+        String nodeClass = baseStyleClass + "::node";
+        String selectedNodeClass = baseStyleClass + "::selectedNode";
+        String headerClass = baseStyleClass + "::header";
+        String footerClass = baseStyleClass + "::footer";
+        String iconClass = baseStyleClass + "::icon";
+        String styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 
-		String iconChildFirst = baseStyleClass + "::ChildFirst-icon:rtl";
-		String iconChildMiddle = baseStyleClass + "::ChildMiddle-icon:rtl";
-		String iconChildLast = baseStyleClass + "::ChildLast-icon:rtl";
-		
-		
-		_renderStyleClass(component, context, arc, nodeClass, "nodeClass");
-		_renderStyleClass(component, context, arc, selectedNodeClass,
-				"selectedNodeClass");
-		_renderStyleClass(component, context, arc, headerClass, "headerClass");
-		_renderStyleClass(component, context, arc, footerClass, "footerClass");
-		_renderStyleClass(component, context, arc, iconClass, "iconClass");
-		_renderStyleClass(component, context, arc, styleClass, "styleClass");
+        //In this case there already exists a icon defined in tomahawk
+        //only I have to check rtl icon
 
-		_setIconDirection(context, component, arc, iconLine, "getIconLine","setIconLine");
-		_setIconDirection(context, component, arc, iconNoLine, "getIconLine","setIconLine");		
-		
-		_setIconDirection(context, component, arc, iconNodeOpen, "getIconNodeOpen","setIconNodeOpen");
-		_setIconDirection(context, component, arc, iconNodeOpenFirst, "getIconNodeOpenFirst","setIconNodeOpenFirst");
-		_setIconDirection(context, component, arc, iconNodeOpenMiddle, "getIconNodeOpenMiddle","setIconNodeOpenMiddle");
-		_setIconDirection(context, component, arc, iconNodeOpenLast, "getIconNodeOpenLast","setIconNodeOpenLast");
-		
-		_setIconDirection(context, component, arc, iconNodeClose, "getIconNodeClose","setIconNodeClose");
-		_setIconDirection(context, component, arc, iconNodeCloseFirst, "getIconNodeCloseFirst","setIconNodeCloseFirst");
-		_setIconDirection(context, component, arc, iconNodeCloseMiddle, "getIconNodeCloseMiddle","setIconNodeCloseMiddle");
-		_setIconDirection(context, component, arc, iconNodeCloseLast, "getIconNodeCloseLast","setIconNodeCloseLast");
-		
-		_setIconDirection(context, component, arc, iconChildFirst, "getIconChildFirst","setIconChildFirst");
-		_setIconDirection(context, component, arc, iconChildMiddle, "getIconChildMiddle","setIconChildMiddle");
-		_setIconDirection(context, component, arc, iconChildLast, "getIconChildLast","setIconChildLast");
-		
-	}
+        String iconLine = baseStyleClass + "::line-icon:rtl";
+        String iconNoLine = baseStyleClass + "::noLine-icon:rtl";
+
+        String iconNodeOpen = baseStyleClass + "::nodeOpen-icon:rtl";
+        String iconNodeOpenFirst = baseStyleClass + "::nodeOpenFirst-icon:rtl";
+        String iconNodeOpenMiddle = baseStyleClass
+                + "::nodeOpenMiddle-icon:rtl";
+        String iconNodeOpenLast = baseStyleClass + "::nodeOpenLast-icon:rtl";
+
+        String iconNodeClose = baseStyleClass + "::nodeClose-icon:rtl";
+        String iconNodeCloseFirst = baseStyleClass
+                + "::nodeCloseFirst-icon:rtl";
+        String iconNodeCloseMiddle = baseStyleClass
+                + "::nodeCloseMiddle-icon:rtl";
+        String iconNodeCloseLast = baseStyleClass + "::nodeCloseLast-icon:rtl";
+
+        String iconChildFirst = baseStyleClass + "::ChildFirst-icon:rtl";
+        String iconChildMiddle = baseStyleClass + "::ChildMiddle-icon:rtl";
+        String iconChildLast = baseStyleClass + "::ChildLast-icon:rtl";
+
+        _renderStyleClass(component, context, arc, nodeClass, "nodeClass");
+        _renderStyleClass(component, context, arc, selectedNodeClass,
+                "selectedNodeClass");
+        _renderStyleClass(component, context, arc, headerClass, "headerClass");
+        _renderStyleClass(component, context, arc, footerClass, "footerClass");
+        _renderStyleClass(component, context, arc, iconClass, "iconClass");
+        _renderStyleClass(component, context, arc, styleClass, "styleClass");
+
+        _setIconDirection(context, component, arc, iconLine, "getIconLine",
+                "setIconLine");
+        _setIconDirection(context, component, arc, iconNoLine, "getIconLine",
+                "setIconLine");
+
+        _setIconDirection(context, component, arc, iconNodeOpen,
+                "getIconNodeOpen", "setIconNodeOpen");
+        _setIconDirection(context, component, arc, iconNodeOpenFirst,
+                "getIconNodeOpenFirst", "setIconNodeOpenFirst");
+        _setIconDirection(context, component, arc, iconNodeOpenMiddle,
+                "getIconNodeOpenMiddle", "setIconNodeOpenMiddle");
+        _setIconDirection(context, component, arc, iconNodeOpenLast,
+                "getIconNodeOpenLast", "setIconNodeOpenLast");
+
+        _setIconDirection(context, component, arc, iconNodeClose,
+                "getIconNodeClose", "setIconNodeClose");
+        _setIconDirection(context, component, arc, iconNodeCloseFirst,
+                "getIconNodeCloseFirst", "setIconNodeCloseFirst");
+        _setIconDirection(context, component, arc, iconNodeCloseMiddle,
+                "getIconNodeCloseMiddle", "setIconNodeCloseMiddle");
+        _setIconDirection(context, component, arc, iconNodeCloseLast,
+                "getIconNodeCloseLast", "setIconNodeCloseLast");
+
+        _setIconDirection(context, component, arc, iconChildFirst,
+                "getIconChildFirst", "setIconChildFirst");
+        _setIconDirection(context, component, arc, iconChildMiddle,
+                "getIconChildMiddle", "setIconChildMiddle");
+        _setIconDirection(context, component, arc, iconChildLast,
+                "getIconChildLast", "setIconChildLast");
+
+    }
 
 }

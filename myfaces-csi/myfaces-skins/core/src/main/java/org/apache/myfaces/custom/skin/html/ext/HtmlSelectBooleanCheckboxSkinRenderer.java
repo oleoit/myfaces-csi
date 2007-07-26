@@ -29,23 +29,27 @@ import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.custom.skin.SkinConstants;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlSelectBooleanCheckboxSkinRenderer extends AdapterSkinRenderer {
+public class HtmlSelectBooleanCheckboxSkinRenderer extends AdapterSkinRenderer
+{
 
-	public HtmlSelectBooleanCheckboxSkinRenderer() {
-		super("t", "selectBooleanCheckbox");
-	}
+    public HtmlSelectBooleanCheckboxSkinRenderer()
+    {
+        super("t", "selectBooleanCheckbox");
+    }
 
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		_addStyleDisabledReadOnlyRequired(context, component, arc);
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
+        _addStyleDisabledReadOnlyRequired(context, component, arc);
 
-		String baseStyleClass = this.getBaseStyleName(component);
+        String baseStyleClass = this.getBaseStyleName(component);
 
-		String displayValueOnlyStyleClass = baseStyleClass + "::displayValueOnly";		
+        String displayValueOnlyStyleClass = baseStyleClass
+                + "::displayValueOnly";
 
-		_renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
-				"displayValueOnlyStyleClass");		
-		
-	}	
+        _renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
+                "displayValueOnlyStyleClass");
+
+    }
 }

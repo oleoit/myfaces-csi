@@ -19,10 +19,11 @@ package org.apache.myfaces.custom.skin;
  *  under the License.
  */
 
-public class SkinConstants {
+public class SkinConstants
+{
 
-	public final static String DEFAULT_NAMESPACE = "af|";
-	public final static String STYLE_CLASS_SUFFIX = "::style";
-	public final static String DISABLED_CLASS_SUFFIX = "::disabled";
-	
+    public final static String DEFAULT_NAMESPACE = "af|";
+    public final static String STYLE_CLASS_SUFFIX = "::style";
+    public final static String DISABLED_CLASS_SUFFIX = "::disabled";
+
 }

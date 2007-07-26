@@ -19,11 +19,13 @@ package org.apache.myfaces.custom.skin.html.ext;
  *  under the License.
  */
 
+public class HtmlSelectManyListboxSkinRenderer extends
+        HtmlSelectOneOrManySkinRenderer
+{
 
-public class HtmlSelectManyListboxSkinRenderer extends HtmlSelectOneOrManySkinRenderer {
-
-	public HtmlSelectManyListboxSkinRenderer() {
-		super("t", "selectManyListbox");
-	}
+    public HtmlSelectManyListboxSkinRenderer()
+    {
+        super("t", "selectManyListbox");
+    }
 
 }

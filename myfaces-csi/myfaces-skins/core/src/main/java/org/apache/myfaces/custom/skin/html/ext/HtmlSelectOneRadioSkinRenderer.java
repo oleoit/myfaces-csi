@@ -19,11 +19,13 @@ package org.apache.myfaces.custom.skin.html.ext;
  *  under the License.
  */
 
+public class HtmlSelectOneRadioSkinRenderer extends
+        HtmlSelectOneOrManySkinRenderer
+{
 
-public class HtmlSelectOneRadioSkinRenderer extends HtmlSelectOneOrManySkinRenderer {
-
-	public HtmlSelectOneRadioSkinRenderer() {
-		super("t", "selectOneRadio");
-	}
+    public HtmlSelectOneRadioSkinRenderer()
+    {
+        super("t", "selectOneRadio");
+    }
 
 }

@@ -19,7 +19,6 @@ package org.apache.myfaces.custom.skin;
  *  under the License.
  */
 
-
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -30,6 +29,7 @@ import javax.faces.render.RenderKitFactory;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
 /**
  * This class only do what a RenderKitFactory should do. It's not 
  * necesary to use this class, but for historic reasons, I prefer
@@ -38,60 +38,69 @@ import org.apache.commons.logging.LogFactory;
  * @author Leonardo
  *
  */
-public class SkinRenderKitFactory extends RenderKitFactory {
+public class SkinRenderKitFactory extends RenderKitFactory
+{
 
-	private static final Log log = LogFactory.getLog(SkinRenderKitFactory.class);
-	
-	private Map _renderkits = new HashMap<String,RenderKit>();
-	
-	/*
-	 * If a renderKit is added I have to override it for implement
-	 * deletage pattern.
-	 *  
-	 * (non-Javadoc)
-	 * @see javax.faces.render.RenderKitFactory#addRenderKit(java.lang.String, javax.faces.render.RenderKit)
-	 */
-	@Override
-	public void addRenderKit(String renderKitId, RenderKit renderKit) {
-        if (renderKitId == null) throw new NullPointerException("renderKitId");
-        if (renderKit == null) throw new NullPointerException("renderKit");
+    private static final Log log = LogFactory
+            .getLog(SkinRenderKitFactory.class);
+
+    private Map _renderkits = new HashMap<String, RenderKit>();
+
+    /*
+     * If a renderKit is added I have to override it for implement
+     * deletage pattern.
+     *  
+     * (non-Javadoc)
+     * @see javax.faces.render.RenderKitFactory#addRenderKit(java.lang.String, javax.faces.render.RenderKit)
+     */
+    @Override
+    public void addRenderKit(String renderKitId, RenderKit renderKit)
+    {
+        if (renderKitId == null)
+            throw new NullPointerException("renderKitId");
+        if (renderKit == null)
+            throw new NullPointerException("renderKit");
         if (log.isInfoEnabled())
         {
             if (_renderkits.containsKey(renderKitId))
             {
-                log.info("RenderKit with renderKitId '" + renderKitId + "' was replaced.");
+                log.info("RenderKit with renderKitId '" + renderKitId
+                        + "' was replaced.");
             }
         }
-        		
-        _renderkits.put(renderKitId, renderKit);
-	}
 
-	/*
-	 * I have to get a renderkit that acts as a delegate pattern
-	 * 
-	 * (non-Javadoc)
-	 * @see javax.faces.render.RenderKitFactory#getRenderKit(javax.faces.context.FacesContext, java.lang.String)
-	 */
-	@Override
-	public RenderKit getRenderKit(FacesContext context, String renderKitId) {
-        if (renderKitId == null) throw new NullPointerException("renderKitId");
-        RenderKit renderkit = (RenderKit)_renderkits.get(renderKitId);
+        _renderkits.put(renderKitId, renderKit);
+    }
+
+    /*
+     * I have to get a renderkit that acts as a delegate pattern
+     * 
+     * (non-Javadoc)
+     * @see javax.faces.render.RenderKitFactory#getRenderKit(javax.faces.context.FacesContext, java.lang.String)
+     */
+    @Override
+    public RenderKit getRenderKit(FacesContext context, String renderKitId)
+    {
+        if (renderKitId == null)
+            throw new NullPointerException("renderKitId");
+        RenderKit renderkit = (RenderKit) _renderkits.get(renderKitId);
         if (renderkit == null)
         {
-        	
+
             //throw new IllegalArgumentException("Unknown RenderKit '" + renderKitId + "'.");
             //JSF Spec API Doc says:
             // "If there is no registered RenderKit for the specified identifier, return null"
             // vs "IllegalArgumentException - if no RenderKit instance can be returned for the specified identifier"
             //First sentence is more precise, so we just log a warning
             log.warn("Unknown RenderKit '" + renderKitId + "'.");
-            log.warn("Kits:"+_renderkits.keySet().toString());
+            log.warn("Kits:" + _renderkits.keySet().toString());
         }
         return renderkit;
-	}
+    }
 
-	@Override
-	public Iterator getRenderKitIds() {
+    @Override
+    public Iterator getRenderKitIds()
+    {
         return _renderkits.keySet().iterator();
-	}
+    }
 }

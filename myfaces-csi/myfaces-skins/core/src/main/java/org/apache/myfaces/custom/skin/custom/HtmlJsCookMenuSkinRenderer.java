@@ -36,60 +36,63 @@ import org.apache.myfaces.trinidad.context.RenderingContext;
  * @author Leonardo
  *
  */
-public class HtmlJsCookMenuSkinRenderer extends AdapterSkinRenderer {
+public class HtmlJsCookMenuSkinRenderer extends AdapterSkinRenderer
+{
 
-	/**
-	 * The log factory used to debug messages
-	 */
-	private static final Log log = LogFactory
-			.getLog(HtmlJsCookMenuSkinRenderer.class);
-	
-	public HtmlJsCookMenuSkinRenderer() {
-		super("t", "jscookMenu");
-	}
-	
+    /**
+     * The log factory used to debug messages
+     */
+    private static final Log log = LogFactory
+            .getLog(HtmlJsCookMenuSkinRenderer.class);
 
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
+    public HtmlJsCookMenuSkinRenderer()
+    {
+        super("t", "jscookMenu");
+    }
 
-		//log.info("Rendering... javascript_location:"+(String) component.getAttributes().get(JSFAttr.JAVASCRIPT_LOCATION));
-		
-		String baseStyleClass = this.getBaseStyleName(component);
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
 
-		String theme = baseStyleClass + "::theme";
+        //log.info("Rendering... javascript_location:"+(String) component.getAttributes().get(JSFAttr.JAVASCRIPT_LOCATION));
 
-		_renderReplaceStyleClass(component, context, arc, theme,
-				"theme");
-	}
-	
-	/**
-	 * Because this project uses Trinidad ViewHandler and StateManager 
-	 * Implementation, I have to write a hidden param JSCOOK_ACTION_PARAM
-	 * 
-	 */
-	@Override
-	public void encodeChildren(FacesContext context, UIComponent component)
-			throws IOException {
-		
-		UIComponent parentForm = findNestingForm(component,context);
-		
-		if (!isAdfOrTrinidadForm(parentForm)){
-			ResponseWriter writer = context.getResponseWriter();
+        String baseStyleClass = this.getBaseStyleName(component);
+
+        String theme = baseStyleClass + "::theme";
+
+        _renderReplaceStyleClass(component, context, arc, theme, "theme");
+    }
+
+    /**
+     * Because this project uses Trinidad ViewHandler and StateManager 
+     * Implementation, I have to write a hidden param JSCOOK_ACTION_PARAM
+     * 
+     */
+    @Override
+    public void encodeChildren(FacesContext context, UIComponent component)
+            throws IOException
+    {
+
+        UIComponent parentForm = findNestingForm(component, context);
+
+        if (!isAdfOrTrinidadForm(parentForm))
+        {
+            ResponseWriter writer = context.getResponseWriter();
             // need to add hidden input, cause MyFaces form is missing hence will not render hidden inputs
             writer.write("<input type=\"hidden\" name=\"");
             writer.write(JSCOOK_ACTION_PARAM);
-            writer.write("\" />");			
-		}
-		
-		if (this._delegate != null)
-			_delegate.encodeChildren(context, component);
-	}	
-	
-	//THIS METHODS ARE COPIED FROM TOMAHAWK CLASS RendererUtils
-	
-	private static final String JSCOOK_ACTION_PARAM = "jscook_action";
-	
+            writer.write("\" />");
+        }
+
+        if (this._delegate != null)
+            _delegate.encodeChildren(context, component);
+    }
+
+    //THIS METHODS ARE COPIED FROM TOMAHAWK CLASS RendererUtils
+
+    private static final String JSCOOK_ACTION_PARAM = "jscook_action";
+
     /**
      * Find the enclosing form of a component
      * in the view-tree.
@@ -105,12 +108,14 @@ public class HtmlJsCookMenuSkinRenderer extends AdapterSkinRenderer {
      * @param facesContext
      * @return FormInfo Information about the form - the form itself and its name.
      */
-    public static UIComponent findNestingForm(UIComponent uiComponent, FacesContext facesContext)
+    public static UIComponent findNestingForm(UIComponent uiComponent,
+            FacesContext facesContext)
     {
         UIComponent parent = uiComponent.getParent();
-        while (parent != null && (!ADF_FORM_COMPONENT_FAMILY.equals(parent.getFamily()) &&
-            !TRINIDAD_FORM_COMPONENT_FAMILY.equals(parent.getFamily()) &&
-            !(parent instanceof UIForm)))
+        while (parent != null
+                && (!ADF_FORM_COMPONENT_FAMILY.equals(parent.getFamily())
+                        && !TRINIDAD_FORM_COMPONENT_FAMILY.equals(parent
+                                .getFamily()) && !(parent instanceof UIForm)))
         {
             parent = parent.getParent();
         }
@@ -118,19 +123,20 @@ public class HtmlJsCookMenuSkinRenderer extends AdapterSkinRenderer {
         if (parent != null)
         {
             //link is nested inside a form
-        	return parent;
+            return parent;
         }
 
         return null;
     }
-		
+
     private static final String TRINIDAD_FORM_COMPONENT_FAMILY = "org.apache.myfaces.trinidad.Form";
     private static final String ADF_FORM_COMPONENT_FAMILY = "oracle.adf.Form";
-		
-    public static boolean isAdfOrTrinidadForm(UIComponent component) {
+
+    public static boolean isAdfOrTrinidadForm(UIComponent component)
+    {
         if (component == null)
             return false;
-        return ADF_FORM_COMPONENT_FAMILY.equals(component.getFamily()) ||
-            TRINIDAD_FORM_COMPONENT_FAMILY.equals(component.getFamily());
-    }	
+        return ADF_FORM_COMPONENT_FAMILY.equals(component.getFamily())
+                || TRINIDAD_FORM_COMPONENT_FAMILY.equals(component.getFamily());
+    }
 }

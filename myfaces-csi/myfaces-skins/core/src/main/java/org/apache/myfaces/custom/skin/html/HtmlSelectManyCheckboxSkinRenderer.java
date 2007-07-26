@@ -27,10 +27,13 @@ import javax.faces.context.FacesContext;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlSelectManyCheckboxSkinRenderer extends HtmlSelectOneOrManySkinRenderer {
+public class HtmlSelectManyCheckboxSkinRenderer extends
+        HtmlSelectOneOrManySkinRenderer
+{
 
-	public HtmlSelectManyCheckboxSkinRenderer() {
-		super("h", "selectManyCheckbox");
-	}
+    public HtmlSelectManyCheckboxSkinRenderer()
+    {
+        super("h", "selectManyCheckbox");
+    }
 
 }

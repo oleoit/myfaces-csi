@@ -29,23 +29,26 @@ import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.custom.skin.SkinConstants;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlDataListSkinRenderer extends AdapterSkinRenderer {
+public class HtmlDataListSkinRenderer extends AdapterSkinRenderer
+{
 
-	public HtmlDataListSkinRenderer() {
-		super("t", "dataList");
-	}
+    public HtmlDataListSkinRenderer()
+    {
+        super("t", "dataList");
+    }
 
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		_addStyleClass(context, component, arc);
-		
-		String baseStyleClass = this.getBaseStyleName(component);
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
+        _addStyleClass(context, component, arc);
 
-		String itemStyleClass = baseStyleClass + "::item";		
+        String baseStyleClass = this.getBaseStyleName(component);
 
-		_renderStyleClass(component, context, arc, itemStyleClass,
-				"itemStyleClass");		
-		
-	}	
+        String itemStyleClass = baseStyleClass + "::item";
+
+        _renderStyleClass(component, context, arc, itemStyleClass,
+                "itemStyleClass");
+
+    }
 }

@@ -19,7 +19,6 @@ package org.apache.myfaces.custom.skin.custom;
  *  under the License.
  */
 
-
 import java.io.IOException;
 
 import javax.faces.component.UIComponent;
@@ -28,38 +27,39 @@ import javax.faces.context.FacesContext;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlPanelLayoutSkinRenderer extends AdapterSkinRenderer {
-	
-	public HtmlPanelLayoutSkinRenderer() {
-		super("t", "panelLayout");
-	}
+public class HtmlPanelLayoutSkinRenderer extends AdapterSkinRenderer
+{
 
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		this._addStyleClass(context, component, arc);
+    public HtmlPanelLayoutSkinRenderer()
+    {
+        super("t", "panelLayout");
+    }
 
-		String bodyStyleClass = null;
-		String footerStyleClass = null;
-		String headerStyleClass = null;
-		String navigationStyleClass = null;
-		
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
+        this._addStyleClass(context, component, arc);
 
-		String baseStyleClass = this.getBaseStyleName(component);
+        String bodyStyleClass = null;
+        String footerStyleClass = null;
+        String headerStyleClass = null;
+        String navigationStyleClass = null;
 
-		bodyStyleClass = baseStyleClass + "::body";
-		footerStyleClass = baseStyleClass + "::footer";
-		headerStyleClass = baseStyleClass + "::header";
-		navigationStyleClass = baseStyleClass + "::navigation";
+        String baseStyleClass = this.getBaseStyleName(component);
 
-		_renderStyleClass(component, context, arc, bodyStyleClass,
-			"bodyClass");		
-		_renderStyleClass(component, context, arc, footerStyleClass,
-			"footerClass");
-		_renderStyleClass(component, context, arc, headerStyleClass,
-			"headerClass");
-		_renderStyleClass(component, context, arc, navigationStyleClass,
-			"navigationClass");
-	}
-	
+        bodyStyleClass = baseStyleClass + "::body";
+        footerStyleClass = baseStyleClass + "::footer";
+        headerStyleClass = baseStyleClass + "::header";
+        navigationStyleClass = baseStyleClass + "::navigation";
+
+        _renderStyleClass(component, context, arc, bodyStyleClass, "bodyClass");
+        _renderStyleClass(component, context, arc, footerStyleClass,
+                "footerClass");
+        _renderStyleClass(component, context, arc, headerStyleClass,
+                "headerClass");
+        _renderStyleClass(component, context, arc, navigationStyleClass,
+                "navigationClass");
+    }
+
 }

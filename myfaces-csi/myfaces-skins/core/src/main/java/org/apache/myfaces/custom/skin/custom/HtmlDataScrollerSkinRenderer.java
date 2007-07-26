@@ -29,49 +29,52 @@ import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.custom.skin.SkinConstants;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlDataScrollerSkinRenderer extends AdapterSkinRenderer {
+public class HtmlDataScrollerSkinRenderer extends AdapterSkinRenderer
+{
 
-	public HtmlDataScrollerSkinRenderer() {
-		super("t", "dataScroller");
-	}
+    public HtmlDataScrollerSkinRenderer()
+    {
+        super("t", "dataScroller");
+    }
 
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		
-		String baseStyleClass = this.getBaseStyleName(component);
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
 
-		String fastfStyleClass = baseStyleClass + "::fastf";
-		String fastrStyleClass = baseStyleClass + "::fastr";
-		String firstStyleClass = baseStyleClass + "::first";
-		String lastStyleClass = baseStyleClass + "::last";
-		String nextStyleClass = baseStyleClass + "::next";
-		String paginatorActiveColumnClass = baseStyleClass
-				+ "::paginatorActiveColumn";
-		String paginatorColumnClass = baseStyleClass + "::paginatorColumn";
-		String paginatorTableClass = baseStyleClass + "::paginatorTable";
-		String previousStyleClass = baseStyleClass + "::previous";
-		String styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
+        String baseStyleClass = this.getBaseStyleName(component);
 
-		_renderStyleClass(component, context, arc, fastfStyleClass,
-				"fastfStyleClass");
-		_renderStyleClass(component, context, arc, fastrStyleClass,
-				"fastrStyleClass");
-		_renderStyleClass(component, context, arc, firstStyleClass,
-				"firstStyleClass");
-		_renderStyleClass(component, context, arc, lastStyleClass,
-				"lastStyleClass");
-		_renderStyleClass(component, context, arc, nextStyleClass,
-				"nextStyleClass");
-		_renderStyleClass(component, context, arc, paginatorActiveColumnClass,
-				"paginatorActiveColumnClass");
-		_renderStyleClass(component, context, arc, paginatorColumnClass,
-				"paginatorColumnClass");
-		_renderStyleClass(component, context, arc, paginatorTableClass,
-				"paginatorTableClass");
-		_renderStyleClass(component, context, arc, previousStyleClass,
-				"previousStyleClass");
-		_renderStyleClass(component, context, arc, styleClass, "styleClass");
+        String fastfStyleClass = baseStyleClass + "::fastf";
+        String fastrStyleClass = baseStyleClass + "::fastr";
+        String firstStyleClass = baseStyleClass + "::first";
+        String lastStyleClass = baseStyleClass + "::last";
+        String nextStyleClass = baseStyleClass + "::next";
+        String paginatorActiveColumnClass = baseStyleClass
+                + "::paginatorActiveColumn";
+        String paginatorColumnClass = baseStyleClass + "::paginatorColumn";
+        String paginatorTableClass = baseStyleClass + "::paginatorTable";
+        String previousStyleClass = baseStyleClass + "::previous";
+        String styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 
-	}
+        _renderStyleClass(component, context, arc, fastfStyleClass,
+                "fastfStyleClass");
+        _renderStyleClass(component, context, arc, fastrStyleClass,
+                "fastrStyleClass");
+        _renderStyleClass(component, context, arc, firstStyleClass,
+                "firstStyleClass");
+        _renderStyleClass(component, context, arc, lastStyleClass,
+                "lastStyleClass");
+        _renderStyleClass(component, context, arc, nextStyleClass,
+                "nextStyleClass");
+        _renderStyleClass(component, context, arc, paginatorActiveColumnClass,
+                "paginatorActiveColumnClass");
+        _renderStyleClass(component, context, arc, paginatorColumnClass,
+                "paginatorColumnClass");
+        _renderStyleClass(component, context, arc, paginatorTableClass,
+                "paginatorTableClass");
+        _renderStyleClass(component, context, arc, previousStyleClass,
+                "previousStyleClass");
+        _renderStyleClass(component, context, arc, styleClass, "styleClass");
+
+    }
 }
