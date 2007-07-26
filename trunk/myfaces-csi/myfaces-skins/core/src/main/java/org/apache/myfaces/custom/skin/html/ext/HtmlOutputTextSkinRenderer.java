@@ -21,9 +21,11 @@ package org.apache.myfaces.custom.skin.html.ext;
 
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 
-public class HtmlOutputTextSkinRenderer extends AdapterSkinRenderer{
+public class HtmlOutputTextSkinRenderer extends AdapterSkinRenderer
+{
 
-	public HtmlOutputTextSkinRenderer() {
-		super("t","outputText");
-	}
+    public HtmlOutputTextSkinRenderer()
+    {
+        super("t", "outputText");
+    }
 }

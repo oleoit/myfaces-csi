@@ -27,10 +27,13 @@ import javax.faces.context.FacesContext;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlSelectOneRadioSkinRenderer extends HtmlSelectOneOrManySkinRenderer {
+public class HtmlSelectOneRadioSkinRenderer extends
+        HtmlSelectOneOrManySkinRenderer
+{
 
-	public HtmlSelectOneRadioSkinRenderer() {
-		super("h", "selectOneRadio");
-	}
+    public HtmlSelectOneRadioSkinRenderer()
+    {
+        super("h", "selectOneRadio");
+    }
 
 }

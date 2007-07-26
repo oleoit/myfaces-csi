@@ -29,23 +29,27 @@ import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.custom.skin.SkinConstants;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlInputSecretSkinRenderer extends AdapterSkinRenderer {
+public class HtmlInputSecretSkinRenderer extends AdapterSkinRenderer
+{
 
-	public HtmlInputSecretSkinRenderer() {
-		super("t", "inputSecret");
-	}
+    public HtmlInputSecretSkinRenderer()
+    {
+        super("t", "inputSecret");
+    }
 
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		_addStyleDisabledReadOnlyRequired(context, component, arc);
-		
-		String baseStyleClass = this.getBaseStyleName(component);
-		
-		String displayValueOnlyStyleClass = baseStyleClass + "::displayValueOnly";		
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
+        _addStyleDisabledReadOnlyRequired(context, component, arc);
 
-		_renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
-				"displayValueOnlyStyleClass");		
-		
-	}	
+        String baseStyleClass = this.getBaseStyleName(component);
+
+        String displayValueOnlyStyleClass = baseStyleClass
+                + "::displayValueOnly";
+
+        _renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
+                "displayValueOnlyStyleClass");
+
+    }
 }

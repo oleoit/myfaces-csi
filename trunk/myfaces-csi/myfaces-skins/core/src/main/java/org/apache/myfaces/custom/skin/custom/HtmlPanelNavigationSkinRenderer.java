@@ -31,122 +31,130 @@ import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.custom.skin.SkinConstants;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlPanelNavigationSkinRenderer extends AdapterSkinRenderer {
-	
-	public HtmlPanelNavigationSkinRenderer() {
-		super("t", "panelNavigation");
-	}
+public class HtmlPanelNavigationSkinRenderer extends AdapterSkinRenderer
+{
 
-	/**
-	 * The log factory used to debug messages
-	 */
-	private static final Log log = LogFactory
-			.getLog(HtmlPanelNavigationSkinRenderer.class);
+    public HtmlPanelNavigationSkinRenderer()
+    {
+        super("t", "panelNavigation");
+    }
 
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
+    /**
+     * The log factory used to debug messages
+     */
+    private static final Log log = LogFactory
+            .getLog(HtmlPanelNavigationSkinRenderer.class);
 
-		String baseStyleClass = this.getBaseStyleName(component);
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
 
-		String itemStyleClass = baseStyleClass + "::item";
-		String openItemStyleClass = baseStyleClass + "::open";
-		String activeItemStyleClass = baseStyleClass + "::active";
-		String separatorStyleClass = baseStyleClass + "::separator";
-		String styleClass = baseStyleClass + "::styleClass";
-		//String divStyleClass = baseStyleClass + SkinConstants.STYLE_CLASS;
-		//String outerStyleClass = baseStyleClass + "::outer";
+        String baseStyleClass = this.getBaseStyleName(component);
 
-		_renderStyleClass(component, context, arc, itemStyleClass, "itemClass");
-		_renderStyleClass(component, context, arc, openItemStyleClass,
-				"openItemClass");
-		_renderStyleClass(component, context, arc, activeItemStyleClass,
-				"activeItemClass");
-		_renderStyleClass(component, context, arc, separatorStyleClass,
-				"separatorClass");
-		_renderStyleClass(component, context, arc, styleClass, "styleClass");
+        String itemStyleClass = baseStyleClass + "::item";
+        String openItemStyleClass = baseStyleClass + "::open";
+        String activeItemStyleClass = baseStyleClass + "::active";
+        String separatorStyleClass = baseStyleClass + "::separator";
+        String styleClass = baseStyleClass + "::styleClass";
+        //String divStyleClass = baseStyleClass + SkinConstants.STYLE_CLASS;
+        //String outerStyleClass = baseStyleClass + "::outer";
 
-		/*
-		Map<String, Object> requestMap = context.getExternalContext()
-				.getRequestMap();
+        _renderStyleClass(component, context, arc, itemStyleClass, "itemClass");
+        _renderStyleClass(component, context, arc, openItemStyleClass,
+                "openItemClass");
+        _renderStyleClass(component, context, arc, activeItemStyleClass,
+                "activeItemClass");
+        _renderStyleClass(component, context, arc, separatorStyleClass,
+                "separatorClass");
+        _renderStyleClass(component, context, arc, styleClass, "styleClass");
 
-		Integer nestLevelObject = (Integer) requestMap
-				.get(NAVIGATION_PANEL_NEST_LEVEL_KEY);
-		int nestLevel = 0;
-		if (nestLevelObject != null) {
-			nestLevel = nestLevelObject.intValue() + 1;
-		}
-		requestMap.put(NAVIGATION_PANEL_NEST_LEVEL_KEY, nestLevel);
+        /*
+         Map<String, Object> requestMap = context.getExternalContext()
+         .getRequestMap();
 
-		if (nestLevel == 0){
-			ResponseWriter writer = context.getResponseWriter();
-			// I don't like have to add a t:div for use this component
-			// I prefer add this two div and integrate inside the 
-			// skinning features
-			// It's have some drawbacks, like you can't arrange 2
-			// t:panelNavigation2 to form a big panel Navigation, but in
-			// many cases
+         Integer nestLevelObject = (Integer) requestMap
+         .get(NAVIGATION_PANEL_NEST_LEVEL_KEY);
+         int nestLevel = 0;
+         if (nestLevelObject != null) {
+         nestLevel = nestLevelObject.intValue() + 1;
+         }
+         requestMap.put(NAVIGATION_PANEL_NEST_LEVEL_KEY, nestLevel);
 
-			writer.startElement("div", null);
-			renderDivStyleClass(component, context, arc, outerStyleClass, "class");
-			writer.startElement("div", null);
-			renderDivStyleClass(component, context, arc, divStyleClass, "class");
-		}
-		*/
-	}
+         if (nestLevel == 0){
+         ResponseWriter writer = context.getResponseWriter();
+         // I don't like have to add a t:div for use this component
+         // I prefer add this two div and integrate inside the 
+         // skinning features
+         // It's have some drawbacks, like you can't arrange 2
+         // t:panelNavigation2 to form a big panel Navigation, but in
+         // many cases
 
-	static public void renderDivStyleClass(UIComponent component,
-			FacesContext context, RenderingContext arc, String styleClass,
-			String property) throws IOException {
-		if (styleClass != null) {
-			styleClass = arc.getStyleClass(styleClass);
+         writer.startElement("div", null);
+         renderDivStyleClass(component, context, arc, outerStyleClass, "class");
+         writer.startElement("div", null);
+         renderDivStyleClass(component, context, arc, divStyleClass, "class");
+         }
+         */
+    }
 
-			if (styleClass != null) {
-				if (styleClass.startsWith("af_")){
-					//no styleClass found
-					return;
-				}				
-				context.getResponseWriter().writeAttribute(property, styleClass, property);
-			}
-		}
-	}
-	
-	
-	public void encodeEnd(FacesContext context, UIComponent component)
-			throws IOException {
-		
-		super.encodeEnd(context, component);
-		
-		/*
-		ResponseWriter writer = context.getResponseWriter();
-	    
-		Map<String, Object> requestMap = context.getExternalContext()
-		.getRequestMap();
+    static public void renderDivStyleClass(UIComponent component,
+            FacesContext context, RenderingContext arc, String styleClass,
+            String property) throws IOException
+    {
+        if (styleClass != null)
+        {
+            styleClass = arc.getStyleClass(styleClass);
 
-		Integer nestLevelObject = (Integer) requestMap
-			.get(NAVIGATION_PANEL_NEST_LEVEL_KEY);
-		int nestLevel = 0;
-		if (nestLevelObject != null) {
-			nestLevel = nestLevelObject.intValue();
-		}
-	
-		// Indicate that we are leaving this level of nesting:		
-		if (nestLevel == 0)
-	    {
-	      // delete the value altogether:
-	      requestMap.remove(NAVIGATION_PANEL_NEST_LEVEL_KEY);
-	      //End div contained
-		  writer.endElement("div");
-		  writer.endElement("div");
-	    }
-	    else
-	    {
-	      // decrement the value:
-	      requestMap.put(NAVIGATION_PANEL_NEST_LEVEL_KEY, nestLevel - 1);
-	    }
-	    */
-	}
+            if (styleClass != null)
+            {
+                if (styleClass.startsWith("af_"))
+                {
+                    //no styleClass found
+                    return;
+                }
+                context.getResponseWriter().writeAttribute(property,
+                        styleClass, property);
+            }
+        }
+    }
 
-	//private static final String NAVIGATION_PANEL_NEST_LEVEL_KEY = "org.apache.myfaces.custom.skin.NavigationPanelNestLevel";
+    public void encodeEnd(FacesContext context, UIComponent component)
+            throws IOException
+    {
+
+        super.encodeEnd(context, component);
+
+        /*
+         ResponseWriter writer = context.getResponseWriter();
+         
+         Map<String, Object> requestMap = context.getExternalContext()
+         .getRequestMap();
+
+         Integer nestLevelObject = (Integer) requestMap
+         .get(NAVIGATION_PANEL_NEST_LEVEL_KEY);
+         int nestLevel = 0;
+         if (nestLevelObject != null) {
+         nestLevel = nestLevelObject.intValue();
+         }
+         
+         // Indicate that we are leaving this level of nesting:		
+         if (nestLevel == 0)
+         {
+         // delete the value altogether:
+         requestMap.remove(NAVIGATION_PANEL_NEST_LEVEL_KEY);
+         //End div contained
+         writer.endElement("div");
+         writer.endElement("div");
+         }
+         else
+         {
+         // decrement the value:
+         requestMap.put(NAVIGATION_PANEL_NEST_LEVEL_KEY, nestLevel - 1);
+         }
+         */
+    }
+
+    //private static final String NAVIGATION_PANEL_NEST_LEVEL_KEY = "org.apache.myfaces.custom.skin.NavigationPanelNestLevel";
 
 }

@@ -21,11 +21,13 @@ import org.apache.myfaces.custom.skin.html.ext.HtmlSelectOneOrManySkinRenderer;
  *  under the License.
  */
 
+public class HtmlSelectOneLanguageSkinRenderer extends
+        HtmlSelectOneOrManySkinRenderer
+{
 
-public class HtmlSelectOneLanguageSkinRenderer extends HtmlSelectOneOrManySkinRenderer {
-
-	public HtmlSelectOneLanguageSkinRenderer() {
-		super("t", "selectOneLanguage");
-	}
+    public HtmlSelectOneLanguageSkinRenderer()
+    {
+        super("t", "selectOneLanguage");
+    }
 
 }

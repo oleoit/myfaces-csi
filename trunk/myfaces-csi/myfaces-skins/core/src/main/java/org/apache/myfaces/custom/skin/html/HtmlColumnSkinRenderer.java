@@ -19,7 +19,6 @@ package org.apache.myfaces.custom.skin.html;
  *  under the License.
  */
 
-
 import java.io.IOException;
 
 import javax.faces.component.UIComponent;
@@ -35,25 +34,28 @@ import org.apache.myfaces.trinidad.context.RenderingContext;
  * @author Leonardo Uribe
  *
  */
-public class HtmlColumnSkinRenderer extends SkinRenderer{
+public class HtmlColumnSkinRenderer extends SkinRenderer
+{
 
-	// For use in jsf 1.2
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context, UIComponent component, RenderingContext arc) throws IOException {
-		String footerStyleClass = null;
-		String headerStyleClass = null;
+    // For use in jsf 1.2
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
+        String footerStyleClass = null;
+        String headerStyleClass = null;
 
-		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
-				+ StringUtils.replaceChars(component.getClass().getName(), '.',
-						'_');
+        String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
+                + StringUtils.replaceChars(component.getClass().getName(), '.',
+                        '_');
 
-		footerStyleClass = baseStyleClass + "::footer";
-		headerStyleClass = baseStyleClass + "::header";
+        footerStyleClass = baseStyleClass + "::footer";
+        headerStyleClass = baseStyleClass + "::header";
 
-		_renderStyleClass(component, context, arc, footerStyleClass,
-				"footerClass");
-		_renderStyleClass(component, context, arc, headerStyleClass,
-				"headerClass");
-	}
+        _renderStyleClass(component, context, arc, footerStyleClass,
+                "footerClass");
+        _renderStyleClass(component, context, arc, headerStyleClass,
+                "headerClass");
+    }
 
 }

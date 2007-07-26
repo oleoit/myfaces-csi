@@ -19,11 +19,13 @@ package org.apache.myfaces.custom.skin.html.ext;
  *  under the License.
  */
 
+public class HtmlSelectManyCheckboxSkinRenderer extends
+        HtmlSelectOneOrManySkinRenderer
+{
 
-public class HtmlSelectManyCheckboxSkinRenderer extends HtmlSelectOneOrManySkinRenderer {
-
-	public HtmlSelectManyCheckboxSkinRenderer() {
-		super("t", "selectManyCheckbox");
-	}
+    public HtmlSelectManyCheckboxSkinRenderer()
+    {
+        super("t", "selectManyCheckbox");
+    }
 
 }

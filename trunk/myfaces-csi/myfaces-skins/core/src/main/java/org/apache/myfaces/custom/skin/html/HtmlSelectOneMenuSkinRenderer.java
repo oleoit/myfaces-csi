@@ -27,10 +27,13 @@ import javax.faces.context.FacesContext;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlSelectOneMenuSkinRenderer extends HtmlSelectOneOrManySkinRenderer {
+public class HtmlSelectOneMenuSkinRenderer extends
+        HtmlSelectOneOrManySkinRenderer
+{
 
-	public HtmlSelectOneMenuSkinRenderer() {
-		super("h", "selectOneMenu");
-	}
+    public HtmlSelectOneMenuSkinRenderer()
+    {
+        super("h", "selectOneMenu");
+    }
 
 }

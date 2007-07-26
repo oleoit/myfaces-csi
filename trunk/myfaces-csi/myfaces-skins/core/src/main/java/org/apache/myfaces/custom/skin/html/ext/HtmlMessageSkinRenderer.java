@@ -29,33 +29,38 @@ import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.custom.skin.SkinConstants;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlMessageSkinRenderer extends AdapterSkinRenderer {
+public class HtmlMessageSkinRenderer extends AdapterSkinRenderer
+{
 
-	public HtmlMessageSkinRenderer() {
-		super("t", "message");
-	}
+    public HtmlMessageSkinRenderer()
+    {
+        super("t", "message");
+    }
 
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		_addStyleClass(context, component, arc);
-		
-		// now add fatal, info, error and warn StyleClass
-		String fatalStyleClass = null;
-		String infoStyleClass = null;
-		String errorStyleClass = null;
-		String warnStyleClass = null;
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
+        _addStyleClass(context, component, arc);
 
-		String baseStyleClass = this.getBaseStyleName(component);
+        // now add fatal, info, error and warn StyleClass
+        String fatalStyleClass = null;
+        String infoStyleClass = null;
+        String errorStyleClass = null;
+        String warnStyleClass = null;
 
-		fatalStyleClass = baseStyleClass + "::fatal";
-		infoStyleClass = baseStyleClass + "::info";
-		errorStyleClass = baseStyleClass + "::error";
-		warnStyleClass = baseStyleClass + "::warn";
+        String baseStyleClass = this.getBaseStyleName(component);
 
-		_renderStyleClass(component, context, arc, fatalStyleClass, "fatalClass");
-		_renderStyleClass(component, context, arc, infoStyleClass, "infoClass");
-		_renderStyleClass(component, context, arc, errorStyleClass, "errorClass");
-		_renderStyleClass(component, context, arc, warnStyleClass, "warnClass");		
-	}	
+        fatalStyleClass = baseStyleClass + "::fatal";
+        infoStyleClass = baseStyleClass + "::info";
+        errorStyleClass = baseStyleClass + "::error";
+        warnStyleClass = baseStyleClass + "::warn";
+
+        _renderStyleClass(component, context, arc, fatalStyleClass,
+                "fatalClass");
+        _renderStyleClass(component, context, arc, infoStyleClass, "infoClass");
+        _renderStyleClass(component, context, arc, errorStyleClass,
+                "errorClass");
+        _renderStyleClass(component, context, arc, warnStyleClass, "warnClass");
+    }
 }

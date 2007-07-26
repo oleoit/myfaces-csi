@@ -29,27 +29,30 @@ import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.custom.skin.SkinConstants;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlCommandLinkSkinRenderer extends AdapterSkinRenderer {
+public class HtmlCommandLinkSkinRenderer extends AdapterSkinRenderer
+{
 
-	public HtmlCommandLinkSkinRenderer() {
-		super("t", "commandLink");
-	}
+    public HtmlCommandLinkSkinRenderer()
+    {
+        super("t", "commandLink");
+    }
 
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-				
-		String styleClass = null;
-		String disabledStyleClass = null;
-		
-		String baseStyleClass = this.getBaseStyleName(component);
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
 
-		styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
-		disabledStyleClass = baseStyleClass + SkinConstants.DISABLED_CLASS_SUFFIX;
+        String styleClass = null;
+        String disabledStyleClass = null;
 
-		_renderStyleClass(component, context, arc, styleClass,
-				"styleClass");		
-		_renderStyleClass(component, context, arc, disabledStyleClass,
-				"disabledStyleClass");
-	}	
+        String baseStyleClass = this.getBaseStyleName(component);
+
+        styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
+        disabledStyleClass = baseStyleClass
+                + SkinConstants.DISABLED_CLASS_SUFFIX;
+
+        _renderStyleClass(component, context, arc, styleClass, "styleClass");
+        _renderStyleClass(component, context, arc, disabledStyleClass,
+                "disabledStyleClass");
+    }
 }

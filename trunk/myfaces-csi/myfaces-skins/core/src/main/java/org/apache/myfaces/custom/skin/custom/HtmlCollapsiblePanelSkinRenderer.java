@@ -27,15 +27,18 @@ import javax.faces.context.FacesContext;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlCollapsiblePanelSkinRenderer extends AdapterSkinRenderer {
+public class HtmlCollapsiblePanelSkinRenderer extends AdapterSkinRenderer
+{
 
-	public HtmlCollapsiblePanelSkinRenderer() {
-		super("t", "collapsiblePanel");
-	}
+    public HtmlCollapsiblePanelSkinRenderer()
+    {
+        super("t", "collapsiblePanel");
+    }
 
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		_addStyleClass(context, component, arc);
-	}	
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
+        _addStyleClass(context, component, arc);
+    }
 }

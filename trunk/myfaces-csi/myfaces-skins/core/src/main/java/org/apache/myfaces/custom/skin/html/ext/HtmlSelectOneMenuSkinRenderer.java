@@ -19,11 +19,13 @@ package org.apache.myfaces.custom.skin.html.ext;
  *  under the License.
  */
 
+public class HtmlSelectOneMenuSkinRenderer extends
+        HtmlSelectOneOrManySkinRenderer
+{
 
-public class HtmlSelectOneMenuSkinRenderer extends HtmlSelectOneOrManySkinRenderer {
-
-	public HtmlSelectOneMenuSkinRenderer() {
-		super("t", "selectOneMenu");
-	}
+    public HtmlSelectOneMenuSkinRenderer()
+    {
+        super("t", "selectOneMenu");
+    }
 
 }

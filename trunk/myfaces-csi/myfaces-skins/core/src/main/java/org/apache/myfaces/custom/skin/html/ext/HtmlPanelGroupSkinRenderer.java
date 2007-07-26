@@ -29,24 +29,27 @@ import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.custom.skin.SkinConstants;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlPanelGroupSkinRenderer extends AdapterSkinRenderer {
+public class HtmlPanelGroupSkinRenderer extends AdapterSkinRenderer
+{
 
-	public HtmlPanelGroupSkinRenderer() {
-		super("t", "panelGroup");
-	}
+    public HtmlPanelGroupSkinRenderer()
+    {
+        super("t", "panelGroup");
+    }
 
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		_addStyleClass(context, component, arc);
-		
-		String displayValueOnlyStyleClass = null;
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
+        _addStyleClass(context, component, arc);
 
-		String baseStyleClass = this.getBaseStyleName(component);
+        String displayValueOnlyStyleClass = null;
 
-		displayValueOnlyStyleClass = baseStyleClass + "::displayValueOnly";		
+        String baseStyleClass = this.getBaseStyleName(component);
 
-		_renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
-				"displayValueOnlyStyleClass");		
-	}	
+        displayValueOnlyStyleClass = baseStyleClass + "::displayValueOnly";
+
+        _renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
+                "displayValueOnlyStyleClass");
+    }
 }

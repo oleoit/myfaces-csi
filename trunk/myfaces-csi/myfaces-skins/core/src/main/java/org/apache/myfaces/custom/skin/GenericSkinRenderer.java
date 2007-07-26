@@ -44,341 +44,423 @@ import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.SkinSelectors;
  * 
  * @author Leonardo Uribe
  */
-public class GenericSkinRenderer extends SkinRenderer {
+public class GenericSkinRenderer extends SkinRenderer
+{
 
-	/**
-	 * The log factory used to debug messages
-	 */
-	private static final Log log = LogFactory.getLog(GenericSkinRenderer.class);
+    /**
+     * The log factory used to debug messages
+     */
+    private static final Log log = LogFactory.getLog(GenericSkinRenderer.class);
 
-	/**
-	 * Constructor
-	 * 
-	 * Save its delegate renderer
-	 * 
-	 * @param delegate
-	 */
-	public GenericSkinRenderer(Renderer delegate) {
-		super(delegate);
-	}
-	
-	public GenericSkinRenderer(){		
-	}
+    /**
+     * Constructor
+     * 
+     * Save its delegate renderer
+     * 
+     * @param delegate
+     */
+    public GenericSkinRenderer(Renderer delegate)
+    {
+        super(delegate);
+    }
 
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context, 
-			UIComponent component, RenderingContext arc)
-			throws IOException {
+    public GenericSkinRenderer()
+    {
+    }
 
-		// The task here is first check if the component is appropiate to
-		// skinning (not inherit from UIXComponent) and has a styleClass
-		// property
-		// to do it.
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
 
-		if (UIXComponent.class.isAssignableFrom(component.getClass())) {
-			// Nothing because is a trinidad component.
-		} else {
-			this.encodeGenericComponent(context, component, arc);
-		}
-	}
+        // The task here is first check if the component is appropiate to
+        // skinning (not inherit from UIXComponent) and has a styleClass
+        // property
+        // to do it.
 
+        if (UIXComponent.class.isAssignableFrom(component.getClass()))
+        {
+            // Nothing because is a trinidad component.
+        }
+        else
+        {
+            this.encodeGenericComponent(context, component, arc);
+        }
+    }
 
+    public static List<String> parseStyleClassListComma(String styleClass)
+    {
+        if (styleClass == null)
+            return null;
 
+        // If there's no spaces, it's just a single class - return
+        // AdamWiner: should we care about all Unicode whitspace?
+        // This will catch 99.9% of cases, and this code needs to be
+        // fast
+        int spaceIndex = styleClass.indexOf(',');
+        if (spaceIndex < 0)
+            return null;
 
-	public static List<String> parseStyleClassListComma(String styleClass) {
-		if (styleClass == null)
-			return null;
+        // Iterate through the string and build up the split list
+        // AdamWiner: Regex split() would be a lot less code, but
+        // it doesn't automatically trim empty strings.
+        int prevSpaceIndex = 0;
+        List<String> styleClasses = new ArrayList<String>();
+        do
+        {
+            if (spaceIndex > prevSpaceIndex)
+                styleClasses.add(styleClass.substring(prevSpaceIndex,
+                        spaceIndex));
+            prevSpaceIndex = spaceIndex + 1;
+            spaceIndex = styleClass.indexOf(',', prevSpaceIndex);
+        } while (spaceIndex >= 0);
 
-		// If there's no spaces, it's just a single class - return
-		// AdamWiner: should we care about all Unicode whitspace?
-		// This will catch 99.9% of cases, and this code needs to be
-		// fast
-		int spaceIndex = styleClass.indexOf(',');
-		if (spaceIndex < 0)
-			return null;
+        if (prevSpaceIndex < styleClass.length())
+            styleClasses.add(styleClass.substring(prevSpaceIndex));
 
-		// Iterate through the string and build up the split list
-		// AdamWiner: Regex split() would be a lot less code, but
-		// it doesn't automatically trim empty strings.
-		int prevSpaceIndex = 0;
-		List<String> styleClasses = new ArrayList<String>();
-		do {
-			if (spaceIndex > prevSpaceIndex)
-				styleClasses.add(styleClass.substring(prevSpaceIndex,
-						spaceIndex));
-			prevSpaceIndex = spaceIndex + 1;
-			spaceIndex = styleClass.indexOf(',', prevSpaceIndex);
-		} while (spaceIndex >= 0);
+        return styleClasses;
+    }
 
-		if (prevSpaceIndex < styleClass.length())
-			styleClasses.add(styleClass.substring(prevSpaceIndex));
+    /*
+     * This method look if the component has 3 common methods:
+     * 
+     * 1. getStyleClass
+     * 2. isReadonly
+     * 3. isDisabled
+     * 
+     * And associate to properly css classes
+     * 
+     */
+    public void encodeGenericComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
 
-		return styleClasses;
-	}
+        // 2. the skin class for this component looks like this:
+        // af|javax_faces_component_html_HtmlXXX::class
 
-	/*
-	 * This method look if the component has 3 common methods:
-	 * 
-	 * 1. getStyleClass
-	 * 2. isReadonly
-	 * 3. isDisabled
-	 * 
-	 * And associate to properly css classes
-	 * 
-	 */
-	public void encodeGenericComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
+        String contentStyleClass = component.getClass().getName();
 
-		// 2. the skin class for this component looks like this:
-		// af|javax_faces_component_html_HtmlXXX::class
+        //Map<String, String> m = arc.getSkin().getStyleClassMap(arc);
 
-		String contentStyleClass = component.getClass().getName();
+        String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
+                + StringUtils.replaceChars(contentStyleClass, '.', '_');
 
-		//Map<String, String> m = arc.getSkin().getStyleClassMap(arc);
+        Method method;
+        // Check it has a getStyleClass property
+        contentStyleClass = null;
+        try
+        {
+            method = component.getClass().getMethod("getStyleClass",
+                    (Class[]) null);
+            contentStyleClass = baseStyleClass
+                    + SkinConstants.STYLE_CLASS_SUFFIX;
+        }
+        catch (SecurityException e)
+        {
+            // Nothing happends
+            //e.printStackTrace();
+        }
+        catch (NoSuchMethodException e)
+        {
+            // Nothing happends
+            // e.printStackTrace();
+        }
 
-		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
-				+ StringUtils.replaceChars(contentStyleClass, '.', '_');
+        int otherStyles = 0;
 
-		Method method;
-		// Check it has a getStyleClass property
-		contentStyleClass = null;
-		try {
-			method = component.getClass().getMethod("getStyleClass",
-					(Class[]) null);
-			contentStyleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
-		} catch (SecurityException e) {
-			// Nothing happends
-			//e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			// Nothing happends
-			// e.printStackTrace();
-		}
+        // Its necesary to add other style properties like
+        // p_AFReadOnly and p_AFDisabled
+        Map attributes = component.getAttributes();
+        String styleClass = (String) attributes.get("styleClass");
+        String disabledStyleClass = null;
+        String readOnlyStyleClass = null;
 
-		int otherStyles = 0;
+        try
+        {
+            method = component.getClass().getMethod("isReadonly",
+                    (Class[]) null);
+            if ((Boolean) method.invoke(component, (Object[]) null))
+            {
+                readOnlyStyleClass = SkinSelectors.STATE_READ_ONLY;
+                otherStyles += 1;
+            }
+        }
+        catch (SecurityException e)
+        {
+            // Nothing happends
+            //e.printStackTrace();
+        }
+        catch (NoSuchMethodException e)
+        {
+            // Nothing happends
+            // e.printStackTrace();
+        }
+        catch (InvocationTargetException e)
+        {
+            // Nothing happends
+            //e.printStackTrace();
+        }
+        catch (IllegalAccessException e)
+        {
+            // Nothing happends
+            //e.printStackTrace();
+        }
 
-		// Its necesary to add other style properties like
-		// p_AFReadOnly and p_AFDisabled
-		Map attributes = component.getAttributes();
-		String styleClass = (String) attributes.get("styleClass");
-		String disabledStyleClass = null;
-		String readOnlyStyleClass = null;
+        try
+        {
+            method = component.getClass().getMethod("isDisabled",
+                    (Class[]) null);
+            if ((Boolean) method.invoke(component, (Object[]) null))
+            {
+                disabledStyleClass = SkinSelectors.STATE_DISABLED;
+                otherStyles += 1;
+            }
+        }
+        catch (SecurityException e)
+        {
+            // Nothing happends
+            // e.printStackTrace();
+        }
+        catch (NoSuchMethodException e)
+        {
+            // Nothing happends
+            // e.printStackTrace();
+        }
+        catch (InvocationTargetException e)
+        {
+            // Nothing happends
+            // e.printStackTrace();
+        }
+        catch (IllegalAccessException e)
+        {
+            // Nothing happends
+            // e.printStackTrace();
+        }
 
-		try {
-			method = component.getClass().getMethod("isReadonly",
-					(Class[]) null);
-			if ((Boolean) method.invoke(component, (Object[]) null)) {
-				readOnlyStyleClass = SkinSelectors.STATE_READ_ONLY;
-				otherStyles += 1;
-			}
-		} catch (SecurityException e) {
-			// Nothing happends
-			//e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			// Nothing happends
-			// e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// Nothing happends
-			//e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// Nothing happends
-			//e.printStackTrace();
-		}
+        List<String> parsedStyleClasses = OutputUtils
+                .parseStyleClassList(styleClass);
+        int userStyleClassCount;
+        if (parsedStyleClasses == null)
+            userStyleClassCount = (styleClass == null) ? 0 : 1;
+        else
+            userStyleClassCount = parsedStyleClasses.size();
 
-		try {
-			method = component.getClass().getMethod("isDisabled",
-					(Class[]) null);
-			if ((Boolean) method.invoke(component, (Object[]) null)) {
-				disabledStyleClass = SkinSelectors.STATE_DISABLED;
-				otherStyles += 1;
-			}
-		} catch (SecurityException e) {
-			// Nothing happends
-			// e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			// Nothing happends
-			// e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// Nothing happends
-			// e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// Nothing happends
-			// e.printStackTrace();
-		}
+        String[] styleClasses = new String[userStyleClassCount + 3];
+        int i = 0;
+        if (parsedStyleClasses != null)
+        {
+            while (i < userStyleClassCount)
+            {
+                styleClasses[i] = parsedStyleClasses.get(i);
+                i++;
+            }
+        }
+        else if (styleClass != null)
+        {
+            styleClasses[i++] = styleClass;
+        }
 
-		List<String> parsedStyleClasses = OutputUtils
-				.parseStyleClassList(styleClass);
-		int userStyleClassCount;
-		if (parsedStyleClasses == null)
-			userStyleClassCount = (styleClass == null) ? 0 : 1;
-		else
-			userStyleClassCount = parsedStyleClasses.size();
+        styleClasses[i++] = contentStyleClass;
+        styleClasses[i++] = disabledStyleClass;
+        styleClasses[i++] = readOnlyStyleClass;
 
-		String[] styleClasses = new String[userStyleClassCount + 3];
-		int i = 0;
-		if (parsedStyleClasses != null) {
-			while (i < userStyleClassCount) {
-				styleClasses[i] = parsedStyleClasses.get(i);
-				i++;
-			}
-		} else if (styleClass != null) {
-			styleClasses[i++] = styleClass;
-		}
+        // 3. set the property styleClass, setting it.
+        if (otherStyles > 0)
+        {
+            _renderStyleClasses(component, context, arc, styleClasses);
+        }
+        else
+        {
+            _renderStyleClass(component, context, arc, contentStyleClass);
+        }
+    }
 
-		styleClasses[i++] = contentStyleClass;
-		styleClasses[i++] = disabledStyleClass;
-		styleClasses[i++] = readOnlyStyleClass;
+    /*
+     * This method look if the component has 4 common methods:
+     * 
+     * 1. getStyleClass
+     * 2. isReadonly
+     * 3. isDisabled
+     * 4. isRequired
+     * 
+     * And associate to properly css classes
+     * 
+     */
+    public void encodeGenericWithRequiredComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
 
-		// 3. set the property styleClass, setting it.
-		if (otherStyles > 0) {
-			_renderStyleClasses(component, context, arc, styleClasses);
-		} else {
-			_renderStyleClass(component, context, arc, contentStyleClass);
-		}
-	}
-	
-	/*
-	 * This method look if the component has 4 common methods:
-	 * 
-	 * 1. getStyleClass
-	 * 2. isReadonly
-	 * 3. isDisabled
-	 * 4. isRequired
-	 * 
-	 * And associate to properly css classes
-	 * 
-	 */
-	public void encodeGenericWithRequiredComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
+        log.debug("Component class " + component.getClass().getName());
 
-		log.debug("Component class " + component.getClass().getName());
+        // 2. the skin class for this component looks like this:
+        // af|javax_faces_component_html_HtmlXXX::class
 
-		// 2. the skin class for this component looks like this:
-		// af|javax_faces_component_html_HtmlXXX::class
+        String contentStyleClass = component.getClass().getName();
 
-		String contentStyleClass = component.getClass().getName();
+        //Map<String, String> m = arc.getSkin().getStyleClassMap(arc);
 
-		//Map<String, String> m = arc.getSkin().getStyleClassMap(arc);
+        String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
+                + StringUtils.replaceChars(contentStyleClass, '.', '_');
 
-		String baseStyleClass = SkinConstants.DEFAULT_NAMESPACE
-				+ StringUtils.replaceChars(contentStyleClass, '.', '_');
+        Method method;
+        // Check it has a getStyleClass property
+        contentStyleClass = null;
+        try
+        {
+            method = component.getClass().getMethod("getStyleClass",
+                    (Class[]) null);
+            contentStyleClass = baseStyleClass
+                    + SkinConstants.STYLE_CLASS_SUFFIX;
+        }
+        catch (SecurityException e)
+        {
+            // Nothing happends
+            //e.printStackTrace();
+        }
+        catch (NoSuchMethodException e)
+        {
+            // Nothing happends
+            // e.printStackTrace();
+        }
 
-		Method method;
-		// Check it has a getStyleClass property
-		contentStyleClass = null;
-		try {
-			method = component.getClass().getMethod("getStyleClass",
-					(Class[]) null);
-			contentStyleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
-		} catch (SecurityException e) {
-			// Nothing happends
-			//e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			// Nothing happends
-			// e.printStackTrace();
-		}
+        int otherStyles = 0;
 
-		int otherStyles = 0;
+        // Its necesary to add other style properties like
+        // p_AFReadOnly and p_AFDisabled
+        Map attributes = component.getAttributes();
+        String styleClass = (String) attributes.get("styleClass");
+        String disabledStyleClass = null;
+        String readOnlyStyleClass = null;
+        String requiredStyleClass = null;
 
-		// Its necesary to add other style properties like
-		// p_AFReadOnly and p_AFDisabled
-		Map attributes = component.getAttributes();
-		String styleClass = (String) attributes.get("styleClass");
-		String disabledStyleClass = null;
-		String readOnlyStyleClass = null;
-		String requiredStyleClass = null;
+        try
+        {
+            method = component.getClass().getMethod("isReadonly",
+                    (Class[]) null);
+            if ((Boolean) method.invoke(component, (Object[]) null))
+            {
+                readOnlyStyleClass = SkinSelectors.STATE_READ_ONLY;
+                otherStyles += 1;
+            }
+        }
+        catch (SecurityException e)
+        {
+            //e.printStackTrace();
+        }
+        catch (NoSuchMethodException e)
+        {
+            // Nothing happends
+            // e.printStackTrace();
+        }
+        catch (InvocationTargetException e)
+        {
+            // Nothing happends
+            //e.printStackTrace();
+        }
+        catch (IllegalAccessException e)
+        {
+            // Nothing happends
+            //e.printStackTrace();
+        }
 
-		try {
-			method = component.getClass().getMethod("isReadonly",
-					(Class[]) null);
-			if ((Boolean) method.invoke(component, (Object[]) null)) {
-				readOnlyStyleClass = SkinSelectors.STATE_READ_ONLY;
-				otherStyles += 1;
-			}
-		} catch (SecurityException e) {
-			//e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			// Nothing happends
-			// e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// Nothing happends
-			//e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// Nothing happends
-			//e.printStackTrace();
-		}
+        try
+        {
+            method = component.getClass().getMethod("isDisabled",
+                    (Class[]) null);
+            if ((Boolean) method.invoke(component, (Object[]) null))
+            {
+                disabledStyleClass = SkinSelectors.STATE_DISABLED;
+                otherStyles += 1;
+            }
+        }
+        catch (SecurityException e)
+        {
+            // Nothing happends
+            //e.printStackTrace();
+        }
+        catch (NoSuchMethodException e)
+        {
+            // Nothing happends
+            // e.printStackTrace();
+        }
+        catch (InvocationTargetException e)
+        {
+            // Nothing happends
+            e.printStackTrace();
+        }
+        catch (IllegalAccessException e)
+        {
+            // Nothing happends
+            e.printStackTrace();
+        }
 
-		try {
-			method = component.getClass().getMethod("isDisabled",
-					(Class[]) null);
-			if ((Boolean) method.invoke(component, (Object[]) null)) {
-				disabledStyleClass = SkinSelectors.STATE_DISABLED;
-				otherStyles += 1;
-			}
-		} catch (SecurityException e) {
-			// Nothing happends
-			//e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			// Nothing happends
-			// e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// Nothing happends
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// Nothing happends
-			e.printStackTrace();
-		}
-		
-		try {
-			method = component.getClass().getMethod("isRequired",
-					(Class[]) null);
-			if ((Boolean) method.invoke(component, (Object[]) null)) {
-				requiredStyleClass = baseStyleClass + "::required"; 
-				otherStyles += 1;
-			}
-		} catch (SecurityException e) {
-			//e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			// Nothing happends
-			// e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// Nothing happends
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// Nothing happends
-			e.printStackTrace();
-		}
-		
-		List<String> parsedStyleClasses = OutputUtils
-				.parseStyleClassList(styleClass);
-		int userStyleClassCount;
-		if (parsedStyleClasses == null)
-			userStyleClassCount = (styleClass == null) ? 0 : 1;
-		else
-			userStyleClassCount = parsedStyleClasses.size();
+        try
+        {
+            method = component.getClass().getMethod("isRequired",
+                    (Class[]) null);
+            if ((Boolean) method.invoke(component, (Object[]) null))
+            {
+                requiredStyleClass = baseStyleClass + "::required";
+                otherStyles += 1;
+            }
+        }
+        catch (SecurityException e)
+        {
+            //e.printStackTrace();
+        }
+        catch (NoSuchMethodException e)
+        {
+            // Nothing happends
+            // e.printStackTrace();
+        }
+        catch (InvocationTargetException e)
+        {
+            // Nothing happends
+            e.printStackTrace();
+        }
+        catch (IllegalAccessException e)
+        {
+            // Nothing happends
+            e.printStackTrace();
+        }
 
-		String[] styleClasses = new String[userStyleClassCount + 4];
-		int i = 0;
-		if (parsedStyleClasses != null) {
-			while (i < userStyleClassCount) {
-				styleClasses[i] = parsedStyleClasses.get(i);
-				i++;
-			}
-		} else if (styleClass != null) {
-			styleClasses[i++] = styleClass;
-		}
+        List<String> parsedStyleClasses = OutputUtils
+                .parseStyleClassList(styleClass);
+        int userStyleClassCount;
+        if (parsedStyleClasses == null)
+            userStyleClassCount = (styleClass == null) ? 0 : 1;
+        else
+            userStyleClassCount = parsedStyleClasses.size();
 
-		styleClasses[i++] = contentStyleClass;
-		styleClasses[i++] = disabledStyleClass;
-		styleClasses[i++] = readOnlyStyleClass;
-		styleClasses[i++] = requiredStyleClass;
+        String[] styleClasses = new String[userStyleClassCount + 4];
+        int i = 0;
+        if (parsedStyleClasses != null)
+        {
+            while (i < userStyleClassCount)
+            {
+                styleClasses[i] = parsedStyleClasses.get(i);
+                i++;
+            }
+        }
+        else if (styleClass != null)
+        {
+            styleClasses[i++] = styleClass;
+        }
 
-		// 3. set the property styleClass, setting it.
-		if (otherStyles > 0) {
-			_renderStyleClasses(component, context, arc, styleClasses);
-		} else {
-			_renderStyleClass(component, context, arc, contentStyleClass);
-		}
-	}	
-	
-	
+        styleClasses[i++] = contentStyleClass;
+        styleClasses[i++] = disabledStyleClass;
+        styleClasses[i++] = readOnlyStyleClass;
+        styleClasses[i++] = requiredStyleClass;
+
+        // 3. set the property styleClass, setting it.
+        if (otherStyles > 0)
+        {
+            _renderStyleClasses(component, context, arc, styleClasses);
+        }
+        else
+        {
+            _renderStyleClass(component, context, arc, contentStyleClass);
+        }
+    }
+
 }

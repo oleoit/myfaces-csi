@@ -27,15 +27,18 @@ import javax.faces.context.FacesContext;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlInputTextSkinRenderer extends AdapterSkinRenderer {
+public class HtmlInputTextSkinRenderer extends AdapterSkinRenderer
+{
 
-	public HtmlInputTextSkinRenderer() {
-		super("h", "inputText");
-	}
-	
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
-		_addStyleDisabledReadOnlyRequired(context, component, arc);
-	}	
+    public HtmlInputTextSkinRenderer()
+    {
+        super("h", "inputText");
+    }
+
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
+        _addStyleDisabledReadOnlyRequired(context, component, arc);
+    }
 }

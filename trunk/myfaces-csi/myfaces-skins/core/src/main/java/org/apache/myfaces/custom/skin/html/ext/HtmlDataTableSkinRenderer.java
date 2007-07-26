@@ -33,117 +33,137 @@ import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.custom.skin.SkinConstants;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlDataTableSkinRenderer extends AdapterSkinRenderer {
+public class HtmlDataTableSkinRenderer extends AdapterSkinRenderer
+{
 
-	public HtmlDataTableSkinRenderer() {
-		super("t", "dataTable");
-	}
+    public HtmlDataTableSkinRenderer()
+    {
+        super("t", "dataTable");
+    }
 
-	/**
-	 * Apply the following css class style attributes:
-	 * 
-	 * bodyStyleClass footerstyleClass headerstyleClass rowGroupStyleClass
-	 * rowStyleClass styleClass
-	 * 
-	 * @param context
-	 * @param component
-	 * @param arc
-	 * @throws IOException
-	 */
-	@Override
-	protected void _addStyleClassesToComponent(FacesContext context,
-			UIComponent component, RenderingContext arc) throws IOException {
+    /**
+     * Apply the following css class style attributes:
+     * 
+     * bodyStyleClass footerstyleClass headerstyleClass rowGroupStyleClass
+     * rowStyleClass styleClass
+     * 
+     * @param context
+     * @param component
+     * @param arc
+     * @throws IOException
+     */
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
 
-		String bodyStyleClass = null;
-		String footerStyleClass = null;
-		String headerStyleClass = null;
-		String rowGroupStyleClass = null;
-		String rowStyleClass = null;
-		String styleClass = null;
+        String bodyStyleClass = null;
+        String footerStyleClass = null;
+        String headerStyleClass = null;
+        String rowGroupStyleClass = null;
+        String rowStyleClass = null;
+        String styleClass = null;
 
-		String baseStyleClass = this.getBaseStyleName(component);
+        String baseStyleClass = this.getBaseStyleName(component);
 
-		bodyStyleClass = baseStyleClass + "::body";
-		footerStyleClass = baseStyleClass + "::footer";
-		headerStyleClass = baseStyleClass + "::header";
-		rowGroupStyleClass = baseStyleClass + "::rowGroup";
-		rowStyleClass = baseStyleClass + "::row";
-		styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
+        bodyStyleClass = baseStyleClass + "::body";
+        footerStyleClass = baseStyleClass + "::footer";
+        headerStyleClass = baseStyleClass + "::header";
+        rowGroupStyleClass = baseStyleClass + "::rowGroup";
+        rowStyleClass = baseStyleClass + "::row";
+        styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 
-		_renderStyleClass(component, context, arc, bodyStyleClass,
-				"bodyStyleClass");
-		_renderStyleClass(component, context, arc, footerStyleClass,
-				"footerClass");
-		_renderStyleClass(component, context, arc, headerStyleClass,
-				"headerClass");
-		_renderStyleClass(component, context, arc, rowGroupStyleClass,
-				"rowGroupStyleClass");
-		// renderStyleClass(component, context, arc, rowStyleClass,
-		// "rowStyleClass");
-		_renderStyleClass(component, context, arc, styleClass, "styleClass");
+        _renderStyleClass(component, context, arc, bodyStyleClass,
+                "bodyStyleClass");
+        _renderStyleClass(component, context, arc, footerStyleClass,
+                "footerClass");
+        _renderStyleClass(component, context, arc, headerStyleClass,
+                "headerClass");
+        _renderStyleClass(component, context, arc, rowGroupStyleClass,
+                "rowGroupStyleClass");
+        // renderStyleClass(component, context, arc, rowStyleClass,
+        // "rowStyleClass");
+        _renderStyleClass(component, context, arc, styleClass, "styleClass");
 
-		Map m = component.getAttributes();
-		String oldRowClasses = (String) m.get("rowClasses");
-		List<String> list = parseStyleClassListComma(oldRowClasses);
-		if (list == null) {
-			_renderStyleClass(component, context, arc, rowStyleClass,
-					"rowClasses");
-		} else {
-			String def = arc.getStyleClass(rowStyleClass);
-			if (def.startsWith("af_")) {
-				// Nothing to do
-			} else {
-				String[] l1 = new String[list.size()];
-				int length = 0;
-				for (int i = 0; i < l1.length; i++) {
-					if (!list.get(i).contains(def)) {
-						l1[i] = list.get(i) + " " + def;
-						length += l1[i].length() + 1;
-					} else {
-						l1[i] = list.get(i);
-						length += l1[i].length() + 1;
-					}
-				}
+        Map m = component.getAttributes();
+        String oldRowClasses = (String) m.get("rowClasses");
+        List<String> list = parseStyleClassListComma(oldRowClasses);
+        if (list == null)
+        {
+            _renderStyleClass(component, context, arc, rowStyleClass,
+                    "rowClasses");
+        }
+        else
+        {
+            String def = arc.getStyleClass(rowStyleClass);
+            if (def.startsWith("af_"))
+            {
+                // Nothing to do
+            }
+            else
+            {
+                String[] l1 = new String[list.size()];
+                int length = 0;
+                for (int i = 0; i < l1.length; i++)
+                {
+                    if (!list.get(i).contains(def))
+                    {
+                        l1[i] = list.get(i) + " " + def;
+                        length += l1[i].length() + 1;
+                    }
+                    else
+                    {
+                        l1[i] = list.get(i);
+                        length += l1[i].length() + 1;
+                    }
+                }
 
-				StringBuilder builder = new StringBuilder(length);
-				for (int i = 0; i < l1.length; i++) {
-					if (l1[i] != null) {
-						if (builder.length() != 0)
-							builder.append(',');
-						builder.append(l1[i]);
-					}
-				}
-				component.getAttributes().put("rowClasses", builder.toString());
-			}
-		}
+                StringBuilder builder = new StringBuilder(length);
+                for (int i = 0; i < l1.length; i++)
+                {
+                    if (l1[i] != null)
+                    {
+                        if (builder.length() != 0)
+                            builder.append(',');
+                        builder.append(l1[i]);
+                    }
+                }
+                component.getAttributes().put("rowClasses", builder.toString());
+            }
+        }
 
-		// Now set column styles
-		for (Iterator iter = component.getChildren().iterator(); iter.hasNext();) {
-			UIComponent child = (UIComponent) iter.next();
+        // Now set column styles
+        for (Iterator iter = component.getChildren().iterator(); iter.hasNext();)
+        {
+            UIComponent child = (UIComponent) iter.next();
 
-			if (HtmlColumn.class.isAssignableFrom(child.getClass())) {
-				// Add styleClass attributes
-				HtmlColumn col = (HtmlColumn) child;
-				// footerstyleClass
-				// headerstyleClass
-				// styleClass
-				
-				if (child instanceof org.apache.myfaces.custom.crosstable.HtmlColumns){
-					baseStyleClass = "t|columns";					
-				}else{
-					baseStyleClass = "t|column";
-				}
-				
-				styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
-				String footerstyleClass = baseStyleClass + "::footer";
-				String headerstyleClass = baseStyleClass + "::header";
+            if (HtmlColumn.class.isAssignableFrom(child.getClass()))
+            {
+                // Add styleClass attributes
+                HtmlColumn col = (HtmlColumn) child;
+                // footerstyleClass
+                // headerstyleClass
+                // styleClass
 
-				_renderStyleClass(child, context, arc, styleClass, "styleClass");
-				_renderStyleClass(child, context, arc, footerstyleClass,
-						"footerstyleClass");
-				_renderStyleClass(child, context, arc, headerstyleClass,
-						"headerstyleClass");
-			}
-		}
-	}
+                if (child instanceof org.apache.myfaces.custom.crosstable.HtmlColumns)
+                {
+                    baseStyleClass = "t|columns";
+                }
+                else
+                {
+                    baseStyleClass = "t|column";
+                }
+
+                styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
+                String footerstyleClass = baseStyleClass + "::footer";
+                String headerstyleClass = baseStyleClass + "::header";
+
+                _renderStyleClass(child, context, arc, styleClass, "styleClass");
+                _renderStyleClass(child, context, arc, footerstyleClass,
+                        "footerstyleClass");
+                _renderStyleClass(child, context, arc, headerstyleClass,
+                        "headerstyleClass");
+            }
+        }
+    }
 }

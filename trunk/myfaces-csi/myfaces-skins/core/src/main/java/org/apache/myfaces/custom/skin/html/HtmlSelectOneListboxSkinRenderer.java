@@ -27,10 +27,13 @@ import javax.faces.context.FacesContext;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
-public class HtmlSelectOneListboxSkinRenderer extends HtmlSelectOneOrManySkinRenderer {
+public class HtmlSelectOneListboxSkinRenderer extends
+        HtmlSelectOneOrManySkinRenderer
+{
 
-	public HtmlSelectOneListboxSkinRenderer() {
-		super("h", "selectOneListbox");
-	}
+    public HtmlSelectOneListboxSkinRenderer()
+    {
+        super("h", "selectOneListbox");
+    }
 
 }
