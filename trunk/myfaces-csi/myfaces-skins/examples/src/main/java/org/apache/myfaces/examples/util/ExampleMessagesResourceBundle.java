@@ -27,15 +27,15 @@ import java.util.ResourceBundle;
  * @author Manfred Geiler (latest modification by $Author: grantsmith $)
  * @version $Revision: 472610 $ $Date: 2006-11-08 14:46:34 -0500 (Wed, 08 Nov 2006) $
  */
-public class ExampleMessagesResourceBundle
-    extends ResourceBundle
+public class ExampleMessagesResourceBundle extends ResourceBundle
 {
     private static String BUNDLE_NAME = "org.apache.myfaces.examples.resource.example_messages";
 
     protected ResourceBundle getMyBundle()
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        return ResourceBundle.getBundle(BUNDLE_NAME, facesContext.getViewRoot().getLocale());
+        return ResourceBundle.getBundle(BUNDLE_NAME, facesContext.getViewRoot()
+                .getLocale());
     }
 
     protected Object handleGetObject(String key)

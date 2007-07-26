@@ -21,7 +21,6 @@ package org.apache.myfaces.examples.misc;
 import javax.faces.context.FacesContext;
 import javax.faces.el.VariableResolver;
 
-
 /**
  * DOCUMENT ME!
  * @author Manfred Geiler
@@ -32,8 +31,10 @@ public class OptionsController
     public String changeLocale()
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        VariableResolver vr = facesContext.getApplication().getVariableResolver();
-        OptionsForm form = (OptionsForm)vr.resolveVariable(facesContext, "optionsForm");
+        VariableResolver vr = facesContext.getApplication()
+                .getVariableResolver();
+        OptionsForm form = (OptionsForm) vr.resolveVariable(facesContext,
+                "optionsForm");
         facesContext.getViewRoot().setLocale(form.getLocale());
         return "ok";
     }

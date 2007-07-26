@@ -38,7 +38,8 @@ public class GuiUtil
         String resourceString;
         try
         {
-            ResourceBundle bundle = ResourceBundle.getBundle(BUNDLE_NAME, context.getViewRoot().getLocale());
+            ResourceBundle bundle = ResourceBundle.getBundle(BUNDLE_NAME,
+                    context.getViewRoot().getLocale());
             resourceString = bundle.getString(key);
         }
         catch (MissingResourceException e)
@@ -46,9 +47,11 @@ public class GuiUtil
             return key;
         }
 
-        if (arguments == null) return resourceString;
+        if (arguments == null)
+            return resourceString;
 
-        MessageFormat format = new MessageFormat(resourceString, context.getViewRoot().getLocale());
+        MessageFormat format = new MessageFormat(resourceString, context
+                .getViewRoot().getLocale());
         return format.format(arguments);
     }
 

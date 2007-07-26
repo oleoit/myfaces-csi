@@ -116,7 +116,8 @@ public class ScheduleExampleHandler implements Serializable
         DefaultScheduleEntry entry4 = new DefaultScheduleEntry();
         entry4.setId(RandomStringUtils.randomNumeric(32));
         calendar.add(Calendar.MONTH, -1);
-        calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+        calendar.set(Calendar.DAY_OF_MONTH, calendar
+                .getActualMaximum(Calendar.DAY_OF_MONTH));
         calendar.set(Calendar.HOUR_OF_DAY, 11);
         entry4.setStartTime(calendar.getTime());
         calendar.set(Calendar.HOUR_OF_DAY, 14);
@@ -142,7 +143,8 @@ public class ScheduleExampleHandler implements Serializable
         entry6.setStartTime(calendar.getTime());
         entry6.setEndTime(calendar.getTime());
         entry6.setTitle("Zero length entry");
-        entry6.setDescription("Is only rendered when the 'renderZeroLengthEntries' attribute is 'true'");
+        entry6
+                .setDescription("Is only rendered when the 'renderZeroLengthEntries' attribute is 'true'");
         model.addEntry(entry6);
         //And also an allday event
         DefaultScheduleEntry entry7 = new DefaultScheduleEntry();

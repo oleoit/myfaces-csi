@@ -36,177 +36,177 @@ import org.apache.myfaces.examples.listexample.SimpleCountryList;
  */
 public class DataBean extends SimpleCountryList
 {
-  private DataModel mColumns;
-  private DataModel mCountryDataModel;
-  private Map mValueMap = new HashMap();
-  private boolean mEditValues;
-  private String mColumnLabel;
+    private DataModel mColumns;
+    private DataModel mCountryDataModel;
+    private Map mValueMap = new HashMap();
+    private boolean mEditValues;
+    private String mColumnLabel;
 
-  /**
-   *
-   */
-  public DataBean()
-  {
-    super();
-  }
-
-  public boolean isEditValues()
-  {
-    return mEditValues;
-  }
-
-  public String editValues()
-  {
-    mEditValues = true;
-    return null;
-  }
-
-  public String saveValues()
-  {
-    mEditValues = false;
-    return null;
-  }
-
-  public String addColumn()
-  {
-    if (mColumnLabel != null)
+    /**
+     *
+     */
+    public DataBean()
     {
-      List columns = (List) getColumnDataModel().getWrappedData();
-      columns.add(mColumnLabel);
+        super();
     }
-    return null;
-  }
 
-  public String removeColumn()
-  {
-    if (mColumns != null && mColumns.isRowAvailable())
+    public boolean isEditValues()
     {
-      Object column = mColumns.getRowData();
-      List columns = (List) getColumnDataModel().getWrappedData();
-      columns.remove(column);
+        return mEditValues;
     }
-    return null;
-  }
 
-  public String getColumnLabel()
-  {
-    return mColumnLabel;
-  }
-
-  public void setColumnLabel(String label)
-  {
-    mColumnLabel = label;
-  }
-
-  public DataModel getCountryDataModel()
-  {
-    if (mCountryDataModel == null)
+    public String editValues()
     {
-      mCountryDataModel = new ListDataModel(getCountries());
+        mEditValues = true;
+        return null;
     }
-    return mCountryDataModel;
-  }
 
-  public DataModel getColumnDataModel()
-  {
-    if (mColumns == null)
+    public String saveValues()
     {
-      String[] result = new String[] {"2002", "2003", "2004"};
-      mColumns = new ListDataModel(new ArrayList(Arrays.asList(result)));
+        mEditValues = false;
+        return null;
     }
-    return mColumns;
-  }
 
-  public String getColumnValue()
-  {
-    DataModel countryDataModel = getCountryDataModel();
-    if (countryDataModel.isRowAvailable())
+    public String addColumn()
     {
-      SimpleCountry row = (SimpleCountry) countryDataModel.getRowData();
-      DataModel columnDataModel = getColumnDataModel();
-      if (columnDataModel.isRowAvailable())
-      {
-        Object column = columnDataModel.getRowData();
-        Object key = new RowColumnKey(new Long(row.getId()), column);
-        if (!mValueMap.containsKey(key))
+        if (mColumnLabel != null)
         {
-          // initialize with random value
-          String randomValue = String.valueOf((int) (Math.random() * 5000) + 5000);
-          mValueMap.put(key, randomValue);
+            List columns = (List) getColumnDataModel().getWrappedData();
+            columns.add(mColumnLabel);
         }
-        return (String) mValueMap.get(key);
-      }
+        return null;
     }
-    return null;
-  }
 
-  public void setColumnValue(String value)
-  {
-    DataModel countryDataModel = getCountryDataModel();
-    if (countryDataModel.isRowAvailable())
+    public String removeColumn()
     {
-      SimpleCountry row = (SimpleCountry) countryDataModel.getRowData();
-      DataModel columnDataModel = getColumnDataModel();
-      if (columnDataModel.isRowAvailable())
-      {
-        Object column = columnDataModel.getRowData();
-        Object key = new RowColumnKey(new Long(row.getId()), column);
-        mValueMap.put(key, value);
-      }
+        if (mColumns != null && mColumns.isRowAvailable())
+        {
+            Object column = mColumns.getRowData();
+            List columns = (List) getColumnDataModel().getWrappedData();
+            columns.remove(column);
+        }
+        return null;
     }
-  }
 
-  private class RowColumnKey
-  {
-    private final Object mRow;
-    private final Object mColumn;
-
-    /**
-     * @param row
-     * @param column
-     */
-    public RowColumnKey(Object row, Object column)
+    public String getColumnLabel()
     {
-      mRow = row;
-      mColumn = column;
+        return mColumnLabel;
     }
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    public boolean equals(Object obj)
+    public void setColumnLabel(String label)
     {
-      if (obj == null)
-      {
-        return false;
-      }
-      if (obj == this)
-      {
-        return true;
-      }
-      if (obj instanceof RowColumnKey)
-      {
-        RowColumnKey other = (RowColumnKey) obj;
-        return other.mRow.equals(mRow) && other.mColumn.equals(mColumn);
-      }
-      return super.equals(obj);
+        mColumnLabel = label;
     }
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
-    public int hashCode()
+    public DataModel getCountryDataModel()
     {
-      return (37 * 3 + mRow.hashCode()) * (37 * 3 + mColumn.hashCode());
+        if (mCountryDataModel == null)
+        {
+            mCountryDataModel = new ListDataModel(getCountries());
+        }
+        return mCountryDataModel;
     }
 
-    /**
-     * @see java.lang.Object#toString()
-     */
-    public String toString()
+    public DataModel getColumnDataModel()
     {
-      return mRow.toString() + "," + mColumn.toString();
+        if (mColumns == null)
+        {
+            String[] result = new String[] { "2002", "2003", "2004" };
+            mColumns = new ListDataModel(new ArrayList(Arrays.asList(result)));
+        }
+        return mColumns;
     }
-  }
+
+    public String getColumnValue()
+    {
+        DataModel countryDataModel = getCountryDataModel();
+        if (countryDataModel.isRowAvailable())
+        {
+            SimpleCountry row = (SimpleCountry) countryDataModel.getRowData();
+            DataModel columnDataModel = getColumnDataModel();
+            if (columnDataModel.isRowAvailable())
+            {
+                Object column = columnDataModel.getRowData();
+                Object key = new RowColumnKey(new Long(row.getId()), column);
+                if (!mValueMap.containsKey(key))
+                {
+                    // initialize with random value
+                    String randomValue = String
+                            .valueOf((int) (Math.random() * 5000) + 5000);
+                    mValueMap.put(key, randomValue);
+                }
+                return (String) mValueMap.get(key);
+            }
+        }
+        return null;
+    }
+
+    public void setColumnValue(String value)
+    {
+        DataModel countryDataModel = getCountryDataModel();
+        if (countryDataModel.isRowAvailable())
+        {
+            SimpleCountry row = (SimpleCountry) countryDataModel.getRowData();
+            DataModel columnDataModel = getColumnDataModel();
+            if (columnDataModel.isRowAvailable())
+            {
+                Object column = columnDataModel.getRowData();
+                Object key = new RowColumnKey(new Long(row.getId()), column);
+                mValueMap.put(key, value);
+            }
+        }
+    }
+
+    private class RowColumnKey
+    {
+        private final Object mRow;
+        private final Object mColumn;
+
+        /**
+         * @param row
+         * @param column
+         */
+        public RowColumnKey(Object row, Object column)
+        {
+            mRow = row;
+            mColumn = column;
+        }
+
+        /**
+         * @see java.lang.Object#equals(java.lang.Object)
+         */
+        public boolean equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (obj == this)
+            {
+                return true;
+            }
+            if (obj instanceof RowColumnKey)
+            {
+                RowColumnKey other = (RowColumnKey) obj;
+                return other.mRow.equals(mRow) && other.mColumn.equals(mColumn);
+            }
+            return super.equals(obj);
+        }
+
+        /**
+         * @see java.lang.Object#hashCode()
+         */
+        public int hashCode()
+        {
+            return (37 * 3 + mRow.hashCode()) * (37 * 3 + mColumn.hashCode());
+        }
+
+        /**
+         * @see java.lang.Object#toString()
+         */
+        public String toString()
+        {
+            return mRow.toString() + "," + mColumn.toString();
+        }
+    }
 }
-

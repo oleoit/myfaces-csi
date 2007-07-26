@@ -18,8 +18,6 @@
  */
 package org.apache.myfaces.examples.listexample;
 
-
-
 /**
  * Convenient base class for sortable lists.
  * @author Thomas Spiegl (latest modification by $Author: grantsmith $)
@@ -46,12 +44,12 @@ public abstract class SortableList
      */
     protected abstract boolean isDefaultAscending(String sortColumn);
 
-
     public void sort(String sortColumn)
     {
         if (sortColumn == null)
         {
-            throw new IllegalArgumentException("Argument sortColumn must not be null.");
+            throw new IllegalArgumentException(
+                    "Argument sortColumn must not be null.");
         }
 
         if (_sort.equals(sortColumn))

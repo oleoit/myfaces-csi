@@ -33,7 +33,7 @@ public class JsListenerModel
 
     public List getOptions()
     {
-        if(options == null)
+        if (options == null)
         {
             initOptions();
         }
@@ -47,23 +47,25 @@ public class JsListenerModel
 
     public List getOptionItems()
     {
-    	if( optionItems == null ) {
-    		initOptions();
-    	}
+        if (optionItems == null)
+        {
+            initOptions();
+        }
         return optionItems;
     }
-    
-    private void initOptions() {
-    	options = new ArrayList();
+
+    private void initOptions()
+    {
+        options = new ArrayList();
         options.add("o1");
         options.add("o2");
         options.add("o3");
         options.add("o4");
 
         optionItems = new ArrayList();
-        optionItems.add(new SelectItem("o1","Option 1"));
-        optionItems.add(new SelectItem("o2","Option 2"));
-        optionItems.add(new SelectItem("o3","Option 3"));
-        optionItems.add(new SelectItem("o4","Option 4"));            
+        optionItems.add(new SelectItem("o1", "Option 1"));
+        optionItems.add(new SelectItem("o2", "Option 2"));
+        optionItems.add(new SelectItem("o3", "Option 3"));
+        optionItems.add(new SelectItem("o4", "Option 4"));
     }
 }

@@ -21,39 +21,51 @@ package org.apache.myfaces.examples.forceid;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-
 /**
  * @author <a href="mailto:matzew@apache.org">Matthias We&szlig;endorf</a> 
  */
-public class User {
-    
-    public String username,password;
+public class User
+{
+
+    public String username, password;
     private static final Log log = LogFactory.getLog(User.class);
-    
-    public User(){}
-    
-    public User(String username,String password){
+
+    public User()
+    {
+    }
+
+    public User(String username, String password)
+    {
         this.username = username;
         this.password = password;
     }
 
-    public String getPassword() {
+    public String getPassword()
+    {
         return password;
     }
-    public void setPassword(String password) {
+
+    public void setPassword(String password)
+    {
         this.password = password;
     }
-    public String getUsername() {
+
+    public String getUsername()
+    {
         return username;
     }
-    public void setUsername(String username) {
+
+    public void setUsername(String username)
+    {
         this.username = username;
     }
-    
-    public String update(){
-        if(log.isDebugEnabled()){
-            log.debug("USERNAME: "+this.username);
-            log.debug("PASSWORD: "+this.password);
+
+    public String update()
+    {
+        if (log.isDebugEnabled())
+        {
+            log.debug("USERNAME: " + this.username);
+            log.debug("PASSWORD: " + this.password);
         }
         return ("go_forceId");
     }

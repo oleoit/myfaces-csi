@@ -32,7 +32,7 @@ public class DateHolder implements Serializable
      * added serial 
      */
     private static final long serialVersionUID = 1L;
-    
+
     private Date _date = null;
 
     public Date getDate()

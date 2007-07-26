@@ -49,11 +49,11 @@ public class CalendarBean implements Serializable
 
     public List getDates()
     {
-        if(_dates == null)
+        if (_dates == null)
         {
             _dates = new ArrayList();
 
-            for(int i=0; i<3; i++)
+            for (int i = 0; i < 3; i++)
                 _dates.add(new DateHolder());
         }
 
@@ -101,6 +101,5 @@ public class CalendarBean implements Serializable
 
         return "submit";
     }
-
 
 }

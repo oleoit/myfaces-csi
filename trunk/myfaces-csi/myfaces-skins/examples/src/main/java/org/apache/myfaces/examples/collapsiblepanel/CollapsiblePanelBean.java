@@ -39,7 +39,7 @@ public class CollapsiblePanelBean implements Serializable
 
     private boolean _collapsed;
 
-    private String _firstName="Hugo";
+    private String _firstName = "Hugo";
     private String _surName;
     private Date _birthDate;
     private List _persons;
@@ -86,7 +86,7 @@ public class CollapsiblePanelBean implements Serializable
 
     public List getPersons()
     {
-        if(_persons == null)
+        if (_persons == null)
         {
             _persons = new ArrayList();
 

@@ -31,18 +31,20 @@ import javax.faces.event.PhaseId;
  * @author Thomas Spiegl
  * @version $Revision: 472610 $ $Date: 2006-11-08 14:46:34 -0500 (Wed, 08 Nov 2006) $
  */
-public class QuotationController
-    implements ActionListener
+public class QuotationController implements ActionListener
 {
-    public void processAction(ActionEvent event) throws AbortProcessingException
+    public void processAction(ActionEvent event)
+            throws AbortProcessingException
     {
         if (event.getPhaseId() == PhaseId.INVOKE_APPLICATION)
         {
             FacesContext facesContext = FacesContext.getCurrentInstance();
             UIComponent component = event.getComponent();
 
-            VariableResolver vr = facesContext.getApplication().getVariableResolver();
-            QuotationForm form = (QuotationForm)vr.resolveVariable(facesContext, "q_form");
+            VariableResolver vr = facesContext.getApplication()
+                    .getVariableResolver();
+            QuotationForm form = (QuotationForm) vr.resolveVariable(
+                    facesContext, "q_form");
             if (component.getId().equals("button1"))
             {
                 form.quote();
@@ -54,7 +56,7 @@ public class QuotationController
         }
 
     }
-    
+
     public PhaseId getPhaseId()
     {
         return PhaseId.UPDATE_MODEL_VALUES;

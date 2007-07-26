@@ -25,7 +25,7 @@ import java.io.Serializable;
  *
  */
 public class SimpleCity implements Serializable
-{  
+{
     /**
      * serial id for serialisation versioning
      */
@@ -33,56 +33,58 @@ public class SimpleCity implements Serializable
     private String mName;
 
     private boolean selected;
-    
-	public boolean isSelected() {
-		return selected;
-	}
 
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
-	
-	public void unselect(){
-		setSelected(false);
-	}
-	
+    public boolean isSelected()
+    {
+        return selected;
+    }
 
-	/**
-	 * 
-	 */
-	public SimpleCity(String name)
-	{
-		mName = name;
-	}
+    public void setSelected(boolean selected)
+    {
+        this.selected = selected;
+    }
 
-	/**
-	 * 
-	 */
-	public SimpleCity()
-	{
-	}
+    public void unselect()
+    {
+        setSelected(false);
+    }
 
-	/**
-	 * @return Returns the name.
-	 */
-	public String getName()
-	{
-		return mName;
-	}
+    /**
+     * 
+     */
+    public SimpleCity(String name)
+    {
+        mName = name;
+    }
 
-	/**
-	 * @param name The name to set.
-	 */
-	public void setName(String name)
-	{
-		mName = name;
-	}
+    /**
+     * 
+     */
+    public SimpleCity()
+    {
+    }
 
-	/**
-	 * @see java.lang.Object#toString()
-	 */
-	public String toString()
-	{
-		return getName();
-	}
+    /**
+     * @return Returns the name.
+     */
+    public String getName()
+    {
+        return mName;
+    }
+
+    /**
+     * @param name The name to set.
+     */
+    public void setName(String name)
+    {
+        mName = name;
+    }
+
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString()
+    {
+        return getName();
+    }
 }

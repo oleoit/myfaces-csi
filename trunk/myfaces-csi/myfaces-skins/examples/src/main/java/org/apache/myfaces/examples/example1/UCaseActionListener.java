@@ -30,16 +30,18 @@ import javax.faces.event.ActionListener;
  * @author Manfred Geiler
  * @version $Revision: 472610 $ $Date: 2006-11-08 14:46:34 -0500 (Wed, 08 Nov 2006) $
  */
-public class UCaseActionListener
-    implements ActionListener
+public class UCaseActionListener implements ActionListener
 {
-    public void processAction(ActionEvent event) throws AbortProcessingException
+    public void processAction(ActionEvent event)
+            throws AbortProcessingException
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         UIComponent component = event.getComponent();
 
-        VariableResolver vr = facesContext.getApplication().getVariableResolver();
-        UCaseForm form = (UCaseForm)vr.resolveVariable(facesContext, "ucaseForm");
+        VariableResolver vr = facesContext.getApplication()
+                .getVariableResolver();
+        UCaseForm form = (UCaseForm) vr.resolveVariable(facesContext,
+                "ucaseForm");
         if (component.getId().equals("ucaseButton"))
         {
             form.uppercase();

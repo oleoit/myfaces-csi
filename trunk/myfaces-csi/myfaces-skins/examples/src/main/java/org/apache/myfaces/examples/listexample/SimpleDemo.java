@@ -25,8 +25,7 @@ import java.io.Serializable;
  * @author Thomas Spiegl (latest modification by $Author: werpu $)
  * @version $Revision: 371731 $ $Date: 2006-01-24 01:18:44 +0100 (Di, 24 Jan 2006) $
  */
-public class SimpleDemo
-        implements Serializable
+public class SimpleDemo implements Serializable
 {
     /**
      * serial id for serialisation versioning

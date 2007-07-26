@@ -37,8 +37,7 @@ import java.util.List;
  * @author Thomas Spiegl (latest modification by $Author: paulsp $)
  * @version $Revision: 520433 $ $Date: 2007-03-20 10:37:23 -0500 (Tue, 20 Mar 2007) $
  */
-public class CarConfigurator
-        implements Serializable
+public class CarConfigurator implements Serializable
 {
 
     /**
@@ -65,10 +64,15 @@ public class CarConfigurator
         _cars.add(new SelectItem("c6", "James Blond Car", null));
         _cars.add(new SelectItem("c7", "Neko Bus", null));
 
-        _colors.add(new LocalizedSelectItem(new Color("color_black"),"color_black"));
-        _colors.add(new LocalizedSelectItem(new Color("color_blue"),"color_blue"));
-        _colors.add(new LocalizedSelectItem(new Color("color_marine"),"color_marine"));
-        _colors.add(new LocalizedSelectItem(new Color("color_red"),"color_red"));
+        _colors.add(new LocalizedSelectItem(new Color("color_black"),
+                "color_black"));
+        _colors.add(new LocalizedSelectItem(new Color("color_blue"),
+                "color_blue"));
+        _colors.add(new LocalizedSelectItem(new Color("color_marine"),
+                "color_marine"));
+        _colors
+                .add(new LocalizedSelectItem(new Color("color_red"),
+                        "color_red"));
 
         _extrasList.add(new LocalizedSelectItem("extra_aircond"));
         _extrasList.add(new LocalizedSelectItem("extra_sideab"));
@@ -94,7 +98,6 @@ public class CarConfigurator
         _priceListExtras.put("extra_leaderseat", new BigDecimal(840));
     }
 
-
     private BigDecimal _price = new BigDecimal(0);
     private String[] _extras;
     private String _discount = "0";
@@ -110,18 +113,15 @@ public class CarConfigurator
     {
     }
 
-
     public Long getDoors()
     {
         return _doors;
     }
 
-
     public void setDoors(Long doors)
     {
         this._doors = doors;
     }
-
 
     public List getCars()
     {
@@ -232,17 +232,16 @@ public class CarConfigurator
     {
         String car = getCar();
         Color color = getColor();
-        if (car == null ||
-            color == null)
+        if (car == null || color == null)
         {
             _price = new BigDecimal(0);
             return "ok";
         }
 
-        BigDecimal carprice = (BigDecimal)_priceList.get(car);
-        BigDecimal colorfactor = (BigDecimal)_priceFactorColors.get(color.getColor());
-        if (carprice == null ||
-            colorfactor == null)
+        BigDecimal carprice = (BigDecimal) _priceList.get(car);
+        BigDecimal colorfactor = (BigDecimal) _priceFactorColors.get(color
+                .getColor());
+        if (carprice == null || colorfactor == null)
         {
             _price = new BigDecimal(0);
             return "ok";
@@ -255,7 +254,7 @@ public class CarConfigurator
             for (int i = 0; i < extras.length; i++)
             {
                 String extra = extras[i];
-                _price = _price.add((BigDecimal)_priceListExtras.get(extra));
+                _price = _price.add((BigDecimal) _priceListExtras.get(extra));
             }
         }
 
@@ -266,9 +265,14 @@ public class CarConfigurator
                 int i = Integer.parseInt(_discount);
                 switch (i)
                 {
-                    case 0: break;
-                    case 1: _price = _price.multiply(new BigDecimal(0.95)); break;
-                    case 2: _price = _price.multiply(new BigDecimal(0.91)); break;
+                case 0:
+                    break;
+                case 1:
+                    _price = _price.multiply(new BigDecimal(0.95));
+                    break;
+                case 2:
+                    _price = _price.multiply(new BigDecimal(0.91));
+                    break;
                 }
             }
             catch (NumberFormatException e)
@@ -283,9 +287,15 @@ public class CarConfigurator
                 int i = Integer.parseInt(_discount2);
                 switch (i)
                 {
-                    case 1: _price = _price.multiply(new BigDecimal(0.85)); break;
-                    case 2: _price = _price.multiply(new BigDecimal(0.80)); break;
-                    case 3: _price = _price.multiply(new BigDecimal(0.6)); break;
+                case 1:
+                    _price = _price.multiply(new BigDecimal(0.85));
+                    break;
+                case 2:
+                    _price = _price.multiply(new BigDecimal(0.80));
+                    break;
+                case 3:
+                    _price = _price.multiply(new BigDecimal(0.6));
+                    break;
                 }
             }
             catch (NumberFormatException e)
@@ -301,12 +311,13 @@ public class CarConfigurator
         return "ok";
     }
 
-
-    public void validateCar(FacesContext context, UIComponent component, Object value) throws ValidatorException
+    public void validateCar(FacesContext context, UIComponent component,
+            Object value) throws ValidatorException
     {
         if (value instanceof String && value.equals("c6"))
         {
-            throw new ValidatorException(new FacesMessage("Are you kidding?", "You cannot buy a James Blond car!"));
+            throw new ValidatorException(new FacesMessage("Are you kidding?",
+                    "You cannot buy a James Blond car!"));
         }
     }
 
@@ -318,17 +329,19 @@ public class CarConfigurator
     public static class ColorConverter implements Converter
     {
 
-        public Object getAsObject(FacesContext facesContext, UIComponent component, String string) throws ConverterException
+        public Object getAsObject(FacesContext facesContext,
+                UIComponent component, String string) throws ConverterException
         {
-            if(string==null)
+            if (string == null)
                 return null;
 
             return new Color(string);
         }
 
-        public String getAsString(FacesContext facesContext, UIComponent component, Object object) throws ConverterException
+        public String getAsString(FacesContext facesContext,
+                UIComponent component, Object object) throws ConverterException
         {
-            if(object instanceof Color)
+            if (object instanceof Color)
             {
                 return ((Color) object).getColor();
             }
@@ -358,12 +371,12 @@ public class CarConfigurator
 
         public boolean equals(Object cmp)
         {
-            if(!(cmp instanceof Color))
+            if (!(cmp instanceof Color))
                 return false;
 
             String cmpColor = ((Color) cmp).getColor();
 
-            if(this.color == null && cmpColor!=null)
+            if (this.color == null && cmpColor != null)
                 return false;
 
             return this.color.equals(cmpColor);

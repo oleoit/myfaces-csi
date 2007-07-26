@@ -28,18 +28,22 @@ import java.util.List;
 public class TestCheckBoxList
 {
     private List testCheckBoxes;
-    
-    public TestCheckBoxList(){
+
+    public TestCheckBoxList()
+    {
         testCheckBoxes = new ArrayList(3);
-        
-        for(int i=0 ; i<3 ; i++)
-            testCheckBoxes.add( new TestCheckBox() );
+
+        for (int i = 0; i < 3; i++)
+            testCheckBoxes.add(new TestCheckBox());
     }
 
-    public List getTestCheckBoxes() {
+    public List getTestCheckBoxes()
+    {
         return testCheckBoxes;
     }
-    public void setTestCheckBoxes(List testCheckBoxes) {
+
+    public void setTestCheckBoxes(List testCheckBoxes)
+    {
         this.testCheckBoxes = testCheckBoxes;
     }
 }

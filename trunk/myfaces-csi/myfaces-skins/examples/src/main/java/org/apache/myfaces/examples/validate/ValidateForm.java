@@ -22,100 +22,121 @@ package org.apache.myfaces.examples.validate;
  * @author mwessendorf
  * @version $Revision: 472610 $ $Date: 2006-11-08 14:46:34 -0500 (Wed, 08 Nov 2006) $
  */
-public class ValidateForm {
+public class ValidateForm
+{
 
-	private String email = null;
-	private String email2 = null;
-	private String creditCardNumber = null;
-	private String url = null;
-	private String regExpr = null;
+    private String email = null;
+    private String email2 = null;
+    private String creditCardNumber = null;
+    private String url = null;
+    private String regExpr = null;
 
-	private String equal = null;
-	private String equal2 = null;
+    private String equal = null;
+    private String equal2 = null;
 
-	private String isbn =null;
+    private String isbn = null;
 
+    public String getEmail()
+    {
+        return email;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setEmail(String string)
+    {
+        email = string;
+    }
 
-	public void setEmail(String string) {
-		email = string;
-	}
+    public String submit()
+    {
+        System.out.println("Action was called.");
+        return ("valid");
+    }
 
-	public String submit(){
-		System.out.println("Action was called.");
-		return ("valid");
-	}
+    public String getCreditCardNumber()
+    {
+        return creditCardNumber;
+    }
 
-	public String getCreditCardNumber() {
-		return creditCardNumber;
-	}
-	public String getUrl(){
-		return url;
-	}
-	public void setCreditCardNumber(String string) {
-		creditCardNumber = string;
-	}
-	public void setUrl(String string) {
-		url = string;
-	}
+    public String getUrl()
+    {
+        return url;
+    }
 
-	public String getEmail2() {
-		return email2;
-	}
+    public void setCreditCardNumber(String string)
+    {
+        creditCardNumber = string;
+    }
 
-	public void setEmail2(String string) {
-		email2 = string;
-	}
+    public void setUrl(String string)
+    {
+        url = string;
+    }
 
-	/**
-	 * @return
-	 */
-	public String getRegExpr() {
-		return regExpr;
-	}
+    public String getEmail2()
+    {
+        return email2;
+    }
 
-	/**
-	 * @param string
-	 */
-	public void setRegExpr(String string) {
-		regExpr = string;
-	}
+    public void setEmail2(String string)
+    {
+        email2 = string;
+    }
 
-	/**
-	 * @return
-	 */
-	public String getEqual2() {
-		return equal2;
-	}
+    /**
+     * @return
+     */
+    public String getRegExpr()
+    {
+        return regExpr;
+    }
 
-	/**
-	 * @param string
-	 */
-	public void setEqual2(String string) {
-		equal2 = string;
-	}
+    /**
+     * @param string
+     */
+    public void setRegExpr(String string)
+    {
+        regExpr = string;
+    }
 
-	/**
-	 * @return
-	 */
-	public String getEqual() {
-		return equal;
-	}
+    /**
+     * @return
+     */
+    public String getEqual2()
+    {
+        return equal2;
+    }
 
-	/**
-	 * @param string
-	 */
-	public void setEqual(String string) {
-		equal = string;
-	}
+    /**
+     * @param string
+     */
+    public void setEqual2(String string)
+    {
+        equal2 = string;
+    }
 
-    public String getIsbn() {
+    /**
+     * @return
+     */
+    public String getEqual()
+    {
+        return equal;
+    }
+
+    /**
+     * @param string
+     */
+    public void setEqual(String string)
+    {
+        equal = string;
+    }
+
+    public String getIsbn()
+    {
         return isbn;
     }
-    public void setIsbn(String isbn) {
+
+    public void setIsbn(String isbn)
+    {
         this.isbn = isbn;
     }
 }

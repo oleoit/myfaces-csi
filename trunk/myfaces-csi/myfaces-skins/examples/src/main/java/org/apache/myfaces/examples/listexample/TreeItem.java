@@ -42,7 +42,6 @@ public class TreeItem implements Serializable
 
     private String description;
 
-    
     /**
      * @param id The id.
      * @param name The name.

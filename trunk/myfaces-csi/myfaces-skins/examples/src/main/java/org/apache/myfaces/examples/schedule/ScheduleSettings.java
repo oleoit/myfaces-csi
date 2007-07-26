@@ -58,7 +58,7 @@ public class ScheduleSettings implements Serializable
     private int workingStartHour;
 
     private boolean renderZeroLength;
-    
+
     private boolean expandToFitEntries;
 
     public int getCompactMonthRowHeight()

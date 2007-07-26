@@ -30,18 +30,19 @@ import javax.faces.event.ActionListener;
  * @author Manfred Geiler
  * @version $Revision: 472610 $ $Date: 2006-11-08 14:46:34 -0500 (Wed, 08 Nov 2006) $
  */
-public class CalcActionListener
-    implements ActionListener
+public class CalcActionListener implements ActionListener
 {
-    public void processAction(ActionEvent event) throws AbortProcessingException
+    public void processAction(ActionEvent event)
+            throws AbortProcessingException
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         UIComponent component = event.getComponent();
 
-        VariableResolver vr = facesContext.getApplication().getVariableResolver();
-        CalcForm form = (CalcForm)vr.resolveVariable(facesContext, "calcForm");
-        if (component.getId().equals("addButton") ||
-            component.getId().equals("href1"))
+        VariableResolver vr = facesContext.getApplication()
+                .getVariableResolver();
+        CalcForm form = (CalcForm) vr.resolveVariable(facesContext, "calcForm");
+        if (component.getId().equals("addButton")
+                || component.getId().equals("href1"))
         {
             form.add();
         }

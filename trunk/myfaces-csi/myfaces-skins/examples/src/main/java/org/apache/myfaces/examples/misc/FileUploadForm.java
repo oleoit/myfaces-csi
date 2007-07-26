@@ -56,16 +56,20 @@ public class FileUploadForm
     public String upload() throws IOException
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        facesContext.getExternalContext().getApplicationMap().put("fileupload_bytes", _upFile.getBytes());
-        facesContext.getExternalContext().getApplicationMap().put("fileupload_type", _upFile.getContentType());
-        facesContext.getExternalContext().getApplicationMap().put("fileupload_name", _upFile.getName());
+        facesContext.getExternalContext().getApplicationMap().put(
+                "fileupload_bytes", _upFile.getBytes());
+        facesContext.getExternalContext().getApplicationMap().put(
+                "fileupload_type", _upFile.getContentType());
+        facesContext.getExternalContext().getApplicationMap().put(
+                "fileupload_name", _upFile.getName());
         return "ok";
     }
 
     public boolean isUploaded()
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        return facesContext.getExternalContext().getApplicationMap().get("fileupload_bytes")!=null;
+        return facesContext.getExternalContext().getApplicationMap().get(
+                "fileupload_bytes") != null;
     }
 
 }

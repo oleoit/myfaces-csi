@@ -25,21 +25,25 @@ import org.apache.commons.logging.LogFactory;
  * @author Sylvain Vieujot (latest modification by $Author: grantsmith $)
  * @version $Revision: 472610 $ $Date: 2006-11-08 14:46:34 -0500 (Wed, 08 Nov 2006) $
  */
-public class AliasHolder {
+public class AliasHolder
+{
     private static final Log log = LogFactory.getLog(AliasHolder.class);
-    
-    private String name="default name";
 
-    public String getName() {
+    private String name = "default name";
+
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
-        log.debug("set name="+name);
+    public void setName(String name)
+    {
+        log.debug("set name=" + name);
         this.name = name;
     }
-    
-    public String toUpperCase(){
+
+    public String toUpperCase()
+    {
         name = name.toUpperCase();
         log.debug("toUpperCase command executed");
         return null;

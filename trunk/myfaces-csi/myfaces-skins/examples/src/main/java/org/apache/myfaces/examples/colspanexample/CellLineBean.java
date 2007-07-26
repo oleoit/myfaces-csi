@@ -22,8 +22,10 @@ import java.util.ArrayList;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
-public class CellLineBean {
-    public DataModel getCells() {
+public class CellLineBean
+{
+    public DataModel getCells()
+    {
         ArrayList a = new ArrayList();
         a.add(new Cell("1"));
         a.add(new Cell("2"));
