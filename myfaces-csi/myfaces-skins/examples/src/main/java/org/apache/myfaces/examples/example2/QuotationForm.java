@@ -35,12 +35,9 @@ public class QuotationForm
     private SelectItem[] _selectItems = null;
     private List _selectManyItems = null;
 
-
-
     public QuotationForm()
     {
     }
-
 
     public String getText()
     {
@@ -73,9 +70,6 @@ public class QuotationForm
         return _selectItems;
     }
 
-
-
-
     public String[] getSelectManyValues()
     {
         return _selectManyValues;
@@ -99,7 +93,6 @@ public class QuotationForm
         }
         return _selectManyItems;
     }
-
 
     public void quote()
     {
@@ -137,4 +130,3 @@ public class QuotationForm
     }
 
 }
-

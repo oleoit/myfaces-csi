@@ -33,7 +33,7 @@ public abstract class ComponentBindingHolderBase
 
     public HtmlPanelGroup getPanelGroup()
     {
-        if(_panelGroup == null)
+        if (_panelGroup == null)
         {
             _panelGroup = (HtmlPanelGroup) createComponent(HtmlPanelGroup.COMPONENT_TYPE);
             _panelGroup.getChildren().add(createOutputText());
@@ -50,7 +50,8 @@ public abstract class ComponentBindingHolderBase
 
     protected UIComponent createComponent(String type)
     {
-        return FacesContext.getCurrentInstance().getApplication().createComponent(type);
+        return FacesContext.getCurrentInstance().getApplication()
+                .createComponent(type);
     }
 
     private HtmlOutputText createOutputText()

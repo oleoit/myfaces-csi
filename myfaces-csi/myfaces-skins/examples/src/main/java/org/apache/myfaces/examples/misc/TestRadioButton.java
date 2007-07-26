@@ -26,10 +26,13 @@ public class TestRadioButton
 {
     private String choice;
 
-    public String getChoice() {
+    public String getChoice()
+    {
         return choice;
     }
-    public void setChoice(String choice) {
+
+    public void setChoice(String choice)
+    {
         this.choice = choice;
     }
 }

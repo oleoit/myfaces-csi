@@ -41,16 +41,19 @@ public class AccessTrackingVariableResolver extends VariableResolver
     }
 
     // METHODS
-    public Object resolveVariable(FacesContext facesContext, String name) throws EvaluationException
+    public Object resolveVariable(FacesContext facesContext, String name)
+            throws EvaluationException
     {
         Object resolvedBean = delegate.resolveVariable(facesContext, name);
 
-        if(!(resolvedBean instanceof AccessedBeans) && resolvedBean!=null)
+        if (!(resolvedBean instanceof AccessedBeans) && resolvedBean != null)
         {
-            if(!resolvedBean.getClass().getName().startsWith("java.lang.") && !(resolvedBean instanceof Map))
+            if (!resolvedBean.getClass().getName().startsWith("java.lang.")
+                    && !(resolvedBean instanceof Map))
             {
-                ((AccessedBeans) facesContext.getApplication().
-                        getVariableResolver().resolveVariable(facesContext,"accessedBeans")).addBean(name, resolvedBean);
+                ((AccessedBeans) facesContext.getApplication()
+                        .getVariableResolver().resolveVariable(facesContext,
+                                "accessedBeans")).addBean(name, resolvedBean);
             }
         }
 

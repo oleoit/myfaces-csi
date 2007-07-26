@@ -25,9 +25,9 @@ import java.io.Serializable;
  * @author Manfred Geiler
  * @version $Revision: 472610 $ $Date: 2006-11-08 14:46:34 -0500 (Wed, 08 Nov 2006) $
  */
-public class UCaseForm
-        implements Serializable
-{  /**
+public class UCaseForm implements Serializable
+{
+    /**
      * serial id for serialisation versioning
      */
     private static final long serialVersionUID = 1L;

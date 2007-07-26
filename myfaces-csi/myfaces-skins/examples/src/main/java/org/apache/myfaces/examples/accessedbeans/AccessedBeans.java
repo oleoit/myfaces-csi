@@ -31,7 +31,7 @@ public class AccessedBeans
 
     public List getBeanList()
     {
-        if(beanList == null)
+        if (beanList == null)
             beanList = new ArrayList();
 
         return beanList;
@@ -49,7 +49,7 @@ public class AccessedBeans
         for (int i = 0; i < li.size(); i++)
         {
             AccessedBean accessedBean = (AccessedBean) li.get(i);
-            if(accessedBean.getName().equals(name))
+            if (accessedBean.getName().equals(name))
                 return;
         }
 

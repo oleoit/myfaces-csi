@@ -36,8 +36,8 @@ public class TreeTable implements Serializable
      * serial id for serialisation versioning
      */
     private static final long serialVersionUID = 1L;
-    
-    private DefaultTreeModel  treeModel;
+
+    private DefaultTreeModel treeModel;
 
     /**
      * @param treeModel The treeModel.
@@ -54,27 +54,37 @@ public class TreeTable implements Serializable
      */
     public TreeTable()
     {
-        DefaultMutableTreeNode root = new DefaultMutableTreeNode(new TreeItem(1, "XY", "9001", "XY 9001"));
-        DefaultMutableTreeNode a = new DefaultMutableTreeNode(new TreeItem(2, "A", "9001", "A 9001"));
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode(new TreeItem(
+                1, "XY", "9001", "XY 9001"));
+        DefaultMutableTreeNode a = new DefaultMutableTreeNode(new TreeItem(2,
+                "A", "9001", "A 9001"));
         root.insert(a);
-        DefaultMutableTreeNode b = new DefaultMutableTreeNode(new TreeItem(3, "B", "9001", "B 9001"));
+        DefaultMutableTreeNode b = new DefaultMutableTreeNode(new TreeItem(3,
+                "B", "9001", "B 9001"));
         root.insert(b);
-        DefaultMutableTreeNode c = new DefaultMutableTreeNode(new TreeItem(4, "C", "9001", "C 9001"));
+        DefaultMutableTreeNode c = new DefaultMutableTreeNode(new TreeItem(4,
+                "C", "9001", "C 9001"));
         root.insert(c);
 
-        DefaultMutableTreeNode node = new DefaultMutableTreeNode(new TreeItem(5, "a1", "9002", "a1 9002"));
+        DefaultMutableTreeNode node = new DefaultMutableTreeNode(new TreeItem(
+                5, "a1", "9002", "a1 9002"));
         a.insert(node);
-        node = new DefaultMutableTreeNode(new TreeItem(6, "a2", "9002", "a2 9002"));
+        node = new DefaultMutableTreeNode(new TreeItem(6, "a2", "9002",
+                "a2 9002"));
         a.insert(node);
-        node = new DefaultMutableTreeNode(new TreeItem(7, "a3", "9002", "a3 9002"));
+        node = new DefaultMutableTreeNode(new TreeItem(7, "a3", "9002",
+                "a3 9002"));
         a.insert(node);
-        node = new DefaultMutableTreeNode(new TreeItem(8, "b", "9002", "b 9002"));
+        node = new DefaultMutableTreeNode(
+                new TreeItem(8, "b", "9002", "b 9002"));
         b.insert(node);
 
         a = node;
-        node = new DefaultMutableTreeNode(new TreeItem(9, "x1", "9003", "x1 9003"));
+        node = new DefaultMutableTreeNode(new TreeItem(9, "x1", "9003",
+                "x1 9003"));
         a.insert(node);
-        node = new DefaultMutableTreeNode(new TreeItem(9, "x2", "9003", "x2 9003"));
+        node = new DefaultMutableTreeNode(new TreeItem(9, "x2", "9003",
+                "x2 9003"));
         a.insert(node);
 
         this.treeModel = new DefaultTreeModel(root);

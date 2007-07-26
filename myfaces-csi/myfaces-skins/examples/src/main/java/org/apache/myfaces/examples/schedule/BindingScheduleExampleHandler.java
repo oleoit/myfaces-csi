@@ -86,7 +86,7 @@ public class BindingScheduleExampleHandler extends ScheduleExampleHandler
             break;
         case ScheduleMouseEvent.SCHEDULE_ENTRY_CLICKED:
             buffer.append("schedule entry was clicked.");
-            
+
             break;
         default:
             buffer.append("no schedule mouse events registered");

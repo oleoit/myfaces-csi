@@ -35,21 +35,24 @@ public class ValidationController
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
 
-        UIInput number1 = (UIInput)facesContext.getViewRoot().findComponent("form1:number1");
+        UIInput number1 = (UIInput) facesContext.getViewRoot().findComponent(
+                "form1:number1");
         Validator[] validators = number1.getValidators();
         if (validators == null || validators.length == 0)
         {
             number1.addValidator(new LongRangeValidator(10, 1));
         }
 
-        UIInput number2 = (UIInput)facesContext.getViewRoot().findComponent("form1:number2");
+        UIInput number2 = (UIInput) facesContext.getViewRoot().findComponent(
+                "form1:number2");
         validators = number2.getValidators();
         if (validators == null || validators.length == 0)
         {
             number2.addValidator(new LongRangeValidator(50, 20));
         }
 
-        UIInput text = (UIInput)facesContext.getViewRoot().findComponent("form2:text");
+        UIInput text = (UIInput) facesContext.getViewRoot().findComponent(
+                "form2:text");
         validators = text.getValidators();
         if (validators == null || validators.length == 0)
         {
@@ -63,7 +66,8 @@ public class ValidationController
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
 
-        UIInput number1 = (UIInput)facesContext.getViewRoot().findComponent("form1:number1");
+        UIInput number1 = (UIInput) facesContext.getViewRoot().findComponent(
+                "form1:number1");
         Validator[] validators = number1.getValidators();
         if (validators != null)
         {
@@ -74,7 +78,8 @@ public class ValidationController
             }
         }
 
-        UIInput number2 = (UIInput)facesContext.getViewRoot().findComponent("form1:number2");
+        UIInput number2 = (UIInput) facesContext.getViewRoot().findComponent(
+                "form1:number2");
         validators = number2.getValidators();
         if (validators != null)
         {
@@ -85,7 +90,8 @@ public class ValidationController
             }
         }
 
-        UIInput text = (UIInput)facesContext.getViewRoot().findComponent("form2:text");
+        UIInput text = (UIInput) facesContext.getViewRoot().findComponent(
+                "form2:text");
         validators = text.getValidators();
         if (validators != null)
         {
@@ -99,17 +105,16 @@ public class ValidationController
         return "ok";
     }
 
-
-
     public String getNumber1ValidationLabel()
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        UIInput number1 = (UIInput)facesContext.getViewRoot().findComponent("form1:number1");
+        UIInput number1 = (UIInput) facesContext.getViewRoot().findComponent(
+                "form1:number1");
         Validator[] validators = number1.getValidators();
         if (validators != null && validators.length > 0)
         {
-            long min = ((LongRangeValidator)validators[0]).getMinimum();
-            long max = ((LongRangeValidator)validators[0]).getMaximum();
+            long min = ((LongRangeValidator) validators[0]).getMinimum();
+            long max = ((LongRangeValidator) validators[0]).getMaximum();
             return " (" + min + "-" + max + ")";
         }
         else
@@ -121,12 +126,13 @@ public class ValidationController
     public String getNumber2ValidationLabel()
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        UIInput number1 = (UIInput)facesContext.getViewRoot().findComponent("form1:number2");
+        UIInput number1 = (UIInput) facesContext.getViewRoot().findComponent(
+                "form1:number2");
         Validator[] validators = number1.getValidators();
         if (validators != null && validators.length > 0)
         {
-            long min = ((LongRangeValidator)validators[0]).getMinimum();
-            long max = ((LongRangeValidator)validators[0]).getMaximum();
+            long min = ((LongRangeValidator) validators[0]).getMinimum();
+            long max = ((LongRangeValidator) validators[0]).getMaximum();
             return " (" + min + "-" + max + ")";
         }
         else
@@ -138,12 +144,13 @@ public class ValidationController
     public String getTextValidationLabel()
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        UIInput number1 = (UIInput)facesContext.getViewRoot().findComponent("form2:text");
+        UIInput number1 = (UIInput) facesContext.getViewRoot().findComponent(
+                "form2:text");
         Validator[] validators = number1.getValidators();
         if (validators != null && validators.length > 0)
         {
-            long min = ((LengthValidator)validators[0]).getMinimum();
-            long max = ((LengthValidator)validators[0]).getMaximum();
+            long min = ((LengthValidator) validators[0]).getMinimum();
+            long max = ((LengthValidator) validators[0]).getMaximum();
             return " (" + min + "-" + max + " chars)";
         }
         else

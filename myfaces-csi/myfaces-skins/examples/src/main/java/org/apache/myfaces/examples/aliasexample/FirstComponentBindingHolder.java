@@ -30,5 +30,4 @@ public class FirstComponentBindingHolder extends ComponentBindingHolderBase
         return "first";
     }
 
-
 }

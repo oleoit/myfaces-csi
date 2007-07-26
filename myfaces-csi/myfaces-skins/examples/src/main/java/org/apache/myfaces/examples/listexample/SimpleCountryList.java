@@ -46,7 +46,7 @@ public class SimpleCountryList
     {
         for (int i = 0; i < _countries.size(); i++)
         {
-            SimpleCountry country = (SimpleCountry)_countries.get(i);
+            SimpleCountry country = (SimpleCountry) _countries.get(i);
             if (country.getId() == id)
             {
                 return country;
@@ -60,7 +60,7 @@ public class SimpleCountryList
         long maxId = 0;
         for (int i = 0; i < _countries.size(); i++)
         {
-            SimpleCountry country = (SimpleCountry)_countries.get(i);
+            SimpleCountry country = (SimpleCountry) _countries.get(i);
             if (country.getId() > maxId)
             {
                 maxId = country.getId();
@@ -78,7 +78,7 @@ public class SimpleCountryList
         boolean found = false;
         for (int i = 0; i < _countries.size(); i++)
         {
-            SimpleCountry country = (SimpleCountry)_countries.get(i);
+            SimpleCountry country = (SimpleCountry) _countries.get(i);
             if (country.getId() == simpleCountry.getId())
             {
                 _countries.set(i, simpleCountry);
@@ -95,7 +95,7 @@ public class SimpleCountryList
     {
         for (int i = 0; i < _countries.size(); i++)
         {
-            SimpleCountry country = (SimpleCountry)_countries.get(i);
+            SimpleCountry country = (SimpleCountry) _countries.get(i);
             if (country.getId() == simpleCountry.getId())
             {
                 _countries.remove(i);
@@ -105,33 +105,43 @@ public class SimpleCountryList
 
     public SimpleCountryList()
     {
-        _countries.add(new SimpleCountry(1, "AUSTRIA", "AT", new BigDecimal(123L), createCities(new String[]{"Wien","Graz","Linz","Salzburg"})));
-        _countries.add(new SimpleCountry(2, "AZERBAIJAN", "AZ", new BigDecimal(535L), createCities(new String[]{"Baku","Sumgait","Qabala","Agdam"})));
-        _countries.add(new SimpleCountry(3, "BAHAMAS", "BS", new BigDecimal(1345623L), createCities(new String[]{"Nassau","Alice Town","Church Grove","West End"})));
-        _countries.add(new SimpleCountry(4, "BAHRAIN", "BH", new BigDecimal(346L), createCities(new String[]{"Bahrain"})));
-        _countries.add(new SimpleCountry(5, "BANGLADESH", "BD", new BigDecimal(456L), createCities(new String[]{"Chittagong","Chandpur","Bogra","Feni"})));
-        _countries.add(new SimpleCountry(6, "BARBADOS", "BB", new BigDecimal(45645L), createCities(new String[]{"Grantley Adams"})));
+        _countries.add(new SimpleCountry(1, "AUSTRIA", "AT", new BigDecimal(
+                123L), createCities(new String[] { "Wien", "Graz", "Linz",
+                "Salzburg" })));
+        _countries.add(new SimpleCountry(2, "AZERBAIJAN", "AZ", new BigDecimal(
+                535L), createCities(new String[] { "Baku", "Sumgait", "Qabala",
+                "Agdam" })));
+        _countries.add(new SimpleCountry(3, "BAHAMAS", "BS", new BigDecimal(
+                1345623L), createCities(new String[] { "Nassau", "Alice Town",
+                "Church Grove", "West End" })));
+        _countries.add(new SimpleCountry(4, "BAHRAIN", "BH", new BigDecimal(
+                346L), createCities(new String[] { "Bahrain" })));
+        _countries.add(new SimpleCountry(5, "BANGLADESH", "BD", new BigDecimal(
+                456L), createCities(new String[] { "Chittagong", "Chandpur",
+                "Bogra", "Feni" })));
+        _countries.add(new SimpleCountry(6, "BARBADOS", "BB", new BigDecimal(
+                45645L), createCities(new String[] { "Grantley Adams" })));
     }
 
     /**
-	 * @param names
-	 * @return
-	 */
-	private SimpleCity[] createCities(String[] names)
-	{
-		SimpleCity[] result = new SimpleCity[names.length];
-		for (int i = 0; i < result.length; i++)
-		{
-			result[i] = new SimpleCity(names[i]);
-		}
-		return result;
-	}
+     * @param names
+     * @return
+     */
+    private SimpleCity[] createCities(String[] names)
+    {
+        SimpleCity[] result = new SimpleCity[names.length];
+        for (int i = 0; i < result.length; i++)
+        {
+            result[i] = new SimpleCity(names[i]);
+        }
+        return result;
+    }
 
-	public List getCountries()
+    public List getCountries()
     {
         return _countries;
     }
-    
+
     public Map getCountryMap()
     {
         Map map = new HashMap();
@@ -141,12 +151,12 @@ public class SimpleCountryList
         for (int i = 0; i < li.size(); i++)
         {
             SimpleCountry simpleCountry = (SimpleCountry) li.get(i);
-            map.put(simpleCountry.getIsoCode(),simpleCountry.getName());
+            map.put(simpleCountry.getIsoCode(), simpleCountry.getName());
         }
 
         return map;
     }
-    
+
     public void setCountries(List countries)
     {
         _countries = countries;
@@ -155,30 +165,31 @@ public class SimpleCountryList
     public String addCountry()
     {
         List list = getCountries();
-        list.add(new SimpleCountry(list.size() + 1, "", "", new BigDecimal(0), createCities(new String[] {})));
+        list.add(new SimpleCountry(list.size() + 1, "", "", new BigDecimal(0),
+                createCities(new String[] {})));
         return "ok";
     }
 
-	public void deleteCountry(ActionEvent ev)
-	{
-		UIData datatable = findParentHtmlDataTable(ev.getComponent());
-		getCountries().remove(datatable.getRowIndex() + datatable.getFirst());
-	}
+    public void deleteCountry(ActionEvent ev)
+    {
+        UIData datatable = findParentHtmlDataTable(ev.getComponent());
+        getCountries().remove(datatable.getRowIndex() + datatable.getFirst());
+    }
 
-	/**
-	 * @param component
-	 * @return
-	 */
-	private HtmlDataTable findParentHtmlDataTable(UIComponent component)
-	{
-		if (component == null)
-		{
-			return null;
-		}
-		if (component instanceof HtmlDataTable)
-		{
-			return (HtmlDataTable) component;
-		}
-		return findParentHtmlDataTable(component.getParent());
-	}
+    /**
+     * @param component
+     * @return
+     */
+    private HtmlDataTable findParentHtmlDataTable(UIComponent component)
+    {
+        if (component == null)
+        {
+            return null;
+        }
+        if (component instanceof HtmlDataTable)
+        {
+            return (HtmlDataTable) component;
+        }
+        return findParentHtmlDataTable(component.getParent());
+    }
 }

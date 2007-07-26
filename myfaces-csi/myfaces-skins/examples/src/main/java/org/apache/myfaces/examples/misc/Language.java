@@ -18,7 +18,6 @@
  */
 package org.apache.myfaces.examples.misc;
 
-
 /**
  * @author Sylvain Vieujot (latest modification by $Author: grantsmith $)
  * @version $Revision: 472610 $ $Date: 2005-03-24 12:47:11 -0400 (Thu, 24 Mar 2005) $
@@ -27,10 +26,13 @@ public class Language
 {
     private String code = null;
 
-    public String getCode() {
+    public String getCode()
+    {
         return code;
     }
-    public void setCode(String code) {
+
+    public void setCode(String code)
+    {
         this.code = code;
     }
 }

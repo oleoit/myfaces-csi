@@ -22,66 +22,98 @@ package org.apache.myfaces.examples.inputhtmlexample;
  * @author Sylvain Vieujot (latest modification by $Author: grantsmith $)
  * @version $Revision: 472610 $ $Date: 2006-11-08 14:46:34 -0500 (Wed, 08 Nov 2006) $
  */
-public class EditorFace {
-    
+public class EditorFace
+{
+
     private String text = "Default unformatted text.";
-    
+
     // Options
     private boolean allowEditSource = true;
     private boolean showPropertiesToolBox = false;
     private boolean showLinksToolBox = false;
     private boolean showImagesToolBox = false;
     private boolean showTablesToolBox = false;
-	private boolean showCleanupExpressionsToolBox = false;
+    private boolean showCleanupExpressionsToolBox = false;
     private boolean showDebugToolBox = false;
 
-    public String getText() {
+    public String getText()
+    {
         return text;
     }
-    public void setText(String text) {
+
+    public void setText(String text)
+    {
         this.text = text;
     }
-    
-    public boolean isAllowEditSource() {
+
+    public boolean isAllowEditSource()
+    {
         return allowEditSource;
     }
-    public void setAllowEditSource(boolean allowEditSource) {
+
+    public void setAllowEditSource(boolean allowEditSource)
+    {
         this.allowEditSource = allowEditSource;
     }
-    public boolean isShowImagesToolBox() {
+
+    public boolean isShowImagesToolBox()
+    {
         return showImagesToolBox;
     }
-    public void setShowImagesToolBox(boolean showImagesToolBox) {
+
+    public void setShowImagesToolBox(boolean showImagesToolBox)
+    {
         this.showImagesToolBox = showImagesToolBox;
     }
-    public boolean isShowLinksToolBox() {
+
+    public boolean isShowLinksToolBox()
+    {
         return showLinksToolBox;
     }
-    public void setShowLinksToolBox(boolean showLinksToolBox) {
+
+    public void setShowLinksToolBox(boolean showLinksToolBox)
+    {
         this.showLinksToolBox = showLinksToolBox;
     }
-    public boolean isShowPropertiesToolBox() {
+
+    public boolean isShowPropertiesToolBox()
+    {
         return showPropertiesToolBox;
     }
-    public void setShowPropertiesToolBox(boolean showPropertiesToolBox) {
+
+    public void setShowPropertiesToolBox(boolean showPropertiesToolBox)
+    {
         this.showPropertiesToolBox = showPropertiesToolBox;
     }
-    public boolean isShowTablesToolBox(){
+
+    public boolean isShowTablesToolBox()
+    {
         return showTablesToolBox;
     }
-    public void setShowTablesToolBox(boolean showTablesToolBox){
+
+    public void setShowTablesToolBox(boolean showTablesToolBox)
+    {
         this.showTablesToolBox = showTablesToolBox;
     }
-    public boolean isShowCleanupExpressionsToolBox() {
-		return showCleanupExpressionsToolBox;
-	}
-	public void setShowCleanupExpressionsToolBox(boolean showCleanupExpressionsToolBox) {
-		this.showCleanupExpressionsToolBox = showCleanupExpressionsToolBox;
-	}
-	public boolean isShowDebugToolBox(){
+
+    public boolean isShowCleanupExpressionsToolBox()
+    {
+        return showCleanupExpressionsToolBox;
+    }
+
+    public void setShowCleanupExpressionsToolBox(
+            boolean showCleanupExpressionsToolBox)
+    {
+        this.showCleanupExpressionsToolBox = showCleanupExpressionsToolBox;
+    }
+
+    public boolean isShowDebugToolBox()
+    {
         return showDebugToolBox;
     }
-    public void setShowDebugToolBox(boolean showDebugToolBox){
+
+    public void setShowDebugToolBox(boolean showDebugToolBox)
+    {
         this.showDebugToolBox = showDebugToolBox;
     }
 }

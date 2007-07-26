@@ -71,11 +71,11 @@ public class Person implements Serializable
         _collapsed = collapsed;
     }
 
-
     public String test()
     {
-     	log.info("test called for " + Person.class + " with name: "+getFirstName());
-     	return null;
+        log.info("test called for " + Person.class + " with name: "
+                + getFirstName());
+        return null;
     }
 
 }

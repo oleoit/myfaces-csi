@@ -33,10 +33,10 @@ public class TabbedPaneBean implements Serializable
      * serial id for serialisation versioning
      */
     private static final long serialVersionUID = 1L;
-    
-    private boolean           _tab1Visible     = true;
-    private boolean           _tab2Visible     = true;
-    private boolean           _tab3Visible     = true;
+
+    private boolean _tab1Visible = true;
+    private boolean _tab2Visible = true;
+    private boolean _tab3Visible = true;
 
     public boolean isTab1Visible()
     {

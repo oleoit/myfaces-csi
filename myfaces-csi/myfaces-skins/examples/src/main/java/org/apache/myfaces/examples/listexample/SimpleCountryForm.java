@@ -20,7 +20,6 @@ package org.apache.myfaces.examples.listexample;
 
 import javax.faces.context.FacesContext;
 
-
 /**
  * DOCUMENT ME!
  * @author Manfred Geiler (latest modification by $Author: grantsmith $)
@@ -29,9 +28,9 @@ import javax.faces.context.FacesContext;
  */
 public class SimpleCountryForm
 {
-	private boolean renderHeader = true;
-	private boolean renderFooter = true;
-	
+    private boolean renderHeader = true;
+    private boolean renderFooter = true;
+
     private long _id;
     private String _name;
     private String _isoCode;
@@ -82,26 +81,26 @@ public class SimpleCountryForm
     }
 
     public boolean isRenderFooter()
-	{
-		return renderFooter;
-	}
+    {
+        return renderFooter;
+    }
 
-	public void setRenderFooter(boolean renderFooter)
-	{
-		this.renderFooter = renderFooter;
-	}
+    public void setRenderFooter(boolean renderFooter)
+    {
+        this.renderFooter = renderFooter;
+    }
 
-	public boolean isRenderHeader()
-	{
-		return renderHeader;
-	}
+    public boolean isRenderHeader()
+    {
+        return renderHeader;
+    }
 
-	public void setRenderHeader(boolean renderHeader)
-	{
-		this.renderHeader = renderHeader;
-	}
+    public void setRenderHeader(boolean renderHeader)
+    {
+        this.renderHeader = renderHeader;
+    }
 
-	public String save()
+    public String save()
     {
         getList().saveSimpleCountry(getSimpleCountry());
         return "ok_next";
@@ -121,8 +120,9 @@ public class SimpleCountryForm
 
     private SimpleCountryList getList()
     {
-        Object obj = FacesContext.getCurrentInstance().getApplication().getVariableResolver()
-            .resolveVariable(FacesContext.getCurrentInstance(), "countryList");
+        Object obj = FacesContext.getCurrentInstance().getApplication()
+                .getVariableResolver().resolveVariable(
+                        FacesContext.getCurrentInstance(), "countryList");
         return (SimpleCountryList) obj;
 
     }

@@ -61,21 +61,24 @@ public class SimpleSortableCarList extends SortableList
         {
             public int compare(Object o1, Object o2)
             {
-                SimpleCar c1 = (SimpleCar)o1;
-                SimpleCar c2 = (SimpleCar)o2;
+                SimpleCar c1 = (SimpleCar) o1;
+                SimpleCar c2 = (SimpleCar) o2;
                 if (column == null)
                 {
                     return 0;
                 }
                 if (column.equals("type"))
                 {
-                    return ascending ? c1.getType().compareTo(c2.getType()) : c2.getType().compareTo(c1.getType());
+                    return ascending ? c1.getType().compareTo(c2.getType())
+                            : c2.getType().compareTo(c1.getType());
                 }
                 else if (column.equals("color"))
                 {
-                    return ascending ? c1.getColor().compareTo(c2.getColor()) : c2.getColor().compareTo(c1.getColor());
+                    return ascending ? c1.getColor().compareTo(c2.getColor())
+                            : c2.getColor().compareTo(c1.getColor());
                 }
-                else return 0;
+                else
+                    return 0;
             }
         };
         Collections.sort(_cars, comparator);

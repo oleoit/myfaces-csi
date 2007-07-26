@@ -40,9 +40,9 @@ public class OpenDataList extends SortableList
 
         // create header info
         List headerList = new ArrayList();
-        headerList.add(new ColumnHeader("Index","100",false));
-        headerList.add(new ColumnHeader("Type","200",true));
-        headerList.add(new ColumnHeader("Model","300",true));
+        headerList.add(new ColumnHeader("Index", "100", false));
+        headerList.add(new ColumnHeader("Type", "200", true));
+        headerList.add(new ColumnHeader("Model", "300", true));
         columnHeaders = new ListDataModel(headerList);
 
         // create list of lists (data)
@@ -52,7 +52,7 @@ public class OpenDataList extends SortableList
             List colList = new ArrayList();
             colList.add(new Integer(i));
             colList.add("Car Type " + i);
-            colList.add((i%2==0) ? "blue" : "green");
+            colList.add((i % 2 == 0) ? "blue" : "green");
             rowList.add(colList);
         }
         data = new ListDataModel(rowList);
@@ -70,8 +70,8 @@ public class OpenDataList extends SortableList
 
     void setData(DataModel datamodel)
     {
-    	System.out.println("preserved datamodel updated");
-    	// just here to see if the datamodel is updated if preservedatamodel=true
+        System.out.println("preserved datamodel updated");
+        // just here to see if the datamodel is updated if preservedatamodel=true
     }
 
     public DataModel getColumnHeaders()
@@ -88,17 +88,18 @@ public class OpenDataList extends SortableList
         Object columnValue = null;
         if (data.isRowAvailable() && columnHeaders.isRowAvailable())
         {
-            columnValue = ((List)data.getRowData()).get(columnHeaders.getRowIndex());
+            columnValue = ((List) data.getRowData()).get(columnHeaders
+                    .getRowIndex());
         }
         return columnValue;
     }
 
     public void setColumnValue(Object value)
     {
-      if (data.isRowAvailable() && columnHeaders.isRowAvailable())
-      {
-          ((List)data.getRowData()).set(columnHeaders.getRowIndex(), value);
-      }
+        if (data.isRowAvailable() && columnHeaders.isRowAvailable())
+        {
+            ((List) data.getRowData()).set(columnHeaders.getRowIndex(), value);
+        }
     }
 
     public String getColumnWidth()
@@ -106,7 +107,8 @@ public class OpenDataList extends SortableList
         String columnWidth = null;
         if (data.isRowAvailable() && columnHeaders.isRowAvailable())
         {
-            columnWidth = ((ColumnHeader)columnHeaders.getRowData()).getWidth();
+            columnWidth = ((ColumnHeader) columnHeaders.getRowData())
+                    .getWidth();
         }
         return columnWidth;
     }
@@ -116,7 +118,8 @@ public class OpenDataList extends SortableList
         boolean valueModifiable = false;
         if (data.isRowAvailable() && columnHeaders.isRowAvailable())
         {
-            valueModifiable = ((ColumnHeader)columnHeaders.getRowData()).isEditable();
+            valueModifiable = ((ColumnHeader) columnHeaders.getRowData())
+                    .isEditable();
         }
         return valueModifiable;
     }
@@ -147,8 +150,8 @@ public class OpenDataList extends SortableList
             public int compare(Object o1, Object o2)
             {
                 int result = 0;
-                Object column1 = ((List)o1).get(columnIndex);
-                Object column2 = ((List)o2).get(columnIndex);
+                Object column1 = ((List) o1).get(columnIndex);
+                Object column2 = ((List) o2).get(columnIndex);
                 if (column1 == null && column2 != null)
                     result = -1;
                 else if (column1 == null && column2 == null)
@@ -156,11 +159,12 @@ public class OpenDataList extends SortableList
                 else if (column1 != null && column2 == null)
                     result = 1;
                 else
-                    result = ((Comparable)column1).compareTo(column2) * direction;
+                    result = ((Comparable) column1).compareTo(column2)
+                            * direction;
                 return result;
             }
         };
-        Collections.sort((List)data.getWrappedData(), comparator);
+        Collections.sort((List) data.getWrappedData(), comparator);
     }
 
     //==========================================================================
@@ -171,7 +175,7 @@ public class OpenDataList extends SortableList
     {
         int columnIndex = -1;
         List headers = (List) columnHeaders.getWrappedData();
-        for (int i=0;i<headers.size() && columnIndex==-1;i++)
+        for (int i = 0; i < headers.size() && columnIndex == -1; i++)
         {
             ColumnHeader header = (ColumnHeader) headers.get(i);
             if (header.getLabel().equals(columnName))

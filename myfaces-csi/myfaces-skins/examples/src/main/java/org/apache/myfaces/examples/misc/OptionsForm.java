@@ -32,25 +32,19 @@ import java.util.Locale;
  */
 public class OptionsForm
 {
-	private static final Locale SPANISH = new Locale("es", "","");
-	private static final Locale CATALAN = new Locale("ca", "","");
+    private static final Locale SPANISH = new Locale("es", "", "");
+    private static final Locale CATALAN = new Locale("ca", "", "");
 
-    private static final List AVAILABLE_LOCALES
-        = Arrays.asList(new Locale[] {Locale.ENGLISH,
-                                      Locale.CHINESE,
-                                      Locale.GERMAN,
-                                      Locale.JAPANESE,
-                                      Locale.FRENCH,
-									  SPANISH,
-									  CATALAN});
+    private static final List AVAILABLE_LOCALES = Arrays.asList(new Locale[] {
+            Locale.ENGLISH, Locale.CHINESE, Locale.GERMAN, Locale.JAPANESE,
+            Locale.FRENCH, SPANISH, CATALAN });
 
     private Locale _locale = null;
 
     public String getLanguage()
     {
-        return _locale != null
-                ? _locale.getLanguage()
-                : FacesContext.getCurrentInstance().getViewRoot().getLocale().getLanguage();
+        return _locale != null ? _locale.getLanguage() : FacesContext
+                .getCurrentInstance().getViewRoot().getLocale().getLanguage();
     }
 
     public void setLanguage(String language)
@@ -69,7 +63,7 @@ public class OptionsForm
         {
             public Object get(int index)
             {
-                Locale locale = (Locale)AVAILABLE_LOCALES.get(index);
+                Locale locale = (Locale) AVAILABLE_LOCALES.get(index);
                 String language = locale.getDisplayLanguage(locale);
                 return new SelectItem(locale.getLanguage(), language, language);
             }
@@ -80,6 +74,5 @@ public class OptionsForm
             }
         };
     }
-
 
 }
