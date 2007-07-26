@@ -24,16 +24,18 @@ import javax.faces.model.DataModel;
 //Taken from the wiki page of apache myfaces
 //http://wiki.apache.org/myfaces/WorkingWithLargeTables
 
-public abstract class PagedListDataModel<T> extends DataModel{
+public abstract class PagedListDataModel<T> extends DataModel
+{
     int pageSize;
     int rowIndex;
     DataPage<T> page;
-    
+
     /*
      * Create a datamodel that pages through the data showing the specified
      * number of rows on each page.
      */
-    public PagedListDataModel(int pageSize) {
+    public PagedListDataModel(int pageSize)
+    {
         super();
         this.pageSize = pageSize;
         this.rowIndex = -1;
@@ -45,12 +47,14 @@ public abstract class PagedListDataModel<T> extends DataModel{
      * fetchData method rather than by explicitly assigning a list.
      */
     @Override
-    public void setWrappedData(Object o) {
+    public void setWrappedData(Object o)
+    {
         throw new UnsupportedOperationException("setWrappedData");
     }
 
     @Override
-    public int getRowIndex() {
+    public int getRowIndex()
+    {
         return rowIndex;
     }
 
@@ -60,7 +64,8 @@ public abstract class PagedListDataModel<T> extends DataModel{
      * by getRowData to obtain the objects to render in the table.
      */
     @Override
-    public void setRowIndex(int index) {
+    public void setRowIndex(int index)
+    {
         rowIndex = index;
     }
 
@@ -69,25 +74,28 @@ public abstract class PagedListDataModel<T> extends DataModel{
      * number of rows in the current page!).
      */
     @Override
-    public int getRowCount() {
+    public int getRowCount()
+    {
         return getPage().getDatasetSize();
     }
-    
+
     /**
      * Return a DataPage object; if one is not currently available then
      * fetch one. Note that this doesn't ensure that the datapage
      * returned includes the current rowIndex row; see getRowData.
      */
-    private DataPage<T> getPage() {
+    private DataPage<T> getPage()
+    {
         if (page != null)
             return page;
-        
+
         int rowIndex = getRowIndex();
         int startRow = rowIndex;
-        if (rowIndex == -1) {
+        if (rowIndex == -1)
+        {
             // even when no row is selected, we still need a page
             // object so that we know the amount of data available.
-           startRow = 0;
+            startRow = 0;
         }
 
         // invoke method on enclosing class
@@ -101,48 +109,57 @@ public abstract class PagedListDataModel<T> extends DataModel{
      * index then fetchPage is called to retrieve the appropriate page.
      */
     @Override
-    public Object getRowData(){
-        if (rowIndex < 0) {
+    public Object getRowData()
+    {
+        if (rowIndex < 0)
+        {
             throw new IllegalArgumentException(
-                "Invalid rowIndex for PagedListDataModel; not within page");
+                    "Invalid rowIndex for PagedListDataModel; not within page");
         }
 
         // ensure page exists; if rowIndex is beyond dataset size, then 
         // we should still get back a DataPage object with the dataset size
         // in it...
-        if (page == null) {
+        if (page == null)
+        {
             page = fetchPage(rowIndex, pageSize);
         }
 
         // Check if rowIndex is equal to startRow,
         // useful for dynamic sorting on pages
-                
-        if (rowIndex == page.getStartRow()){
-                page = fetchPage(rowIndex, pageSize);
+
+        if (rowIndex == page.getStartRow())
+        {
+            page = fetchPage(rowIndex, pageSize);
         }
 
         int datasetSize = page.getDatasetSize();
         int startRow = page.getStartRow();
         int nRows = page.getData().size();
         int endRow = startRow + nRows;
-        
-        if (rowIndex >= datasetSize) {
+
+        if (rowIndex >= datasetSize)
+        {
             throw new IllegalArgumentException("Invalid rowIndex");
         }
-        
-        if (rowIndex < startRow) {
-            page = fetchPage(rowIndex, pageSize);
-            startRow = page.getStartRow();
-        } else if (rowIndex >= endRow) {
+
+        if (rowIndex < startRow)
+        {
             page = fetchPage(rowIndex, pageSize);
             startRow = page.getStartRow();
         }
-        
+        else if (rowIndex >= endRow)
+        {
+            page = fetchPage(rowIndex, pageSize);
+            startRow = page.getStartRow();
+        }
+
         return page.getData().get(rowIndex - startRow);
     }
 
     @Override
-    public Object getWrappedData() {
+    public Object getWrappedData()
+    {
         return page.getData();
     }
 
@@ -154,17 +171,23 @@ public abstract class PagedListDataModel<T> extends DataModel{
      * required DataPage will be fetched by calling fetchData.
      */
     @Override
-    public boolean isRowAvailable() {
+    public boolean isRowAvailable()
+    {
         DataPage<T> page = getPage();
         if (page == null)
             return false;
-        
+
         int rowIndex = getRowIndex();
-        if (rowIndex < 0) {
+        if (rowIndex < 0)
+        {
             return false;
-        } else if (rowIndex >= page.getDatasetSize()) {
+        }
+        else if (rowIndex >= page.getDatasetSize())
+        {
             return false;
-        } else {
+        }
+        else
+        {
             return true;
         }
     }
