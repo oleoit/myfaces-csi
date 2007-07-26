@@ -4,74 +4,84 @@ import java.util.Date;
 
 import javax.faces.context.FacesContext;
 
-public class CreateStudentBacking {
+public class CreateStudentBacking
+{
 
-	private String id;
+    private String id;
 
-	private String name;
+    private String name;
 
-	private String lastName;
+    private String lastName;
 
-	private Date dateOfBirth;
+    private Date dateOfBirth;
 
-	private String phone;
+    private String phone;
 
-	public CreateStudentBacking() {
-		super();
-	}
-	
-	public String create(){
-		FacesContext context = FacesContext.getCurrentInstance();
-		StudentDataBean sdb = (StudentDataBean)context.getExternalContext().getSessionMap().get("students");
+    public CreateStudentBacking()
+    {
+        super();
+    }
 
-		Student s = new Student(
-				this.getId(),
-				this.getName(),
-				this.getLastName(),
-				this.getDateOfBirth(),
-				this.getPhone());
-		sdb.createStudent(s);
-		return "success";
-	}
+    public String create()
+    {
+        FacesContext context = FacesContext.getCurrentInstance();
+        StudentDataBean sdb = (StudentDataBean) context.getExternalContext()
+                .getSessionMap().get("students");
 
-	public String getId() {
-		return id;
-	}
+        Student s = new Student(this.getId(), this.getName(), this
+                .getLastName(), this.getDateOfBirth(), this.getPhone());
+        sdb.createStudent(s);
+        return "success";
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getId()
+    {
+        return id;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public void setId(String id)
+    {
+        this.id = id;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public String getLastName()
+    {
+        return lastName;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName()
+    {
+        return name;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public void setName(String name)
+    {
+        this.name = name;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public String getPhone()
+    {
+        return phone;
+    }
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
+    public void setPhone(String phone)
+    {
+        this.phone = phone;
+    }
 
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
+    public Date getDateOfBirth()
+    {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth)
+    {
+        this.dateOfBirth = dateOfBirth;
+    }
 
 }

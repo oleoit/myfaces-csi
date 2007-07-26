@@ -1,13 +1,16 @@
 package org.apache.myfaces.examples.facelets;
 
-public abstract class PagedSortableListDataModel<T> extends PagedListDataModel<T> {
-	
+public abstract class PagedSortableListDataModel<T> extends
+        PagedListDataModel<T>
+{
+
     private String _sort;
     private boolean _ascending;
 
-    protected PagedSortableListDataModel(int datasetSize, String defaultSortColumn)
+    protected PagedSortableListDataModel(int datasetSize,
+            String defaultSortColumn)
     {
-    	super(datasetSize);
+        super(datasetSize);
         _sort = defaultSortColumn;
         _ascending = isDefaultAscending(defaultSortColumn);
     }
@@ -22,12 +25,12 @@ public abstract class PagedSortableListDataModel<T> extends PagedListDataModel<T
      */
     protected abstract boolean isDefaultAscending(String sortColumn);
 
-
     public void sort(String sortColumn)
     {
         if (sortColumn == null)
         {
-            throw new IllegalArgumentException("Argument sortColumn must not be null.");
+            throw new IllegalArgumentException(
+                    "Argument sortColumn must not be null.");
         }
 
         if (_sort.equals(sortColumn))

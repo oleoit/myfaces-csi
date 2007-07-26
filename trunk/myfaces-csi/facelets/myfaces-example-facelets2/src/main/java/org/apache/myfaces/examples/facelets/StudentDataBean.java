@@ -31,173 +31,208 @@ import javax.faces.model.DataModel;
  * under the License.
  */
 
-public class StudentDataBean {
+public class StudentDataBean
+{
 
-	private DataModel _dataModel = null;
-	
-	private List<Student> _students;
-	
-	private static final String DEFAULT_SORT_COLUMN = "Id";
-	
-	/**
-	 * The student that its necesary to update
-	 */
-	private Student updateStudent;
-	
-	public StudentDataBean(){
-		
-		_students = new ArrayList<Student>();
-		for (int i = 0; i < 200; i++)
-		{
-			SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");			
-			java.util.Date d1 = null;
-			try {
-				d1 = sf.parse("1980-11-30");
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			_students.add(new Student("1"+i,"Henry"+i,"Ford"+i,d1,i+"73748899"));
-			_students.add(new Student("2"+i,"John"+i,"Karmack"+i,d1,i+"87394879"));
-			_students.add(new Student("3"+i,"Lucius"+i,"Kennedy"+i,d1,i+"2238298"));
-			_students.add(new Student("4"+i,"Jay"+i,"Skywalker"+i,d1,i+"2238298"));
-		}
-		
-	}
-	
-	public void createStudent(Student s){
-		_students.add(s);
-	}
+    private DataModel _dataModel = null;
 
-	private DataPage<Student> getDataPage(int startRow, int pageSize) {
-		// access database here, or call EJB to do so
-		int datasetSize = _students.size();
-		if (startRow < _students.size()){
-			return new DataPage<Student>(datasetSize,startRow,
-					_students.subList(startRow, 
-							startRow+pageSize<datasetSize?
-									startRow+pageSize
-									:datasetSize));
-		}else{
-			return null;
-		}
-	}
+    private List<Student> _students;
 
-	public Integer getRowsPerPage(){
-		return 10;
-	}
-	
-	public DataModel getDataModel() {
-		if (_dataModel == null) {
-			_dataModel = new LocalDataModel(getRowsPerPage(), DEFAULT_SORT_COLUMN);
-		}
-		return _dataModel;
-	}
+    private static final String DEFAULT_SORT_COLUMN = "Id";
 
-	public String update(){
-        FacesContext context = FacesContext.getCurrentInstance(); 
+    /**
+     * The student that its necesary to update
+     */
+    private Student updateStudent;
+
+    public StudentDataBean()
+    {
+
+        _students = new ArrayList<Student>();
+        for (int i = 0; i < 200; i++)
+        {
+            SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date d1 = null;
+            try
+            {
+                d1 = sf.parse("1980-11-30");
+            }
+            catch (ParseException e)
+            {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            _students.add(new Student("1" + i, "Henry" + i, "Ford" + i, d1, i
+                    + "73748899"));
+            _students.add(new Student("2" + i, "John" + i, "Karmack" + i, d1, i
+                    + "87394879"));
+            _students.add(new Student("3" + i, "Lucius" + i, "Kennedy" + i, d1,
+                    i + "2238298"));
+            _students.add(new Student("4" + i, "Jay" + i, "Skywalker" + i, d1,
+                    i + "2238298"));
+        }
+
+    }
+
+    public void createStudent(Student s)
+    {
+        _students.add(s);
+    }
+
+    private DataPage<Student> getDataPage(int startRow, int pageSize)
+    {
+        // access database here, or call EJB to do so
+        int datasetSize = _students.size();
+        if (startRow < _students.size())
+        {
+            return new DataPage<Student>(datasetSize, startRow, _students
+                    .subList(startRow,
+                            startRow + pageSize < datasetSize ? startRow
+                                    + pageSize : datasetSize));
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public Integer getRowsPerPage()
+    {
+        return 10;
+    }
+
+    public DataModel getDataModel()
+    {
+        if (_dataModel == null)
+        {
+            _dataModel = new LocalDataModel(getRowsPerPage(),
+                    DEFAULT_SORT_COLUMN);
+        }
+        return _dataModel;
+    }
+
+    public String update()
+    {
+        FacesContext context = FacesContext.getCurrentInstance();
         Map map = context.getExternalContext().getRequestParameterMap();
         Object id = map.get("student");
 
-        for (Iterator it = _students.iterator(); it.hasNext();){
-        	Student s = (Student) it.next();
-        	if (s.getId().equals(id)){
-        		this.setUpdateStudent(s);
-        		break;
-        	}
+        for (Iterator it = _students.iterator(); it.hasNext();)
+        {
+            Student s = (Student) it.next();
+            if (s.getId().equals(id))
+            {
+                this.setUpdateStudent(s);
+                break;
+            }
         }
-		return "go_update";
-	}
-	
-	public void setUpdateStudent(Student updateStudent) {
-		this.updateStudent = updateStudent;
-	}
+        return "go_update";
+    }
 
-	public Student getUpdateStudent() {
-		return updateStudent;
-	}
+    public void setUpdateStudent(Student updateStudent)
+    {
+        this.updateStudent = updateStudent;
+    }
 
-	public String remove(){	
-        FacesContext context = FacesContext.getCurrentInstance(); 
+    public Student getUpdateStudent()
+    {
+        return updateStudent;
+    }
+
+    public String remove()
+    {
+        FacesContext context = FacesContext.getCurrentInstance();
         Map map = context.getExternalContext().getRequestParameterMap();
         Object id = map.get("student");
 
-        for (Iterator it = _students.iterator(); it.hasNext();){
-        	Student s = (Student) it.next();
-        	if (s.getId().equals(id)){
-        		it.remove();
-        		break;
-        	}
+        for (Iterator it = _students.iterator(); it.hasNext();)
+        {
+            Student s = (Student) it.next();
+            if (s.getId().equals(id))
+            {
+                it.remove();
+                break;
+            }
         }
-		return "go_list";
-	}
-	
-	private class StudentComparator implements Comparator{
+        return "go_list";
+    }
 
-		private String column;
-		private boolean ascending;
-		
-		public StudentComparator(String column, boolean ascending){
-			this.column = column;
-			this.ascending = ascending;
-		}
-		
-		public int compare(Object o1, Object o2) {
-            Student c1 = (Student)o1;
-            Student c2 = (Student)o2;
+    private class StudentComparator implements Comparator
+    {
+
+        private String column;
+        private boolean ascending;
+
+        public StudentComparator(String column, boolean ascending)
+        {
+            this.column = column;
+            this.ascending = ascending;
+        }
+
+        public int compare(Object o1, Object o2)
+        {
+            Student c1 = (Student) o1;
+            Student c2 = (Student) o2;
             if (column == null)
             {
                 return 0;
             }
             if (column.equals("Id"))
             {
-                return ascending ? c1.getId().compareTo(c2.getId()) : 
-                	c2.getId().compareTo(c1.getId());
+                return ascending ? c1.getId().compareTo(c2.getId()) : c2
+                        .getId().compareTo(c1.getId());
             }
             if (column.equals("Name"))
             {
-                return ascending ? c1.getName().compareTo(c2.getName()) : 
-                	c2.getName().compareTo(c1.getName());
+                return ascending ? c1.getName().compareTo(c2.getName()) : c2
+                        .getName().compareTo(c1.getName());
             }
             if (column.equals("LastName"))
             {
-                return ascending ? c1.getLastName().compareTo(c2.getLastName()) : 
-                	c2.getLastName().compareTo(c1.getLastName());
+                return ascending ? c1.getLastName().compareTo(c2.getLastName())
+                        : c2.getLastName().compareTo(c1.getLastName());
             }
             if (column.equals("DateOfBirth"))
             {
-                return ascending ? c1.getDateOfBirth().compareTo(c2.getDateOfBirth()) : 
-                	c2.getDateOfBirth().compareTo(c1.getDateOfBirth());
+                return ascending ? c1.getDateOfBirth().compareTo(
+                        c2.getDateOfBirth()) : c2.getDateOfBirth().compareTo(
+                        c1.getDateOfBirth());
             }
             if (column.equals("Phone"))
             {
-                return ascending ? c1.getPhone().compareTo(c2.getPhone()) : 
-                	c2.getPhone().compareTo(c1.getPhone());
-            }            
-            else return 0;
-		}
-	}
-	
-	private class LocalDataModel extends PagedSortableListDataModel {
-		public LocalDataModel(int pageSize,String defaultSortColumn) {
-			super(pageSize,defaultSortColumn);
-		}
+                return ascending ? c1.getPhone().compareTo(c2.getPhone()) : c2
+                        .getPhone().compareTo(c1.getPhone());
+            }
+            else
+                return 0;
+        }
+    }
 
-		public DataPage<Student> fetchPage(int startRow, int pageSize) {
-			// call enclosing managed bean method to fetch the data
-			sort(getSort(), isAscending());
-			return getDataPage(startRow, pageSize);			
-		}
+    private class LocalDataModel extends PagedSortableListDataModel
+    {
+        public LocalDataModel(int pageSize, String defaultSortColumn)
+        {
+            super(pageSize, defaultSortColumn);
+        }
 
-		@Override
-		protected boolean isDefaultAscending(String sortColumn) {
-			return false;
-		}
+        public DataPage<Student> fetchPage(int startRow, int pageSize)
+        {
+            // call enclosing managed bean method to fetch the data
+            sort(getSort(), isAscending());
+            return getDataPage(startRow, pageSize);
+        }
 
-		@Override
-		protected void sort(String column, boolean ascending) {
-	        Comparator comparator = new StudentComparator(column,ascending);
-	        Collections.sort(_students, comparator);			
-		}
-	}
+        @Override
+        protected boolean isDefaultAscending(String sortColumn)
+        {
+            return false;
+        }
+
+        @Override
+        protected void sort(String column, boolean ascending)
+        {
+            Comparator comparator = new StudentComparator(column, ascending);
+            Collections.sort(_students, comparator);
+        }
+    }
 }

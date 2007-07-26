@@ -4,87 +4,102 @@ import java.util.Date;
 
 import javax.faces.context.FacesContext;
 
-public class UpdateStudentBacking {
+public class UpdateStudentBacking
+{
 
-	private String id;
+    private String id;
 
-	private String name;
+    private String name;
 
-	private String lastName;
+    private String lastName;
 
-	private Date dateOfBirth;
+    private Date dateOfBirth;
 
-	private String phone;
-	
-	public UpdateStudentBacking() {
-		super();
-		FacesContext context = FacesContext.getCurrentInstance();
-		StudentDataBean sdb = (StudentDataBean)context.getExternalContext().getSessionMap().get("students");
-		
-		Student s = sdb.getUpdateStudent();
-		if (s != null){
-			this.setId(s.getId());
-			this.setName(s.getName());
-			this.setLastName(s.getLastName());
-			this.setDateOfBirth(s.getDateOfBirth());
-			this.setPhone(s.getPhone());
-		}
-	}
-	
-	public String update(){
-		FacesContext context = FacesContext.getCurrentInstance();
-		StudentDataBean sdb = (StudentDataBean)context.getExternalContext().getSessionMap().get("students");		
-		
-		Student s = sdb.getUpdateStudent();
-		
-		s.setId(this.getId());
-		s.setName(this.getName());
-		s.setLastName(this.getLastName());
-		s.setDateOfBirth(this.getDateOfBirth());
-		s.setPhone(this.getPhone());
+    private String phone;
 
-		return "success";
-	}
-	
+    public UpdateStudentBacking()
+    {
+        super();
+        FacesContext context = FacesContext.getCurrentInstance();
+        StudentDataBean sdb = (StudentDataBean) context.getExternalContext()
+                .getSessionMap().get("students");
 
-	public String getId() {
-		return id;
-	}
+        Student s = sdb.getUpdateStudent();
+        if (s != null)
+        {
+            this.setId(s.getId());
+            this.setName(s.getName());
+            this.setLastName(s.getLastName());
+            this.setDateOfBirth(s.getDateOfBirth());
+            this.setPhone(s.getPhone());
+        }
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String update()
+    {
+        FacesContext context = FacesContext.getCurrentInstance();
+        StudentDataBean sdb = (StudentDataBean) context.getExternalContext()
+                .getSessionMap().get("students");
 
-	public String getLastName() {
-		return lastName;
-	}
+        Student s = sdb.getUpdateStudent();
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+        s.setId(this.getId());
+        s.setName(this.getName());
+        s.setLastName(this.getLastName());
+        s.setDateOfBirth(this.getDateOfBirth());
+        s.setPhone(this.getPhone());
 
-	public String getName() {
-		return name;
-	}
+        return "success";
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getId()
+    {
+        return id;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public void setId(String id)
+    {
+        this.id = id;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public String getLastName()
+    {
+        return lastName;
+    }
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
+    }
 
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String getPhone()
+    {
+        return phone;
+    }
+
+    public void setPhone(String phone)
+    {
+        this.phone = phone;
+    }
+
+    public Date getDateOfBirth()
+    {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth)
+    {
+        this.dateOfBirth = dateOfBirth;
+    }
 
 }
