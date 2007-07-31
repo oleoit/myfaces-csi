@@ -183,7 +183,7 @@
 	</profiles>
 
 	<build>
-		<finalName>myfaces-skins</finalName>
+		<finalName>myfaces-skins-sandbox</finalName>
 
 		<resources>
 			<resource>
