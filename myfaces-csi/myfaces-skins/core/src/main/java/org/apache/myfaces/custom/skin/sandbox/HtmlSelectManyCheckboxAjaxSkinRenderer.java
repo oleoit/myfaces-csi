@@ -1,6 +1,13 @@
 package org.apache.myfaces.custom.skin.sandbox;
 
+import java.io.IOException;
+
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+
+import org.apache.myfaces.custom.skin.SkinConstants;
 import org.apache.myfaces.custom.skin.html.ext.HtmlSelectOneOrManySkinRenderer;
+import org.apache.myfaces.trinidad.context.RenderingContext;
 
 /*
  *  Licensed to the Apache Software Foundation (ASF) under one
@@ -30,4 +37,21 @@ public class HtmlSelectManyCheckboxAjaxSkinRenderer extends
         super("s", "selectManyCheckboxAjax");
     }
 
+    @Override
+    protected void _addStyleClassesToComponent(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
+        _addStyleClass(context, component, arc);
+
+        String baseStyleClass = this.getBaseStyleName(component);
+        String disabledStyleClass = baseStyleClass
+                + SkinConstants.DISABLED_CLASS_SUFFIX;
+        String enabledStyleClass = baseStyleClass + "::enabled";
+
+        _renderStyleClass(component, context, arc, disabledStyleClass,
+                "disabledClass");
+        _renderStyleClass(component, context, arc, enabledStyleClass,
+                "enabledClass");
+
+    }    
 }
