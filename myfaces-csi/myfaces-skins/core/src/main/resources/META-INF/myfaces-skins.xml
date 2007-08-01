@@ -474,7 +474,9 @@
 		<style selector="s|commandButtonAjax::style">
     		<includeStyle name="AFDefaultFont"/>
   		</style> 			
-  		
+		<style selector="s|autoUpdateDataTable::style">
+    		<property name="border-collapse">collapse</property>
+  		</style>  		
   		
 		<style selector="s|inputTextAjax::style">
 			<includeStyle name="AFFormControlContent"/>
