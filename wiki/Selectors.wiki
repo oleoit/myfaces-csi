@@ -131,3 +131,11 @@ Notes:
 
 1. The tld of t:jscookMenu define that a theme is required, so define a default theme
 does not work. For define a t:jscookMenu, you may need to write some javascript for the theme, so it's not fit well with the skin. Anyway, you can define css classes in the skin file that uses the theme.
+
+== Tomahawk Sandbox Custom Selectors ==
+
+This components are contained in the package org.apache.myfaces.custom and are components contributed by developers.
+
+|| *Component*     || *Selector Base Name* || *Properties* || *Extends* ||
+
+TO BE COMPLETED...
