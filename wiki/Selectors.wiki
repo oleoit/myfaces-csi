@@ -143,9 +143,28 @@ This components are contained in the package org.apache.myfaces.custom and are c
 || s:commandButtonAjax || t|commandButton   || ::style   ||`AFDefaultFont, p_AFDisabled` ||
 || s:fieldset || s|fieldset || ::style || ||
 || s:filterTable || s|filterTable || ::style || ||
+|| s:graphicImageDynamic || s|graphicImageDynamic || ::style || ||
+|| s:inputSuggest || s|inputSuggest || ::style, ::displayValueOnly || `AFFormControlContent` ||
+|| s:inputSuggestAjax || s|inputSuggestAjax || ::style, ::errorStyle || `AFFormControlContent(::style) , AFDefaultFont(::errorStyle), .AFHeaderLevelOne(::errorStyle), AFErrorTextForeground(::errorStyle) ` ||
+|| s:layoutingContentPane || s|layoutingContentPane || ::style || ||
+|| s:layoutingSplitPane  || s|layoutingSplitPane  || ::style || ||
+|| s:layoutingTitlePane  || s|layoutingTitlePane  || ::containerNode, ::labelNode || ||
+|| s:message || s|message || ::style, ::fatal, ::info, ::error, ::warn || `AFDefaultFont(All properties), AFVeryDarkForeground(::style), .AFHeaderLevelOne(::error), AFErrorTextForeground(::error), AFDarkForeground(::info), MessageBoxMargin(::info) `||
+|| s:modalDialog || s|modalDialog || ::style || ||
+|| s:outputLinkDynamic || s|outputLinkDynamic || ::style ||`AFDefaultFont, AFLinkForeground(::style:link), AFActiveLinkForeground(::style:active), AFVisitedLinkForeground(::style:visited)`  ||
+|| s:pprPanelGroup || s|pprPanelGroup || ::style || ||
+|| s:roundedDiv || s|roundedDiv || ::style || ||
+|| s:selectBooleanCheckboxAjax || s|selectBooleanCheckboxAjax || ::style || `AFFormControlContent` ||
+|| s:selectManyCheckboxAjax || s|selectManyCheckboxAjax || ::style, ::disabled, ::enabled || `AFFormControlContent` ||
+|| s:selectManyPicklist || s|selectManyPicklist || ::style, ::disabled, ::enabled || `AFFormControlContent` ||
+|| s:selectOneRadioAjax || s|selectOneRadioAjax || ::style, ::disabled, ::enabled || `AFFormControlContent` ||
+|| s:tableSuggestAjax || s|tableSuggestAjax || ::style, ::popup, ::table, ::comboBox, ::row, ::evenRow, ::oddRow, ::hoverStyle, ::displayValueOnly || ||
+|| s:toggleGroup || s|toggleGroup || ::style || ||
+|| s:toggleLink || s|toggleLink || ::style || ||
+|| s:togglePanel || s|togglePanel || ::style || ||
 
 Notes:
 
 1. s:filterTable has a default style for headClass and tbodyClass property (see tag doc).
+1. s:selectBooleanCheckboxAjax can load images or icons (attributes onImage and offImage) referenced in a css skin file using selectors ending with -icon or -icon:rtl like in h:graphicImage.
 
-TO BE COMPLETED...
