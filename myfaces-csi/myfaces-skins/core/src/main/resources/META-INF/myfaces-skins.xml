@@ -467,6 +467,54 @@
 			<includeStyle name="AFRequiredContent"/>
   		</style>
 
+		<!-- BEGIN: org.apache.myfaces.custom.skin.sandbox -->
+		<style selector="s|ajaxChildComboBox::style">
+			<includeStyle name="AFFormControlContent"/>
+		</style>
+		<style selector="s|commandButtonAjax::style">
+    		<includeStyle name="AFDefaultFont"/>
+  		</style> 			
+  		
+  		
+		<style selector="s|inputTextAjax::style">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+		<style selector="s|inputSuggestAjax::style">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+
+		<style selector="s|message::style">
+    		<includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFVeryDarkForeground"/>
+  		</style> 			
+		<style selector="s|message::error">
+			<includeStyle name="AFDefaultFont"/>
+    		<includeStyle selector=".AFHeaderLevelOne"/>
+    		<includeStyle name="AFErrorTextForeground"/>
+  		</style> 			
+  		<style selector="s|message::info">
+  		    <includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFDarkForeground"/>
+    		<includeStyle name="MessageBoxMargin"/>
+  		</style> 			
+		<style selector="s|message::fatal">  		
+			<includeStyle name="AFDefaultFont"/>
+		</style>
+		<style selector="s|message::warn">  		
+			<includeStyle name="AFDefaultFont"/>
+		</style>
+
+		<style selector="s|selectBooleanCheckboxAjax::style">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+		<style selector="s|selectManyCheckboxAjax::style">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+		<style selector="s|selectOneRadioAjax::style">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>
+
+		<!-- BEGIN: org.apache.myfaces.custom.skin.sandbox -->
 
 	</styleSheet>
 
