@@ -137,5 +137,15 @@ does not work. For define a t:jscookMenu, you may need to write some javascript 
 This components are contained in the package org.apache.myfaces.custom and are components contributed by developers.
 
 || *Component*     || *Selector Base Name* || *Properties* || *Extends* ||
+|| s:accordionPane || s|accordionPane || ::style, ::displayValueOnly || ||
+|| s:ajaxChildComboBox || s|ajaxChildComboBox || ::style, ::displayValueOnly, ::disabled, ::enabled || `AFFormControlContent` ||
+|| s:autoUpdateDataTable || s|autoUpdateDataTable || ::style, ::footer, ::header, ::row, ::rowStyle|| _border-collapse:collapse_ || 
+|| s:commandButtonAjax || t|commandButton   || ::style   ||`AFDefaultFont, p_AFDisabled` ||
+|| s:fieldset || s|fieldset || ::style || ||
+|| s:filterTable || s|filterTable || ::style || ||
+
+Notes:
+
+1. s:filterTable has a default style for headClass and tbodyClass property (see tag doc).
 
 TO BE COMPLETED...
