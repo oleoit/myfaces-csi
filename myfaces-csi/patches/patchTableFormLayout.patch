@@ -1,0 +1,14 @@
+Index: src/main/java/org/apache/myfaces/trinidadinternal/renderkit/core/xhtml/LabelAndMessageRenderer.java
+===================================================================
+--- src/main/java/org/apache/myfaces/trinidadinternal/renderkit/core/xhtml/LabelAndMessageRenderer.java	(revision 557417)
++++ src/main/java/org/apache/myfaces/trinidadinternal/renderkit/core/xhtml/LabelAndMessageRenderer.java	(working copy)
+@@ -771,7 +771,8 @@
+   {
+     return "org.apache.myfaces.trinidad.Form".equals(rendererType) ||
+         "org.apache.myfaces.trinidad.FormLayout".equals(rendererType) ||
+-        "org.apache.myfaces.trinidad.rich.Form".equals(rendererType);
++        "org.apache.myfaces.trinidad.rich.Form".equals(rendererType) ||
++        "org.apache.myfaces.trinidad.TableLayout".equals(rendererType);
+   }
+ 
+   
