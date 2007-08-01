@@ -25,11 +25,6 @@
 	syntax.
 */
 
-@constants {
-	greencolor: #97f099;
-	f90color : #f90; 
-}
-
 /*
    --------------------------------------------------------------
     Horizontal Panelnavigation
@@ -65,17 +60,17 @@
     position: absolute;
     top: 36px;
     *top: 44px;/*reposition for IE*/      
-    background: greencolor;    
+    background: #97f099;    
     left: 13px;
     *left: 15px;
     width: 740px;    
 }
 .AFPanelNavigationHorizontal ul li.on ul {    
     display: block;
-    background: f90color;
+    background: #f90;
 }
 .AFPanelNavigationHorizontal ul li.on:hover ul, .AFPanelNavigationHorizontal ul li.over ul { /*for ie*/
-    background: greencolor;
+    background: #97f099;
 }
 .AFPanelNavigationHorizontal ul li a {
     color: #B510D;
@@ -85,36 +80,36 @@
 }
 .AFPanelNavigationHorizontal ul li.on a {   
     color: #fff;
-    background: f90color;
+    background: #f90;
 }
 .AFPanelNavigationHorizontal ul li.on ul a, .AFPanelNavigationHorizontal ul li.off ul a {
     float: left; /*ie doesn't inherit the float*/
     border: 0;
-    color: f90color;
+    color: #f90;
     width: auto;    
 }
 .AFPanelNavigationHorizontal ul li.on:hover ul a, .AFPanelNavigationHorizontal ul li.over ul li a { /*for ie - the specificity is necessary*/
-    background: greencolor;
+    background: #97f099;
 }
 .AFPanelNavigationHorizontal ul li.off:hover ul, .AFPanelNavigationHorizontal ul li.over ul {
     display: block;
     z-index: 6000;
 }		
 .AFPanelNavigationHorizontal ul li.off a:hover, .AFPanelNavigationHorizontal ul li:hover a, .AFPanelNavigationHorizontal ul li.over a {
-    background: greencolor;
-    color: f90color;
+    background: #97f099;
+    color: #f90;
 }
 .AFPanelNavigationHorizontal ul li.off a:hover, .AFPanelNavigationHorizontal ul li.on a:hover { 
-    color: f90color;
+    color: #f90;
 }		
 /*subnav formatting*/
 .AFPanelNavigationHorizontal ul li.off ul a {
     display: block;
-    background: greencolor;
+    background: #97f099;
     color: #fff;    
 }		
 .AFPanelNavigationHorizontal ul li.on ul a {       
     display: block;
-    background: f90color;
+    background: #f90;
     color: #fff;    
 }
