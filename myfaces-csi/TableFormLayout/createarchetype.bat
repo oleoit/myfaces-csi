@@ -1,0 +1,1 @@
+mvn archetype:create -DarchetypeGroupId=org.apache.myfaces.maven -DarchetypeArtifactId=maven-archetype-jsfcomponents  -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=TableFormLayoutId -DartifactId=TableFormLayout

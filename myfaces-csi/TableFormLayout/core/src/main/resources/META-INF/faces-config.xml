@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<faces-config xmlns="http://java.sun.com/JSF/Configuration">
+
+  <!-- components -->
+	<component>
+		<description>
+		</description>
+		<component-type>
+			org.apache.myfaces.trinidad.CoreTableFormLayout
+		</component-type>
+		<component-class>
+			org.apache.myfaces.trinidad.component.core.layout.CoreTableFormLayout
+		</component-class>
+		<!--org.apache.myfaces.trinidad.CoreTableFormLayout facets-->
+		<facet>
+			<description>
+				This facet is rendered under the columns and usually
+				contains a panelButtonBar. &lt;p&gt; This facet may not
+				always line up perfectly, especially if the labels or
+				fields are longer than expected. Try adjusting things
+				with the labelWidth and fieldWidth attributes when
+				necessary. Also, the columns attribute on inputText may
+				be helpful. &lt;/p&gt;
+			</description>
+			<facet-name>footer</facet-name>
+			<facet-extension>
+				<facet-metadata>
+					<preferred>true</preferred>
+					<preferred-children>
+						tr:panelButtonBar
+					</preferred-children>
+				</facet-metadata>
+			</facet-extension>
+		</facet>
+		<!--javax.faces.Component properties-->
+		<property>
+			<description>the identifier for the component</description>
+			<property-name>id</property-name>
+			<property-class>java.lang.String</property-class>
+		</property>
+		<property>
+			<description>
+				whether the component is rendered. When set to false, no
+				output will be delivered for this component.
+			</description>
+			<property-name>rendered</property-name>
+			<property-class>boolean</property-class>
+			<default-value>true</default-value>
+			<property-extension>
+				<property-metadata>
+					<group>
+						${md:getTranslatedString("CORE_GROUP")}
+					</group>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<property>
+			<property-name>transient</property-name>
+			<property-class>boolean</property-class>
+			<property-extension>
+				<property-metadata>
+					<group>
+						${md:getTranslatedString("CORE_GROUP")}
+					</group>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<!--org.apache.myfaces.trinidad.ComponentBase properties-->
+		<property>
+			<description>
+				a method reference to an attribute change listener.
+				Attribute change events are not delivered for any
+				programmatic change to a property. They are only
+				delivered when a renderer changes a property without the
+				application's specific request. An example of an
+				attribute change events might include the width of a
+				column that supported client-side resizing.
+			</description>
+			<property-name>attributeChangeListener</property-name>
+			<property-class>
+				javax.faces.el.MethodBinding
+			</property-class>
+			<property-extension>
+				<property-metadata>
+					<expert>true</expert>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<!--org.apache.myfaces.trinidad.CoreTableFormLayout properties-->
+		<property>
+			<description>
+				the CSS styles to use for this component.
+			</description>
+			<property-name>inlineStyle</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<group>
+						${md:getTranslatedString("CORE_GROUP")}
+					</group>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<property>
+			<description>
+				a CSS style class to use for this component.
+			</description>
+			<property-name>styleClass</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<group>
+						${md:getTranslatedString("CORE_GROUP")}
+					</group>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<property>
+			<description>
+				The short description of the component. This text is
+				commonly used by user agents to display tooltip help
+				text.
+			</description>
+			<property-name>shortDesc</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<group>
+						${md:getTranslatedString("CORE_GROUP")}
+					</group>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<property>
+			<description>
+				the IDs of the components that should trigger a partial
+				update. This component will listen on the trigger
+				components. If one of the trigger components receives an
+				event that will cause it to update in some way, this
+				component will request to be updated too. Identifiers
+				are relative to the source component, and must account
+				for NamingContainers. If your component is already
+				inside of a naming container, you can use a single colon
+				to start the search from the root, or multiple colons to
+				move up through the NamingContainers - "::" will search
+				from the parent naming container, ":::" will search from
+				the grandparent naming container, etc.
+			</description>
+			<property-name>partialTriggers</property-name>
+			<property-class>java.lang.String[]</property-class>
+		</property>
+		<property>
+			<description>an onclick Javascript handler.</description>
+			<property-name>onclick</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<group>
+						${md:getTranslatedString("EVENTS_GROUP")}
+					</group>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<property>
+			<description>an ondblclick Javascript handler.</description>
+			<property-name>ondblclick</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<group>
+						${md:getTranslatedString("EVENTS_GROUP")}
+					</group>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<property>
+			<description>
+				an onmousedown Javascript handler.
+			</description>
+			<property-name>onmousedown</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<group>
+						${md:getTranslatedString("EVENTS_GROUP")}
+					</group>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<property>
+			<description>an onmouseup Javascript handler.</description>
+			<property-name>onmouseup</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<group>
+						${md:getTranslatedString("EVENTS_GROUP")}
+					</group>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<property>
+			<description>
+				an onmouseover Javascript handler.
+			</description>
+			<property-name>onmouseover</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<group>
+						${md:getTranslatedString("EVENTS_GROUP")}
+					</group>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<property>
+			<description>
+				an onmousemove Javascript handler.
+			</description>
+			<property-name>onmousemove</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<group>
+						${md:getTranslatedString("EVENTS_GROUP")}
+					</group>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<property>
+			<description>an onmouseout Javascript handler.</description>
+			<property-name>onmouseout</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<group>
+						${md:getTranslatedString("EVENTS_GROUP")}
+					</group>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<property>
+			<description>an onkeypress Javascript handler.</description>
+			<property-name>onkeypress</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<group>
+						${md:getTranslatedString("EVENTS_GROUP")}
+					</group>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<property>
+			<description>an onkeydown Javascript handler.</description>
+			<property-name>onkeydown</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<group>
+						${md:getTranslatedString("EVENTS_GROUP")}
+					</group>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<property>
+			<description>an onkeyup Javascript handler.</description>
+			<property-name>onkeyup</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<group>
+						${md:getTranslatedString("EVENTS_GROUP")}
+					</group>
+				</property-metadata>
+			</property-extension>
+		</property>
+		<property>
+			<description>
+				Sets the number of rows after which to start a new
+				column. This attribute defaults to Integer.MAX_VALUE.
+				The number of rows actually rendered depends also on the
+				"maxColumns" property. If the children will not fit in
+				the given number of rows and columns, the number of rows
+				will increase to accomodate the children.
+			</description>
+			<property-name>rows</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<preferred>true</preferred>
+				</property-metadata>
+				<unsupported-agents>phone voice</unsupported-agents>
+			</property-extension>
+		</property>
+		<property>
+			<description>
+			</description>
+			<property-name>columns</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<preferred>true</preferred>
+				</property-metadata>
+				<unsupported-agents>phone voice</unsupported-agents>
+			</property-extension>
+		</property>
+		
+		<property>
+			<description>
+			</description>
+			<property-name>height</property-name>
+			<property-class>int</property-class>
+			<property-extension>
+				<property-metadata>
+					<preferred>true</preferred>
+				</property-metadata>
+				<property-editor>UNSIGNED_INTEGER</property-editor>				
+				<unsupported-agents>phone voice</unsupported-agents>
+			</property-extension>
+		</property>
+		
+		<property>
+			<description>
+			</description>
+			<property-name>width</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<preferred>true</preferred>
+				</property-metadata>
+				<property-editor>UNSIGNED_INTEGER</property-editor>				
+				<unsupported-agents>phone voice</unsupported-agents>
+			</property-extension>
+		</property>
+		
+		<property>
+			<description>
+			</description>
+			<property-name>cellspacing</property-name>
+			<property-class>java.lang.String</property-class>
+			<property-extension>
+				<property-metadata>
+					<preferred>true</preferred>
+				</property-metadata>
+				<property-editor>UNSIGNED_INTEGER</property-editor>				
+				<unsupported-agents>phone voice</unsupported-agents>
+			</property-extension>
+		</property>
+
+		<component-extension>
+			<component-family>
+				org.apache.myfaces.trinidad.Panel
+			</component-family>
+			<renderer-type>
+				org.apache.myfaces.trinidad.TableLayout
+			</renderer-type>
+			<component-metadata>
+				<preferred-children>
+					tr:inputText tr:inputFile tr:selectBooleanCheckbox
+					tr:selectBooleanRadio tr:inputColor tr:inputDate
+					tr:inputListOfValues tr:selectManyListbox
+					tr:selectOneChoice tr:selectOneRadio
+					tr:panelLabelAndMessage tr:selectManyCheckbox
+				</preferred-children>
+			</component-metadata>
+		</component-extension>
+	</component>
+
+  <!-- renderkit -->
+
+  <render-kit>
+      <renderer>
+         <component-family>org.apache.myfaces.trinidad.Panel</component-family>
+         <renderer-type>org.apache.myfaces.trinidad.TableLayout</renderer-type>
+         <renderer-class>org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.TableFormLayoutRenderer</renderer-class>
+      </renderer>
+  </render-kit>
+
+</faces-config>
