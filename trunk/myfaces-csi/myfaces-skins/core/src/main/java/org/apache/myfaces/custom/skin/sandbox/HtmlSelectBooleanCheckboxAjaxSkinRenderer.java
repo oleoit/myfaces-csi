@@ -24,10 +24,11 @@ import java.io.IOException;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.myfaces.custom.inputAjax.HtmlSelectBooleanCheckboxAjax;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
-import org.apache.myfaces.custom.skin.SkinConstants;
 import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.skin.Icon;
+import org.apache.myfaces.trinidadinternal.skin.icon.ContextImageIcon;
 
 public class HtmlSelectBooleanCheckboxAjaxSkinRenderer extends AdapterSkinRenderer
 {
@@ -51,5 +52,111 @@ public class HtmlSelectBooleanCheckboxAjaxSkinRenderer extends AdapterSkinRender
         _renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
                 "displayValueOnlyStyleClass");
 
+        _setOnIcon(context, (HtmlSelectBooleanCheckboxAjax) component, arc);
+        _setOffIcon(context, (HtmlSelectBooleanCheckboxAjax) component, arc);
     }
+    
+    /**
+     * This method get the value an if is the case replace the component value
+     * with the path through icon mechanims of trinidad
+     * 
+     * @param context
+     * @param component
+     * @param arc
+     * @param getProperty
+     * @param setProperty
+     */
+    private void _setOnIcon(FacesContext context, HtmlSelectBooleanCheckboxAjax component,
+            RenderingContext arc)
+    {
+
+        String oldIcon = null;
+        try
+        {
+            oldIcon = (String) component.getOnImage();
+        }
+        catch (ClassCastException e)
+        {
+            // do nothing, it doesn't affect the behavior
+        }
+
+        // if the user specified a icon path for this property
+        if (oldIcon != null)
+        {
+            // Get a trinidad Icon instance
+            Icon icon = arc.getIcon(oldIcon);
+            if (icon != null)
+            {
+                String value = null;
+                if (icon instanceof ContextImageIcon)
+                {
+                    // Correct the path
+                    String baseContextPath = context.getExternalContext()
+                            .getRequestContextPath() + '/';
+                    value = (String) icon.getImageURI(context, arc);
+                    if (value.startsWith(baseContextPath))
+                    {
+                        value = value.substring(baseContextPath.length() - 1);
+                    }
+                }
+                else
+                {
+                    value = (String) icon.getImageURI(context, arc);
+                }
+                component.setOnImage(value);
+            }
+        }
+    }
+    
+    /**
+     * This method get the value an if is the case replace the component value
+     * with the path through icon mechanims of trinidad
+     * 
+     * @param context
+     * @param component
+     * @param arc
+     * @param getProperty
+     * @param setProperty
+     */
+    private void _setOffIcon(FacesContext context, HtmlSelectBooleanCheckboxAjax component,
+            RenderingContext arc)
+    {
+
+        String oldIcon = null;
+        try
+        {
+            oldIcon = (String) component.getOffImage();
+        }
+        catch (ClassCastException e)
+        {
+            // do nothing, it doesn't affect the behavior
+        }
+
+        // if the user specified a icon path for this property
+        if (oldIcon != null)
+        {
+            // Get a trinidad Icon instance
+            Icon icon = arc.getIcon(oldIcon);
+            if (icon != null)
+            {
+                String value = null;
+                if (icon instanceof ContextImageIcon)
+                {
+                    // Correct the path
+                    String baseContextPath = context.getExternalContext()
+                            .getRequestContextPath() + '/';
+                    value = (String) icon.getImageURI(context, arc);
+                    if (value.startsWith(baseContextPath))
+                    {
+                        value = value.substring(baseContextPath.length() - 1);
+                    }
+                }
+                else
+                {
+                    value = (String) icon.getImageURI(context, arc);
+                }
+                component.setOffImage(value);
+            }
+        }
+    }    
 }
