@@ -61,4 +61,15 @@ The idea is simple. Apply decorator pattern on trinidad `CoreRenderKit` , creati
 
 == 2. Tutorial about how to use tiles or facelets + tomahawk ==
 
+In the last time I have found a good documentation about using facelets. Instead of making a tutorial about facelets + tomahawk, I believe that it could be better made 2 examples that use facelets + tomahawk.
+
+Anyway, you can find a good documentation an a example here
+
+https://facelets.dev.java.net/nonav/docs/dev/docbook.html
+
+The examples are in the trunk of the svn, in the folder facelets.
+
 == 3. Solve some issues of myfaces ==
+
+The patches that I have submitted integrating tomahawk and trinidad complete this objective.
+
