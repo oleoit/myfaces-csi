@@ -24,15 +24,19 @@ import java.io.IOException;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.myfaces.custom.ajax.api.AjaxRenderer;
 import org.apache.myfaces.custom.inputAjax.HtmlSelectBooleanCheckboxAjax;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 import org.apache.myfaces.trinidad.skin.Icon;
-import org.apache.myfaces.trinidadinternal.skin.icon.ContextImageIcon;
 
-public class HtmlSelectBooleanCheckboxAjaxSkinRenderer extends AdapterSkinRenderer
+public class HtmlSelectBooleanCheckboxAjaxSkinRenderer 
+    extends AdapterSkinRenderer implements AjaxRenderer 
 {
-
+    private static final Log log = LogFactory.getLog(HtmlSelectBooleanCheckboxAjax.class);
+    
     public HtmlSelectBooleanCheckboxAjaxSkinRenderer()
     {
         super("s", "selectBooleanCheckboxAjax");
@@ -88,21 +92,7 @@ public class HtmlSelectBooleanCheckboxAjaxSkinRenderer extends AdapterSkinRender
             if (icon != null)
             {
                 String value = null;
-                if (icon instanceof ContextImageIcon)
-                {
-                    // Correct the path
-                    String baseContextPath = context.getExternalContext()
-                            .getRequestContextPath() + '/';
-                    value = (String) icon.getImageURI(context, arc);
-                    if (value.startsWith(baseContextPath))
-                    {
-                        value = value.substring(baseContextPath.length() - 1);
-                    }
-                }
-                else
-                {
-                    value = (String) icon.getImageURI(context, arc);
-                }
+                value = (String) icon.getImageURI(context, arc);
                 component.setOnImage(value);
             }
         }
@@ -140,23 +130,20 @@ public class HtmlSelectBooleanCheckboxAjaxSkinRenderer extends AdapterSkinRender
             if (icon != null)
             {
                 String value = null;
-                if (icon instanceof ContextImageIcon)
-                {
-                    // Correct the path
-                    String baseContextPath = context.getExternalContext()
-                            .getRequestContextPath() + '/';
-                    value = (String) icon.getImageURI(context, arc);
-                    if (value.startsWith(baseContextPath))
-                    {
-                        value = value.substring(baseContextPath.length() - 1);
-                    }
-                }
-                else
-                {
-                    value = (String) icon.getImageURI(context, arc);
-                }
+                value = (String) icon.getImageURI(context, arc);
                 component.setOffImage(value);
             }
+        }
+    }
+
+    public void encodeAjax(FacesContext context, UIComponent component) throws IOException
+    {
+        // Delegate to proper renderer
+        if (this.getDelegate() instanceof AjaxRenderer){
+            ((AjaxRenderer)this.getDelegate()).encodeAjax(context, component);
+        }else{
+            log.warn("Renderer does not implement AjaxRenderer! "+ 
+                    this.getDelegate());   
         }
     }    
 }

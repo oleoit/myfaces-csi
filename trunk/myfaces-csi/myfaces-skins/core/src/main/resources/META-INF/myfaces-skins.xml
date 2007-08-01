@@ -476,15 +476,18 @@
   		</style> 			
 		<style selector="s|autoUpdateDataTable::style">
     		<property name="border-collapse">collapse</property>
-  		</style>  		
-  		
-		<style selector="s|inputTextAjax::style">
-			<includeStyle name="AFFormControlContent"/>
   		</style>
 		<style selector="s|inputSuggestAjax::style">
 			<includeStyle name="AFFormControlContent"/>
   		</style>
-
+		<style selector="s|inputTextAjax::style">
+			<includeStyle name="AFFormControlContent"/>
+  		</style>  		  		
+		<style selector="s|inputTextAjax::errorStyle">
+			<includeStyle name="AFDefaultFont"/>		
+    		<includeStyle selector=".AFHeaderLevelOne"/>
+    		<includeStyle name="AFErrorTextForeground"/>
+  		</style>
 		<style selector="s|message::style">
     		<includeStyle name="AFDefaultFont"/>
     		<includeStyle name="AFVeryDarkForeground"/>
@@ -505,6 +508,18 @@
 		<style selector="s|message::warn">  		
 			<includeStyle name="AFDefaultFont"/>
 		</style>
+		<style selector="s|outputLinkDynamic::style:link">
+    		<includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFLinkForeground"/>
+  		</style> 
+		<style selector="s|outputLinkDynamic::style:active">
+    		<includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFActiveLinkForeground"/>
+  		</style> 
+		<style selector="s|outputLinkDynamic::style:visited">
+    		<includeStyle name="AFDefaultFont"/>
+    		<includeStyle name="AFVisitedLinkForeground"/>   
+  		</style> 
 
 		<style selector="s|selectBooleanCheckboxAjax::style">
 			<includeStyle name="AFFormControlContent"/>
