@@ -34,7 +34,7 @@ public class HtmlInputTextAjaxSkinRenderer extends AdapterSkinRenderer
 
     public HtmlInputTextAjaxSkinRenderer()
     {
-        super("s", "inputSuggestAjax");
+        super("s", "inputTextAjax");
     }
 
     @Override
