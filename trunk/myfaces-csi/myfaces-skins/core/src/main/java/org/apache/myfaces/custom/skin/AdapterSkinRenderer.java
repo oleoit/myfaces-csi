@@ -90,6 +90,112 @@ public class AdapterSkinRenderer extends SkinRenderer
         return baseStyleClass;
     }
 
+    protected void _addStyleDisabled(FacesContext context,
+            UIComponent component, RenderingContext arc) throws IOException
+    {
+
+        String contentStyleClass = component.getClass().getName();
+
+        String baseStyleClass = this.getBaseStyleName(component);
+
+        Method method;
+        // Check it has a getStyleClass property
+        contentStyleClass = null;
+        try
+        {
+            method = component.getClass().getMethod("getStyleClass",
+                    (Class[]) null);
+            contentStyleClass = baseStyleClass
+                    + SkinConstants.STYLE_CLASS_SUFFIX;
+        }
+        catch (SecurityException e)
+        {
+            // Nothing happends
+            //e.printStackTrace();
+        }
+        catch (NoSuchMethodException e)
+        {
+            // Nothing happends
+            // e.printStackTrace();
+        }
+
+        int otherStyles = 0;
+
+        // Its necesary to add other style properties like
+        // p_AFReadOnly and p_AFDisabled
+        Map attributes = component.getAttributes();
+        String styleClass = (String) attributes.get("styleClass");
+        String disabledStyleClass = null;
+
+        try
+        {
+            method = component.getClass().getMethod("isDisabled",
+                    (Class[]) null);
+            if ((Boolean) method.invoke(component, (Object[]) null))
+            {
+                disabledStyleClass = SkinSelectors.STATE_DISABLED;
+                otherStyles += 1;
+            }
+        }
+        catch (SecurityException e)
+        {
+            // Nothing happends
+            // e.printStackTrace();
+        }
+        catch (NoSuchMethodException e)
+        {
+            // Nothing happends
+            // e.printStackTrace();
+        }
+        catch (InvocationTargetException e)
+        {
+            // Nothing happends
+            // e.printStackTrace();
+        }
+        catch (IllegalAccessException e)
+        {
+            // Nothing happends
+            // e.printStackTrace();
+        }
+
+        List<String> parsedStyleClasses = OutputUtils
+                .parseStyleClassList(styleClass);
+        int userStyleClassCount;
+        if (parsedStyleClasses == null)
+            userStyleClassCount = (styleClass == null) ? 0 : 1;
+        else
+            userStyleClassCount = parsedStyleClasses.size();
+
+        String[] styleClasses = new String[userStyleClassCount + 2];
+        int i = 0;
+        if (parsedStyleClasses != null)
+        {
+            while (i < userStyleClassCount)
+            {
+                styleClasses[i] = parsedStyleClasses.get(i);
+                i++;
+            }
+        }
+        else if (styleClass != null)
+        {
+            styleClasses[i++] = styleClass;
+        }
+
+        styleClasses[i++] = contentStyleClass;
+        styleClasses[i++] = disabledStyleClass;
+
+        // 3. set the property styleClass, setting it.
+        if (otherStyles > 0)
+        {
+            _renderStyleClasses(component, context, arc, styleClasses);
+        }
+        else
+        {
+            _renderStyleClass(component, context, arc, contentStyleClass);
+        }
+    }
+    
+    
     /**
      * Check if the component has the attributes:
      * 

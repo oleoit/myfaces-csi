@@ -71,7 +71,7 @@ public class HtmlDataTableSkinRenderer extends AdapterSkinRenderer
         else
         {
             String def = arc.getStyleClass(rowStyleClass);
-            if (def.startsWith("af_"))
+            if (def.startsWith("h_"))
             {
                 // Nothing to do
             }

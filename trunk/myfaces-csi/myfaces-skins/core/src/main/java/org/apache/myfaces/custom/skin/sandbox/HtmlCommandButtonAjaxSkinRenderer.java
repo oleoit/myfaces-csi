@@ -39,6 +39,6 @@ public class HtmlCommandButtonAjaxSkinRenderer extends AdapterSkinRenderer
     protected void _addStyleClassesToComponent(FacesContext context,
             UIComponent component, RenderingContext arc) throws IOException
     {
-        _addStyleClass(context, component, arc);
+        _addStyleDisabled(context, component, arc);
     }
 }

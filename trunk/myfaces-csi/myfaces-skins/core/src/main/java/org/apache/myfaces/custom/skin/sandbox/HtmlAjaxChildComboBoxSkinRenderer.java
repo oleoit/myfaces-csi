@@ -44,12 +44,18 @@ public class HtmlAjaxChildComboBoxSkinRenderer extends AdapterSkinRenderer
         _addStyleClass(context, component, arc);
 
         String baseStyleClass = this.getBaseStyleName(component);
-
         String displayValueOnlyStyleClass = baseStyleClass
                 + "::displayValueOnly";
+        String disabledStyleClass = baseStyleClass
+                + SkinConstants.DISABLED_CLASS_SUFFIX;
+        String enabledStyleClass = baseStyleClass + "::enabled";
 
         _renderStyleClass(component, context, arc, displayValueOnlyStyleClass,
                 "displayValueOnlyStyleClass");
+        _renderStyleClass(component, context, arc, disabledStyleClass,
+                "disabledClass");
+        _renderStyleClass(component, context, arc, enabledStyleClass,
+                "enabledClass");
 
     }
 }

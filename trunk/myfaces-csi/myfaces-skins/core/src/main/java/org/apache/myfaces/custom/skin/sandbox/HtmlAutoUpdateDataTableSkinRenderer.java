@@ -60,8 +60,8 @@ public class HtmlAutoUpdateDataTableSkinRenderer extends AdapterSkinRenderer
         String bodyStyleClass = null;
         String footerStyleClass = null;
         String headerStyleClass = null;
-        String rowGroupStyleClass = null;
         String rowStyleClass = null;
+        String rowClasses = null;
         String styleClass = null;
 
         String baseStyleClass = this.getBaseStyleName(component);
@@ -69,8 +69,8 @@ public class HtmlAutoUpdateDataTableSkinRenderer extends AdapterSkinRenderer
         bodyStyleClass = baseStyleClass + "::body";
         footerStyleClass = baseStyleClass + "::footer";
         headerStyleClass = baseStyleClass + "::header";
-        rowGroupStyleClass = baseStyleClass + "::rowGroup";
-        rowStyleClass = baseStyleClass + "::row";
+        rowStyleClass = baseStyleClass + "::rowStyle";
+        rowClasses = baseStyleClass + "::row";
         styleClass = baseStyleClass + SkinConstants.STYLE_CLASS_SUFFIX;
 
         _renderStyleClass(component, context, arc, bodyStyleClass,
@@ -79,8 +79,8 @@ public class HtmlAutoUpdateDataTableSkinRenderer extends AdapterSkinRenderer
                 "footerClass");
         _renderStyleClass(component, context, arc, headerStyleClass,
                 "headerClass");
-        _renderStyleClass(component, context, arc, rowGroupStyleClass,
-                "rowGroupStyleClass");
+        _renderStyleClass(component, context, arc, rowStyleClass,
+                "rowStyleClass");
         // renderStyleClass(component, context, arc, rowStyleClass,
         // "rowStyleClass");
         _renderStyleClass(component, context, arc, styleClass, "styleClass");
@@ -90,13 +90,13 @@ public class HtmlAutoUpdateDataTableSkinRenderer extends AdapterSkinRenderer
         List<String> list = parseStyleClassListComma(oldRowClasses);
         if (list == null)
         {
-            _renderStyleClass(component, context, arc, rowStyleClass,
+            _renderStyleClass(component, context, arc, rowClasses,
                     "rowClasses");
         }
         else
         {
-            String def = arc.getStyleClass(rowStyleClass);
-            if (def.startsWith("af_"))
+            String def = arc.getStyleClass(rowClasses);
+            if (def.startsWith("s_"))
             {
                 // Nothing to do
             }
