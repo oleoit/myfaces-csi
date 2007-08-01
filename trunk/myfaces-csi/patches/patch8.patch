@@ -1,0 +1,19 @@
+Index: src/main/java/org/apache/myfaces/custom/navmenu/htmlnavmenu/HtmlPanelNavigationMenu.java
+===================================================================
+--- src/main/java/org/apache/myfaces/custom/navmenu/htmlnavmenu/HtmlPanelNavigationMenu.java	(revision 557414)
++++ src/main/java/org/apache/myfaces/custom/navmenu/htmlnavmenu/HtmlPanelNavigationMenu.java	(working copy)
+@@ -88,9 +88,12 @@
+         for (Iterator it = children.iterator(); it.hasNext(); )
+         {
+             UIComponent child = (UIComponent)it.next();
+-            if (child instanceof HtmlCommandNavigationItem)
++            UIComponent prevItem = (UIComponent)previousRoot.findComponent(child.getClientId(facesContext));
++            
++            if (prevItem instanceof HtmlCommandNavigationItem &&
++            		child instanceof HtmlCommandNavigationItem)
+             {
+-                HtmlCommandNavigationItem previousItem = (HtmlCommandNavigationItem)previousRoot.findComponent(child.getClientId(facesContext));
++                HtmlCommandNavigationItem previousItem = (HtmlCommandNavigationItem)prevItem;
+                 if (previousItem != null)
+                 {
+                     ((HtmlCommandNavigationItem)child).setOpen(previousItem.isOpen());
