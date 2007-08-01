@@ -7,6 +7,17 @@
 <!-- =========== FULL CONFIGURATION FILE ================================== -->
 <faces-config>
 
+	<application>
+		<!-- Use the Skin RenderKit -->		
+		<default-render-kit-id>SkinRenderKit</default-render-kit-id> 
+	    <!--  <state-manager>org.apache.myfaces.application.jsp.JspStateManagerImpl</state-manager>  -->
+	</application>
+
+	<factory>
+		<render-kit-factory>org.apache.myfaces.custom.skin.SkinRenderKitFactory</render-kit-factory>
+	</factory>
+
+
     <!--  logger/debugging phase listener -->
     <lifecycle>
        <!--<phase-listener>org.apache.myfaces.examples.debug.DebugPhaseListener</phase-listener>
