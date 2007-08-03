@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>skins-api</name>
-	<comment>Public API for the Apache MyFaces Trinidad Skins project</comment>
+	<name>shared-api</name>
+	<comment>Public API for the Apache MyFaces Trinidad Shared project</comment>
 	<projects>
-		<project>shared-api</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
