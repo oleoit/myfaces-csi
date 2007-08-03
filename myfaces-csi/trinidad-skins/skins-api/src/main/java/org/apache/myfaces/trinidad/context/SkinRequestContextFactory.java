@@ -60,21 +60,6 @@ abstract public class SkinRequestContextFactory
   }
   
   /**
-   * Create a RequestContext from a ServletContext and ServletRequest.
-   * 
-   * @param context an object which must be a ServletContext
-   * @param request an object which must be a ServletRequest
-   * 
-   * @deprecated This method does not work in a Portal environment.  It will
-   *             only work with a ServletRequest.  Please use 
-   *             {@link #createContext(ExternalContext)} which is container
-   *             agnostic.
-   */
-  @Deprecated
-  abstract public SkinRequestContext createContext(Object context,
-                                                Object request);
-  
-  /**
    * Creates a RequestContext.
    * 
    * @param ec The current ExternalContext.
