@@ -238,6 +238,27 @@ public final class XhtmlConstants
   public static final String TABLE_HEADER_ELEMENT = "th";
   public static final String TABLE_ROW_ELEMENT    = "tr";
   
+  // ============= CoreRenderKit elements ================  
+  /**
+   * The default output mode;  if no output mode is set, or the requested
+   * output mode is not available, this output mode will be used.
+   */
+  static public final String OUTPUT_MODE_DEFAULT = "default";
+
+
+  /**
+   * A printable output mode;  when supported, this output mode should
+   * result in a version of a page designed for printouts.
+   */
+  static public final String OUTPUT_MODE_PRINTABLE = "printable";
+
+  /**
+   * An e-mail output mode;  when supported, this output mode should
+   * result in a version of page content optimized for use in e-mail.
+   */
+  static public final String OUTPUT_MODE_EMAIL = "email";
+  
+  
   //
   // Copied from BaseDesktopConstants
   //

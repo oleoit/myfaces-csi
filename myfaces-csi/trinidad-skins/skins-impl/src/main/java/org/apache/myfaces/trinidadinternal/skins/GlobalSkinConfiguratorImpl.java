@@ -6,16 +6,18 @@ import java.util.Map;
 
 import javax.faces.context.ExternalContext;
 
+import org.apache.myfaces.trinidad.config.Configurator;
 import org.apache.myfaces.trinidad.context.RequestContext;
 import org.apache.myfaces.trinidad.context.RequestContextFactory;
 import org.apache.myfaces.trinidad.logging.TrinidadLogger;
 import org.apache.myfaces.trinidad.skin.SkinFactory;
-import org.apache.myfaces.trinidad.skins.Configurator;
 import org.apache.myfaces.trinidad.util.ClassLoaderUtils;
 import org.apache.myfaces.trinidadinternal.context.RequestContextFactoryImpl;
 import org.apache.myfaces.trinidadinternal.skin.SkinFactoryImpl;
 import org.apache.myfaces.trinidadinternal.skin.SkinUtils;
 import org.apache.myfaces.trinidadinternal.util.ExternalContextUtils;
+
+
 
 public class GlobalSkinConfiguratorImpl extends Configurator
 {

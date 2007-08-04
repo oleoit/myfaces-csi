@@ -19,7 +19,9 @@
 package org.apache.myfaces.trinidadinternal.renderkit.core.xhtml;
 
 import java.awt.Color;
+
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -28,10 +30,12 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import org.apache.myfaces.trinidad.skin.Icon;
-import org.apache.myfaces.trinidad.skins.SkinRenderingContext;
 import org.apache.myfaces.trinidad.util.ArrayMap;
+
 import org.apache.myfaces.trinidadinternal.agent.TrinidadAgent;
+import org.apache.myfaces.trinidad.context.RenderingContext;
+//import org.apache.myfaces.trinidad.render.CoreRenderer;
+import org.apache.myfaces.trinidad.skin.Icon;
 
 /**
  * Utilities for miscellaneous HTML output.
@@ -100,7 +104,7 @@ public class OutputUtils
 
   public static void renderLayoutTableAttributes(
     FacesContext        context,
-    SkinRenderingContext    arc,
+    RenderingContext    arc,
     Object              cellspacing,
     Object              tableWidth
     ) throws IOException
@@ -111,7 +115,7 @@ public class OutputUtils
 
   public static void renderLayoutTableAttributes(
     FacesContext        context,
-    SkinRenderingContext arc,
+    RenderingContext arc,
     Object              cellpadding,
     Object              cellspacing,
     Object              tableWidth
@@ -127,7 +131,7 @@ public class OutputUtils
    */
   public static void renderLayoutTableAttributes(
     FacesContext        context,
-    SkinRenderingContext arc,
+    RenderingContext arc,
     Object              cellpadding,
     Object              cellspacing,
     Object              border,
@@ -144,7 +148,7 @@ public class OutputUtils
    */
   public static void renderLayoutTableAttributes(
     FacesContext        context,
-    SkinRenderingContext arc,
+    RenderingContext arc,
     Object              cellpadding,
     Object              cellspacing,
     Object              border,
@@ -158,12 +162,12 @@ public class OutputUtils
     writer.writeAttribute("border", border, null);
     writer.writeAttribute("width", tableWidth, null);
 
-    //SKINFIX:
-    /*
+    /*SKINFIX
     if (!XhtmlRenderer.isInaccessibleMode(arc))
     {
       writer.writeAttribute("summary", summary, null);
-    }*/
+    }
+    */
   }
   /**
   * Renders only the alt attribute
@@ -172,7 +176,7 @@ public class OutputUtils
   */
   public static void renderAltAndTooltipForImage(
      FacesContext        context,
-     SkinRenderingContext afc,
+     RenderingContext afc,
      Object              textValue
      ) throws IOException
   {
@@ -193,19 +197,20 @@ public class OutputUtils
 
     // only write out both title and alt if
     // we really need both
-    //SKINFIX: 
+    //SKINFIX
     /*
     if (!wroteTitle || !XhtmlRenderer.isInaccessibleMode(afc))
     {
       writer.writeAttribute("alt", textValue, null);
-    }*/
+    }
+    */
   }
 
   /**
    * Returns true if the agent supports alt as a tooltip on images
    */
   public static boolean supportsAltRendersTooltipOnImage(
-    SkinRenderingContext     afc
+    RenderingContext     afc
     )
   {
     return Boolean.TRUE.equals(afc.getAgent().getCapabilities().get(
@@ -217,7 +222,7 @@ public class OutputUtils
    * vertically with text on the same line.
    */
   public static String getMiddleIconAlignment(
-    SkinRenderingContext arc)
+    RenderingContext arc)
   {
     // =-= AEW I haven't been able to find an image alignment
     // that works well for all browsers.  "absmiddle" looks
@@ -245,7 +250,7 @@ public class OutputUtils
    */
   public static void renderIcon(
     FacesContext        context,
-    SkinRenderingContext arc,
+    RenderingContext arc,
     Icon                icon,
     Object              shortDesc,
     Object              align
@@ -259,7 +264,7 @@ public class OutputUtils
    */
   public static void renderIcon(
     FacesContext        context,
-    SkinRenderingContext arc,
+    RenderingContext arc,
     Icon                icon,
     Object              shortDesc,
     Object              align,
@@ -289,7 +294,7 @@ public class OutputUtils
    */
   static public void renderImage(
     FacesContext     context,
-    SkinRenderingContext arc,
+    RenderingContext arc,
     Object           absoluteUri,
     Object           width,
     Object           height,
@@ -303,7 +308,7 @@ public class OutputUtils
 
   static public void renderImage(
     FacesContext     context,
-    SkinRenderingContext arc,
+    RenderingContext arc,
     Object           absoluteUri,
     Object           width,
     Object           height,
@@ -318,7 +323,7 @@ public class OutputUtils
 
   static public void renderImage(
     FacesContext     context,
-    SkinRenderingContext arc,
+    RenderingContext arc,
     Object           absoluteUri,
     Object           width,
     Object           height,
@@ -334,7 +339,7 @@ public class OutputUtils
     
   static public void renderImage(
     FacesContext     context,
-    SkinRenderingContext arc,
+    RenderingContext arc,
     Object           absoluteUri,
     Object           width,
     Object           height,
@@ -376,7 +381,7 @@ public class OutputUtils
     
     if (styleClass != null)
     {
-      //TODO: fix that
+      //SKINFIX
       //CoreRenderer.renderStyleClass(context, arc, styleClass);
     }
 
@@ -387,7 +392,7 @@ public class OutputUtils
    * @todo Add real mechanism for getting the background color
    * if needed.
    */
-  static public Color getBackgroundColor(SkinRenderingContext arc)
+  static public Color getBackgroundColor(RenderingContext arc)
   {
     return Color.WHITE;
   }

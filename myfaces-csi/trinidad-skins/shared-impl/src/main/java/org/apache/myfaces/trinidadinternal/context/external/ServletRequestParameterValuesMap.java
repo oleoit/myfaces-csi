@@ -6,9 +6,9 @@
  *  to you under the Apache License, Version 2.0 (the
  *  "License"); you may not use this file except in compliance
  *  with the License.  You may obtain a copy of the License at
- * 
+ *
  *  http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *  Unless required by applicable law or agreed to in writing,
  *  software distributed under the License is distributed on an
  *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -16,32 +16,42 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.apache.myfaces.trinidadinternal.renderkit.core.skin;
+package org.apache.myfaces.trinidadinternal.context.external;
 
-import org.apache.myfaces.trinidadinternal.skin.SkinImpl;
+import java.util.Enumeration;
+
+import javax.servlet.ServletRequest;
+
 
 /**
- *  Base Skin implementation
- * @version $Name:  $ ($Revision: adfrt/faces/adf-faces-impl/src/main/java/oracle/adfinternal/view/faces/renderkit/core/skin/BaseSkin.java#0 $) $Date: 10-nov-2005.19:02:50 $
+ * ServletRequest multi-value parameters as Map.
+ *
+ * @version $Revision: 167257 $ $Date: 2004-10-13 05:51:02 -0600 (Wed, 13 Oct 2004) $
  */
-public class BaseSkin extends SkinImpl
+public class ServletRequestParameterValuesMap extends AbstractAttributeMap<String, String[]>
 {
-  public BaseSkin()
+  public ServletRequestParameterValuesMap(final ServletRequest servletRequest)
   {
+    _servletRequest = servletRequest;
   }
 
-  /**
-   * Returns the name of the XSS style sheet for this Skin.
-   */
   @Override
-  public String getStyleSheetName()
+  protected String[] getAttribute(final Object key)
   {
+    if (key.toString().equals(key))
+    {
+      return _servletRequest.getParameterValues(key.toString());
+    }
     return null;
   }
 
   @Override
-  protected String getBundleName()
+  protected Enumeration<String> getAttributeNames()
   {
-    return null;
+    @SuppressWarnings("unchecked")
+    Enumeration<String> parameterNames = _servletRequest.getParameterNames();
+    return parameterNames;
   }
+
+  private final ServletRequest _servletRequest;
 }

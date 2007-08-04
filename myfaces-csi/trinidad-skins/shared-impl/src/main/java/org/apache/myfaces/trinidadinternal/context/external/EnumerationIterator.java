@@ -16,30 +16,37 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.apache.myfaces.trinidadinternal.renderkit.core.skin;
+package org.apache.myfaces.trinidadinternal.context.external;
 
-
-import org.apache.myfaces.trinidad.skin.Skin;
-import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.XhtmlConstants;
-import org.apache.myfaces.trinidadinternal.skin.SkinExtension;
+import java.util.Enumeration;
+import java.util.Iterator;
 
 /**
-  * Implementation the Minimal Portlet Skin for desktop
-  * browsers.
-  */
- public class MinimalPortletSkinExtension extends SkinExtension
+ * This was origionally taken from MyFaces
+ *
+ * @version $Revision$ $Date$
+ */
+class EnumerationIterator<T> implements Iterator<T>
+{
+  EnumerationIterator(final Enumeration<T> enumeration)
+  {
+    _enumeration = enumeration;
+  }
 
- {
-   /**
-    * Creates an MinimalPortletSkinExtension instance which extends
-    * the specified base Skin. (should be SimplePortletSkin)
-    */
-   public MinimalPortletSkinExtension(Skin baseSkin)
-   {
-     super(baseSkin,
-           "minimal.portlet",
-           "minimal",
-           XhtmlConstants.OUTPUT_MODE_PORTLET);
-   }
+  public boolean hasNext()
+  {
+    return _enumeration.hasMoreElements();
+  }
 
- }
+  public T next()
+  {
+    return _enumeration.nextElement();
+  }
+
+  public void remove()
+  {
+    throw new UnsupportedOperationException();
+  }
+
+  private Enumeration<T> _enumeration;
+}
