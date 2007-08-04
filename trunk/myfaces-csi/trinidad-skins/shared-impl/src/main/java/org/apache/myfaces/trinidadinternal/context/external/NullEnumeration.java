@@ -6,9 +6,9 @@
  *  to you under the Apache License, Version 2.0 (the
  *  "License"); you may not use this file except in compliance
  *  with the License.  You may obtain a copy of the License at
- * 
+ *
  *  http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *  Unless required by applicable law or agreed to in writing,
  *  software distributed under the License is distributed on an
  *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -16,33 +16,31 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.apache.myfaces.trinidadinternal.renderkit.core.skin;
+package org.apache.myfaces.trinidadinternal.context.external;
 
-import org.apache.myfaces.trinidad.skins.SkinRenderingContext;
-import org.apache.myfaces.trinidadinternal.skin.icon.TextIcon;
+import java.util.Enumeration;
 
 /**
- * Translated text Icon used by simple skin.
+ * Enumeration without elements. This was origionally taken from MyFaces.
  *
- * @version $Name:  $ ($Revision: adfrt/faces/adf-faces-impl/src/main/java/oracle/adfinternal/view/faces/renderkit/core/skin/TranslatedTextIcon.java#0 $) $Date: 10-nov-2005.19:02:57 $
+ * @version $Revision$ $Date$
  */
-class TranslatedTextIcon extends TextIcon
+final class NullEnumeration implements Enumeration<Object>
 {
-  public TranslatedTextIcon(String key)
+  static final NullEnumeration instance()
   {
-    super(null);
-
-    _key = key;
-  }
-  
-  /**
-   * Returns the text to render.
-   */
-  @Override
-  protected String getText(SkinRenderingContext arc)
-  {
-    return arc.getTranslatedString(_key);
+    return s_nullEnumeration;
   }
 
-  private String _key;
+  public boolean hasMoreElements()
+  {
+    return false;
+  }
+
+  public Object nextElement()
+  {
+    throw new UnsupportedOperationException("NullEnumeration has no elements");
+  }
+
+  private static final NullEnumeration s_nullEnumeration = new NullEnumeration();
 }

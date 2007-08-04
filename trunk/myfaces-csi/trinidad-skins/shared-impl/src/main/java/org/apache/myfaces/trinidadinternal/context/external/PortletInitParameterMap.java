@@ -6,9 +6,9 @@
  *  to you under the Apache License, Version 2.0 (the
  *  "License"); you may not use this file except in compliance
  *  with the License.  You may obtain a copy of the License at
- * 
+ *
  *  http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *  Unless required by applicable law or agreed to in writing,
  *  software distributed under the License is distributed on an
  *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -16,29 +16,41 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.apache.myfaces.trinidadinternal.context;
 
-import javax.faces.context.ExternalContext;
 
-import org.apache.myfaces.trinidad.context.SkinRequestContext;
-import org.apache.myfaces.trinidad.context.SkinRequestContextFactory;
+package org.apache.myfaces.trinidadinternal.context.external;
+
+import java.util.Enumeration;
+import javax.portlet.PortletContext;
 
 /**
+ * portletContext init parameters as Map.
+ *
+ * @version $Revision: 278654 $ $Date: 2005-09-04 18:32:35 -0600 (Sun, 04 Sep 2005) $
  */
-public class RequestContextFactoryImpl extends SkinRequestContextFactory
+public class PortletInitParameterMap extends AbstractAttributeMap<String, String>
 {
-  public RequestContextFactoryImpl()
+  public PortletInitParameterMap(final PortletContext portletContext)
   {
+    _portletContext = portletContext;
   }
 
   @Override
-  public SkinRequestContext createContext(ExternalContext externalContext)
+  protected String getAttribute(final Object key)
   {
-    //SKINFIX
-    //RequestContextImpl impl =  new RequestContextImpl(_getBean(externalContext));
-    RequestContextImpl impl =  new RequestContextImpl();
-    impl.init(externalContext);
-    return impl;
+    if (key.toString().equals(key))
+    {
+      return _portletContext.getInitParameter(key.toString());
+    }
+    return null;
   }
 
+  @Override
+  @SuppressWarnings("unchecked")
+  protected Enumeration<String> getAttributeNames()
+  {
+    return _portletContext.getInitParameterNames();
+  }
+
+  final PortletContext _portletContext;
 }

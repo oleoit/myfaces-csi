@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -40,19 +39,17 @@ import java.util.Vector;
 
 import javax.faces.context.FacesContext;
 
+import org.apache.myfaces.trinidad.context.LocaleContext;
+import org.apache.myfaces.trinidad.context.RenderingContext;
 import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.skin.Skin;
 import org.apache.myfaces.trinidadinternal.agent.TrinidadAgent;
-import org.apache.myfaces.trinidadinternal.renderkit.core.CoreRenderingContext;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.SkinSelectors;
+import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.XhtmlConstants;
 import org.apache.myfaces.trinidadinternal.share.io.CachingNameResolver;
 import org.apache.myfaces.trinidadinternal.share.io.DefaultNameResolver;
 import org.apache.myfaces.trinidadinternal.share.io.InputStreamProvider;
 import org.apache.myfaces.trinidadinternal.share.io.NameResolver;
-import org.apache.myfaces.trinidad.context.LocaleContext;
-import org.apache.myfaces.trinidad.context.RenderingContext;
-import org.apache.myfaces.trinidad.skin.Skin;
-import org.apache.myfaces.trinidadinternal.renderkit.core.CoreRenderKit;
-import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.StyleSheetRenderer;
 import org.apache.myfaces.trinidadinternal.share.xml.JaxpXMLProvider;
 import org.apache.myfaces.trinidadinternal.share.xml.XMLProvider;
 import org.apache.myfaces.trinidadinternal.style.CSSStyle;
@@ -697,15 +694,22 @@ public class FileSystemStyleCache implements StyleProvider
 
     String disableContentCompression =
       FacesContext.getCurrentInstance().getExternalContext().
-      getInitParameter(StyleSheetRenderer.DISABLE_CONTENT_COMPRESSION);
+      //getInitParameter(StyleSheetRenderer.DISABLE_CONTENT_COMPRESSION);
+      getInitParameter(DISABLE_CONTENT_COMPRESSION);
     // we do not compress if it is a portlet skin
+    
+//    boolean isPortletSkin =
+//    CoreRenderKit.OUTPUT_MODE_PORTLET.equals(skin.getRenderKitId());
     boolean isPortletSkin =
-    CoreRenderKit.OUTPUT_MODE_PORTLET.equals(skin.getRenderKitId());
+        XhtmlConstants.OUTPUT_MODE_PORTLET.equals(skin.getRenderKitId());
 
     return (!"true".equals(disableContentCompression)) &&
                                              !isPortletSkin;    
   }
 
+  static public final String DISABLE_CONTENT_COMPRESSION =
+      "org.apache.myfaces.trinidadinternal.DISABLE_CONTENT_COMPRESSION";  
+  
   // Returns the name of the output file to use for the
   // style sheet associated with the specified context
   private File _getOutputFile(
@@ -967,7 +971,8 @@ public class FileSystemStyleCache implements StyleProvider
 
     // Replace all empty keys with an empty string as the selector
     for (String emptyKey : emptySelectors)
-      map.put(emptyKey, CoreRenderingContext.EMPTY_STYLE_CLASS);
+        map.put(emptyKey, "");
+      //map.put(emptyKey, CoreRenderingContext.EMPTY_STYLE_CLASS);
 
     // We actually need a Map, since this object is exposed
     // via public APIs.  Also, we need the Map to be immutable,
