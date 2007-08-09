@@ -24,4 +24,15 @@
         </repository>
     </repositories>
 
+  <scm>
+    <connection>
+      scm:svn:http://myfaces-csi.googlecode.com/svn/trunk/myfaces-csi/TableFormLayout/
+    </connection>
+    <developerConnection>
+      scm:svn:https://myfaces-csi.googlecode.com/svn/trunk/myfaces-csi/TableFormLayout/
+    </developerConnection>
+    <url>http://myfaces-csi.googlecode.com/svn/trunk/myfaces-csi/TableFormLayout</url>
+  </scm>
+
+
 </project>
