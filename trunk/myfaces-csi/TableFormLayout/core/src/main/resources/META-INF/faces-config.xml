@@ -278,12 +278,8 @@
 		</property>
 		<property>
 			<description>
-				Sets the number of rows after which to start a new
-				column. This attribute defaults to Integer.MAX_VALUE.
-				The number of rows actually rendered depends also on the
-				"maxColumns" property. If the children will not fit in
-				the given number of rows and columns, the number of rows
-				will increase to accomodate the children.
+		      <![CDATA[LayoutConstraints for column layout.
+Semicolon separated list of layout tokens ('&lt;x>*' or 'fixed (measure in pixels)').]]>
 			</description>
 			<property-name>rows</property-name>
 			<property-class>java.lang.String</property-class>
@@ -295,8 +291,9 @@
 			</property-extension>
 		</property>
 		<property>
-			<description>
-			</description>
+	<description><![CDATA[constraints for row layout.
+Semicolon separated list of layout tokens ('&lt;x>*' or 'fixed (measure in pixels)').]]>
+	</description>
 			<property-name>columns</property-name>
 			<property-class>java.lang.String</property-class>
 			<property-extension>
@@ -309,6 +306,7 @@
 		
 		<property>
 			<description>
+			The height for this component.
 			</description>
 			<property-name>height</property-name>
 			<property-class>int</property-class>
@@ -323,6 +321,7 @@
 		
 		<property>
 			<description>
+			The width for this component.
 			</description>
 			<property-name>width</property-name>
 			<property-class>java.lang.String</property-class>
@@ -337,6 +336,7 @@
 		
 		<property>
 			<description>
+				Spacing between component and layout cell's
 			</description>
 			<property-name>cellspacing</property-name>
 			<property-class>java.lang.String</property-class>
