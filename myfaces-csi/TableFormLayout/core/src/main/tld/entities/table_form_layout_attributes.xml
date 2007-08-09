@@ -123,36 +123,30 @@
 <attribute>
 	<name>rows</name>
 	<rtexprvalue>false</rtexprvalue>
-	<description>
-		Sets the number of rows after which to start a new column. This
-		attribute defaults to Integer.MAX_VALUE. The number of rows
-		actually rendered depends also on the "maxColumns" property. If
-		the children will not fit in the given number of rows and
-		columns, the number of rows will increase to accomodate the
-		children.
-
-		This attribute is not supported on the following agent types:
-		phone, voice.
+	<description><![CDATA[constraints for row layout.
+Semicolon separated list of layout tokens ('&lt;x>*' or 'fixed (measure in pixels)').]]>
 	</description>
 </attribute>
 <attribute>
 	<name>columns</name>
 	<rtexprvalue>false</rtexprvalue>
-	<description></description>
+	<description><![CDATA[constraints for row layout.
+Semicolon separated list of layout tokens ('&lt;x>*' or 'fixed (measure in pixels)').]]>
+	</description>
 </attribute>
 <attribute>
 	<name>width</name>
 	<rtexprvalue>false</rtexprvalue>
-	<description></description>
+	<description>The width for this component.</description>
 </attribute>
 <attribute>
 	<name>height</name>
 	<rtexprvalue>false</rtexprvalue>
-	<description></description>
+	<description>The height for this component.</description>
 </attribute>
 <attribute>
 	<name>cellspacing</name>
 	<rtexprvalue>false</rtexprvalue>
-	<description></description>
+	<description>Spacing between component and layout cell's</description>
 </attribute>
 
