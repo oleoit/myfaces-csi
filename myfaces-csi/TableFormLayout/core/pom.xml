@@ -245,8 +245,8 @@
                         <groupId>net.sourceforge.maven-taglib</groupId>
                         <artifactId>maven-taglib-plugin</artifactId>
                         <configuration>
-                            <taglib.src.dir>C:\GSOC\workspace/target/tlddoc-site</taglib.src.dir>
-                            <tldDocDir>C:\GSOC\workspace/target/site/tlddoc</tldDocDir>
+                            <taglib.src.dir>${basedir}/target/tlddoc-site</taglib.src.dir>
+                            <tldDocDir>${basedir}/target/site/tlddoc</tldDocDir>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -301,8 +301,8 @@
                         <groupId>net.sourceforge.maven-taglib</groupId>
                         <artifactId>maven-taglib-plugin</artifactId>
                         <configuration>
-                            <taglib.src.dir>C:\GSOC\workspace/target/tlddoc-site</taglib.src.dir>
-                            <tldDocDir>C:\GSOC\workspace/target/tlddoc</tldDocDir>
+                            <taglib.src.dir>${basedir}/target/tlddoc-site</taglib.src.dir>
+                            <tldDocDir>${basedir}/target/tlddoc</tldDocDir>
                         </configuration>
                         <executions>
                             <execution>
