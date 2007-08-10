@@ -14,7 +14,7 @@
 	<managed-bean>
 		<managed-bean-name>helloWorldBacking</managed-bean-name>
 		<managed-bean-class>
-			org.apache.myfaces.blank.HelloWorldBacking
+			${package}.HelloWorldBacking
 		</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
