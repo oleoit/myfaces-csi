@@ -1,0 +1,183 @@
+/*
+ *  Licensed to the Apache Software Foundation (ASF) under one
+ *  or more contributor license agreements.  See the NOTICE file
+ *  distributed with this work for additional information
+ *  regarding copyright ownership.  The ASF licenses this file
+ *  to you under the Apache License, Version 2.0 (the
+ *  "License"); you may not use this file except in compliance
+ *  with the License.  You may obtain a copy of the License at
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ *  Unless required by applicable law or agreed to in writing,
+ *  software distributed under the License is distributed on an
+ *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ *  KIND, either express or implied.  See the License for the
+ *  specific language governing permissions and limitations
+ *  under the License.
+ */
+
+/*
+ * This example apply some general properties over components
+ * in order to probe myfaces skins.
+ */
+
+.AFRequiredLabel:alias {
+	font-style: italic;
+}
+
+/*
+af|javax_faces_component_html_HtmlOutputLabel::style
+{
+	color: red;
+}
+*/
+
+
+h|outputLink::style:hover
+{
+	font-family: verdana,arial,helvetica,sans-serif; 
+ 	text-decoration: inherit underline overline; 
+ 	color: red;
+}
+
+h|panelGrid::style
+{
+}
+
+h|panelGrid::row
+{
+	color: red;
+}
+
+h|inputText::style:focus
+{
+	background: rgb(194,252,251);
+}
+
+h|inputTextarea::style:focus
+{
+	background: rgb(194,252,251);
+}
+
+h|inputSecret::style:focus
+{
+	background: rgb(194,252,251);
+}
+
+@constants
+{
+	background-focus  :  rgb(194,252,251)
+}
+
+h|selectOneMenu::style:focus
+{
+	background: background-focus   
+}
+
+/* Replace table skin css definition */
+
+t|dataTable::style
+{
+	font-family : verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+    padding: 2;
+    border-style: solid;
+    border-width: 1px;
+    width: 400px;		
+}
+
+t|dataTable::header
+{
+	color: #000000;
+    background-color: #FFDD00;
+    padding: 3;
+    text-align: center;
+    border: none;
+}
+
+t|dataTable::footer
+{
+    background-color: #FFFFE0;	
+}
+
+t|dataTable::row
+{
+    background-color: #FFFFE0;
+}
+
+t|dataScroller::style
+{
+    padding-left:20px;
+}
+
+t|dataScroller::first
+{
+	background: url("http://localhost:8080/myfaces-skins/images/arrow-first.gif");  
+    background-repeat: no-repeat;
+	width: 10px;
+	height:10px;	
+}
+
+t|dataScroller::last
+{
+	background-color: aqua;
+}
+
+t|dataScroller::next
+{
+	background-color: aqua;
+}
+
+t|dataScroller::previous
+{
+	background-color: aqua;
+}
+
+t|dataScroller::fastf
+{
+	background-color: aqua;
+}
+
+t|dataScroller::fastr
+{
+	background-color: aqua;
+}
+
+t|dataScroller::paginatorActiveColumn
+{
+	font-weight:bold;
+}
+
+.clase1 ul li.off:hover{
+	font-weight:bold;
+}
+
+t|tree::nodeClose-icon:rtl
+{
+	content:url(/images/blue-folder-closed.png);
+}
+
+t|tree::nodeOpen-icon:rtl
+{
+	content:url(/images/blue-folder-open.gif);
+}
+
+t|tree::style
+{
+	color: blue;
+}
+
+/* Possible images paths */
+/* works! */
+.cabecera-icon:rtl
+{
+	content:url(/images/logo_mini.jpg);	
+}
+
+/* works! */
+.cabecera1-icon
+{
+	content:url(/images/logo_mini.jpg);	
+}
