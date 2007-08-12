@@ -1,1 +1,4 @@
-<jsp:forward page="faces/home.jsp"/>
+<%@ page session="false"%>
+<%
+response.sendRedirect("home.jsf");
+%>
