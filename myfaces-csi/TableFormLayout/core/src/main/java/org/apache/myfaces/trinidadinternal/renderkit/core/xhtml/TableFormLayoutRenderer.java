@@ -940,7 +940,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
             }
             else
             {
-                LOG.info("Component does not use LabelAndMessageRenderer");
+                //LOG.info("Component does not use LabelAndMessageRenderer");
                 int spanX = getSpanX(component);
                 int spanY = getSpanY(component);
 

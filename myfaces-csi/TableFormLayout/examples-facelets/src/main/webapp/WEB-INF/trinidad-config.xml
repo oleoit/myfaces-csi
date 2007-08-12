@@ -8,7 +8,6 @@
 
 	<!-- A silly use of EL: English users get one appearance, -->
 	<!-- others get another -->
-	<skin-family>
-		#{view.locale.language=='en' ? 'minimal' : 'customSkin'}
-	</skin-family>
+	<!-- #{view.locale.language=='en' ? 'minimal' : 'customSkin'} -->
+	<skin-family>simple.desktop</skin-family>
 </trinidad-config>
