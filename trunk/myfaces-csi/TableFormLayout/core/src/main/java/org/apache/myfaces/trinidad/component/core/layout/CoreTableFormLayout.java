@@ -408,12 +408,12 @@ public class CoreTableFormLayout extends UIXPanel
         setProperty(COLUMNS_KEY, columns);
     }
 
-    final public int getHeigth()
+    final public int getHeight()
     {
         return ComponentUtils.resolveInteger(getProperty(HEIGHT_KEY));
     }
 
-    final public void setHeigth(int heigth)
+    final public void setHeight(int heigth)
     {
         setProperty(HEIGHT_KEY, Integer.valueOf(heigth));
     }
@@ -423,7 +423,7 @@ public class CoreTableFormLayout extends UIXPanel
         return ComponentUtils.resolveInteger(getProperty(WIDTH_KEY));
     }
 
-    final public void setWidht(int width)
+    final public void setWidth(int width)
     {
         setProperty(WIDTH_KEY, Integer.valueOf(width));
     }
@@ -435,7 +435,7 @@ public class CoreTableFormLayout extends UIXPanel
 
     final public void setCellspacing(int cellspacing)
     {
-        setProperty(WIDTH_KEY, Integer.valueOf(cellspacing));
+        setProperty(CELLSPACING_KEY, Integer.valueOf(cellspacing));
     }
 
     @Override

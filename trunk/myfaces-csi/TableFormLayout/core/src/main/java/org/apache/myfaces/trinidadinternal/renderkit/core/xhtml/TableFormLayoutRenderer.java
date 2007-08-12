@@ -99,8 +99,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
     protected void renderStyleAttributes(FacesContext context,
             RenderingContext arc, FacesBean bean) throws IOException
     {
-        renderStyleAttributes(context, arc, bean,
-                AF_TABLE_FORM_STYLE_CLASS);
+        renderStyleAttributes(context, arc, bean, AF_TABLE_FORM_STYLE_CLASS);
     }
 
     private String _getRows(FacesBean bean)
@@ -115,21 +114,37 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
 
     private Integer _getHeight(FacesBean bean)
     {
-        Integer i = null;
-        try
+
+        Object o = bean.getProperty(_heightKey);
+        if (o instanceof Integer)
         {
-            i = (Integer) Integer.parseInt((String) bean
-                    .getProperty(_heightKey));
+            return (Integer) o;
         }
-        catch (Exception ex)
+        else
         {
+            Integer i = null;
+            try
+            {
+                i = (Integer) Integer.parseInt((String) o);
+            }
+            catch (Exception ex)
+            {
+            }
+            return i;
         }
-        return i;
     }
 
     private Integer _getWidth(FacesBean bean)
     {
-        return (Integer) Integer.parseInt((String) bean.getProperty(_widthKey));
+        Object o = bean.getProperty(_widthKey);
+        if (o instanceof Integer)
+        {
+            return (Integer) o;
+        }
+        else
+        {
+            return (Integer) Integer.parseInt((String) o);
+        }
     }
 
     private String _getInlineStyleWidth(FacesBean bean)
@@ -144,16 +159,24 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
 
     private Integer _getCellspacing(FacesBean bean)
     {
-        Integer i = 0;
-        try
+
+        Object o = bean.getProperty(_cellspacingKey);
+        if (o instanceof Integer)
         {
-            i = (Integer) Integer.parseInt((String) bean
-                    .getProperty(_cellspacingKey));
+            return (Integer) o;
         }
-        catch (Exception ex)
+        else
         {
+            Integer i = 0;
+            try
+            {
+                i = (Integer) Integer.parseInt((String) o);
+            }
+            catch (Exception ex)
+            {
+            }
+            return i;
         }
-        return i;
     }
 
     /**
@@ -697,8 +720,6 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
 
         rw.writeAttribute("style", "width: 100%", null);
 
-        rw.startElement("tbody", null); // the outer tbody
-
         // Create the form columns:
         /*
          _encodeFormColumns(context, arc,
@@ -713,8 +734,8 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         // Create the column-spanning footer row(s):
         if (totalFooterItemCount > 0)
         {
-            LOG.info("Draw Footer components: " + totalFooterItemCount + " "
-                    + startAlignedLabels);
+            //LOG.info("Draw Footer components: " + totalFooterItemCount + " "
+            //        + startAlignedLabels);
             _encodeFormColumns(context, arc, component, bean, rw,
                     startAlignedLabels, footerLabelWidth, footerFieldWidth,
                     totalFooterItemCount, // row
@@ -841,14 +862,14 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
             Renderer renderer = context.getRenderKit().getRenderer(
                     component.getFamily(), component.getRendererType());
 
-            LOG.info("Component:" + component.toString());
-            LOG.info("Family:" + component.getFamily());
-            LOG.info("Renderer:" + component.getRendererType());
+            //LOG.info("Component:" + component.toString());
+            //LOG.info("Family:" + component.getFamily());
+            //LOG.info("Renderer:" + component.getRendererType());
 
             if (LabelAndMessageRenderer.class.isAssignableFrom(renderer
                     .getClass()))
             {
-
+                //LOG.info("Component use LabelAndMessageRenderer");
                 /*
                  if ("org.apache.myfaces.trinidad.LabelAndMessage"
                  .equals(component.getRendererType())
@@ -919,6 +940,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
             }
             else
             {
+                LOG.info("Component does not use LabelAndMessageRenderer");
                 int spanX = getSpanX(component);
                 int spanY = getSpanY(component);
 
@@ -996,7 +1018,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                 return curRow;
             }
         }
-        LOG.info("rows Avaliable: " + rows.size());
+        //LOG.info("rows Avaliable: " + rows.size());
         return -2;
         //return i;
     }
@@ -1154,7 +1176,9 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
             rw.endElement("colgroup");
         }
 
-        // END COLUMN DEFINE
+        // END COLUMN DEFINE        
+
+        rw.startElement("tbody", null); // the outer tbody
 
         //START ROW DEFINE
         List<Row> rows = visibleFormItemInfo.getLayoutRows();
@@ -1202,8 +1226,8 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                     int spanX = 1;
                     int spanY = 1;
 
-                    LOG.info("CELL:" + cell.toString());
-                    LOG.info("Renderer:" + cell.getRendererType());
+                    //LOG.info("CELL:" + cell.toString());
+                    //LOG.info("Renderer:" + cell.getRendererType());
                     //String rendererType = cell.getRendererType();					
                     if (LabelAndMessageRenderer.class.isAssignableFrom(context
                             .getRenderKit().getRenderer(cell.getFamily(),
@@ -1230,14 +1254,17 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                     String ch = this.calculateSize(bean, rowHeights, rowIndex,
                             spanY);
 
-                    rw.startElement("td", cell);
-
-                    renderStyleClass(context, arc,
-                            AF_TABLE_FORM_CONTENT_CELL_STYLE_CLASS);
+                    rw.startElement("td", null);
                     rw.writeAttribute("colspan", spanX, null);
                     rw.writeAttribute("rowspan", spanY, null);
+
+                    rw.startElement("table", cell);
+                    renderStyleClass(context, arc,
+                            AF_TABLE_FORM_CONTENT_CELL_STYLE_CLASS);
                     rw.writeAttribute("width", cw, null);
 
+                    rw.startElement("tr", null);
+                    rw.startElement("td", cell);
                     rw.startElement("div", cell);
 
                     String style = (String) cell.getAttributes().get("style");
@@ -1271,11 +1298,9 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                         // + "px" + ";height:" + ch + "px");
                         cell.getAttributes().put("style", cad);
                     }
-
                     rw.startElement("table", null); // inner table
                     OutputUtils.renderLayoutTableAttributes(context, arc, "0",
                             "100%");
-                    rw.startElement("tbody", null); // inner tbody
 
                     if (LabelAndMessageRenderer.class.isAssignableFrom(context
                             .getRenderKit().getRenderer(cell.getFamily(),
@@ -1295,6 +1320,8 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                         rw.endElement("col");
                         rw.endElement("colgroup");
                     }
+
+                    rw.startElement("tbody", null); // inner tbody
 
                     String rowHeight = this.calculateSize(bean, rowHeights,
                             rowIndex, spanY);
@@ -1353,6 +1380,10 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
 
                     rw.endElement("div");
                     rw.endElement("td");
+                    rw.endElement("tr");
+
+                    rw.endElement("table");
+                    rw.endElement("td");
 
                 }
                 rw.endElement("tr");
@@ -1366,8 +1397,8 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         String cw = "0";
         if (sizes != null)
         {
-            LOG.debug("calculateSize:" + sizes.toString() + " " + num + " "
-                    + span);
+            //LOG.debug("calculateSize:" + sizes.toString() + " " + num + " "
+            //        + span);
             if (span == 1)
             {
                 cw = sizes[num];
@@ -1937,7 +1968,10 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                 .add("org.apache.myfaces.trinidad.rich.Shuttle");
     }
 
-    private static final String TABLE_FORM_NEST_LEVEL_KEY = "org.apache.myfaces.trinidadinternal.TableFormNestLevel";
+    //TODO: For now it should be different valule
+    //like org.apache.myfaces.trinidadinternal.TableFormNestLevel
+    //But because dependences in LabelAndMessageRenderer
+    private static final String TABLE_FORM_NEST_LEVEL_KEY = "org.apache.myfaces.trinidadinternal.PanelFormNestLevel";
 
     // private static final int _COLUMNS_DEFAULT = 3;
 
