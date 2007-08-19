@@ -42,8 +42,8 @@
 
       <!-- Testing h:selectBooleanCheckbox -->
       <h:form id="selectBooleanCheckboxForm" >
-        <s:selectBooleanCheckboxAjax id="hSelectBooleanCheckboxFalse" value="no" onImage="images/nav-plus.gif" offImage="images/nav-minus.gif"/>
-        <s:selectBooleanCheckboxAjax id="hSelectBooleanCheckboxTrue" value="true" onImage="images/nav-plus.gif" offImage="images/nav-minus.gif"/>
+        <s:selectBooleanCheckboxAjax id="hSelectBooleanCheckboxFalse" value="no" onImage="on-icon" offImage="off-icon"/>
+        <s:selectBooleanCheckboxAjax id="hSelectBooleanCheckboxTrue" value="true" onImage="on-icon" offImage="off-icon"/>
       </h:form>
 
       <!-- Testing h:selectManyCheckbox -->

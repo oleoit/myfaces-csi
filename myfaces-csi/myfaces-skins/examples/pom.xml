@@ -33,10 +33,20 @@
 			<artifactId>tomahawk</artifactId>
 			<version>1.1.7-SNAPSHOT</version>
 			<scope>compile</scope>
+		</dependency>		
+		<dependency>
+			<groupId>org.apache.myfaces.tomahawk</groupId>
+			<artifactId>tomahawk-sandbox</artifactId>
+			<version>1.1.7-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.1</version>
+			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
-
-
 	<profiles>
 		<!-- By default the war examples use myfaces! :) -->
 		<profile>
