@@ -79,14 +79,17 @@ I also made a maven archetype of hello world application that is hosted on
 If you want to use it, you have to install the archetype and run something like this:
 
 {{{
-mvn archetype:create -DgroupId=com.prueba.hello -DartifactId=hello-facelets -DarchetypeGroupId=org.apache.myfaces.maven -DarchetypeArtifactId=maven-archetype-myfaces-facelets -DarchetypeVersion=1.0-SNAPSHOT
+
+mvn archetype:create -DgroupId=com.prueba.hello -DartifactId=hello-facelets \ 
+-DarchetypeGroupId=org.apache.myfaces.maven \
+-DarchetypeArtifactId=maven-archetype-myfaces-facelets -DarchetypeVersion=1.0-SNAPSHOT \
+
 }}}
 == 3. Solve some issues of myfaces ==
 
 The patches that I have submitted integrating tomahawk and trinidad complete this objective.
 
 As a request of my mentor I have created a component for trinidad called TableFormLayout, that makes more easy the layout of complex panels. I have created two demos, one simple and the other the same but configured using facelets. The component takes some ideas and code from gridLayout component in tobago. The code is hosted here too.
-
 
 
 
