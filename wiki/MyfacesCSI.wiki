@@ -46,7 +46,7 @@ The code needs to apply some patches in order to fix some features in tomahawk a
 The list of the patches needed are this. Almost all patches submitted has already been included in tomahawk (2007-AGO-19):
 
   # *patch1.patch patch11FacetDataScroller.patch*: fix `HtmlCommandLinkRenderer.java` on trinidad-impl project (need to run <t:commandSortHeader>). Based on the discusion that started here, a better solution that my patches where added. Create a link in a programmed fashion way. This patch is no longer needed, because this is already fixed.
-  # *patch2.patch, patch9sortColumnAscending1.patch*: fix `HtmlDataTable.java` on tomahawk (make <t:commandSortHeader> run good). This problem is not fixed. There is a problem with StateManagerImpl of trinidad, so in order to avoid this patch simply override the StateManager in faces-config with the StateManager of reference like this:
+  # *patch2.patch, patch9sortColumnAscending1.patch*: fix `HtmlDataTable.java` on tomahawk (make <t:commandSortHeader> run good). This problem is not fixed. There is a problem with StateManagerImpl of trinidad, so in order to avoid this patch simply override the StateManager in faces-config.xml file with the StateManager of reference like this:
 
 `<state-manager>org.apache.myfaces.application.jsp.JspStateManagerImpl</state-manager>`
 
@@ -74,6 +74,19 @@ https://facelets.dev.java.net/nonav/docs/dev/docbook.html
 
 The examples are in the trunk of the svn, in the folder facelets.
 
+I also made a maven archetype of hello world application that is hosted on
+
+If you want to use it, you have to install the archetype and run something like this:
+
+{{{
+mvn archetype:create -DgroupId=com.prueba.hello -DartifactId=hello-facelets -DarchetypeGroupId=org.apache.myfaces.maven -DarchetypeArtifactId=maven-archetype-myfaces-facelets -DarchetypeVersion=1.0-SNAPSHOT
+}}}
 == 3. Solve some issues of myfaces ==
 
 The patches that I have submitted integrating tomahawk and trinidad complete this objective.
+
+As a request of my mentor I have created a component for trinidad called TableFormLayout, that makes more easy the layout of complex panels. I have created two demos, one simple and the other the same but configured using facelets. The component takes some ideas and code from gridLayout component in tobago. The code is hosted here too.
+
+
+
+
