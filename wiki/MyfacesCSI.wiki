@@ -35,6 +35,7 @@ It has two subprojects:
 
   # core: The main library. It works with trinidad-1.0.2-SNAPSHOT and tomahawk
   # examples: A copy of myfaces examples, with trinidad skin addition (made probes simpler and faster to me!!)
+  # examples-sandbox: A copy of myfaces sandbox examples, just for probe purpouses.
 
 This project is released upon the Apache 2.0 license, and it will be donated to Apache Software Foundation after it is finished.
 
@@ -42,14 +43,15 @@ This project is released upon the Apache 2.0 license, and it will be donated to 
 
 The code needs to apply some patches in order to fix some features in tomahawk and trinidad. I have posted these patches in jira of myfaces, but until the commiters of that project accept this changes, I provide this in /patches directory of the svn of this project.
 
-The list of the patches needed are this:
+The list of the patches needed are this. Almost all patches submitted has already been included in tomahawk (2007-AGO-19):
 
-  # patch1.patch: fix `HtmlCommandLinkRenderer.java` on trinidad-impl project (need to run <t:commandSortHeader>).
-  # patch2.patch: fix `HtmlDataTable.java` on tomahawk (make <t:commandSortHeader> run good).
-  # patch3.patch: fix `HtmlDataTable.java` on tomahawk (correct ClassCastException).
-  # patch4.patch: fix pseudoclasses on trinidad (correct `CSSGenerationUtils`).
-  # patch5.patch: fix `HtmlPanelNavigationMenu.java` on tomahawk (correct ClassCastException).
-  # patchConstants6.patch: Add local constans to trinidad (modify `SkinCSSDocumentHandler.java`).
+  # *patch1.patch patch11FacetDataScroller.patch*: fix `HtmlCommandLinkRenderer.java` on trinidad-impl project (need to run <t:commandSortHeader>). Based on the discusion that started here, a better solution that my patches where added. Create a link in a programmed fashion way. This patch is no longer needed, because this is already fixed.
+  # *patch2.patch, patch9sortColumnAscending1.patch*: fix `HtmlDataTable.java` on tomahawk (make <t:commandSortHeader> run good). This problem is not fixed. There is a problem with StateManagerImpl of trinidad, so in order to avoid this patch simply override the StateManager in faces-config with the StateManager of reference.
+  # *patch3.patch*: fix `HtmlDataTable.java` on tomahawk (correct ClassCastException). This patch is no longer needed, because this is already fixed.
+  # *patch4.patch*: fix pseudoclasses on trinidad (correct `CSSGenerationUtils`). This patch is no longer needed, because this is already fixed.
+  # *patch5.patch*, patch8.patch: fix `HtmlPanelNavigationMenu.java` on tomahawk (correct ClassCastException). This patch is no longer needed, because this is already fixed.
+  # *patchConstants6.patch*: Add local constans to trinidad (modify `SkinCSSDocumentHandler.java`). This addition was negated, because it is not CSS3.0 compliant, and there is another way to do this through -tr-rule-ref.
+  # *patchJCookMenu7.patch*: Correct jscookmenu javascript to run with trinidad. This patch is no longer needed, because this is already fixed.
 
 == Implementation details ==
 
@@ -72,4 +74,3 @@ The examples are in the trunk of the svn, in the folder facelets.
 == 3. Solve some issues of myfaces ==
 
 The patches that I have submitted integrating tomahawk and trinidad complete this objective.
-
