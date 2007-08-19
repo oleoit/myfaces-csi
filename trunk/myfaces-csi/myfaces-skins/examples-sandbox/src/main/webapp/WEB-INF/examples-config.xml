@@ -10,7 +10,7 @@
 	<application>
 		<!-- Use the Skin RenderKit -->		
 		<default-render-kit-id>SkinRenderKit</default-render-kit-id> 
-	    <!--  <state-manager>org.apache.myfaces.application.jsp.JspStateManagerImpl</state-manager>  -->
+		<state-manager>org.apache.myfaces.application.jsp.JspStateManagerImpl</state-manager>
 	</application>
 
 	<factory>
@@ -576,6 +576,15 @@
 	 </managed-bean> 
   
 	<!-- navigation rules -->
+	
+	<navigation-rule>
+		<from-view-id>/testSuite/*</from-view-id>
+		<navigation-case>
+			<from-outcome>hFormWithSelects</from-outcome>
+			<to-view-id>/testSuite/hFormWithSelects.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>		
+			
     <navigation-rule>
 		<navigation-case>
 			<from-outcome>home</from-outcome>
