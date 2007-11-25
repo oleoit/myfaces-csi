@@ -4,11 +4,10 @@
 	<debug-output>true</debug-output>
 
 	<!-- Pick accessibility options based on a per-user managed bean -->
-	<accessibility-mode>#{user.accessibilityMode}</accessibility-mode>
+	<!--  >accessibility-mode>#{user.accessibilityMode}</accessibility-mode -->
 
 	<!-- A silly use of EL: English users get one appearance, -->
 	<!-- others get another -->
-	<skin-family>
-		#{view.locale.language=='en' ? 'minimal' : 'customSkin'}
-	</skin-family>
+	<!-- simple, minimal -->
+	<skin-family>simple</skin-family>
 </trinidad-config>
