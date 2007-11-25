@@ -44,6 +44,9 @@ import org.apache.myfaces.trinidad.component.UIXPanel;
 import org.apache.myfaces.trinidad.component.core.input.CoreInputHidden;
 import org.apache.myfaces.trinidad.component.core.layout.CoreTableFormLayout;
 import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.skin.Skin;
+import org.apache.myfaces.trinidad.skin.SkinAddition;
+import org.apache.myfaces.trinidad.skin.SkinFactory;
 
 public class TableFormLayoutRenderer extends XhtmlRenderer
 {
@@ -554,7 +557,22 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
     protected void encodeAll(FacesContext context, RenderingContext arc,
             UIComponent component, FacesBean bean) throws IOException
     {
-        // LOG.info("TableFormLayoutRenderer encodeAll");
+        LOG.info("TableFormLayoutRenderer encodeAll");
+        
+        Skin addition = (Skin) SkinFactory.getFactory().getSkin(context, "tableFormLayout.desktop");
+        
+        if (addition != null){
+            Skin currentSkin = arc.getSkin();
+            
+            for (SkinAddition addon: currentSkin.getSkinAdditions()){
+                LOG.info("skinAddition:"+addon.getStyleSheetName());
+            }
+            
+            LOG.info("skinAddition found");
+        }else{
+            LOG.info("skinAddition not found");
+        }
+        //arc.getSkin();
 
         ResponseWriter rw = context.getResponseWriter();
         rw.startElement("div", component); // the root element
@@ -1146,7 +1164,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
 
         if (visibleItems.isEmpty())
             return;
-
+        
         String[] columnWidths = this._getColumnWidths(bean);
 
         // List columnWidths = (List) component.getAttributes().get(
@@ -1176,9 +1194,33 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
             rw.endElement("colgroup");
         }
 
-        // END COLUMN DEFINE        
-
+        rw.startElement("thead", null);
+        rw.startElement("tr",null);
+        for (int i = 0; i < columnWidths.length; i++)
+        {
+            
+            if (columnWidths[i] != null)
+            {
+                int cellWidth = ((Integer) Integer
+                        .parseInt(columnWidths[i])).intValue();
+                if (cellWidth != -2)
+                {
+                    // cellWidth += getCellPadding(context, component,
+                    // i);
+                    rw.startElement("td", null);
+                    rw.writeAttribute("width", Integer.toString(cellWidth),
+                            null);
+                    rw.endElement("td");
+                }
+            }
+            
+        }
+        rw.endElement("tr");
+        rw.endElement("thead");
+     // END COLUMN DEFINE
+        
         rw.startElement("tbody", null); // the outer tbody
+        
 
         //START ROW DEFINE
         List<Row> rows = visibleFormItemInfo.getLayoutRows();
@@ -1259,9 +1301,10 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                     rw.writeAttribute("rowspan", spanY, null);
 
                     rw.startElement("table", cell);
+                    OutputUtils.renderLayoutTableAttributes(context, arc,"0", "0", cw);                    
                     renderStyleClass(context, arc,
                             AF_TABLE_FORM_CONTENT_CELL_STYLE_CLASS);
-                    rw.writeAttribute("width", cw, null);
+                    //rw.writeAttribute("width", cw, null);
 
                     rw.startElement("tr", null);
                     rw.startElement("td", cell);
@@ -1299,7 +1342,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                         cell.getAttributes().put("style", cad);
                     }
                     rw.startElement("table", null); // inner table
-                    OutputUtils.renderLayoutTableAttributes(context, arc, "0",
+                    OutputUtils.renderLayoutTableAttributes(context, arc,"0", "0",
                             "100%");
 
                     if (LabelAndMessageRenderer.class.isAssignableFrom(context
@@ -1319,13 +1362,32 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                                         .getSpanXItem(cell)), null);
                         rw.endElement("col");
                         rw.endElement("colgroup");
+                        
+                        rw.startElement("thead", null);
+                        rw.startElement("tr", null);
+                        rw.startElement("td", null);
+                        rw.writeAttribute("width", this.calculateSize(bean,
+                                columnWidths, numColumn - spanX, this
+                                        .getSpanXLabel(cell)), null);
+                        rw.endElement("td");
+                        rw.startElement("td", null);
+                        rw.writeAttribute("width", this.calculateSize(bean,
+                                columnWidths, numColumn
+                                        - this.getSpanXItem(cell), this
+                                        .getSpanXItem(cell)), null);
+                        rw.endElement("td");
+                        rw.endElement("tr");
+                        rw.endElement("thead");
                     }
 
                     rw.startElement("tbody", null); // inner tbody
 
                     String rowHeight = this.calculateSize(bean, rowHeights,
                             rowIndex, spanY);
-                    rw.startElement("tr", null); // label row
+                    rw.startElement("tr", null); // label row                    
+                    renderStyleClass(context, arc,
+                            AF_TABLE_FORM_CONTENT_CELL_STYLE_CLASS);
+                    
 
                     if (!rowHeight.equals("0"))
                     {
@@ -1360,9 +1422,14 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
 
                         if (!StringUtils.contains(cstyle, "width"))
                         {
+                            Integer colWidth = Integer.parseInt(this.calculateSize(bean,
+                                    columnWidths, numColumn
+                                    - this.getSpanXItem(cell), this
+                                    .getSpanXItem(cell)))-(this.getSpanXItem(cell) == 1 ? this._getCellspacing(bean):0)-3;
+                            
                             cbean.setProperty(_cstyle, (cstyle == null ? ""
                                     : cstyle)
-                                    + ";width: 100%");
+                                    + ";width: 100%;position:relative"); // + colWidth + "px" //100%
                         }
 
                         _encodeFormItem2(context, arc, rw, false, cell);
@@ -1971,7 +2038,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
     //TODO: For now it should be different valule
     //like org.apache.myfaces.trinidadinternal.TableFormNestLevel
     //But because dependences in LabelAndMessageRenderer
-    private static final String TABLE_FORM_NEST_LEVEL_KEY = "org.apache.myfaces.trinidadinternal.PanelFormNestLevel";
+    private static final String TABLE_FORM_NEST_LEVEL_KEY = "org.apache.myfaces.trinidadinternal.TableFormNestLevel";
 
     // private static final int _COLUMNS_DEFAULT = 3;
 
@@ -1998,7 +2065,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
     static
     {
         // style keys.
-        // for panelForm, we want a specific af|panelFormLayout style for the
+        // for tableForm, we want a specific af|tableFormLayout style for the
         // label cell,
         // instead of the generic prompt cell style.
 
