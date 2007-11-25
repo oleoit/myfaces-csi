@@ -418,14 +418,14 @@ public class CoreTableFormLayout extends UIXPanel
         setProperty(HEIGHT_KEY, Integer.valueOf(heigth));
     }
 
-    final public int getWidth()
+    final public String getWidth()
     {
-        return ComponentUtils.resolveInteger(getProperty(WIDTH_KEY));
+        return ComponentUtils.resolveString(getProperty(WIDTH_KEY));
     }
 
-    final public void setWidth(int width)
+    final public void setWidth(String width)
     {
-        setProperty(WIDTH_KEY, Integer.valueOf(width));
+        setProperty(WIDTH_KEY, width);
     }
 
     final public int getCellspacing()
