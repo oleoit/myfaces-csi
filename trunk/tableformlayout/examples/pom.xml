@@ -1,33 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!-- This is the project descriptor for the examples of my components -->
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>TableFormLayout-examples</artifactId>
     <packaging>war</packaging>
     <name>TableFormLayout Examples</name>
 
    <scm>
-      <connection>scm:svn:http://myfaces-csi.googlecode.com/svn/trunk/tableformlayout/examples</connection>
-      <developerConnection>scm:svn:https://myfaces-csi.googlecode.com/svn/trunk/tableformlayout/examples</developerConnection>
-      <url>http://myfaces-csi.googlecode.com/svn/trunk/tableformlayout/examples</url>
+      <connection>scm:svn:http://myfaces-csi.googlecode.com/svn/branches/tableformlayout/1_0/examples</connection>
+      <developerConnection>scm:svn:https://myfaces-csi.googlecode.com/svn/branches/tableformlayout/1_0/examples</developerConnection>
+      <url>http://myfaces-csi.googlecode.com/svn/branches/tableformlayout/1_0/examples</url>
    </scm>
 
 
     <parent>
         <groupId>TableFormLayoutId</groupId>
         <artifactId>TableFormLayout-project</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
 
     <dependencies>
            <dependency>
                <groupId>TableFormLayoutId</groupId>
                <artifactId>TableFormLayout-core</artifactId>
-               <version>1.0-SNAPSHOT</version>
+               <version>1.0</version>
            </dependency>
            <dependency>
                <groupId>commons-logging</groupId>
