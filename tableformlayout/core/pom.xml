@@ -8,17 +8,21 @@
         This is a proyect for GSOC
     </description>
 
-   <scm>
-      <connection>scm:svn:http://myfaces-csi.googlecode.com/svn/branches/tableformlayout/1_0/core</connection>
-      <developerConnection>scm:svn:https://myfaces-csi.googlecode.com/svn/branches/tableformlayout/1_0/core</developerConnection>
-      <url>http://myfaces-csi.googlecode.com/svn/branches/tableformlayout/1_0/core</url>
-   </scm>
+  <scm>
+    <connection>
+      scm:svn:http://myfaces-csi.googlecode.com/svn/trunk/tableformlayout/core
+    </connection>
+    <developerConnection>
+      scm:svn:https://myfaces-csi.googlecode.com/svn/trunk/tableformlayout/core
+    </developerConnection>
+    <url>http://myfaces-csi.googlecode.com/svn/trunk/tableformlayout/core</url>
+  </scm>
 
 
     <parent>
         <groupId>TableFormLayoutId</groupId>
         <artifactId>TableFormLayout-project</artifactId>
-        <version>1.0</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
