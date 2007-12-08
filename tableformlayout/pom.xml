@@ -27,12 +27,12 @@
 
   <scm>
     <connection>
-      scm:svn:http://myfaces-csi.googlecode.com/svn/trunk/myfaces-csi/TableFormLayout/
+      scm:svn:http://myfaces-csi.googlecode.com/svn/trunk/tableformlayout
     </connection>
     <developerConnection>
-      scm:svn:https://myfaces-csi.googlecode.com/svn/trunk/myfaces-csi/TableFormLayout/
+      scm:svn:https://myfaces-csi.googlecode.com/svn/trunk/tableformlayout
     </developerConnection>
-    <url>http://myfaces-csi.googlecode.com/svn/trunk/myfaces-csi/TableFormLayout</url>
+    <url>http://myfaces-csi.googlecode.com/svn/trunk/tableformlayout</url>
   </scm>
 
 
