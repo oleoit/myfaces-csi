@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE faces-config PUBLIC
+  "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+  "http://java.sun.com/dtd/web-facesconfig_1_1.dtd" >
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<!-- my components examples -->
+
+<faces-config>
+
+	<application>
+		<!-- Use the Trinidad RenderKit -->
+		<default-render-kit-id>
+			org.apache.myfaces.trinidad.core			
+		</default-render-kit-id>
+	</application>
+	
+	<!-- Managed Beans for sayhello.jsp -->
+
+	<!-- NAVIGATION RULES -->
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>go_home</from-outcome>
+			<to-view-id>/home.jsf</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>
