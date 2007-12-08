@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>TableFormLayoutId</groupId>
+  <artifactId>TableFormLayout-project</artifactId>
+  <packaging>pom</packaging>
+  <name>JSF TableFormLayout Component Library Project</name>
+  <version>1.0-SNAPSHOT</version>
+
+  <description>
+      This is the project for my funky components. This will build both the core and the examples
+  </description>
+
+    <modules>
+        <module>core</module>
+        <module>examples</module>
+	  <module>examples-facelets</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>Myfaces repository</id>
+            <url>http://myfaces.zones.apache.org/dist/maven-repository</url>
+        </repository>
+    </repositories>
+
+  <scm>
+    <connection>
+      scm:svn:http://myfaces-csi.googlecode.com/svn/trunk/myfaces-csi/TableFormLayout/
+    </connection>
+    <developerConnection>
+      scm:svn:https://myfaces-csi.googlecode.com/svn/trunk/myfaces-csi/TableFormLayout/
+    </developerConnection>
+    <url>http://myfaces-csi.googlecode.com/svn/trunk/myfaces-csi/TableFormLayout</url>
+  </scm>
+
+
+</project>
