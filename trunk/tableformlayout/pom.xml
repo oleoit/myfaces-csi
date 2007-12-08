@@ -4,7 +4,7 @@
   <artifactId>TableFormLayout-project</artifactId>
   <packaging>pom</packaging>
   <name>JSF TableFormLayout Component Library Project</name>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
 
   <description>
       This is the project for my funky components. This will build both the core and the examples
@@ -24,9 +24,9 @@
     </repositories>
 
   <scm>
-    <connection>scm:svn:http://myfaces-csi.googlecode.com/svn/branches/tableformlayout/1_0</connection>
-    <developerConnection>scm:svn:https://myfaces-csi.googlecode.com/svn/branches/tableformlayout/1_0</developerConnection>
-    <url>http://myfaces-csi.googlecode.com/svn/branches/tableformlayout/1_0</url>
+    <connection>scm:svn:http://myfaces-csi.googlecode.com/svn/trunk/tableformlayout</connection>
+    <developerConnection>scm:svn:https://myfaces-csi.googlecode.com/svn/trunk/tableformlayout</developerConnection>
+    <url>http://myfaces-csi.googlecode.com/svn/trunk/tableformlayout</url>
   </scm>
 
 
