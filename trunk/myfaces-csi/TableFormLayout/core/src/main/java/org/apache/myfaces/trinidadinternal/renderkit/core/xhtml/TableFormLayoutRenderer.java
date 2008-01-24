@@ -115,6 +115,13 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         return (String) bean.getProperty(_columnsKey);
     }
 
+    /** 
+     * The height is a value in pixels without px
+     * So this method return an Integer
+     * 
+     * @param bean
+     * @return
+     */
     private Integer _getHeight(FacesBean bean)
     {
 
@@ -146,9 +153,17 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
     private boolean _isPercentWidth(FacesBean bean)
     {
         String width = this._getWidth(bean);
-        return width.contains("%");
+        return StringUtils.contains(width, '%');
     }
 
+    
+    /**
+     * Returns the absolute width, because width property 
+     * could have as end % (percent), px  or nothing (absolute measure) 
+     * 
+     * @param bean
+     * @return
+     */
     private Integer _getWidthValue(FacesBean bean)
     {
         String width = this._getWidth(bean);
@@ -236,11 +251,19 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         }
         String columns = this._getColumns(bean);
 
+        //Obtain an array of columns like this
+        //[1*,1*,2*,300]
         String[] sw = StringUtils.split(columns, ';');
         if (sw.length == 0)
         {
             return null;
         }
+        
+        //This array is used to return the columns widths
+        //If is in percent mode, widths looks like this:
+        //[50%,50%]
+        //If is in absolute mode it looks like this
+        //[50,50] 
         String[] widths = new String[sw.length];
 
         double absolutePixels = 0; // Defines how many absolute space has
@@ -275,7 +298,8 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         Double cellspacing = null;
         try
         {
-            cellspacing = Double.parseDouble("" + this._getCellspacing(bean));
+            //Convert to double for next calculations
+            cellspacing = Double.parseDouble(this._getCellspacing(bean).toString());
         }
         catch (NumberFormatException e)
         {
@@ -365,14 +389,6 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                 {
                     //String col = sw[i];
                     String col1 = widths[i];
-                    if (col1 == null)
-                    {
-
-                    }
-                    else
-                    {
-                        // Nothing happens
-                    }
                 }
             }
         }
@@ -500,14 +516,6 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
             {
                 //String col = sw[i];
                 String col1 = heights[i];
-                if (col1 == null)
-                {
-
-                }
-                else
-                {
-                    // Nothing happens
-                }
             }
         }
         catch (NullPointerException e)
@@ -1202,19 +1210,25 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         return false;
     }
 
-    @SuppressWarnings("unchecked")
-    private void _encodeFormColumns(FacesContext context, RenderingContext arc,
+    /**
+     * Encode the header columns for this component, 
+     * using colgroup and then thead tags to ensure proper
+     * definition and behaviour   
+     * 
+     * @param context
+     * @param arc
+     * @param component
+     * @param bean
+     * @param rw
+     * @throws IOException
+     */
+    private void _encodeFormColumnsBase(FacesContext context, RenderingContext arc,
             UIComponent component, FacesBean bean, ResponseWriter rw,
-            FormItemInfo visibleFormItemInfo, List<FormItem> visibleItems)
+            String [] columnWidths)
             throws IOException
     {
 
-        if (visibleItems.isEmpty())
-            return;
 
-        String[] columnWidths = this._getColumnWidths(bean);
-
-        // List columnWidths = (List) component.getAttributes().get(
         // START COLUMN DEFINE
 
         if (columnWidths != null)
@@ -1254,7 +1268,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
             }
             rw.endElement("colgroup");
         }
-
+        
         rw.startElement("thead", null);
         rw.startElement("tr", null);
         for (int i = 0; i < columnWidths.length; i++)
@@ -1268,6 +1282,8 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                     if (cellWidth != -2)
                     {
                         rw.startElement("td", null);
+                        renderStyleClass(context, arc, AF_TABLE_FORM_COLUMN_STYLE_CLASS);
+                        
                         rw.writeAttribute("width", columnWidths[i],
                                 null);
                         rw.endElement("td");                        
@@ -1290,7 +1306,34 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         }
         rw.endElement("tr");
         rw.endElement("thead");
-        // END COLUMN DEFINE
+        // END COLUMN DEFINE        
+    }
+    
+    
+    private boolean _isLabeledComponent(FacesContext context, UIComponent cell){
+        if (LabelAndMessageRenderer.class.isAssignableFrom(context
+                .getRenderKit().getRenderer(cell.getFamily(),
+                        cell.getRendererType()).getClass()))
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    @SuppressWarnings("unchecked")
+    private void _encodeFormColumns(FacesContext context, RenderingContext arc,
+            UIComponent component, FacesBean bean, ResponseWriter rw,
+            FormItemInfo visibleFormItemInfo, List<FormItem> visibleItems)
+            throws IOException
+    {
+
+        if (visibleItems.isEmpty())
+            return;
+
+        //Get the column widths to be rendered in the component
+        String[] columnWidths = this._getColumnWidths(bean);
+        
+        _encodeFormColumnsBase(context,arc,component,bean,rw,columnWidths);
 
         rw.startElement("tbody", null); // the outer tbody
 
@@ -1298,7 +1341,6 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         List<Row> rows = visibleFormItemInfo.getLayoutRows();
 
         String[] rowHeights = this._getRowHeights(bean);
-        //String[] columnWidths = this._getColumnWidths(bean);
 
         for (int rowIndex = 0; rowIndex < rows.size(); rowIndex++)
         {
@@ -1307,7 +1349,6 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
             if (!row.isHidden())
             {
                 rw.startElement("tr", null);
-                renderStyleClass(context, arc, AF_TABLE_FORM_COLUMN_STYLE_CLASS);
 
                 if (rowHeights != null)
                 {
@@ -1340,13 +1381,11 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                     int spanX = 1;
                     int spanY = 1;
 
-                    //LOG.info("CELL:" + cell.toString());
-                    //LOG.info("Renderer:" + cell.getRendererType());
-                    //String rendererType = cell.getRendererType();					
-                    if (LabelAndMessageRenderer.class.isAssignableFrom(context
-                            .getRenderKit().getRenderer(cell.getFamily(),
-                                    cell.getRendererType()).getClass()))
-                    {
+                    //If this is a labeled component try to get
+                    //attributes that define its behaviour
+                    //like spanX and spanY
+                    if (_isLabeledComponent(context, cell))
+                    {                        
                         spanX = this.getSpanXLabel(cell)
                                 + this.getSpanXItem(cell);
                         spanY = this.getSpanY(cell);
@@ -1372,60 +1411,17 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                     rw.writeAttribute("colspan", spanX, null);
                     rw.writeAttribute("rowspan", spanY, null);
 
-                    rw.startElement("table", cell);
-                    if (_isPercentWidth(bean)){
-                        OutputUtils.renderLayoutTableAttributes(context, arc, "0",
-                                "0", "100%");                        
-                    }else{
-                        OutputUtils.renderLayoutTableAttributes(context, arc, "0",
-                                "0", cw);                        
-                    }
-                    renderStyleClass(context, arc,
-                            AF_TABLE_FORM_CONTENT_CELL_STYLE_CLASS);
-                    //rw.writeAttribute("width", cw, null);
+                    // The trick for do the illusion of separate label and context
+                    //cell is to create a table surrounding the component. In this way
+                    //we do not modify the behavior of LabelAndMessageRenderer!.
 
-                    rw.startElement("tr", null);
-                    rw.startElement("td", cell);
-                    rw.startElement("div", cell);
-
-                    String style = (String) cell.getAttributes().get("style");
-                    if (style != null)
-                    {
-                        String cad = "";
-                        if (columnWidths != null)
-                        {
-                            cad = ";width:" + cw + "px";
-                        }
-                        if (rowHeights != null)
-                        {
-                            cad += ";height:" + ch + "px";
-                        }
-                        //System.out.println("SET:" + style + cad);
-                        cell.getAttributes().put("style", style + cad);
-
-                    }
-                    else
-                    {
-                        String cad = "";
-                        if (columnWidths != null)
-                        {
-                            cad = ";width:" + cw + "px";
-                        }
-                        if (rowHeights != null)
-                        {
-                            cad += ";height:" + ch + "px";
-                        }
-                        // System.out.println("SET:" + style + ";width:" + cw
-                        // + "px" + ";height:" + ch + "px");
-                        cell.getAttributes().put("style", cad);
-                    }
                     rw.startElement("table", null); // inner table
                     OutputUtils.renderLayoutTableAttributes(context, arc, "0",
                             "0", "100%");
 
-                    if (LabelAndMessageRenderer.class.isAssignableFrom(context
-                            .getRenderKit().getRenderer(cell.getFamily(),
-                                    cell.getRendererType()).getClass()))
+                    //If this is a component that its renderer extends from LabelAndMessageRenderer
+                    //
+                    if (_isLabeledComponent(context, cell))
                     {
                         if (_isPercentWidth(bean)){
                             
@@ -1498,8 +1494,6 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                     String rowHeight = this.calculateSize(bean, rowHeights,
                             rowIndex, spanY);
                     rw.startElement("tr", null); // label row                    
-                    renderStyleClass(context, arc,
-                            AF_TABLE_FORM_CONTENT_CELL_STYLE_CLASS);
 
                     if (!rowHeight.equals("0"))
                     {
@@ -1507,9 +1501,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                     }
 
                     //Now i have to modify inlineContentStyle to add height value
-                    if (LabelAndMessageRenderer.class.isAssignableFrom(context
-                            .getRenderKit().getRenderer(cell.getFamily(),
-                                    cell.getRendererType()).getClass()))
+                    if (_isLabeledComponent(context, cell))
                     {
                         FacesBean cbean = getFacesBean(cell);
 
@@ -1547,12 +1539,19 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                                     : cstyle)
                                     + ";width: 100%"); // + colWidth + "px" //100%
                         }
+                        
+                        //Set the SkinResourceKeyMap form encode this
+                        //component
+                        arc.setSkinResourceKeyMap(
+                            TableFormLayoutRenderer._RESOURCE_KEY_SIDE_BY_SIDE_MAP);
 
                         _encodeFormItem2(context, arc, rw, false, cell);
                     }
                     else
                     {
                         rw.startElement("td", null);
+                        renderStyleClass(context, arc,
+                                AF_TABLE_FORM_CONTENT_CELL_STYLE_CLASS);                        
                         _encodeFormItem2(context, arc, rw, false, cell);
                         rw.endElement("td");
                     }
@@ -1561,11 +1560,6 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                     rw.endElement("tbody"); // inner tbody
                     rw.endElement("table"); // inner table
 
-                    rw.endElement("div");
-                    rw.endElement("td");
-                    rw.endElement("tr");
-
-                    rw.endElement("table");
                     rw.endElement("td");
 
                 }
