@@ -9,5 +9,5 @@
 	<!-- A silly use of EL: English users get one appearance, -->
 	<!-- others get another -->
 	<!-- simple, minimal -->
-	<skin-family>simple</skin-family>
+	<skin-family>purple</skin-family>
 </trinidad-config>
