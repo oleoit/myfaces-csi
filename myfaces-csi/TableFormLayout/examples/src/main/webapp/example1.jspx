@@ -33,118 +33,50 @@
 		<![CDATA[ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
 	</jsp:text>
 	<f:view>
-		<tr:document title="Apache Trinidad Blank Demo">
+		<tr:document title="TableFormLayout Examples">
 			<tr:form>
 				<tr:panelPage>
-					<!-- inlineStyle="width: 400px;" labelWidth="100" fieldWidth="100" -->
-					<mycomp:tableFormLayout width="700" cellspacing="5"
-						columns="1*;2*;1*;2*">
+                    <mycomp:tableFormLayout width="1000" columns="1*;2*;1*;2*">					
 						<tr:outputText value="Layout Example: Personal Information" >
 							<f:attribute name="spanX" value="4" />
 						</tr:outputText>
-						<tr:selectOneChoice label="Salutation">
-							<f:selectItem itemLabel="1 Option" itemValue="1" />
-						</tr:selectOneChoice>
-						<tr:outputText>
-							<f:attribute name="spanX" value="2" />
-						</tr:outputText>
+						
+                        <tr:selectOneChoice label="Salutation">
+                            <f:selectItem itemLabel="1 Option" itemValue="1" />
+                            <f:selectItem itemLabel="2 Option" itemValue="2"/>
+                        </tr:selectOneChoice>
+                        
+                        <tr:outputText>
+                            <f:attribute name="spanX" value="2" />
+                        </tr:outputText>
+                                                						
+						<tr:inputText label="First Name" required="true"/>
+						<tr:inputText label="Last Name" required="true"/>
+						
+                        <tr:inputText label="c/o" required="true">
+                            <f:attribute name="spanXItem" value="3" />
+                        </tr:inputText>
+						
 
-						<tr:inputText label="First Name" />
-						<tr:inputText label="Last Name" />
-						<tr:inputText label="c/o">
+						<tr:inputText label="Street" required="true"/>
+						<tr:inputText label="No"  required="true"/>
+						<tr:inputText label="ZIP"  required="true"/>
+						<tr:inputText label="City"  required="true"/>
+						<tr:inputText label="Note" rows="4" required="true">
 							<f:attribute name="spanXItem" value="3" />
-							<f:attribute name="spanYItem" value="1" />
-						</tr:inputText>
-						<tr:inputText label="Street" contentStyle="width: 100%;" />
-						<tr:inputText label="No" contentStyle="width: 100%;" />
-						<tr:inputText label="ZIP" contentStyle="width: 100%;" />
-						<tr:inputText label="City" contentStyle="width: 100%;" />
-						<tr:inputText label="Note" rows="4" contentStyle="width: 100%;">
-							<f:attribute name="spanXItem" value="3" />
-							<f:attribute name="spanYItem" value="1" />
 						</tr:inputText>
 					</mycomp:tableFormLayout>
+                    
+                    <tr:panelHorizontalLayout>					
+					   <tr:commandButton text="Send" action="send"/>
+					</tr:panelHorizontalLayout>
 
-					<!-- 
-					<tr:panelFormLayout inlineStyle="width: 400px;" labelWidth="100"
-						fieldWidth="300" rows="2" maxColumns="1">
-						<tr:inputText label="First Name" contentStyle="width: 100%;" />
-						<tr:inputText label="Last Name" contentStyle="width: 100%;" />
-						<f:facet name="footer">
-							<tr:inputText label="Note" rows="3" contentStyle="width: 100%;" />
-						</f:facet>
-					</tr:panelFormLayout>
-
-
-					<tr:inputText label="Your name" id="input1" required="true" />
-					<tr:commandButton id="button1" text="press me" />
-
-					<tr:panelFormLayout inlineStyle="width: 400px;" labelWidth="100"
-						fieldWidth="100" rows="1" maxColumns="2">
-						<tr:selectOneChoice label="Salutation">
-							<f:selectItem itemLabel="1 Option" itemValue="1" />
-						</tr:selectOneChoice>
-					</tr:panelFormLayout>
-					
-
-					<tr:panelFormLayout inlineStyle="width: 400px;" labelWidth="100"
-						fieldWidth="100" rows="1" maxColumns="2">
-						<tr:inputText label="First Name" contentStyle="width: 100%;" />
-						<tr:inputText label="Last Name" contentStyle="width: 100%;" />
-						<f:facet name="footer">
-							<tr:inputText label="c/o" contentStyle="width: 100%;" />
-						</f:facet>
-					</tr:panelFormLayout>
-					<tr:panelFormLayout inlineStyle="width: 400px;" labelWidth="100"
-						fieldWidth="100" rows="1" maxColumns="2">
-						<tr:inputText label="Street" contentStyle="width: 100%;" />
-						<tr:inputText label="ZIP" contentStyle="width: 100%;" />
-					</tr:panelFormLayout>
-					<tr:panelFormLayout inlineStyle="width: 400px;" labelWidth="100"
-						fieldWidth="100" rows="1" maxColumns="2">
-						<tr:inputText label="No" contentStyle="width: 100%;" />
-						<tr:inputText label="City" contentStyle="width: 100%;" />
-						<f:facet name="footer">
-							<tr:inputText label="Note" rows="3" contentStyle="width: 100%;" />
-						</f:facet>
-					</tr:panelFormLayout>					
-				 -->
-					<!-- 
-				<mycomp:tableLayoutTr width="700" styleclass="custompanel"
-					cellspacing="5" columns="1*;2*;1*;2*">
-					<mycomp:cellLayout inheritWidth="true" spanX="4">
-						<h:outputText value="Layout Example: Personal Information" />
-					</mycomp:cellLayout>
-
-					<h:outputText value="Salutation" />
-					<mycomp:cellLayout inheritWidth="false" spanX="2">
-						<h:selectOneMenu>
-							<f:selectItem itemLabel="1 Option" itemValue="1 Option" />
-							<f:selectItem itemLabel="2 Option" itemValue="2 Option" />
-						</h:selectOneMenu>
-					</mycomp:cellLayout>
-					<mycomp:cellLayout />
-					<tr:inputText label="First Name"></tr:inputText>
-					<h:outputText value="Last Name" />
-					<h:inputText></h:inputText>
-					<h:outputText value="c/o" />
-					<mycomp:cellLayout inheritWidth="true" spanX="3">
-						<h:inputText></h:inputText>
-					</mycomp:cellLayout>
-					<h:outputText value="Street" />
-					<h:inputText></h:inputText>
-					<h:outputText value="No" />
-					<h:inputText></h:inputText>
-					<h:outputText value="ZIP" />
-					<h:inputText></h:inputText>
-					<h:outputText value="City" />
-					<h:inputText></h:inputText>
-					<h:outputText value="Note" />
-					<mycomp:cellLayout inheritWidth="true" spanX="3">
-						<h:inputTextarea></h:inputTextarea>
-					</mycomp:cellLayout>
-				</mycomp:tableLayoutTr>
-				 -->
+                    <tr:panelHorizontalLayout>
+                        <h:outputLink value="home.jsp">
+                            <f:verbatim>GO HOME</f:verbatim>
+                        </h:outputLink>                                               
+                    </tr:panelHorizontalLayout>
+                      				 
 				</tr:panelPage>
 			</tr:form>
 		</tr:document>

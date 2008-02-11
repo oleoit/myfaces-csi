@@ -12,9 +12,7 @@
 
 	<application>
 		<!-- Use the Trinidad RenderKit -->
-		<default-render-kit-id>
-			org.apache.myfaces.trinidad.core			
-		</default-render-kit-id>
+		<default-render-kit-id>org.apache.myfaces.trinidad.core</default-render-kit-id>
 	</application>
 	
 	<!-- Managed Beans for sayhello.jsp -->

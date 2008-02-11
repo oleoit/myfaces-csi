@@ -13,10 +13,22 @@
   </description>
 
     <modules>
+	<module>build</module>
         <module>core</module>
         <module>examples</module>
-	  <module>examples-facelets</module>
+	<module>examples-facelets</module>
     </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.myfaces.buildtools</groupId>
+        <artifactId>myfaces-faces-plugin</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
 
     <repositories>
         <repository>

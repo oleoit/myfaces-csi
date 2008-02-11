@@ -19,6 +19,8 @@ package org.apache.myfaces.trinidadinternal.renderkit.core.xhtml;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -28,10 +30,10 @@ import java.util.Set;
 
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIForm;
+import javax.faces.component.UIInput;
 import javax.faces.component.UINamingContainer;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
-import javax.faces.render.Renderer;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -40,13 +42,12 @@ import org.apache.myfaces.trinidad.bean.FacesBean;
 import org.apache.myfaces.trinidad.bean.PropertyKey;
 import org.apache.myfaces.trinidad.component.UIXEditableValue;
 import org.apache.myfaces.trinidad.component.UIXGroup;
+import org.apache.myfaces.trinidad.component.UIXInput;
 import org.apache.myfaces.trinidad.component.UIXPanel;
 import org.apache.myfaces.trinidad.component.core.input.CoreInputHidden;
 import org.apache.myfaces.trinidad.component.core.layout.CoreTableFormLayout;
+import org.apache.myfaces.trinidad.context.Agent;
 import org.apache.myfaces.trinidad.context.RenderingContext;
-import org.apache.myfaces.trinidad.skin.Skin;
-import org.apache.myfaces.trinidad.skin.SkinAddition;
-import org.apache.myfaces.trinidad.skin.SkinFactory;
 
 public class TableFormLayoutRenderer extends XhtmlRenderer
 {
@@ -57,6 +58,18 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
     public static final String USED = "used";
 
     public static final Marker FREE = new Marker("free");
+
+    public static final DecimalFormat percentFormat;
+
+    static
+    {
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+        symbols.setDecimalSeparator('.');
+        symbols.setGroupingSeparator(',');
+        symbols.setMinusSign('-');
+        percentFormat = new DecimalFormat("##.00", symbols);
+
+    }
 
     /**
      * Constructor
@@ -85,7 +98,9 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         _heightKey = type.findKey("height");
         _widthKey = type.findKey("width");
         _inlineStyleKeyWidth = type.findKey("inlineStyle");
-        _cellspacingKey = type.findKey("cellspacing");
+        _hspaceKey = type.findKey("hspace");
+        _vspaceKey = type.findKey("vspace");
+        _percentWidthKey = type.findKey("percentWidth");
     }
 
     @Override
@@ -122,63 +137,77 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
      * @param bean
      * @return
      */
-    private Integer _getHeight(FacesBean bean)
+    private int _getHeight(FacesBean bean)
     {
-
         Object o = bean.getProperty(_heightKey);
-        if (o instanceof Integer)
+        if (o == null)
         {
-            return (Integer) o;
+            o = _heightKey.getDefault();
         }
-        else
-        {
-            Integer i = null;
-            try
-            {
-                i = (Integer) Integer.parseInt((String) o);
-            }
-            catch (Exception ex)
-            {
-            }
-            return i;
-        }
+        if (o instanceof Number)
+            return ((Number) o).intValue();
+
+        if (o instanceof String)
+            return new Integer((String) o).intValue();
+
+        return 0;
     }
 
-    private String _getWidth(FacesBean bean)
+    private int _getWidth(FacesBean bean)
     {
         Object o = bean.getProperty(_widthKey);
-        return (String) o;
+
+        if (o == null)
+        {
+            o = _widthKey.getDefault();
+        }
+        if (o instanceof Number)
+            return ((Number) o).intValue();
+
+        if (o instanceof String)
+            return new Integer((String) o).intValue();
+        return 0;
     }
 
     private boolean _isPercentWidth(FacesBean bean)
     {
-        String width = this._getWidth(bean);
-        return StringUtils.contains(width, '%');
+        Object o = bean.getProperty(_percentWidthKey);
+        if (o == null)
+            o = _percentWidthKey.getDefault();
+
+        return !Boolean.FALSE.equals(o);
     }
 
-    
-    /**
-     * Returns the absolute width, because width property 
-     * could have as end % (percent), px  or nothing (absolute measure) 
-     * 
-     * @param bean
-     * @return
-     */
-    private Integer _getWidthValue(FacesBean bean)
+    private int _getHspace(FacesBean bean)
     {
-        String width = this._getWidth(bean);
-        if (width.contains("%"))
+        Object o = bean.getProperty(_hspaceKey);
+
+        if (o == null)
         {
-            return Integer.parseInt(width.substring(0, width.indexOf("%")));
+            o = _hspaceKey.getDefault();
         }
-        else if (width.contains("px"))
+        if (o instanceof Number)
+            return ((Number) o).intValue();
+
+        if (o instanceof String)
+            return new Integer((String) o).intValue();
+        return 0;
+    }
+
+    private int _getVspace(FacesBean bean)
+    {
+        Object o = bean.getProperty(_vspaceKey);
+
+        if (o == null)
         {
-            return Integer.parseInt(width.substring(0, width.indexOf("px")));
+            o = _vspaceKey.getDefault();
         }
-        else
-        {
-            return Integer.parseInt(width);
-        }
+        if (o instanceof Number)
+            return ((Number) o).intValue();
+
+        if (o instanceof String)
+            return new Integer((String) o).intValue();
+        return 0;
     }
 
     private String _getInlineStyleWidth(FacesBean bean)
@@ -191,33 +220,53 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         bean.setProperty(_inlineStyleKeyWidth, style);
     }
 
-    private Integer _getCellspacing(FacesBean bean)
+    protected int _getColspanAddition(RenderingContext arc, int spanX)
     {
 
-        Object o = bean.getProperty(_cellspacingKey);
-        if (o instanceof Integer)
+        if (spanX <= 1)
         {
-            return (Integer) o;
+            return 0;
         }
         else
         {
-            Integer i = 0;
-            try
+            if (Agent.AGENT_IE.equals(arc.getAgent().getAgentName()))
             {
-                i = (Integer) Integer.parseInt((String) o);
+                return (spanX - 1) * 6;
             }
-            catch (Exception ex)
+            if (Agent.AGENT_GECKO.equals(arc.getAgent().getAgentName()))
             {
+                return (spanX - 1) * 4;
             }
-            return i;
+
         }
+        return 0;
+    }
+
+    protected int _getRowspanAddition(RenderingContext arc, int spanY)
+    {
+        if (spanY <= 1)
+        {
+            return 0;
+        }
+        else
+        {
+            if (Agent.AGENT_IE.equals(arc.getAgent().getAgentName()))
+            {
+                return (spanY - 1) * 8;
+            }
+            if (Agent.AGENT_GECKO.equals(arc.getAgent().getAgentName()))
+            {
+                return (spanY - 1) * 6;
+            }
+        }
+        return 0;
     }
 
     /**
      * Get how many columns has been defined
      * 
      */
-    public int _getColumnCount(FacesBean bean)
+    private int _getColumnCount(FacesBean bean)
     {
         String columns = this._getColumns(bean);
         int columnCount;
@@ -238,9 +287,10 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
      * 
      * @return List of widths for each column
      */
-    public String[] _getColumnWidths(FacesBean bean)
+    private String[] _getColumnWidths(FacesBean bean)
     {
 
+        /*
         if (this._getWidth(bean) == null)
         {
             return null;
@@ -249,6 +299,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         {
             return null;
         }
+        */
         String columns = this._getColumns(bean);
 
         //Obtain an array of columns like this
@@ -258,7 +309,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         {
             return null;
         }
-        
+
         //This array is used to return the columns widths
         //If is in percent mode, widths looks like this:
         //[50%,50%]
@@ -295,25 +346,24 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
             }
         }
 
-        Double cellspacing = null;
-        try
-        {
-            //Convert to double for next calculations
-            cellspacing = Double.parseDouble(this._getCellspacing(bean).toString());
-        }
-        catch (NumberFormatException e)
-        {
-            cellspacing = 0d;
-        }
+        Double cellspacing = 0d;
 
         if (_isPercentWidth(bean))
         {
             //Calculate as relative width
-            Double width = null;
-            width = Double.parseDouble("" + this._getWidthValue(bean));
+            //Double width = null;
+            //width = Double.parseDouble("" + this._getWidth(bean));
             // Now calculate the widths based on
             double actualwidth = 0;
             double remainingspace = 100d;
+
+            if (_getHspace(bean) > 0)
+            {
+                remainingspace -= _getHspace(bean)
+                        * (_getColumnCount(bean) - 1);
+                //maxRelative = remainingspace;
+            }
+
             for (int i = 0; i < sw.length; i++)
             {
                 String col = sw[i];
@@ -323,10 +373,9 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                 {
                     if (remainingspace > 0)
                     {
-                        widths[i] = ""
-                                + (new Double(remainingspace
-                                        * Double.parseDouble(col) / maxRelative)
-                                        .intValue()) + "%";
+                        double value = new Double(remainingspace
+                                * Double.parseDouble(col) / maxRelative);
+                        widths[i] = "" + percentFormat.format(value) + "%";
                     }
                     else
                     {
@@ -348,6 +397,9 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         {
             //Calculate as absolute width
             Double width = null;
+
+            //Calculate cellspacing if available
+            //cellspacing = new Integer(this._getHspace(bean)*(this._getColumnCount(bean)-1)).doubleValue();
             try
             {
                 width = Double.parseDouble("" + this._getWidth(bean));
@@ -399,7 +451,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
      * Get how many columns has been defined
      * 
      */
-    public int _getRowCount(FacesBean bean)
+    private int _getRowCount(FacesBean bean)
     {
 
         String rows = this._getRows(bean);
@@ -415,13 +467,17 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         return rowCount;
     }
 
-    public String[] _getRowHeights(FacesBean bean)
+    private String[] _getRowHeights(FacesBean bean)
     {
-        if (this._getHeight(bean) == null)
-        {
-            return null;
-        }
-        if (this._getHeight(bean).equals(""))
+        //if (this._getHeight(bean) == null)
+        //{
+        //    return null;
+        //}
+        //if (this._getHeight(bean).equals(""))
+        //{
+        //    return null;
+        //}
+        if (this._getHeight(bean) <= 0)
         {
             return null;
         }
@@ -463,16 +519,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
             }
         }
 
-        Double cellspacing = null;
-        try
-        {
-            cellspacing = Double.parseDouble("" + this._getCellspacing(bean));
-            cellspacing = 0d;
-        }
-        catch (NumberFormatException e)
-        {
-            cellspacing = 0d;
-        }
+        Double cellspacing = 0d;
 
         Double height = null;
         try
@@ -620,7 +667,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
             UIComponent component, FacesBean bean) throws IOException
     {
         //LOG.info("TableFormLayoutRenderer encodeAll");
-
+        //System.out.println("TableFormLayoutRenderer ENCODE ALL");
         ResponseWriter rw = context.getResponseWriter();
 
         //This panel must be encapsulated inside a div tag
@@ -632,17 +679,25 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         // to the div tag that contains the table
         if (!StringUtils.contains(this._getInlineStyleWidth(bean), "width"))
         {
-            if (this._getWidth(bean) != null)
+            if (!this._isPercentWidth(bean))
             {
-                if (!this._isPercentWidth(bean))
-                {
-                    this._setInlineStyleWidth(bean,
-                            (this.getInlineStyle(bean) == null ? "" : this
-                                    .getInlineStyle(bean))
-                                    + ";width: "
-                                    + this._getWidthValue(bean)
-                                    + "px");
-                }
+
+                //String[] columnWidths = this._getColumnWidths(bean);
+
+                this._setInlineStyleWidth(bean,
+                        (this.getInlineStyle(bean) == null ? "" : this
+                                .getInlineStyle(bean))
+                                + ";width: " + (this._getWidth(bean)
+                                //+(this._getColumnCount(bean)*this._getHspace(bean))
+                                //+(this._getColspanAddition(arc, this._getColumnCount(bean)) )                                
+                                ) + "px");
+            }
+            else
+            {
+                this._setInlineStyleWidth(bean,
+                        (this.getInlineStyle(bean) == null ? "" : this
+                                .getInlineStyle(bean))
+                                + ";width: " + (this._getWidth(bean)) + "%");
             }
         }
         /*
@@ -784,9 +839,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         ResponseWriter rw = context.getResponseWriter();
         rw.startElement("table", null); // the outer table
         //OutputUtils.renderLayoutTableAttributes(context, arc, "0", null,_getWidth(bean));
-        OutputUtils.renderLayoutTableAttributes(context, arc, this
-                ._getCellspacing(bean) == null ? "0" : this
-                ._getCellspacing(bean), "100%");
+        OutputUtils.renderLayoutTableAttributes(context, arc, "0", "100%");
 
         String footerLabelWidth = null;
         String footerFieldWidth = null;
@@ -835,7 +888,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         rw.endElement("table"); // the outer table
     }
 
-    public int getSpanXLabel(UIComponent component)
+    protected int getSpanXLabel(UIComponent component)
     {
         Object o = component.getAttributes().get("spanXLabel");
         if (o == null)
@@ -855,7 +908,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         }
     }
 
-    public int getSpanXItem(UIComponent component)
+    protected int getSpanXItem(UIComponent component)
     {
         Object o = component.getAttributes().get("spanXItem");
         if (o == null)
@@ -875,7 +928,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         }
     }
 
-    public int getSpanX(UIComponent component)
+    protected int getSpanX(UIComponent component)
     {
         Object o = component.getAttributes().get("spanX");
         if (o == null)
@@ -895,7 +948,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         }
     }
 
-    public int getSpanY(UIComponent component)
+    protected int getSpanY(UIComponent component)
     {
         Object o = component.getAttributes().get("spanY");
         if (o == null)
@@ -932,15 +985,14 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         for (UIComponent component : children)
         {
 
-            Renderer renderer = context.getRenderKit().getRenderer(
-                    component.getFamily(), component.getRendererType());
+            //Renderer renderer = context.getRenderKit().getRenderer(
+            //        component.getFamily(), component.getRendererType());
 
             //LOG.info("Component:" + component.toString());
             //LOG.info("Family:" + component.getFamily());
             //LOG.info("Renderer:" + component.getRendererType());
 
-            if (LabelAndMessageRenderer.class.isAssignableFrom(renderer
-                    .getClass()))
+            if (_isLabeledComponent(context, component))
             {
                 //LOG.info("Component use LabelAndMessageRenderer");
                 /*
@@ -982,8 +1034,8 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
 
                 if (c + spanXLabel + spanXItem > columnCount)
                 {
-                    rows.get(r).fill(c + 1, c + spanXLabel + spanXItem,
-                            component.isRendered());
+                    //rows.get(r).fill(c + 1, c + spanXLabel + spanXItem,
+                    //        component.isRendered());
                     for (int i = r + 1; i < r + spanY; i++)
                     {
 
@@ -997,8 +1049,8 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                 }
                 else
                 {
-                    rows.get(r).fill(c + 1, c + spanXLabel + spanXItem,
-                            component.isRendered());
+                    //rows.get(r).fill(c + 1, c + spanXLabel + spanXItem,
+                    //        component.isRendered());
                     for (int i = r + 1; i < r + spanY; i++)
                     {
 
@@ -1039,7 +1091,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                 {
                     rows.get(i).addControl(component, spanX, c);
                 }
-                rows.get(r).fill(c + 1, c + spanX, component.isRendered());
+                //rows.get(r).fill(c + 1, c + spanX, component.isRendered());
 
                 for (int i = r + 1; i < r + spanY; i++)
                 {
@@ -1058,7 +1110,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
     /*
      * Start looking from row i
      */
-    private int nextFreeRow(List rows, int i, int spanX, int spanY,
+    private int nextFreeRow(List<Row> rows, int i, int spanX, int spanY,
             int maxColumn)
     {
         //int i = 0;
@@ -1222,12 +1274,10 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
      * @param rw
      * @throws IOException
      */
-    private void _encodeFormColumnsBase(FacesContext context, RenderingContext arc,
-            UIComponent component, FacesBean bean, ResponseWriter rw,
-            String [] columnWidths)
-            throws IOException
+    private void _encodeFormColumnsBase(FacesContext context,
+            RenderingContext arc, UIComponent component, FacesBean bean,
+            ResponseWriter rw, String[] columnWidths) throws IOException
     {
-
 
         // START COLUMN DEFINE
 
@@ -1238,19 +1288,22 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
             {
                 if (columnWidths[i] != null)
                 {
-                    if (_isPercentWidth(bean)){
-                        int cellWidth = ((Integer) Integer
-                                .parseInt(StringUtils.stripEnd(columnWidths[i], "%"))).intValue();
+                    if (_isPercentWidth(bean))
+                    {
+                        int cellWidth = ((Double) Double
+                                .parseDouble(StringUtils.stripEnd(
+                                        columnWidths[i], "%"))).intValue();
                         if (cellWidth != -2)
                         {
                             // cellWidth += getCellPadding(context, component,
                             // i);
                             rw.startElement("col", null);
-                            rw.writeAttribute("width", columnWidths[i],
-                                    null);
+                            rw.writeAttribute("width", columnWidths[i], null);
                             rw.endElement("col");
-                        }                        
-                    }else{
+                        }
+                    }
+                    else
+                    {
                         int cellWidth = ((Integer) Integer
                                 .parseInt(columnWidths[i])).intValue();
                         if (cellWidth != -2)
@@ -1258,59 +1311,79 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                             // cellWidth += getCellPadding(context, component,
                             // i);
                             rw.startElement("col", null);
-                            rw.writeAttribute("width", Integer.toString(cellWidth),
-                                    null);
+                            rw.writeAttribute("width", Integer
+                                    .toString(cellWidth), null);
                             rw.endElement("col");
-                        }                        
+                        }
+                    }
+                    if (_getHspace(bean) > 0 && i + 1 < columnWidths.length)
+                    {
+                        rw.startElement("col", null);
+                        rw.writeAttribute("width", _getHspace(bean)
+                                + (_isPercentWidth(bean) ? "%" : ""), null);
+                        rw.endElement("col");
                     }
                 }
 
             }
             rw.endElement("colgroup");
         }
-        
+
         rw.startElement("thead", null);
         rw.startElement("tr", null);
-        for (int i = 0; i < columnWidths.length; i++)
+        if (columnWidths != null)
         {
-
-            if (columnWidths[i] != null)
+            for (int i = 0; i < columnWidths.length; i++)
             {
-                if (_isPercentWidth(bean)){
-                    int cellWidth = ((Integer) Integer
-                            .parseInt(StringUtils.stripEnd(columnWidths[i], "%"))).intValue();
-                    if (cellWidth != -2)
+
+                if (columnWidths[i] != null)
+                {
+                    if (_isPercentWidth(bean))
                     {
-                        rw.startElement("td", null);
-                        renderStyleClass(context, arc, AF_TABLE_FORM_COLUMN_STYLE_CLASS);
-                        
-                        rw.writeAttribute("width", columnWidths[i],
-                                null);
-                        rw.endElement("td");                        
-                    }                    
-                }else{
-                    int cellWidth = ((Integer) Integer.parseInt(columnWidths[i]))
-                    .intValue();
-                    if (cellWidth != -2)
+                        int cellWidth = ((Double) Double
+                                .parseDouble(StringUtils.stripEnd(
+                                        columnWidths[i], "%"))).intValue();
+                        if (cellWidth != -2)
+                        {
+                            rw.startElement("td", null);
+                            renderStyleClass(context, arc,
+                                    AF_TABLE_FORM_COLUMN_STYLE_CLASS);
+
+                            rw.writeAttribute("width", columnWidths[i], null);
+                            rw.endElement("td");
+                        }
+                    }
+                    else
                     {
-                        // cellWidth += getCellPadding(context, component,
-                        // i);
-                        rw.startElement("td", null);
-                        rw.writeAttribute("width", Integer.toString(cellWidth),
-                                null);
-                        rw.endElement("td");
-                    }                    
+                        int cellWidth = ((Integer) Integer
+                                .parseInt(columnWidths[i])).intValue();
+                        if (cellWidth != -2)
+                        {
+                            // cellWidth += getCellPadding(context, component,
+                            // i);
+                            rw.startElement("td", null);
+                            rw.writeAttribute("width", Integer
+                                    .toString(cellWidth), null);
+                            rw.endElement("td");
+                        }
+                    }
+                }
+                if (_getHspace(bean) > 0 && i + 1 < columnWidths.length)
+                {
+                    rw.startElement("td", null);
+                    rw.writeAttribute("width", _getHspace(bean)
+                            + (_isPercentWidth(bean) ? "%" : ""), null);
+                    rw.endElement("td");
                 }
             }
-
         }
         rw.endElement("tr");
         rw.endElement("thead");
         // END COLUMN DEFINE        
     }
-    
-    
-    private boolean _isLabeledComponent(FacesContext context, UIComponent cell){
+
+    private boolean _isLabeledComponent(FacesContext context, UIComponent cell)
+    {
         if (LabelAndMessageRenderer.class.isAssignableFrom(context
                 .getRenderKit().getRenderer(cell.getFamily(),
                         cell.getRendererType()).getClass()))
@@ -1319,7 +1392,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
         }
         return false;
     }
-    
+
     @SuppressWarnings("unchecked")
     private void _encodeFormColumns(FacesContext context, RenderingContext arc,
             UIComponent component, FacesBean bean, ResponseWriter rw,
@@ -1332,8 +1405,8 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
 
         //Get the column widths to be rendered in the component
         String[] columnWidths = this._getColumnWidths(bean);
-        
-        _encodeFormColumnsBase(context,arc,component,bean,rw,columnWidths);
+
+        _encodeFormColumnsBase(context, arc, component, bean, rw, columnWidths);
 
         rw.startElement("tbody", null); // the outer tbody
 
@@ -1352,31 +1425,60 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
 
                 if (rowHeights != null)
                 {
-                    rw.writeAttribute("height", rowHeights[rowIndex], null);
+                    //rw.writeAttribute("height", rowHeights[rowIndex], null); //Deprecated attribute
+                    rw.writeAttribute("style",
+                            "height:" + rowHeights[rowIndex], null); //Better this
                 }
 
                 List cells = row.getElements();
 
                 int numColumn = 0; // This is for count the actual column for
                 // set the width of the cell
+                boolean firstPut = false;
+
+                LOG.info("ROW:" + rowIndex);
+
+                int usedcells = 0;
+                int componentcells = 0;
 
                 for (int columnIndex = 0; columnIndex < cells.size(); columnIndex++)
                 {
                     Object object = cells.get(columnIndex);
+
                     if (object.toString().equals(TableFormLayoutRenderer.USED))
                     {
+                        LOG.info("USED");
+                        usedcells++;
                         continue; // ignore the markers UIGridLayout.Used
                     }
                     if (object.equals(TableFormLayoutRenderer.FREE))
                     {
+                        LOG.info("FREE");
                         continue;
                     }
                     UIComponent cell = (UIComponent) object;
 
-                    if (!cell.isRendered())
+                    LOG.info("COMPONENT: " + usedcells + " " + componentcells);
+
+                    if (usedcells > componentcells)
                     {
-                        continue;
+                        LOG.info("ADD Additional td: ");
+                        componentcells = usedcells;
+                        rw.startElement("td", null);
+                        if (this._isPercentWidth(bean))
+                        {
+                            rw.writeAttribute("width", this._getHspace(bean)
+                                    + "%", null);
+                        }
+                        else
+                        {
+                            rw.writeAttribute("width", this._getHspace(bean),
+                                    null);
+                        }
+                        rw.endElement("td");
                     }
+
+                    usedcells++;
 
                     int spanX = 1;
                     int spanY = 1;
@@ -1385,7 +1487,7 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                     //attributes that define its behaviour
                     //like spanX and spanY
                     if (_isLabeledComponent(context, cell))
-                    {                        
+                    {
                         spanX = this.getSpanXLabel(cell)
                                 + this.getSpanXItem(cell);
                         spanY = this.getSpanY(cell);
@@ -1396,6 +1498,36 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                         spanY = this.getSpanY(cell);
                     }
 
+                    componentcells += spanX;
+
+                    if (!cell.isRendered())
+                    {
+                        continue;
+                    }
+
+                    if (this._getHspace(bean) > 0)
+                    {
+                        if (firstPut)
+                        {
+                            LOG.info("Normal td: ");
+                            rw.startElement("td", null);
+                            if (this._isPercentWidth(bean))
+                            {
+                                rw.writeAttribute("width", this
+                                        ._getHspace(bean)
+                                        + "%", null);
+                            }
+                            else
+                            {
+                                rw.writeAttribute("width", this
+                                        ._getHspace(bean), null);
+                            }
+                            rw.endElement("td");
+                        }
+                    }
+
+                    firstPut = true;
+
                     String cw = this.calculateSize(bean, columnWidths,
                             numColumn, spanX);
 
@@ -1404,154 +1536,496 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                         numColumn += spanX;
                     }
 
-                    String ch = this.calculateSize(bean, rowHeights, rowIndex,
-                            spanY);
+                    String ch = this.calculateRowSize(bean, rowHeights,
+                            rowIndex, spanY);
 
                     rw.startElement("td", null);
-                    rw.writeAttribute("colspan", spanX, null);
-                    rw.writeAttribute("rowspan", spanY, null);
+                    if (this._getHspace(bean) > 0)
+                    {
+                        rw.writeAttribute("colspan", spanX + spanX - 1, null);
+                    }
+                    else
+                    {
+                        rw.writeAttribute("colspan", spanX, null);
+                    }
+                    if (this._getVspace(bean) > 0)
+                    {
+                        rw.writeAttribute("rowspan", spanY + spanY - 1, null);
+                    }
+                    else
+                    {
+                        rw.writeAttribute("rowspan", spanY, null);
+                    }
+
+                    if (!_isPercentWidth(bean)
+                            && !_isLabeledComponent(context, cell))
+                    {
+                        rw.writeAttribute("width", Integer.parseInt(this
+                                .calculateSize(bean, columnWidths, numColumn
+                                        - spanX, this.getSpanX(cell)))
+                                //+ _getColspanAddition(arc, spanX)
+                                + ((this.getSpanX(cell) - 1) * this
+                                        ._getHspace(bean)), null);
+                    }
+
+                    if (Agent.AGENT_IE.equals(arc.getAgent().getAgentName())
+                            && _isPercentWidth(bean))
+                    {
+                        //This code avoid bad column width when using percent
+                        //on IE
+                        rw.startElement("table", cell);
+                        if (_isPercentWidth(bean))
+                        {
+                            OutputUtils.renderLayoutTableAttributes(context,
+                                    arc, "0", "0", "100%");
+                        }
+                        else
+                        {
+                            OutputUtils.renderLayoutTableAttributes(context,
+                                    arc, "0", "0", cw);
+                        }
+                        rw.startElement("tr", null);
+                        rw.startElement("td", cell);
+                        rw.startElement("div", cell);
+
+                    }
 
                     // The trick for do the illusion of separate label and context
                     //cell is to create a table surrounding the component. In this way
                     //we do not modify the behavior of LabelAndMessageRenderer!.
 
                     rw.startElement("table", null); // inner table
-                    OutputUtils.renderLayoutTableAttributes(context, arc, "0",
-                            "0", "100%");
 
-                    //If this is a component that its renderer extends from LabelAndMessageRenderer
-                    //
+                    //If this is a labeled component we have to create proper
+                    //colgroup tags to define column widths.
+                    //Here is the big trick.
+                    //If the component is not labeled, we don't have to do anything.
                     if (_isLabeledComponent(context, cell))
                     {
-                        if (_isPercentWidth(bean)){
-                            
-                            String labelWidth =  this.calculateSize(bean,
+                        OutputUtils.renderLayoutTableAttributes(context, arc,
+                                "0", "0", "100%");
+                        if (_isPercentWidth(bean))
+                        {
+
+                            String labelWidth = this.calculateSize(bean,
                                     columnWidths, numColumn - spanX, this
-                                    .getSpanXLabel(cell));
+                                            .getSpanXLabel(cell));
                             String fieldWidth = this.calculateSize(bean,
                                     columnWidths, numColumn
-                                    - this.getSpanXItem(cell), this
-                                    .getSpanXItem(cell));
-                            
-                            int maxPercentWidth = Integer.parseInt(
-                                    StringUtils.stripEnd(labelWidth, "%"))+
-                                    Integer.parseInt(StringUtils.stripEnd(fieldWidth, "%"));
-                            
+                                            - this.getSpanXItem(cell), this
+                                            .getSpanXItem(cell));
+
+                            //This is a strange part. the label and the field should be adjusted
+                            //0.5 to avoid alineation errors. When there are too many colspan
+                            //we need also a adjust
+                            //labelWidth = "" +(Double.parseDouble(StringUtils.stripEnd(labelWidth,
+                            //    "%"))-0.5d
+                            //    -( new Double((spanX-2)) * 0.27d ) 
+                            //    )+"%";                            
+                            //fieldWidth = ""+(Double.parseDouble(StringUtils.stripEnd(fieldWidth,
+                            //        "%"))+0.5d
+                            //        +( new Double((spanX-2)) * 0.27d ) 
+                            //        )+"%";
+
+                            double maxPercentWidth = Double
+                                    .parseDouble(StringUtils.stripEnd(
+                                            labelWidth, "%"))
+                                    + _getHspace(bean)
+                                    + Double.parseDouble(StringUtils.stripEnd(
+                                            fieldWidth, "%"));
+
                             rw.startElement("colgroup", null);
                             rw.startElement("col", null);
-                            rw.writeAttribute("width", (Integer.parseInt(StringUtils.stripEnd(labelWidth,"%"))*100/maxPercentWidth)+"%", null);
+                            rw
+                                    .writeAttribute(
+                                            "width",
+                                            (Double.parseDouble(StringUtils
+                                                    .stripEnd(labelWidth, "%")) * 100 / maxPercentWidth)
+                                                    + "%", null);
                             rw.endElement("col");
+
+                            if (_getHspace(bean) > 0)
+                            {
+                                rw.startElement("col", null);
+                                rw
+                                        .writeAttribute(
+                                                "width",
+                                                (_getHspace(bean) * 100 / maxPercentWidth)
+                                                        + "%", null);
+                                rw.endElement("col");
+                            }
+
                             rw.startElement("col", null);
-                            rw.writeAttribute("width", (Integer.parseInt(StringUtils.stripEnd(fieldWidth,"%"))*100/maxPercentWidth)+"%", null);
+                            rw
+                                    .writeAttribute(
+                                            "width",
+                                            (Double.parseDouble(StringUtils
+                                                    .stripEnd(fieldWidth, "%")) * 100 / maxPercentWidth)
+                                                    + "%", null);
                             rw.endElement("col");
                             rw.endElement("colgroup");
 
                             rw.startElement("thead", null);
                             rw.startElement("tr", null);
                             rw.startElement("td", null);
-                            rw.writeAttribute("width", (Integer.parseInt(StringUtils.stripEnd(labelWidth,"%"))*100/maxPercentWidth)+"%", null);
+                            rw
+                                    .writeAttribute(
+                                            "width",
+                                            (Double.parseDouble(StringUtils
+                                                    .stripEnd(labelWidth, "%")) * 100 / maxPercentWidth)
+                                                    + "%", null);
                             rw.endElement("td");
+
+                            if (_getHspace(bean) > 0)
+                            {
+                                rw.startElement("td", null);
+                                rw
+                                        .writeAttribute(
+                                                "width",
+                                                (_getHspace(bean) * 100 / maxPercentWidth)
+                                                        + "%", null);
+                                rw.endElement("td");
+                            }
+
                             rw.startElement("td", null);
-                            rw.writeAttribute("width", (Integer.parseInt(StringUtils.stripEnd(fieldWidth,"%"))*100/maxPercentWidth)+"%" , null);
+                            rw
+                                    .writeAttribute(
+                                            "width",
+                                            (Double.parseDouble(StringUtils
+                                                    .stripEnd(fieldWidth, "%")) * 100 / maxPercentWidth)
+                                                    + "%", null);
                             rw.endElement("td");
                             rw.endElement("tr");
-                            rw.endElement("thead");                            
-                        }else{
+                            rw.endElement("thead");
+                        }
+                        else
+                        {
                             rw.startElement("colgroup", null);
+
                             rw.startElement("col", null);
-                            rw.writeAttribute("width", this.calculateSize(bean,
-                                    columnWidths, numColumn - spanX, this
-                                            .getSpanXLabel(cell)), null);
+                            rw
+                                    .writeAttribute(
+                                            "width",
+                                            Integer
+                                                    .parseInt(this
+                                                            .calculateSize(
+                                                                    bean,
+                                                                    columnWidths,
+                                                                    numColumn
+                                                                            - spanX,
+                                                                    this
+                                                                            .getSpanXLabel(cell)))
+                                                    + ((getSpanXLabel(cell) - 1) * _getHspace(bean))
+                                            //+_getColspanLabelAddition(arc, getSpanXLabel(cell))
+
+                                            , null);
                             rw.endElement("col");
+
+                            if (_getHspace(bean) > 0)
+                            {
+                                rw.startElement("col", null);
+                                rw.writeAttribute("width", _getHspace(bean),
+                                        null);
+                                rw.endElement("col");
+                            }
+
                             rw.startElement("col", null);
-                            rw.writeAttribute("width", this.calculateSize(bean,
-                                    columnWidths, numColumn
-                                            - this.getSpanXItem(cell), this
-                                            .getSpanXItem(cell)), null);
+                            rw
+                                    .writeAttribute(
+                                            "width",
+                                            Integer
+                                                    .parseInt(this
+                                                            .calculateSize(
+                                                                    bean,
+                                                                    columnWidths,
+                                                                    numColumn
+                                                                            - this
+                                                                                    .getSpanXItem(cell),
+                                                                    this
+                                                                            .getSpanXItem(cell)))
+                                                    + ((getSpanXItem(cell) - 1) * _getHspace(bean))
+                                            //+_getColspanAddition(arc, this.getSpanXItem(cell))
+                                            //+_getColspanFieldAddition(arc,this.getSpanXItem(cell))
+                                            , null);
                             rw.endElement("col");
                             rw.endElement("colgroup");
 
                             rw.startElement("thead", null);
                             rw.startElement("tr", null);
+
                             rw.startElement("td", null);
-                            rw.writeAttribute("width", this.calculateSize(bean,
-                                    columnWidths, numColumn - spanX, this
-                                            .getSpanXLabel(cell)), null);
+                            rw
+                                    .writeAttribute(
+                                            "width",
+                                            Integer
+                                                    .parseInt(this
+                                                            .calculateSize(
+                                                                    bean,
+                                                                    columnWidths,
+                                                                    numColumn
+                                                                            - spanX,
+                                                                    this
+                                                                            .getSpanXLabel(cell)))
+                                                    + ((getSpanXLabel(cell) - 1) * _getHspace(bean))
+                                            //+_getColspanLabelAddition(arc, getSpanXLabel(cell))
+                                            , null);
                             rw.endElement("td");
+
+                            if (_getHspace(bean) > 0)
+                            {
+                                rw.startElement("td", null);
+                                rw.writeAttribute("width", _getHspace(bean),
+                                        null);
+                                rw.endElement("td");
+                            }
+
                             rw.startElement("td", null);
-                            rw.writeAttribute("width", this.calculateSize(bean,
-                                    columnWidths, numColumn
-                                            - this.getSpanXItem(cell), this
-                                            .getSpanXItem(cell)), null);
+                            rw
+                                    .writeAttribute(
+                                            "width",
+                                            Integer
+                                                    .parseInt(this
+                                                            .calculateSize(
+                                                                    bean,
+                                                                    columnWidths,
+                                                                    numColumn
+                                                                            - this
+                                                                                    .getSpanXItem(cell),
+                                                                    this
+                                                                            .getSpanXItem(cell)))
+                                                    + ((getSpanXItem(cell) - 1) * _getHspace(bean))
+                                            //+_getColspanAddition(arc, this.getSpanXItem(cell))
+                                            //+_getColspanFieldAddition(arc, this.getSpanXItem(cell))
+                                            , null);
                             rw.endElement("td");
                             rw.endElement("tr");
-                            rw.endElement("thead");                            
+                            rw.endElement("thead");
+                        }
+                    }
+                    else
+                    {
+                        if (_isPercentWidth(bean))
+                        {
+                            OutputUtils.renderLayoutTableAttributes(context,
+                                    arc, "0", "0", "100%");
+                        }
+                        else
+                        {
+                            OutputUtils.renderLayoutTableAttributes(context,
+                                    arc, "0", "0", Integer.parseInt(this
+                                            .calculateSize(bean, columnWidths,
+                                                    numColumn - spanX, this
+                                                            .getSpanX(cell)))
+                                            //+ _getColspanAddition(arc, spanX)
+                                            + ((this.getSpanX(cell) - 1) * this
+                                                    ._getHspace(bean)));
                         }
                     }
 
                     rw.startElement("tbody", null); // inner tbody
 
-                    String rowHeight = this.calculateSize(bean, rowHeights,
+                    String rowHeight = this.calculateRowSize(bean, rowHeights,
                             rowIndex, spanY);
-                    rw.startElement("tr", null); // label row                    
 
                     if (!rowHeight.equals("0"))
                     {
-                        rw.writeAttribute("height", rowHeight, null);
+
+                        if (this._getVspace(bean) > 0)
+                        {
+                            rowHeight = ""
+                                    + (Integer.parseInt(rowHeight) + (this
+                                            ._getVspace(bean) * (this
+                                            .getSpanY(cell) - 1)));
+                        }
+
+                        if (this._getHeight(bean) > 0 && spanY > 1)
+                        {
+                            rowHeight = ""
+                                    + (Integer.parseInt(rowHeight) + this
+                                            ._getRowspanAddition(arc, spanY));
+                        }
+                        rw.startElement("tr", null); // label row                    
+
+                        //rw.writeAttribute("height", rowHeight, null); //Deprecated attribute
+                        rw.writeAttribute("style",
+                                "height:" + rowHeight + "px", null); //Better this                        
                     }
 
-                    //Now i have to modify inlineContentStyle to add height value
+                    //now we have to set the style attribute with proper height and width
+                    //and render the children!.
                     if (_isLabeledComponent(context, cell))
                     {
                         FacesBean cbean = getFacesBean(cell);
 
                         FacesBean.Type ctype = cbean.getType();
 
-                        PropertyKey _cstyle = ctype.findKey("contentStyle");
+                        //// DEFINE CONTENT STYLE FOR THE COMPONENT
 
-                        String cstyle = (String) cbean.getProperty(_cstyle);
-                        //LOG.info("contentStyle:"+cstyle);
+                        PropertyKey _contentStyle = ctype
+                                .findKey("contentStyle");
 
-                        if (!StringUtils.contains(cstyle, "height"))
+                        String contentStyle = (String) cbean
+                                .getProperty(_contentStyle);
+
+                        if (!StringUtils.contains(contentStyle, "height"))
                         {
                             if (!rowHeight.equals("0"))
                             {
-                                cbean.setProperty(_cstyle, (cstyle == null ? ""
-                                        : cstyle)
-                                        + ";height: " + rowHeight + "px");
+                                cbean.setProperty(_contentStyle,
+                                        (contentStyle == null ? ""
+                                                : contentStyle)
+                                                + ";height: "
+                                                + rowHeight
+                                                + "px");
                             }
                         }
 
-                        cstyle = (String) cbean.getProperty(_cstyle);
+                        contentStyle = (String) cbean
+                                .getProperty(_contentStyle);
 
-                        if (!StringUtils.contains(cstyle, "width"))
+                        if (!StringUtils.contains(contentStyle, "width"))
                         {
-                            /*
-                            Integer colWidth = Integer
-                                    .parseInt(this.calculateSize(bean,
-                                            columnWidths, numColumn
-                                                    - this.getSpanXItem(cell),
-                                            this.getSpanXItem(cell)))
-                                    - (this.getSpanXItem(cell) == 1 ? this
-                                            ._getCellspacing(bean) : 0) - 3;
-                            */
-                            cbean.setProperty(_cstyle, (cstyle == null ? ""
-                                    : cstyle)
-                                    + ";width: 100%"); // + colWidth + "px" //100%
+                            if (_isPercentWidth(bean))
+                            {
+                                cbean.setProperty(_contentStyle,
+                                        (contentStyle == null ? ""
+                                                : contentStyle)
+                                                + ";width: 100%");
+                            }
+                            else
+                            {
+                                Integer colWidth = Integer
+                                        .parseInt(this
+                                                .calculateSize(
+                                                        bean,
+                                                        columnWidths,
+                                                        numColumn
+                                                                - this
+                                                                        .getSpanXItem(cell),
+                                                        this.getSpanXItem(cell)))
+                                        + _getCorrectWidthInputComponent(arc,
+                                                cell)
+                                        + ((getSpanXItem(cell) - 1) * _getHspace(bean))
+                                //+_getColspanAddition(arc, this.getSpanXItem(cell))
+                                //+_getColspanFieldAddition(arc, this.getSpanXItem(cell))
+                                ;
+                                //- (this.getSpanXItem(cell) == 1 ? this
+                                //        ._getCellspacing(bean) : 0) - 3;
+
+                                cbean.setProperty(_contentStyle,
+                                        (contentStyle == null ? ""
+                                                : contentStyle)
+                                                + ";width:" + colWidth + "px"); // + colWidth + "px" //100%                                
+                            }
                         }
-                        
+
                         //Set the SkinResourceKeyMap form encode this
                         //component
-                        arc.setSkinResourceKeyMap(
-                            TableFormLayoutRenderer._RESOURCE_KEY_SIDE_BY_SIDE_MAP);
+                        arc
+                                .setSkinResourceKeyMap(TableFormLayoutRenderer._RESOURCE_KEY_SIDE_BY_SIDE_MAP);
+
+                        Map<String, Object> requestMap = context
+                                .getExternalContext().getRequestMap();
+
+                        Integer hspaceObject = (Integer) requestMap
+                                .get(TABLE_FORM_HSPACE);
+
+                        Boolean percentWidthObject = (Boolean) requestMap
+                                .get(TABLE_FORM_PERCENTWIDTH);
+
+                        if (_getHspace(bean) > 0)
+                        {
+                            requestMap.put(TABLE_FORM_HSPACE, _getHspace(bean));
+                            requestMap.put(TABLE_FORM_PERCENTWIDTH,
+                                    _isPercentWidth(bean));
+                        }
 
                         _encodeFormItem2(context, arc, rw, false, cell);
+
+                        if (hspaceObject == null)
+                        {
+                            requestMap.remove(TABLE_FORM_HSPACE);
+                        }
+                        else
+                        {
+                            requestMap.put(TABLE_FORM_HSPACE, hspaceObject
+                                    .intValue());
+                        }
+
+                        if (percentWidthObject == null)
+                        {
+                            requestMap.remove(TABLE_FORM_PERCENTWIDTH);
+                        }
+                        else
+                        {
+                            requestMap.put(TABLE_FORM_PERCENTWIDTH,
+                                    percentWidthObject.booleanValue());
+                        }
+
                     }
                     else
                     {
                         rw.startElement("td", null);
+
+                        if (!_isPercentWidth(bean))
+                        {
+                            rw.writeAttribute("width", Integer.parseInt(this
+                                    .calculateSize(bean, columnWidths,
+                                            numColumn - spanX, this
+                                                    .getSpanX(cell)))
+                                    + _getColspanAddition(arc, spanX)
+                                    + ((this.getSpanX(cell) - 1) * this
+                                            ._getHspace(bean)), null);
+                        }
+
                         renderStyleClass(context, arc,
-                                AF_TABLE_FORM_CONTENT_CELL_STYLE_CLASS);                        
+                                AF_TABLE_FORM_CONTENT_CELL_STYLE_CLASS);
+
+                        String style = (String) cell.getAttributes().get(
+                                "style");
+                        if (style == null)
+                        {
+                            style = "";
+                        }
+                        if (_isPercentWidth(bean))
+                        {
+                            if (style != null
+                                    && !StringUtils.contains(style, "width"))
+                            {
+                                cell.getAttributes().put("style",
+                                        style + ";width:100%");
+                            }
+                        }
+                        else
+                        {
+                            if (style != null
+                                    && !StringUtils.contains(style, "width"))
+                            {
+
+                                cell
+                                        .getAttributes()
+                                        .put(
+                                                "style",
+                                                style
+                                                        + ";width:"
+                                                        + (Integer
+                                                                .parseInt(this
+                                                                        .calculateSize(
+                                                                                bean,
+                                                                                columnWidths,
+                                                                                numColumn
+                                                                                        - spanX,
+                                                                                this
+                                                                                        .getSpanX(cell)))
+                                                                //+ _getColspanAddition(arc, spanX)
+                                                                + ((this
+                                                                        .getSpanX(cell) - 1) * this
+                                                                        ._getHspace(bean)) + _getCorrectWidthInputComponent(
+                                                                arc, cell))
+                                                        + "px");
+                            }
+                        }
+
                         _encodeFormItem2(context, arc, rw, false, cell);
                         rw.endElement("td");
                     }
@@ -1560,15 +2034,58 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                     rw.endElement("tbody"); // inner tbody
                     rw.endElement("table"); // inner table
 
+                    if (Agent.AGENT_IE.equals(arc.getAgent().getAgentName())
+                            && _isPercentWidth(bean))
+                    {
+                        //This code avoid bad column width when using percent
+                        //on IE
+                        rw.endElement("div");
+                        rw.endElement("td");
+                        rw.endElement("tr");
+                        rw.endElement("table");
+                    }
+
                     rw.endElement("td");
 
                 }
                 rw.endElement("tr");
             }
+
+            //Now we need tr if vspace is > 0
+
+            if (this._getVspace(bean) > 0)
+            {
+                if (rowIndex + 1 < rows.size())
+                {
+                    rw.startElement("tr", null);
+                    rw.writeAttribute("style", "height:"
+                            + this._getVspace(bean) + "px", null);
+                    rw.endElement("tr");
+                }
+            }
         }
     }
 
-    public String calculateSize(FacesBean bean, String[] sizes, int num,
+    protected int _getCorrectWidthInputComponent(RenderingContext arc,
+            UIComponent cell)
+    {
+
+        if (UIInput.class.isAssignableFrom(cell.getClass())
+                || UIXInput.class.isAssignableFrom(cell.getClass()))
+        {
+            if (Agent.AGENT_IE.equals(arc.getAgent().getAgentName()))
+            {
+                return -6;
+            }
+            if (Agent.AGENT_GECKO.equals(arc.getAgent().getAgentName()))
+            {
+                return -4;
+            }
+        }
+        return 0;
+    }
+
+    protected String calculateSize(FacesBean bean, String[] sizes, int num,
             int span)
     {
         String cw = "0";
@@ -1585,11 +2102,11 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
             {
                 if (_isPercentWidth(bean))
                 {
-                    int cw1 = 0;
+                    double cw1 = 0;
                     for (int i = num; i < num + span; i++)
                     {
-                        cw1 += Integer.parseInt(StringUtils.stripEnd(sizes[i],
-                                "%"));
+                        cw1 += Double.parseDouble(StringUtils.stripEnd(
+                                sizes[i], "%"));
                     }
                     //cw1 = cw1 + this._getCellspacing(bean) * (span - 1);
                     cw = "" + cw1;
@@ -1601,9 +2118,36 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
                     {
                         cw1 += Integer.parseInt(sizes[i]);
                     }
-                    cw1 = cw1 + this._getCellspacing(bean) * (span - 1);
+                    //cw1 = cw1;// + this._getCellspacing(bean) * (span - 1);
                     cw = "" + cw1;
                 }
+            }
+        }
+        return cw;
+    }
+
+    protected String calculateRowSize(FacesBean bean, String[] sizes, int num,
+            int span)
+    {
+        String cw = "0";
+        if (sizes != null)
+        {
+            //LOG.debug("calculateSize:" + sizes.toString() + " " + num + " "
+            //        + span);
+            if (span == 1)
+            {
+                cw = sizes[num];
+                //numColumn++;
+            }
+            else
+            {
+                int cw1 = 0;
+                for (int i = num; i < num + span; i++)
+                {
+                    cw1 += Integer.parseInt(sizes[i]);
+                }
+                //cw1 = cw1;// + this._getCellspacing(bean) * (span - 1);
+                cw = "" + cw1;
             }
         }
         return cw;
@@ -2144,7 +2688,9 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
     private PropertyKey _heightKey;
     private PropertyKey _widthKey;
     private PropertyKey _inlineStyleKeyWidth;
-    private PropertyKey _cellspacingKey;
+    private PropertyKey _hspaceKey;
+    private PropertyKey _vspaceKey;
+    private PropertyKey _percentWidthKey;
 
     // Overallocate because we basically want everything to miss
     private static final Set<String> _UNSUPPORTED_RENDERER_TYPES;
@@ -2163,8 +2709,8 @@ public class TableFormLayoutRenderer extends XhtmlRenderer
     //like org.apache.myfaces.trinidadinternal.TableFormNestLevel
     //But because dependences in LabelAndMessageRenderer
     private static final String TABLE_FORM_NEST_LEVEL_KEY = "org.apache.myfaces.trinidadinternal.TableFormNestLevel";
-
-    // private static final int _COLUMNS_DEFAULT = 3;
+    private static final String TABLE_FORM_HSPACE = "org.apache.myfaces.trinidadinternal.TableFormHspace";
+    private static final String TABLE_FORM_PERCENTWIDTH = "org.apache.myfaces.trinidadinternal.TableFormPercentWidth";
 
     // we need a resource key map since we are using LabelAndMessageRenderer.
     private static final Map<String, String> _RESOURCE_KEY_SIDE_BY_SIDE_MAP;

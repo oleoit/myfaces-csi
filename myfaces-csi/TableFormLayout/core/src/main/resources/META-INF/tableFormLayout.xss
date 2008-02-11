@@ -58,7 +58,7 @@
 	</styleSheet>
 
 	<styleSheet browsers="ie">	
-        <style selector="af|tableFormLayout::content-cell td">
+        <style selector="af|tableFormLayout::content-cell">
             <!-- It's a fix for IE problem with inputText component -->
             <property name="position">relative</property>  
         </style>

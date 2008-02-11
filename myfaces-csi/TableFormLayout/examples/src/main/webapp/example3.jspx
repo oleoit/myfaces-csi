@@ -36,7 +36,7 @@
 		<tr:document title="Apache Trinidad Blank Demo">
 			<tr:form>
 				<tr:panelPage>
-					<mycomp:tableFormLayout width="700" cellspacing="5" height="120"
+					<mycomp:tableFormLayout width="700" hspace="5" vspace="5" height="120"
 						columns="1*;1*;1*;1*;1*;1*" rows="1*;1*;1*;1*;1*;1*" >
 						<tr:outputText value="Layout Example: Add a Comment">
 							<f:attribute name="spanX" value="6" />
@@ -53,6 +53,12 @@
 							<f:attribute name="spanXLabel" value="2" />
 						</tr:inputText>						
 					</mycomp:tableFormLayout>
+                    <tr:panelHorizontalLayout>
+                        <h:outputLink value="home.jsp">
+                            <f:verbatim>GO HOME</f:verbatim>
+                        </h:outputLink>                                               
+                    </tr:panelHorizontalLayout>
+					
 				</tr:panelPage>
 			</tr:form>
 		</tr:document>
