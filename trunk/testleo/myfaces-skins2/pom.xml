@@ -188,6 +188,18 @@
         <artifactId>skins-impl</artifactId>
         <version>${pom.version}</version>
       </dependency>
+
+      <dependency>
+        <groupId>org.apache.myfaces.skins</groupId>
+        <artifactId>shared-api</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.myfaces.trinidad</groupId>
+        <artifactId>shared-impl</artifactId>
+        <version>${pom.version}</version>
+      </dependency>
       <!-- 
       <dependency>
         <groupId>org.apache.myfaces.trinidad</groupId>
@@ -241,6 +253,8 @@
   </dependencyManagement>
 
   <modules>
+    <module>shared-api</module>
+    <module>shared-impl</module>
     <module>skins-api</module>
     <module>skins-impl</module>
     <!-- 
