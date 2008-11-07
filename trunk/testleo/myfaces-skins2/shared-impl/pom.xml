@@ -21,8 +21,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"> 
   <modelVersion>4.0.0</modelVersion>
 
-  <name>Apache MyFaces Skins Impl</name>
-  <description>Private implementation of the Apache MyFaces Skins project</description>
+  <name>Apache MyFaces Skins Shared Impl</name>
+  <description>Private implementation of the Apache MyFaces Shared Skins project</description>
 
   <parent>
     <groupId>org.apache.myfaces.skins</groupId>
@@ -77,7 +77,7 @@
 
     <dependency>
       <groupId>org.apache.myfaces.skins</groupId>
-      <artifactId>skins-api</artifactId>
+      <artifactId>shared-api</artifactId>
     </dependency>
 
     <!-- 

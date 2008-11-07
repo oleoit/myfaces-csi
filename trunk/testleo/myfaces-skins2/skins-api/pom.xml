@@ -41,6 +41,11 @@
       <artifactId>trinidad-build</artifactId>
     </dependency>
      -->
+
+    <dependency>
+      <groupId>org.apache.myfaces.skins</groupId>
+      <artifactId>shared-api</artifactId>
+    </dependency>
     
     <dependency>
       <groupId>javax.servlet</groupId>
