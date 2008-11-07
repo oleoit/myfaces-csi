@@ -196,7 +196,7 @@
       </dependency>
 
       <dependency>
-        <groupId>org.apache.myfaces.trinidad</groupId>
+        <groupId>org.apache.myfaces.skins</groupId>
         <artifactId>shared-impl</artifactId>
         <version>${pom.version}</version>
       </dependency>
