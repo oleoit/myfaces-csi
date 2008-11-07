@@ -457,6 +457,7 @@
       by making sure that there is no -DperformRelease property on the maven command.  If
       there is, it may manually be invoked by adding a -PbuildExamples.
     -->
+    <!--
     <profile>
       <id>buildExamples</id>
       <activation>
@@ -476,12 +477,14 @@
         <module>trinidad-partial-lifecycle</module>
       </modules>
     </profile>
+    -->
 
     <!-- 
       This profile is for preparing a release.  Execute this profile like this:
       
       mvn release:prepare -DprepareRelease=true
     -->
+    <!--
     <profile>
       <id>prepare-release</id>
 
@@ -496,6 +499,7 @@
         <module>trinidad-sandbox</module>
       </modules>
     </profile>
+    -->
 
     <!-- 
       This profile is for building the release artifacts for review.  Execute this profile 
