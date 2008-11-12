@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"> 
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>org.apache.myfaces.skins</groupId>
+  <artifactId>myfaces-skins</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>Apache MyFaces Skins</name>
+  <description>Public API for the Apache MyFaces Skinning project</description>
+  
+  <modules>
+    <module>skins-api</module>
+    <module>skins-impl</module>
+  </modules>
+  
+  <properties>
+    <!-- Standards -->
+    <jdk.version>1.5</jdk.version>    
+    <servlet.version>2.4</servlet.version>
+    <portlet.version>1.0</portlet.version>
+    <jsp.version>2.1</jsp.version>
+    <jstl.version>1.1.2</jstl.version>
+    <jsf-spec.version>1.1</jsf-spec.version>
+    <jsf-ri.version>1.1_02</jsf-ri.version>
+    <jsf-myfaces.version>1.1.6</jsf-myfaces.version>
+    <jsf-facelets.version>1.1.11</jsf-facelets.version>
+    <commons-lang.version>2.4</commons-lang.version>
+    
+    <!-- Testing -->
+    <shale.version>1.0.4</shale.version>
+    <jmock.version>1.2.0</jmock.version>
+    <junit.version>4.4</junit.version>
+    
+    <!-- Plugins -->
+    <trinidad-plugins.version>1.2.5</trinidad-plugins.version>
+    <wagon-plugin.version>1.0.6</wagon-plugin.version>
+    <jetty-plugin.version>6.1.7</jetty-plugin.version>
+    
+    <!-- Other -->
+    <jdev.release>11.1.1.0.0</jdev.release>
+  </properties>
+  
+</project>
