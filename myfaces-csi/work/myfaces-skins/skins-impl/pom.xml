@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"> 
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>org.apache.myfaces.skins</groupId>
+  <artifactId>myfaces-skins-impl</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>Apache MyFaces Skins Impl</name>
+  <description>Public API for the Apache MyFaces Skinning project</description>
+  
+  <parent>
+    <groupId>org.apache.myfaces.skins</groupId>
+    <artifactId>myfaces-skins</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+          <groupId>org.apache.myfaces.buildtools</groupId>
+          <artifactId>myfaces-builder-plugin</artifactId>
+          <version>1.0.1</version>
+          <executions>
+              <execution>
+                  <goals>
+                      <goal>build-metadata</goal>
+                      <goal>make-components</goal>
+                      <goal>make-tags</goal>
+                  </goals>
+              </execution>
+              <execution>
+                <id>makefacesconfig</id>
+                <configuration>
+                    <xmlFile>META-INF/faces-config.xml</xmlFile>
+                    <xmlBaseFile>src/main/conf/META-INF/faces-config.xml</xmlBaseFile>
+                </configuration>
+                <goals>
+                    <goal>make-config</goal>
+                </goals>
+              </execution>
+              <execution>
+                  <id>maketld</id>
+                  <configuration>
+                      <xmlFile>META-INF/skins.tld</xmlFile>
+                      <templateFile>mycomponents.tld.vm</templateFile>
+                      <params>
+                         <shortname>skins</shortname>
+                         <uri>http://myfaces.apache.org/skins</uri>
+                         <displayname>myfaces skins tag library</displayname>
+                         <description>Tags for myfaces skins.</description>
+                      </params>
+                  </configuration>
+                  <goals>
+                      <goal>make-config</goal>
+                  </goals>
+              </execution>
+          </executions>
+      </plugin>      
+    </plugins>    
+  </build>
+  
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.myfaces.skins</groupId>
+      <artifactId>myfaces-skins-api</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+  
+    <dependency>
+      <groupId>org.apache.myfaces.core</groupId>
+      <artifactId>myfaces-api</artifactId>
+      <version>${jsf-myfaces.version}</version>
+    </dependency>
+    
+	  <dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jsp-api</artifactId>
+	    <version>2.0</version>
+	    <scope>provided</scope>
+	  </dependency>
+    
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>${servlet.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.shale</groupId>
+      <artifactId>shale-test</artifactId>
+      <version>1.0.3</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.myfaces</groupId>
+          <artifactId>myfaces-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.myfaces</groupId>
+          <artifactId>myfaces-impl</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>myfaces</groupId>
+          <artifactId>myfaces-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>myfaces</groupId>
+          <artifactId>myfaces-impl</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>  
+  
+</project>
