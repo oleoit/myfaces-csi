@@ -14,8 +14,25 @@
     <h:panelGrid columns="2">
       <t:outputText value="Input Text1"/>
       <t:inputText/>
+      <t:outputText value="Input Text2"/>
+      <t:inputText/>
       <t:outputText value="Command Button"/>
       <t:commandButton value="Test"/>
+
+      <t:outputText value="Panel Group"/>
+      <t:panelGroup style="background-color: #9999ff">
+        <t:selectManyCheckbox>
+          <f:selectItem itemLabel="item1" itemValue="item1"/>
+          <f:selectItem itemLabel="item2" itemValue="item2"/>
+          <f:selectItem itemLabel="item3" itemValue="item3"/>
+        </t:selectManyCheckbox>
+        <t:selectOneRadio>
+          <f:selectItem itemLabel="item1" itemValue="item1"/>
+          <f:selectItem itemLabel="item2" itemValue="item2"/>
+          <f:selectItem itemLabel="item3" itemValue="item3"/>
+        </t:selectOneRadio>
+        <t:commandButton value="Submit"/>
+      </t:panelGroup>
     </h:panelGrid>
   </h:form>
 </f:view>
