@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<styleSheetDocument xmlns="http://myfaces.apache.org/uix/style"
+                    version="2.0">
+<styleSheet>
+
+  <style selector="af|panelBox::header">
+    <property name="width">100%</property>
+
+    <!-- Only tile the header's background image horizontally.
+         That way, if the user zooms up the text size, the 
+         header's top border won't end up repeating -->
+    <property name="background-repeat">repeat-x</property>
+  </style>
+  
+  <style selector="af|button">
+    <property name="background">#AAAA00</property>
+  </style>
+
+</styleSheet>
+
+</styleSheetDocument>
