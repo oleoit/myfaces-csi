@@ -38,5 +38,15 @@
         <renderer-type>org.apache.myfaces.Button</renderer-type>
         <renderer-class>org.apache.myfaces.renderkit.html.skin.HtmlButtonSkinRenderer</renderer-class>
       </renderer>
+      <renderer>
+        <component-family>javax.faces.Input</component-family>
+        <renderer-type>org.apache.myfaces.Text</renderer-type>
+        <renderer-class>org.apache.myfaces.renderkit.html.skin.HtmlTextSkinRenderer</renderer-class>
+      </renderer>  
+      <renderer>
+        <component-family>javax.faces.Panel</component-family>
+        <renderer-type>org.apache.myfaces.Group</renderer-type>
+        <renderer-class>org.apache.myfaces.renderkit.html.skin.HtmlGroupSkinRenderer</renderer-class>
+      </renderer>
   </render-kit>
 </faces-config>
