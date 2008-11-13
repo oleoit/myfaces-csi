@@ -15,6 +15,14 @@
   <style selector="af|button">
     <property name="background">#AAAA00</property>
   </style>
+  
+  <style selector="af|textfield">
+    <property name="background">#AAAA00</property>
+  </style>
+
+  <style selector="SPAN">
+    <property name="font-family">Comic Sans MS</property>
+  </style>
 
 </styleSheet>
 
