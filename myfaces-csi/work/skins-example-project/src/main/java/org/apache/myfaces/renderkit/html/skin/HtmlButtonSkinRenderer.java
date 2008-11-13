@@ -9,7 +9,7 @@ public class HtmlButtonSkinRenderer extends HtmlButtonRenderer implements Skinna
 
     public void applySkin(UIComponent component)
     {
-        component.getAttributes().put("styleClass", "tr_button");
+        component.getAttributes().put("styleClass", "af_button");
     }
 
 }
