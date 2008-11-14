@@ -63,6 +63,7 @@ public class SkinsCSSFilter implements Filter
             out.write(buffer, 0, size);
         }
         out.flush();
+        in.close();
     }
     
     public void destroy()

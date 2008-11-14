@@ -40,13 +40,13 @@ public class SkinRenderingContextTest extends AbstractJsfTestCase
         
         facesContext.setExternalContext(mExtCtx);
         externalContext = mExtCtx;
+
+        GlobalConfiguratorImpl instance = GlobalConfiguratorImpl.getInstance();
+        instance.beginRequest(externalContext);
     }
     
     public void testGetStyleContext()
     {
-        GlobalConfiguratorImpl instance = GlobalConfiguratorImpl.getInstance();
-        instance.beginRequest(externalContext);
-        
         SkinRenderingContext skinCtx = new SkinRenderingContext();
         StyleContext styleCtx = skinCtx.getStyleContext();
         assertNotNull(styleCtx);
@@ -56,10 +56,7 @@ public class SkinRenderingContextTest extends AbstractJsfTestCase
     }
     
     public void testGetSkinFamily()
-    {
-        GlobalConfiguratorImpl instance = GlobalConfiguratorImpl.getInstance();
-        instance.beginRequest(externalContext);
-        
+    {        
         SkinRenderingContext skinCtx = new SkinRenderingContext();
         assertNotNull(skinCtx.getSkin());
     }
