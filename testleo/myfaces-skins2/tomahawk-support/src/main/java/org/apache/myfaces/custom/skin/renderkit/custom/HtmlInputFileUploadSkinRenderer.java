@@ -25,7 +25,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 
 public class HtmlInputFileUploadSkinRenderer extends AdapterSkinRenderer
 {
@@ -37,7 +37,7 @@ public class HtmlInputFileUploadSkinRenderer extends AdapterSkinRenderer
 
     @Override
     protected void _addStyleClassesToComponent(FacesContext context,
-            UIComponent component, RenderingContext arc) throws IOException
+            UIComponent component, SkinRenderingContext arc) throws IOException
     {
         _addStyleDisabledReadOnlyRequired(context, component, arc);
     }

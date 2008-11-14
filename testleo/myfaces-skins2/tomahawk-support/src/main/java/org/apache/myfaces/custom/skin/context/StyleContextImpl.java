@@ -26,7 +26,7 @@ import javax.faces.context.FacesContext;
 
 import org.apache.myfaces.trinidad.context.AccessibilityProfile;
 import org.apache.myfaces.trinidad.context.LocaleContext;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidad.logging.TrinidadLogger;
 import org.apache.myfaces.trinidad.skin.Icon;
 import org.apache.myfaces.trinidad.skin.Skin;
@@ -43,7 +43,7 @@ import org.apache.myfaces.trinidadinternal.style.StyleProvider;
 class StyleContextImpl implements StyleContext
 {
   public StyleContextImpl(
-    RenderingContext arc,
+    SkinRenderingContext arc,
     String generatedFilesPath)
   {
     _arc = arc;
@@ -199,7 +199,7 @@ class StyleContextImpl implements StyleContext
   }
 
 
-  private RenderingContext _arc;
+  private SkinRenderingContext _arc;
   private String  _generatedFilesPath;
   private StyleProvider _styleProvider;
   private StyleMap _styleMap;

@@ -44,7 +44,12 @@ public class ConfigParser
     {
         RequestContextBean bean = new RequestContextBean();
 
-        InputStream in = externalContext.getResourceAsStream(_CONFIG_FILE);
+        InputStream in = externalContext.getResourceAsStream(_SKINS_CONFIG_FILE);
+        if (in == null)
+        {
+            in = externalContext.getResourceAsStream(_TRINIDAD_CONFIG_FILE);    
+        }
+        
         if (in != null)
         {
             try
@@ -60,7 +65,7 @@ public class ConfigParser
 
                 InputSource input = new InputSource();
                 input.setByteStream(in);
-                input.setPublicId(_CONFIG_FILE);
+                input.setPublicId(_SKINS_CONFIG_FILE);
                 digester.parse(input);
                 bean = (RequestContextBean) digester.getRoot();
             }
@@ -93,7 +98,8 @@ public class ConfigParser
         return bean;
     }
 
-    static private final String _CONFIG_FILE = "/WEB-INF/trinidad-config.xml";
+    static private final String _SKINS_CONFIG_FILE = "/WEB-INF/skins-config.xml";
+    static private final String _TRINIDAD_CONFIG_FILE = "/WEB-INF/trinidad-config.xml";
     static private final TrinidadLogger _LOG = TrinidadLogger
             .createTrinidadLogger(ConfigParser.class);
 }

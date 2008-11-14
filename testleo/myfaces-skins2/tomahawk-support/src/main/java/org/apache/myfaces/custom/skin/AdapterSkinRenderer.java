@@ -30,7 +30,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.OutputUtils;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.SkinSelectors;
 
@@ -45,7 +45,7 @@ public class AdapterSkinRenderer extends SkinRenderer
 
     @Override
     protected void _addStyleClassesToComponent(FacesContext context,
-            UIComponent component, RenderingContext arc) throws IOException
+            UIComponent component, SkinRenderingContext arc) throws IOException
     {
         this._addStyleClass(context, component, arc);
     }
@@ -59,7 +59,7 @@ public class AdapterSkinRenderer extends SkinRenderer
      * @throws IOException
      */
     protected void _addStyleClass(FacesContext context, UIComponent component,
-            RenderingContext arc) throws IOException
+            SkinRenderingContext arc) throws IOException
     {
 
         String baseStyleClass = this.getBaseStyleName(component);
@@ -91,7 +91,7 @@ public class AdapterSkinRenderer extends SkinRenderer
     }
 
     protected void _addStyleDisabled(FacesContext context,
-            UIComponent component, RenderingContext arc) throws IOException
+            UIComponent component, SkinRenderingContext arc) throws IOException
     {
 
         String contentStyleClass = component.getClass().getName();
@@ -215,7 +215,7 @@ public class AdapterSkinRenderer extends SkinRenderer
      * @throws IOException
      */
     protected void _addStyleDisabledReadOnly(FacesContext context,
-            UIComponent component, RenderingContext arc) throws IOException
+            UIComponent component, SkinRenderingContext arc) throws IOException
     {
 
         String contentStyleClass = component.getClass().getName();
@@ -397,7 +397,7 @@ public class AdapterSkinRenderer extends SkinRenderer
      * 
      */
     public void _addStyleDisabledReadOnlyRequired(FacesContext context,
-            UIComponent component, RenderingContext arc) throws IOException
+            UIComponent component, SkinRenderingContext arc) throws IOException
     {
 
         String contentStyleClass = component.getClass().getName();

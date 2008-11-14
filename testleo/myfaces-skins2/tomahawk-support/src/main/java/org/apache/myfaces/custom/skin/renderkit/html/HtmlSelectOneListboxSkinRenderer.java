@@ -24,7 +24,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 
 public class HtmlSelectOneListboxSkinRenderer extends
         HtmlSelectOneOrManySkinRenderer

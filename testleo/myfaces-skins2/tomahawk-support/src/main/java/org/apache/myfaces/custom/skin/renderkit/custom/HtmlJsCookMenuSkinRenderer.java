@@ -29,7 +29,7 @@ import javax.faces.context.ResponseWriter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 
 /**
  * 
@@ -52,7 +52,7 @@ public class HtmlJsCookMenuSkinRenderer extends AdapterSkinRenderer
 
     @Override
     protected void _addStyleClassesToComponent(FacesContext context,
-            UIComponent component, RenderingContext arc) throws IOException
+            UIComponent component, SkinRenderingContext arc) throws IOException
     {
 
         //log.info("Rendering... javascript_location:"+(String) component.getAttributes().get(JSFAttr.JAVASCRIPT_LOCATION));
