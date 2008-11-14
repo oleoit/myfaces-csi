@@ -28,18 +28,20 @@ import org.apache.myfaces.trinidad.skin.Icon;
 import org.apache.myfaces.trinidad.util.ThreadLocalUtils;
 
 /**
+ * SKINFIX: Add SkinRenderingContext class and add it as
+ * base of RenderingContext
  */
-abstract public class RenderingContext
+abstract public class SkinRenderingContext
 {
   /**
    * Retrieves the RenderingContext active for the current thread.
    */
-  static public RenderingContext getCurrentInstance()
+  static public SkinRenderingContext getCurrentInstance()
   {
     return _CURRENT_CONTEXT.get();
   }
 
-  public RenderingContext()
+  public SkinRenderingContext()
   {
     attach();
   }
@@ -94,7 +96,7 @@ abstract public class RenderingContext
   abstract public Map<String, String> getSkinResourceKeyMap();
   abstract public boolean isRightToLeft();
   abstract public String getOutputMode();
-  abstract public RequestContext.Accessibility getAccessibilityMode();
+  abstract public SkinRequestContext.Accessibility getAccessibilityMode();
   abstract public AccessibilityProfile getAccessibilityProfile();
   abstract public boolean isAnimationEnabled();
 
@@ -152,9 +154,9 @@ abstract public class RenderingContext
   }
 
 
-  static private final ThreadLocal<RenderingContext> _CURRENT_CONTEXT = 
+  static private final ThreadLocal<SkinRenderingContext> _CURRENT_CONTEXT = 
                                                            ThreadLocalUtils.newRequestThreadLocal();  
   
   static private final TrinidadLogger _LOG =
-    TrinidadLogger.createTrinidadLogger(RenderingContext.class);
+    TrinidadLogger.createTrinidadLogger(SkinRenderingContext.class);
 }

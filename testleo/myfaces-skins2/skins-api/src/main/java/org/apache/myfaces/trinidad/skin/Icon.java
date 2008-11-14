@@ -24,7 +24,7 @@ import java.io.InputStream;
 import java.util.Map;
 import javax.faces.context.FacesContext;
 
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidad.logging.TrinidadLogger;
 
 
@@ -67,7 +67,7 @@ abstract public class Icon
    */
   abstract public void renderIcon(
     FacesContext context,
-    RenderingContext arc,
+    SkinRenderingContext arc,
     Map<String, ? extends Object> attrs
     ) throws IOException;
 
@@ -82,7 +82,7 @@ abstract public class Icon
    */
   public Object getImageURI(
     FacesContext        context,
-    RenderingContext arc)
+    SkinRenderingContext arc)
   {
     return null;
   }
@@ -94,7 +94,7 @@ abstract public class Icon
    * known - or that the Icon does not provide an image representation.
    * @param arc RenderingContext 
    */
-  public Integer getImageWidth(RenderingContext arc)
+  public Integer getImageWidth(SkinRenderingContext arc)
   {
     return null;
   }
@@ -107,7 +107,7 @@ abstract public class Icon
    * @param arc RenderingContext 
    *
    */
-  public Integer getImageHeight(RenderingContext arc)
+  public Integer getImageHeight(SkinRenderingContext arc)
   {
     return null;
   }
@@ -122,7 +122,7 @@ abstract public class Icon
   // TODO: Delete if unnecessary
   public InputStream openStream(
     FacesContext        context,
-    RenderingContext arc
+    SkinRenderingContext arc
     ) throws IOException
   {
     // This operation is not supported by default.  Log a warning.
