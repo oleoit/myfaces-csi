@@ -1,0 +1,115 @@
+/*
+	Licensed to the Apache Software Foundation (ASF) under one
+	or more contributor license agreements.  See the NOTICE file
+	distributed with this work for additional information
+	regarding copyright ownership.  The ASF licenses this file
+	to you under the Apache License, Version 2.0 (the
+	"License"); you may not use this file except in compliance
+	with the License.  You may obtain a copy of the License at
+	
+	http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing,
+	software distributed under the License is distributed on an
+	"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+	KIND, either express or implied.  See the License for the
+	specific language governing permissions and limitations
+	under the License.
+	
+*/
+
+
+/*
+	In this file I define other things that could be defined in 
+	myfaces-skins.xml, but it's more easy to define in css style
+	syntax.
+*/
+
+/*
+   --------------------------------------------------------------
+    Horizontal Panelnavigation
+   --------------------------------------------------------------
+*/
+.AFPanelNavigationHorizontal {
+    margin: 0;
+    padding: 0;   
+    height: 60px;
+    width: 800px;
+}
+.AFPanelNavigationHorizontal ul {    
+    padding: 0;
+    margin: 0;    
+}
+.AFPanelNavigationHorizontal ul li ul {
+    margin: 0;
+    padding: 0;
+}
+.AFPanelNavigationHorizontal ul a {
+    text-decoration: none;
+}
+.AFPanelNavigationHorizontal ul li { /*float the main list items*/
+    margin: 0;
+    float: left;
+    display: block;
+    padding: 5px;
+}
+.AFPanelNavigationHorizontal ul li ul {
+    display: none;
+}
+.AFPanelNavigationHorizontal ul li.off ul, .AFPanelNavigationHorizontal ul li.on ul { /*put the subnav below*/
+    position: absolute;
+    top: 36px;
+    *top: 44px;/*reposition for IE*/      
+    background: #97f099;    
+    left: 13px;
+    *left: 15px;
+    width: 740px;    
+}
+.AFPanelNavigationHorizontal ul li.on ul {    
+    display: block;
+    background: #f90;
+}
+.AFPanelNavigationHorizontal ul li.on:hover ul, .AFPanelNavigationHorizontal ul li.over ul { /*for ie*/
+    background: #97f099;
+}
+.AFPanelNavigationHorizontal ul li a {
+    color: #B510D;
+    font-weight: bold;
+    display: block;
+    padding: 5;
+}
+.AFPanelNavigationHorizontal ul li.on a {   
+    color: #fff;
+    background: #f90;
+}
+.AFPanelNavigationHorizontal ul li.on ul a, .AFPanelNavigationHorizontal ul li.off ul a {
+    float: left; /*ie doesn't inherit the float*/
+    border: 0;
+    color: #f90;
+    width: auto;    
+}
+.AFPanelNavigationHorizontal ul li.on:hover ul a, .AFPanelNavigationHorizontal ul li.over ul li a { /*for ie - the specificity is necessary*/
+    background: #97f099;
+}
+.AFPanelNavigationHorizontal ul li.off:hover ul, .AFPanelNavigationHorizontal ul li.over ul {
+    display: block;
+    z-index: 6000;
+}		
+.AFPanelNavigationHorizontal ul li.off a:hover, .AFPanelNavigationHorizontal ul li:hover a, .AFPanelNavigationHorizontal ul li.over a {
+    background: #97f099;
+    color: #f90;
+}
+.AFPanelNavigationHorizontal ul li.off a:hover, .AFPanelNavigationHorizontal ul li.on a:hover { 
+    color: #f90;
+}		
+/*subnav formatting*/
+.AFPanelNavigationHorizontal ul li.off ul a {
+    display: block;
+    background: #97f099;
+    color: #fff;    
+}		
+.AFPanelNavigationHorizontal ul li.on ul a {       
+    display: block;
+    background: #f90;
+    color: #fff;    
+}
