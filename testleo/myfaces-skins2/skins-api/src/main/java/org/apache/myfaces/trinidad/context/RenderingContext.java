@@ -96,7 +96,6 @@ abstract public class RenderingContext
   abstract public String getOutputMode();
   abstract public RequestContext.Accessibility getAccessibilityMode();
   abstract public AccessibilityProfile getAccessibilityProfile();
-  
   abstract public boolean isAnimationEnabled();
 
   // TODO This is a hack API to enable caching of the client ID.
