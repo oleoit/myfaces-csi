@@ -49,12 +49,15 @@ import org.apache.myfaces.trinidad.logging.TrinidadLogger;
  * as extending <code>FacesContext</code> requires taking over the
  * <code>FacesContextFactory</code>.
  * <p>
+ * 
+ * SKINFIX: Add SkinRequestContext class and add it as
+ * base of RequestContext
  */
 // TODO Refactor this class after everything gets added to it.
 // TODO There's some values in here that seem to affect only output (e.g.,
 //  right-to-left); that's not great, since ideally that detail would be
 //  buried in something more renderer-specific.
-abstract public class RequestContext
+abstract public class SkinRequestContext
 {
   /**
    * Name of the EL implicit variable ("requestContext") that is used to
@@ -78,7 +81,7 @@ abstract public class RequestContext
   /**
    * Retrieves the RequestContext active for the current thread.
    */
-  static public RequestContext getCurrentInstance()
+  static public SkinRequestContext getCurrentInstance()
   {
     return _CURRENT_CONTEXT.get();
   }
@@ -90,7 +93,7 @@ abstract public class RequestContext
    * and may not be instantiated directly.
    * @see RequestContextFactory
    */
-  protected RequestContext()
+  protected SkinRequestContext()
   {
   }
 
@@ -574,7 +577,7 @@ abstract public class RequestContext
     if (!_LOG.isFinest())
     {
       error += " To enable stack traces of each RequestContext attach/release call," +
-        " enable Level.FINEST logging for the "+RequestContext.class;
+        " enable Level.FINEST logging for the "+SkinRequestContext.class;
     }
     return error;
   }
@@ -590,8 +593,8 @@ abstract public class RequestContext
   @SuppressWarnings({"CollectionWithoutInitialCapacity"})
   private static final ConcurrentMap<ClassLoader, ConcurrentMap<String, Object>> _APPLICATION_MAPS =
        new ConcurrentHashMap<ClassLoader, ConcurrentMap<String, Object>>();
-  static private final ThreadLocal<RequestContext> _CURRENT_CONTEXT =
-    new ThreadLocal<RequestContext>();
+  static private final ThreadLocal<SkinRequestContext> _CURRENT_CONTEXT =
+    new ThreadLocal<SkinRequestContext>();
   static private final TrinidadLogger _LOG =
-    TrinidadLogger.createTrinidadLogger(RequestContext.class);
+    TrinidadLogger.createTrinidadLogger(SkinRequestContext.class);
 }

@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.MissingResourceException;
 
 import org.apache.myfaces.trinidad.context.LocaleContext;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 
 /**
  * Defines the components (icons, styles, etc)
@@ -62,7 +62,7 @@ abstract public class Skin
   /**
    * Returns the id of the Skin's stylesheet document.
    */
-  abstract public String getStyleSheetDocumentId(RenderingContext arc);
+  abstract public String getStyleSheetDocumentId(SkinRenderingContext arc);
 
   /**
    * Returns the style class map, or null if there is no map.
@@ -70,7 +70,7 @@ abstract public class Skin
    * the key, and the value could be a shortened style class name,
    * or a portlet style class name, etc.
    */
-  abstract public Map<String, String> getStyleClassMap(RenderingContext arc);
+  abstract public Map<String, String> getStyleClassMap(SkinRenderingContext arc);
 
   /**
    * Returns the name of the style sheet for this Skin.
