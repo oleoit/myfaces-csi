@@ -35,7 +35,7 @@ public class PdaHtmlSkin extends XhtmlSkin
   public PdaHtmlSkin()
   {
     // Register customizable Icons
-    CoreSkinUtils.registerIcons(this, _CUSTOMIZABLE_ICONS);
+    CoreBaseSkinUtils.registerIcons(this, _CUSTOMIZABLE_ICONS);
     _registerSkinProperties();
   }
 

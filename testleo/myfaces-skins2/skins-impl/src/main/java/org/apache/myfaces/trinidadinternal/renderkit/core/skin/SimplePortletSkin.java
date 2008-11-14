@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 //import org.apache.myfaces.trinidadinternal.renderkit.core.CoreRenderKit;
 import org.apache.myfaces.trinidadinternal.renderkit.core.skin.BaseDesktopSkin;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.SkinSelectors;
@@ -84,7 +84,7 @@ public class SimplePortletSkin  extends BaseDesktopSkin
   */
   @Override
   public Map<String, String> getStyleClassMap(
-    RenderingContext arc
+    SkinRenderingContext arc
     )
   {
     return _STYLES_MAP;

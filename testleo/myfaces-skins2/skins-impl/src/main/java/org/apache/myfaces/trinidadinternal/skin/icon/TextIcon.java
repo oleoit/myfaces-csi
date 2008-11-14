@@ -26,7 +26,7 @@ import javax.faces.context.ResponseWriter;
 
 import org.apache.myfaces.trinidad.skin.Icon;
 
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 
 import org.apache.myfaces.trinidadinternal.style.Style;
 import org.apache.myfaces.trinidadinternal.style.util.StyleUtils;
@@ -87,7 +87,7 @@ public class TextIcon extends Icon
   @Override
   public void renderIcon(
     FacesContext context,
-    RenderingContext arc,
+    SkinRenderingContext arc,
     Map<String, ? extends Object> attrs
     ) throws IOException
   {
@@ -202,7 +202,7 @@ public class TextIcon extends Icon
   /**
    * Returns the text to render.
    */
-  protected String getText(RenderingContext arc)
+  protected String getText(SkinRenderingContext arc)
   {
     if ((_rtlText != null) && arc.isRightToLeft() )
       return _rtlText;

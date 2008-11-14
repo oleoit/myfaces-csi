@@ -33,7 +33,7 @@ import javax.faces.context.ResponseWriter;
 import org.apache.myfaces.trinidad.util.ArrayMap;
 
 import org.apache.myfaces.trinidadinternal.agent.TrinidadAgent;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 //import org.apache.myfaces.trinidad.render.CoreRenderer;
 import org.apache.myfaces.trinidad.skin.Icon;
 
@@ -104,7 +104,7 @@ public class OutputUtils
 
   public static void renderLayoutTableAttributes(
     FacesContext        context,
-    RenderingContext    arc,
+    SkinRenderingContext    arc,
     Object              cellspacing,
     Object              tableWidth
     ) throws IOException
@@ -115,7 +115,7 @@ public class OutputUtils
 
   public static void renderLayoutTableAttributes(
     FacesContext        context,
-    RenderingContext arc,
+    SkinRenderingContext arc,
     Object              cellpadding,
     Object              cellspacing,
     Object              tableWidth
@@ -131,7 +131,7 @@ public class OutputUtils
    */
   public static void renderLayoutTableAttributes(
     FacesContext        context,
-    RenderingContext arc,
+    SkinRenderingContext arc,
     Object              cellpadding,
     Object              cellspacing,
     Object              border,
@@ -148,7 +148,7 @@ public class OutputUtils
    */
   public static void renderLayoutTableAttributes(
     FacesContext        context,
-    RenderingContext arc,
+    SkinRenderingContext arc,
     Object              cellpadding,
     Object              cellspacing,
     Object              border,
@@ -176,7 +176,7 @@ public class OutputUtils
   */
   public static void renderAltAndTooltipForImage(
      FacesContext        context,
-     RenderingContext afc,
+     SkinRenderingContext afc,
      Object              textValue
      ) throws IOException
   {
@@ -210,7 +210,7 @@ public class OutputUtils
    * Returns true if the agent supports alt as a tooltip on images
    */
   public static boolean supportsAltRendersTooltipOnImage(
-    RenderingContext     afc
+    SkinRenderingContext     afc
     )
   {
     return Boolean.TRUE.equals(afc.getAgent().getCapabilities().get(
@@ -222,7 +222,7 @@ public class OutputUtils
    * vertically with text on the same line.
    */
   public static String getMiddleIconAlignment(
-    RenderingContext arc)
+    SkinRenderingContext arc)
   {
     // =-= AEW I haven't been able to find an image alignment
     // that works well for all browsers.  "absmiddle" looks
@@ -250,7 +250,7 @@ public class OutputUtils
    */
   public static void renderIcon(
     FacesContext        context,
-    RenderingContext arc,
+    SkinRenderingContext arc,
     Icon                icon,
     Object              shortDesc,
     Object              align
@@ -264,7 +264,7 @@ public class OutputUtils
    */
   public static void renderIcon(
     FacesContext        context,
-    RenderingContext arc,
+    SkinRenderingContext arc,
     Icon                icon,
     Object              shortDesc,
     Object              align,
@@ -294,7 +294,7 @@ public class OutputUtils
    */
   static public void renderImage(
     FacesContext     context,
-    RenderingContext arc,
+    SkinRenderingContext arc,
     Object           absoluteUri,
     Object           width,
     Object           height,
@@ -308,7 +308,7 @@ public class OutputUtils
 
   static public void renderImage(
     FacesContext     context,
-    RenderingContext arc,
+    SkinRenderingContext arc,
     Object           absoluteUri,
     Object           width,
     Object           height,
@@ -323,7 +323,7 @@ public class OutputUtils
 
   static public void renderImage(
     FacesContext     context,
-    RenderingContext arc,
+    SkinRenderingContext arc,
     Object           absoluteUri,
     Object           width,
     Object           height,
@@ -339,7 +339,7 @@ public class OutputUtils
     
   static public void renderImage(
     FacesContext     context,
-    RenderingContext arc,
+    SkinRenderingContext arc,
     Object           absoluteUri,
     Object           width,
     Object           height,
@@ -393,7 +393,7 @@ public class OutputUtils
    * @todo Add real mechanism for getting the background color
    * if needed.
    */
-  static public Color getBackgroundColor(RenderingContext arc)
+  static public Color getBackgroundColor(SkinRenderingContext arc)
   {
     return Color.WHITE;
   }

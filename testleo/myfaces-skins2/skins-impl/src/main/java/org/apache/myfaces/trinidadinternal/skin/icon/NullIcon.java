@@ -22,7 +22,7 @@ import java.util.Map;
 import javax.faces.context.FacesContext;
 import org.apache.myfaces.trinidad.skin.Icon;
 
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 
 /**
  * Icon class for a completely empty, null icon.
@@ -45,7 +45,7 @@ public class NullIcon extends Icon
   @Override
   public void renderIcon(
     FacesContext context,
-    RenderingContext arc,
+    SkinRenderingContext arc,
     Map<String, ? extends Object> attrs
     )
   {

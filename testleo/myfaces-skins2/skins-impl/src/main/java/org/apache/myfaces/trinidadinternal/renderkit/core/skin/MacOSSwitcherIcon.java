@@ -24,7 +24,7 @@ import java.util.Map;
 import javax.faces.context.FacesContext;
 import org.apache.myfaces.trinidad.context.Agent;
 
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidad.skin.Icon;
 
 /**
@@ -54,7 +54,7 @@ class MacOSSwitcherIcon extends Icon
   @Override
   public void renderIcon(
     FacesContext context,
-    RenderingContext rc,
+    SkinRenderingContext rc,
     Map<String, ? extends Object> attrs
     ) throws IOException
   {
@@ -69,7 +69,7 @@ class MacOSSwitcherIcon extends Icon
   @Override
   public Object getImageURI(
     FacesContext        context,
-    RenderingContext rc)
+    SkinRenderingContext rc)
   {
     Icon icon = _getIcon(rc);
 
@@ -80,7 +80,7 @@ class MacOSSwitcherIcon extends Icon
    * Override of Icon.getImageWidth().
    */
   @Override
-  public Integer getImageWidth(RenderingContext rc)
+  public Integer getImageWidth(SkinRenderingContext rc)
   {
     Icon icon = _getIcon(rc);
 
@@ -91,7 +91,7 @@ class MacOSSwitcherIcon extends Icon
    * Override of Icon.getImageHeight().
    */
   @Override
-  public Integer getImageHeight(RenderingContext rc)
+  public Integer getImageHeight(SkinRenderingContext rc)
   {
     Icon icon = _getIcon(rc);
 
@@ -99,7 +99,7 @@ class MacOSSwitcherIcon extends Icon
   }
 
   // Returns the Icon to use
-  private Icon _getIcon(RenderingContext rc)
+  private Icon _getIcon(SkinRenderingContext rc)
   {
     return (Agent.PLATFORM_MACOS.equals(rc.getAgent().getPlatformName())) ?
       _macOSIcon :

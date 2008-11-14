@@ -23,7 +23,7 @@ import java.io.InputStream;
 
 import javax.faces.context.FacesContext;
 
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 
 import org.apache.myfaces.trinidadinternal.style.Style;
 
@@ -111,7 +111,7 @@ public class ContextImageIcon extends BaseImageIcon
   @Override
   public InputStream openStream(
     FacesContext        context,
-    RenderingContext arc
+    SkinRenderingContext arc
     ) throws IOException
   {
     return context.getExternalContext().getResourceAsStream(
@@ -129,7 +129,7 @@ public class ContextImageIcon extends BaseImageIcon
   @Override
   protected String getBaseURI(
   FacesContext        context,
-  RenderingContext arc)
+  SkinRenderingContext arc)
   {
     return context.getExternalContext().getRequestContextPath() + '/';
 

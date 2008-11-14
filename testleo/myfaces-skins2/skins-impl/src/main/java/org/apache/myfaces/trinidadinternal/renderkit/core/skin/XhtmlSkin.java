@@ -39,7 +39,7 @@ public class XhtmlSkin extends BaseSkin
   {
     super();
 
-    CoreSkinUtils.registerIcons(this, _CUSTOMIZABLE_ICONS);
+    CoreBaseSkinUtils.registerIcons(this, _CUSTOMIZABLE_ICONS);
     _registerSkinProperties();
   }
 
