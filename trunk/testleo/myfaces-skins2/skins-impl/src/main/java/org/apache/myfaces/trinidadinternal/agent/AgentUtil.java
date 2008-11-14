@@ -21,7 +21,7 @@ package org.apache.myfaces.trinidadinternal.agent;
 import java.util.Map;
 
 import org.apache.myfaces.trinidad.context.Agent;
-import org.apache.myfaces.trinidad.context.RequestContext;
+import org.apache.myfaces.trinidad.context.SkinRequestContext;
 
 import javax.faces.context.FacesContext;
 import org.apache.myfaces.trinidad.logging.TrinidadLogger;
@@ -103,7 +103,7 @@ public class AgentUtil
    */
   public static TrinidadAgent getAgent(FacesContext context)
   {
-    Agent agent = RequestContext.getCurrentInstance().getAgent();
+    Agent agent = SkinRequestContext.getCurrentInstance().getAgent();
     if (agent instanceof TrinidadAgent)
       return (TrinidadAgent) agent;
 

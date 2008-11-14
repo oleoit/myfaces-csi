@@ -20,7 +20,7 @@ package org.apache.myfaces.trinidadinternal.skin.icon;
 
 import javax.faces.context.FacesContext;
 
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidadinternal.style.Style;
 
 /**
@@ -103,7 +103,7 @@ public class URIImageIcon extends BaseImageIcon
   @Override
   protected String getBaseURI(
     FacesContext     context,
-    RenderingContext arc)
+    SkinRenderingContext arc)
   {
     return null;
   }

@@ -27,7 +27,7 @@ import javax.el.ValueExpression;
 import javax.faces.context.FacesContext;
 import org.apache.myfaces.trinidad.logging.TrinidadLogger;
 import org.apache.myfaces.trinidad.context.LocaleContext;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidad.skin.Skin;
 import org.apache.myfaces.trinidad.skin.Icon;
 
@@ -364,7 +364,7 @@ public class SkinExtension extends SkinImpl
    */
     @Override
   public Map<String, String> getStyleClassMap(
-       RenderingContext arc
+       SkinRenderingContext arc
      )
   {
     return _baseSkin.getStyleClassMap(arc);
@@ -636,7 +636,7 @@ public class SkinExtension extends SkinImpl
     @Override
     public void renderIcon(
       FacesContext        context,
-      RenderingContext    arc,
+      SkinRenderingContext    arc,
       Map<String, ? extends Object> attrs
       ) throws IOException
     {

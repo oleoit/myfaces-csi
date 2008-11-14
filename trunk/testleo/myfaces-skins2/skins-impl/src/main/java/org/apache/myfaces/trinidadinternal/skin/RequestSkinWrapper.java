@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.MissingResourceException;
 
 import org.apache.myfaces.trinidad.context.LocaleContext;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidad.logging.TrinidadLogger;
 import org.apache.myfaces.trinidad.skin.Icon;
 import org.apache.myfaces.trinidad.skin.Skin;
@@ -117,13 +117,13 @@ public class RequestSkinWrapper extends Skin implements DocumentProviderSkin
   }
 
   @Override
-  public String getStyleSheetDocumentId(RenderingContext arc)
+  public String getStyleSheetDocumentId(SkinRenderingContext arc)
   {
     return _skin.getStyleSheetDocumentId(arc);
   }
 
   @Override
-  public Map<String, String> getStyleClassMap(RenderingContext arc)
+  public Map<String, String> getStyleClassMap(SkinRenderingContext arc)
   {
     return _skin.getStyleClassMap(arc);
   }
@@ -329,7 +329,7 @@ public class RequestSkinWrapper extends Skin implements DocumentProviderSkin
       // the CoreRenderingContext implementation, it seems
       // unlikely that anyone would attempt to replace the
      // implementation.
-      RenderingContext rc = RenderingContext.getCurrentInstance();
+      SkinRenderingContext rc = SkinRenderingContext.getCurrentInstance();
    // SKINFIX: use SkinableRenderingContext interface
       assert(rc instanceof SkinableRenderingContext);
 
@@ -371,7 +371,7 @@ public class RequestSkinWrapper extends Skin implements DocumentProviderSkin
       // the CoreRenderingContext implementation, it seems
       // unlikely that anyone would attempt to replace the
      // implementation.
-      RenderingContext rc = RenderingContext.getCurrentInstance();
+      SkinRenderingContext rc = SkinRenderingContext.getCurrentInstance();
    // SKINFIX: use SkinableRenderingContext interface
       assert(rc instanceof SkinableRenderingContext);
 

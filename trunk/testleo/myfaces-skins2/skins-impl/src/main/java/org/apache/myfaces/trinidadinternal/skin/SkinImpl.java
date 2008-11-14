@@ -37,7 +37,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.el.ValueBinding;
 
 import org.apache.myfaces.trinidad.context.LocaleContext;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidad.logging.TrinidadLogger;
 import org.apache.myfaces.trinidad.skin.Icon;
 import org.apache.myfaces.trinidad.skin.Skin;
@@ -107,7 +107,7 @@ abstract public class SkinImpl extends Skin implements DocumentProviderSkin
    * id for the StyleContext.
    */
    @Override
-  public String getStyleSheetDocumentId(RenderingContext arc)
+  public String getStyleSheetDocumentId(SkinRenderingContext arc)
   {
     // SKINFIX: use SkinableRenderingContext interface
     StyleContext sContext = ((SkinableRenderingContext)arc).getStyleContext();
@@ -303,7 +303,7 @@ abstract public class SkinImpl extends Skin implements DocumentProviderSkin
     */
   @Override
    public Map<String, String> getStyleClassMap(
-     RenderingContext arc
+     SkinRenderingContext arc
      )
    {
      ExternalContext external  = FacesContext.getCurrentInstance().getExternalContext();

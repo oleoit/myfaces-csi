@@ -21,7 +21,7 @@ package org.apache.myfaces.trinidadinternal.renderkit.core.skin;
 import java.io.IOException;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidad.skin.Skin;
 //import org.apache.myfaces.trinidadinternal.ui.UIXRenderingContext;
 import org.apache.myfaces.trinidad.skin.Icon;
@@ -29,35 +29,18 @@ import org.apache.myfaces.trinidad.skin.Icon;
 /**
  * Utilities for the Core Skins.
  *
+ * SKINFIX: Add CoreBaseSkinUtils and make original
+ * CoreSkinUtils extends from this class
  * @version $Name:  $ ($Revision$) $Date$
  */
-public class CoreSkinUtils 
+public class CoreBaseSkinUtils 
 {
-
-  // Renders an icon as a background
-  // If possible, use the method that takes FacesContext and AdfRenderingContext
-  // This method derives those objects, so if you have them already, use the
-  // other method.
-  // SKINFIX: remove temporally
-  /*
-  public static void __renderBackgroundIcon(
-    UIXRenderingContext context, 
-    Icon icon)
-    throws IOException
-  {
-    if (icon != null)
-    {
-      RenderingContext arc = RenderingContext.getCurrentInstance();
-      FacesContext fContext = context.getFacesContext();
-      __renderBackgroundIcon(fContext, arc, icon);
-    }
-  }*/
 
   // Renders an icon as a background
   // This is more optimized than the method that takes a RenderingContext
   public static void __renderBackgroundIcon(
     FacesContext        fContext, 
-    RenderingContext arc, 
+    SkinRenderingContext arc, 
     Icon                icon)
     throws IOException
   {
@@ -75,8 +58,6 @@ public class CoreSkinUtils
     }
   }
   
-  private CoreSkinUtils() {}
-
   /**
    * Registers a set of org.apache.myfaces.trinidadinternal.skin.icon.Icon objects
    * on the specified Skin. The icons

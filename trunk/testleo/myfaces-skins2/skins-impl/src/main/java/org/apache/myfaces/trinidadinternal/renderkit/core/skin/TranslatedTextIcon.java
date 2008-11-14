@@ -18,7 +18,7 @@
  */
 package org.apache.myfaces.trinidadinternal.renderkit.core.skin;
 
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidadinternal.skin.icon.TextIcon;
 
 /**
@@ -39,7 +39,7 @@ class TranslatedTextIcon extends TextIcon
    * Returns the text to render.
    */
   @Override
-  protected String getText(RenderingContext arc)
+  protected String getText(SkinRenderingContext arc)
   {
     return arc.getTranslatedString(_key);
   }

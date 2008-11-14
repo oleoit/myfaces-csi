@@ -46,7 +46,7 @@ import javax.faces.context.FacesContext;
 
 import org.apache.myfaces.trinidad.context.AccessibilityProfile;
 import org.apache.myfaces.trinidad.context.LocaleContext;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidad.logging.TrinidadLogger;
 import org.apache.myfaces.trinidad.skin.Icon;
 import org.apache.myfaces.trinidad.skin.Skin;
@@ -778,7 +778,7 @@ public class FileSystemStyleCache implements StyleProvider
     // First figure out whether or not we need to compress the style classes.
     // We don't compress the style classes if the content compression flag is disabled or
     // if the skin is a portlet skin.
-    Skin skin = RenderingContext.getCurrentInstance().getSkin();
+    Skin skin = SkinRenderingContext.getCurrentInstance().getSkin();
     boolean compressStyles = _isCompressStyles(skin);
 
     StyleWriterFactoryImpl writerFactory = new StyleWriterFactoryImpl(_targetPath,
@@ -839,7 +839,7 @@ public class FileSystemStyleCache implements StyleProvider
   private boolean _isCompressStyles(Skin skin)
   {
     if (skin == null)
-      skin = RenderingContext.getCurrentInstance().getSkin();
+      skin = SkinRenderingContext.getCurrentInstance().getSkin();
 
 
     // SKINFIX: move constant

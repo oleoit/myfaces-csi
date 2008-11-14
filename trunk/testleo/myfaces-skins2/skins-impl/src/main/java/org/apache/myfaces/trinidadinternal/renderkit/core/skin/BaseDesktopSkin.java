@@ -40,7 +40,7 @@ public class BaseDesktopSkin extends XhtmlSkin
   {
 
     // Register our icons
-    CoreSkinUtils.registerIcons(this, _CUSTOMIZABLE_ICONS);
+    CoreBaseSkinUtils.registerIcons(this, _CUSTOMIZABLE_ICONS);
     _registerSkinProperties();
   }
 
