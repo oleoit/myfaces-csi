@@ -23,7 +23,7 @@ import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
 
 import org.apache.myfaces.custom.skin.context.SkinRenderingContextImpl;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidad.logging.TrinidadLogger;
 
 public final class SkinRenderingContextPhaseListener implements PhaseListener
@@ -41,7 +41,7 @@ public final class SkinRenderingContextPhaseListener implements PhaseListener
 
     public void afterPhase(PhaseEvent event)
     {
-        RenderingContext arc = RenderingContext.getCurrentInstance();
+        SkinRenderingContext arc = SkinRenderingContext.getCurrentInstance();
         if (arc != null)
         {
           arc.release();

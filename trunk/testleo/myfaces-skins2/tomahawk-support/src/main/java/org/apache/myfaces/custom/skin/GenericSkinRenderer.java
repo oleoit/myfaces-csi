@@ -33,7 +33,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 //import org.apache.myfaces.trinidad.component.UIXComponent;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.OutputUtils;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.SkinSelectors;
 
@@ -69,7 +69,7 @@ public class GenericSkinRenderer extends SkinRenderer
 
     @Override
     protected void _addStyleClassesToComponent(FacesContext context,
-            UIComponent component, RenderingContext arc) throws IOException
+            UIComponent component, SkinRenderingContext arc) throws IOException
     {
 
         // The task here is first check if the component is appropiate to
@@ -131,7 +131,7 @@ public class GenericSkinRenderer extends SkinRenderer
      * 
      */
     public void encodeGenericComponent(FacesContext context,
-            UIComponent component, RenderingContext arc) throws IOException
+            UIComponent component, SkinRenderingContext arc) throws IOException
     {
 
         // 2. the skin class for this component looks like this:
@@ -286,7 +286,7 @@ public class GenericSkinRenderer extends SkinRenderer
      * 
      */
     public void encodeGenericWithRequiredComponent(FacesContext context,
-            UIComponent component, RenderingContext arc) throws IOException
+            UIComponent component, SkinRenderingContext arc) throws IOException
     {
 
         log.debug("Component class " + component.getClass().getName());

@@ -27,10 +27,10 @@ import javax.faces.context.ExternalContext;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletRequestWrapper;
 
+import org.apache.myfaces.custom.skin.context.RequestContextFactory;
 import org.apache.myfaces.custom.skin.context.RequestContextFactoryImpl;
 import org.apache.myfaces.tomahawk.util.ExternalContextUtils;
-import org.apache.myfaces.trinidad.context.RequestContext;
-import org.apache.myfaces.trinidad.context.RequestContextFactory;
+import org.apache.myfaces.trinidad.context.SkinRequestContext;
 import org.apache.myfaces.trinidad.logging.TrinidadLogger;
 import org.apache.myfaces.trinidad.skin.SkinFactory;
 import org.apache.myfaces.trinidadinternal.skin.SkinFactoryImpl;
@@ -338,7 +338,7 @@ public final class SkinConfiguratorImpl
         // then it'd still be around, and trying to create a new one
         // would trigger an exception. We don't want to take down
         // this thread for all eternity, so clean up after poorly-behaved code.
-        RequestContext context = RequestContext.getCurrentInstance();
+        SkinRequestContext context = SkinRequestContext.getCurrentInstance();
         if (context != null)
         {
             if (_LOG.isWarning())
@@ -356,9 +356,9 @@ public final class SkinConfiguratorImpl
 
         // Catch both the null scenario and the
         // RequestContext-from-a-different-classloader scenario
-        if (cachedRequestContext instanceof RequestContext)
+        if (cachedRequestContext instanceof SkinRequestContext)
         {
-            context = (RequestContext) cachedRequestContext;
+            context = (SkinRequestContext) cachedRequestContext;
             context.attach();
         }
         else
@@ -370,7 +370,7 @@ public final class SkinConfiguratorImpl
             externalContext.getRequestMap().put(_REQUEST_CONTEXT, context);
         }
 
-        assert RequestContext.getCurrentInstance() == context;
+        assert SkinRequestContext.getCurrentInstance() == context;
     }
 
     private void _releaseRequestContext(final ExternalContext ec)
@@ -382,11 +382,11 @@ public final class SkinConfiguratorImpl
             ec.getRequestMap().remove(_REQUEST_CONTEXT);
         }
 
-        final RequestContext context = RequestContext.getCurrentInstance();
+        final SkinRequestContext context = SkinRequestContext.getCurrentInstance();
         if (context != null)
         {
             context.release();
-            assert RequestContext.getCurrentInstance() == null;
+            assert SkinRequestContext.getCurrentInstance() == null;
 
         }
     }

@@ -31,8 +31,8 @@ import javax.servlet.ServletContext;
 import org.apache.myfaces.trinidad.context.AccessibilityProfile;
 import org.apache.myfaces.trinidad.context.Agent;
 import org.apache.myfaces.trinidad.context.LocaleContext;
-import org.apache.myfaces.trinidad.context.RenderingContext;
-import org.apache.myfaces.trinidad.context.RequestContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRequestContext;
 import org.apache.myfaces.trinidad.logging.TrinidadLogger;
 import org.apache.myfaces.trinidad.skin.Icon;
 import org.apache.myfaces.trinidad.skin.Skin;
@@ -51,7 +51,7 @@ import org.apache.myfaces.trinidadinternal.style.util.StyleUtils;
 import org.apache.myfaces.trinidadinternal.util.nls.LocaleUtils;
 
 
-public class SkinRenderingContextImpl extends RenderingContext 
+public class SkinRenderingContextImpl extends SkinRenderingContext 
     implements SkinableRenderingContext
 {
   /**
@@ -63,7 +63,7 @@ public class SkinRenderingContextImpl extends RenderingContext
   public SkinRenderingContextImpl()
   {
     FacesContext context = FacesContext.getCurrentInstance();
-    RequestContext afContext = RequestContext.getCurrentInstance();
+    SkinRequestContext afContext = SkinRequestContext.getCurrentInstance();
 
     _properties = new HashMap<Object, Object>();
 
@@ -166,7 +166,7 @@ public class SkinRenderingContextImpl extends RenderingContext
       return _localeContext.isRightToLeft();
     }
 
-    return RequestContext.getCurrentInstance().isRightToLeft();
+    return SkinRequestContext.getCurrentInstance().isRightToLeft();
   }
 
   @Override
@@ -177,7 +177,7 @@ public class SkinRenderingContextImpl extends RenderingContext
 
 
   @Override
-  public RequestContext.Accessibility getAccessibilityMode()
+  public SkinRequestContext.Accessibility getAccessibilityMode()
   {
     return _accessibilityMode;
   }
@@ -259,7 +259,7 @@ public class SkinRenderingContextImpl extends RenderingContext
     if (_localeContext == null)
     {
       _initializeLocaleContext(FacesContext.getCurrentInstance(),
-                               RequestContext.getCurrentInstance());
+                               SkinRequestContext.getCurrentInstance());
     }
 
     return _localeContext;
@@ -503,7 +503,7 @@ public class SkinRenderingContextImpl extends RenderingContext
   @SuppressWarnings("unchecked")
   private void _initializeSkin(
     FacesContext   context,
-    RequestContext afContext)
+    SkinRequestContext afContext)
   {
     // get skinFamily
     String skinFamily = afContext.getSkinFamily();
@@ -651,7 +651,7 @@ public class SkinRenderingContextImpl extends RenderingContext
 
   private void _initializeLocaleContext(
     FacesContext    fContext,
-    RequestContext context)
+    SkinRequestContext context)
   {
     Locale translations = fContext.getViewRoot().getLocale();
     Locale formatting = context.getFormattingLocale();
@@ -690,7 +690,7 @@ public class SkinRenderingContextImpl extends RenderingContext
   private Map<String, String> _styleMap;
   private Map<String, String> _skinResourceKeyMap;
   private String              _outputMode;
-  private RequestContext.Accessibility _accessibilityMode;
+  private SkinRequestContext.Accessibility _accessibilityMode;
   private AccessibilityProfile         _accessibilityProfile;
   private boolean _animationEnabled;
   //private PartialPageContext  _pprContext;

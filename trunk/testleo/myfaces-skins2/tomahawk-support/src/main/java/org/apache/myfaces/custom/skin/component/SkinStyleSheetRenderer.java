@@ -32,7 +32,7 @@ import org.apache.myfaces.custom.skin.resource.SkinResourceHandler;
 import org.apache.myfaces.renderkit.html.util.AddResource;
 import org.apache.myfaces.renderkit.html.util.AddResourceFactory;
 import org.apache.myfaces.shared_tomahawk.renderkit.html.HtmlRenderer;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidad.skin.Skin;
 import org.apache.myfaces.trinidadinternal.renderkit.core.SkinableRenderingContext;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.XhtmlConstants;
@@ -63,7 +63,7 @@ public class SkinStyleSheetRenderer extends HtmlRenderer
     public void encodeEnd(FacesContext context, UIComponent component)
             throws IOException
     {
-        RenderingContext arc = RenderingContext.getCurrentInstance();
+        SkinRenderingContext arc = SkinRenderingContext.getCurrentInstance();
         
         if (arc == null)
             throw new IllegalStateException(("NO_RENDERINGCONTEXT"));
@@ -155,7 +155,7 @@ public class SkinStyleSheetRenderer extends HtmlRenderer
     // producer (portlet)'s stylesheet and use the consumer (portal container)'s
     // instead for performance enhancements.
     private boolean _isSuppressStylesheet(FacesContext context,
-            RenderingContext arc)
+            SkinRenderingContext arc)
     {
 
         Map<String, Object> requestMap = context.getExternalContext()

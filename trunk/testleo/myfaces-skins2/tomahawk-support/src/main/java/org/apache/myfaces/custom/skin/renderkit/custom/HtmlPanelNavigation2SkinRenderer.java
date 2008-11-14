@@ -29,7 +29,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.custom.skin.SkinConstants;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 
 public class HtmlPanelNavigation2SkinRenderer extends AdapterSkinRenderer
 {
@@ -47,7 +47,7 @@ public class HtmlPanelNavigation2SkinRenderer extends AdapterSkinRenderer
 
     @Override
     protected void _addStyleClassesToComponent(FacesContext context,
-            UIComponent component, RenderingContext arc) throws IOException
+            UIComponent component, SkinRenderingContext arc) throws IOException
     {
 
         String baseStyleClass = this.getBaseStyleName(component);
@@ -104,7 +104,7 @@ public class HtmlPanelNavigation2SkinRenderer extends AdapterSkinRenderer
     }
 
     static public void renderDivStyleClass(UIComponent component,
-            FacesContext context, RenderingContext arc, String styleClass,
+            FacesContext context, SkinRenderingContext arc, String styleClass,
             String property) throws IOException
     {
         if (styleClass != null)

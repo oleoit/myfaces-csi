@@ -28,7 +28,7 @@ import javax.faces.context.FacesContext;
 
 import org.apache.myfaces.trinidad.context.AccessibilityProfile;
 import org.apache.myfaces.trinidad.context.Agent;
-import org.apache.myfaces.trinidad.context.RequestContext;
+import org.apache.myfaces.trinidad.context.SkinRequestContext;
 import org.apache.myfaces.tomahawk.util.ExternalContextUtils;
 import org.apache.myfaces.trinidadinternal.agent.AgentFactory;
 import org.apache.myfaces.trinidadinternal.agent.AgentFactoryImpl;
@@ -36,7 +36,7 @@ import org.apache.myfaces.trinidadinternal.agent.TrinidadAgentImpl;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.XhtmlConstants;
 import org.apache.myfaces.trinidadinternal.util.nls.LocaleUtils;
 
-public class SkinRequestContextImpl extends RequestContext
+public class SkinRequestContextImpl extends SkinRequestContext
 {
     public SkinRequestContextImpl(RequestContextBean bean)
     {

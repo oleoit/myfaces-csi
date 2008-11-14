@@ -21,8 +21,7 @@ package org.apache.myfaces.custom.skin.context;
 import javax.faces.context.ExternalContext;
 
 import org.apache.myfaces.custom.skin.config.ConfigParser;
-import org.apache.myfaces.trinidad.context.RequestContext;
-import org.apache.myfaces.trinidad.context.RequestContextFactory;
+import org.apache.myfaces.trinidad.context.SkinRequestContext;
 
 /**
  */
@@ -34,14 +33,14 @@ public class RequestContextFactoryImpl extends RequestContextFactory
 
     @Override
     @Deprecated
-    public RequestContext createContext(Object context, Object request)
+    public SkinRequestContext createContext(Object context, Object request)
     {
         throw new UnsupportedOperationException(
                 "public RequestContext createContext(Object context, Object request)");
     }
 
     @Override
-    public RequestContext createContext(ExternalContext externalContext)
+    public SkinRequestContext createContext(ExternalContext externalContext)
     {
         SkinRequestContextImpl impl = new SkinRequestContextImpl(
                 _getBean(externalContext));

@@ -26,7 +26,7 @@ import javax.faces.context.FacesContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.myfaces.custom.skin.SkinConstants;
 import org.apache.myfaces.custom.skin.SkinRenderer;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 
 /**
  * 
@@ -39,7 +39,7 @@ public class HtmlColumnSkinRenderer extends SkinRenderer
     // For use in jsf 1.2
     @Override
     protected void _addStyleClassesToComponent(FacesContext context,
-            UIComponent component, RenderingContext arc) throws IOException
+            UIComponent component, SkinRenderingContext arc) throws IOException
     {
         String footerStyleClass = null;
         String headerStyleClass = null;

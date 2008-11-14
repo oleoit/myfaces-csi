@@ -30,7 +30,7 @@ import javax.faces.render.Renderer;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.myfaces.trinidad.context.RenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidad.skin.Icon;
 import org.apache.myfaces.trinidadinternal.skin.icon.ContextImageIcon;
 
@@ -100,14 +100,14 @@ public abstract class SkinRenderer extends Renderer
     }
 
     protected abstract void _addStyleClassesToComponent(FacesContext context,
-            UIComponent component, RenderingContext arc) throws IOException;
+            UIComponent component, SkinRenderingContext arc) throws IOException;
 
     @Override
     public void encodeBegin(FacesContext context, UIComponent component)
             throws IOException
     {
 
-        RenderingContext arc = RenderingContext.getCurrentInstance();
+        SkinRenderingContext arc = SkinRenderingContext.getCurrentInstance();
         if (arc == null)
             throw new IllegalStateException(("NO_RENDERINGCONTEXT"));
 
@@ -203,7 +203,7 @@ public abstract class SkinRenderer extends Renderer
      *            the style class
      */
     protected void _renderStyleClass(UIComponent component,
-            FacesContext context, RenderingContext arc, String styleClass)
+            FacesContext context, SkinRenderingContext arc, String styleClass)
             throws IOException
     {
         if (styleClass != null)
@@ -252,7 +252,7 @@ public abstract class SkinRenderer extends Renderer
     }
 
     protected void _renderStyleClass(UIComponent component,
-            FacesContext context, RenderingContext arc, String styleClass,
+            FacesContext context, SkinRenderingContext arc, String styleClass,
             String property) throws IOException
     {
         if (styleClass != null)
@@ -301,7 +301,7 @@ public abstract class SkinRenderer extends Renderer
     }
 
     protected void _renderReplaceStyleClass(UIComponent component,
-            FacesContext context, RenderingContext arc, String styleClass,
+            FacesContext context, SkinRenderingContext arc, String styleClass,
             String property) throws IOException
     {
         if (styleClass != null)
@@ -351,7 +351,7 @@ public abstract class SkinRenderer extends Renderer
      *            the style classes
      */
     protected void _renderStyleClasses(UIComponent component,
-            FacesContext context, RenderingContext arc, String[] styleClasses)
+            FacesContext context, SkinRenderingContext arc, String[] styleClasses)
             throws IOException
     {
         int length = 0;
@@ -389,7 +389,7 @@ public abstract class SkinRenderer extends Renderer
     }
 
     protected void _setIconDirection(FacesContext context,
-            UIComponent component, RenderingContext arc, String styleClass,
+            UIComponent component, SkinRenderingContext arc, String styleClass,
             String getProperty, String setProperty)
     {
 
