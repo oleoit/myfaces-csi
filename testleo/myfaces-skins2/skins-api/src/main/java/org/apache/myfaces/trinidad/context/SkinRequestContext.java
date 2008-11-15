@@ -593,7 +593,7 @@ abstract public class SkinRequestContext
   @SuppressWarnings({"CollectionWithoutInitialCapacity"})
   private static final ConcurrentMap<ClassLoader, ConcurrentMap<String, Object>> _APPLICATION_MAPS =
        new ConcurrentHashMap<ClassLoader, ConcurrentMap<String, Object>>();
-  static private final ThreadLocal<SkinRequestContext> _CURRENT_CONTEXT =
+  static protected final ThreadLocal<SkinRequestContext> _CURRENT_CONTEXT =
     new ThreadLocal<SkinRequestContext>();
   static private final TrinidadLogger _LOG =
     TrinidadLogger.createTrinidadLogger(SkinRequestContext.class);
