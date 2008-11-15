@@ -154,7 +154,7 @@ abstract public class SkinRenderingContext
   }
 
 
-  static protected final ThreadLocal<SkinRenderingContext> _CURRENT_CONTEXT = 
+  static private final ThreadLocal<SkinRenderingContext> _CURRENT_CONTEXT = 
                                                            ThreadLocalUtils.newRequestThreadLocal();  
   
   static private final TrinidadLogger _LOG =
