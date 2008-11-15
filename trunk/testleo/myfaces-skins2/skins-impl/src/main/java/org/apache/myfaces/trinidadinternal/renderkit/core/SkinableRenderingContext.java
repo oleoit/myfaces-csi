@@ -29,9 +29,7 @@ public interface SkinableRenderingContext
     static public final String EMPTY_STYLE_CLASS = "";
     
     public TrinidadAgent getTrinidadAgent();
-    
-    public Skin getSkin();
-    
+      
     public StyleContext getStyleContext();
     
     public void setStyleMap(Map<String, String> mapping);
