@@ -87,28 +87,10 @@ public class SkinStyleSheetRenderer extends HtmlRenderer
                 {
                     AddResource addResource = AddResourceFactory.getInstance(context);
                     
-                    ExternalContext externalContext = context
-                            .getExternalContext();
-                    String contextUri = externalContext.getRequestContextPath();
-                    //String baseURL = XhtmlConstants.STYLES_CACHE_DIRECTORY;
-
-                    String outputMode = arc.getOutputMode();
                     for (String uri : uris)
                     {
-                        writer.startElement("link", null);
-                        renderId(context, component);
-                        writer.writeAttribute("rel", "stylesheet", null);
-                        writer.writeAttribute("charset", "UTF-8", null);
-
-                        String type = provider
-                                .getContentStyleType(sContext);
-                        writer.writeAttribute("type", type, null);
-
-                        renderEncodedResourceURI(context, "href", 
-                                addResource.getResourceUri(
-                                        context, new SkinResourceHandler(uri))
-                                        );
-                        writer.endElement("link");
+                        SkinResourceHandler resourceHandler = new SkinResourceHandler(uri);
+                        addResource.addStyleSheet(context, AddResource.HEADER_BEGIN, resourceHandler);                        
                     }
                 }
                 else
