@@ -35,4 +35,6 @@ public interface SkinableRenderingContext
     public void setStyleMap(Map<String, String> mapping);
     
     public Skin getRequestMapSkin();
+    
+    public Skin getSkin();
 }
