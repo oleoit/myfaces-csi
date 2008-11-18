@@ -60,7 +60,7 @@ class StyleContextImpl implements StyleContext
     if (_styleProvider == null)
     {
      // SKINFIX: use SkinableRenderingContext interface
-      Skin skin = ((SkinableRenderingContext) _arc).getSkin();
+      Skin skin = ((SkinRenderingContext) _arc).getSkin();
       _styleProvider = _getDefaultStyleProvider(skin);
     }
     return _styleProvider;
