@@ -262,12 +262,14 @@
     <module>skins-api</module>
     <module>skins-impl</module>
     <module>tomahawk-support</module>
+    <module>generic-support</module>
     <!-- 
     <module>trinidad-build</module>
      -->
     <module>trinidad-core-api</module>
     <module>trinidad-core-impl</module>
     <module>skins-example-tomahawk</module>
+    <module>skins-example-generic</module>
   </modules>
 
   <build>
