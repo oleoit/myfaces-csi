@@ -24,7 +24,7 @@ import java.util.Map;
 import javax.faces.context.FacesContext;
 
 import org.apache.myfaces.trinidad.context.Agent;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 
 /**
@@ -904,6 +904,6 @@ public class AgentFactoryImpl implements AgentFactory
 
   static final private String _IASW_DEVICE_HINT_PARAM = "X-Oracle-Device.Class";
   static final private String _UNKNOWN = "unknown";
-  static final private TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(AgentFactoryImpl.class);
+  static final private SkinLogger _LOG = SkinLogger.createTrinidadLogger(AgentFactoryImpl.class);
 
 }

@@ -21,7 +21,7 @@ package org.apache.myfaces.trinidadinternal.style.xml.parse;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXParseException;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 import org.apache.myfaces.trinidadinternal.share.xml.LeafNodeParser;
 import org.apache.myfaces.trinidadinternal.share.xml.ParseContext;
@@ -71,5 +71,5 @@ public class IncludePropertyNodeParser extends LeafNodeParser
 
   private static final String _INCLUDE_PROPERTY_ID_ERROR =
     "<includeProperty> element must specify a selector or name attribute";
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(IncludePropertyNodeParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(IncludePropertyNodeParser.class);
 }

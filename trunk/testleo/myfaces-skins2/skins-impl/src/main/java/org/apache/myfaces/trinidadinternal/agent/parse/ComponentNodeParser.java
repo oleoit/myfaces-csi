@@ -26,7 +26,7 @@ import org.xml.sax.SAXParseException;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Node parser for component nodes in the capabilities file
@@ -107,6 +107,6 @@ class ComponentNodeParser extends BaseNodeParser implements XMLConstants
 
   private List<IncludeNode> _includeNodes;
   private String _type;
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     ComponentNodeParser.class);
 }

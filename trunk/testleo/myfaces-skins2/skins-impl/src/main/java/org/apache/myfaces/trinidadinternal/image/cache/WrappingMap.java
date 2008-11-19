@@ -22,7 +22,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Iterator;
 import java.util.Set;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Map which wraps Map.
@@ -113,6 +113,6 @@ class WrappingMap<K, V> implements Map<K, V>
   }
 
   private Map<K, V> _wrappedMap;
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     WrappingMap.class);
 }

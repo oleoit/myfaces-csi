@@ -28,7 +28,7 @@ import org.apache.myfaces.trinidad.context.LocaleContext;
 import org.apache.myfaces.trinidad.util.ClassLoaderUtils;
 
 import org.apache.myfaces.trinidadinternal.util.nls.LocaleUtils;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Context for locale-specific operations and properties.  All of the properties
@@ -456,6 +456,6 @@ public class LocaleContextImpl extends LocaleContext
   private TimeZone _timeZone;
 
   private int _readingDirection = LocaleUtils.DIRECTION_DEFAULT;
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     LocaleContextImpl.class);
 }

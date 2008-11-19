@@ -19,7 +19,7 @@
 package org.apache.myfaces.trinidadinternal.style.xml.parse;
 
 import org.apache.myfaces.trinidad.skin.Icon;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Object which represents a single <icon> element.
@@ -69,6 +69,6 @@ public class IconNode
 
   private String      _name;
   private Icon        _icon;
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     IconNode.class);
 }

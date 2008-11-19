@@ -30,7 +30,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.myfaces.trinidad.context.Version;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidadinternal.agent.TrinidadAgent;
 import org.apache.myfaces.trinidadinternal.style.util.NameUtils;
 import org.apache.myfaces.trinidadinternal.style.util.StyleUtils;
@@ -643,8 +643,8 @@ public class SkinCSSDocumentHandler
     new LinkedList<Set<String>>();
 
   private Map<String, String> _namespaceMap = new HashMap<String, String>();
-  private static final TrinidadLogger _LOG =
-    TrinidadLogger.createTrinidadLogger(SkinCSSDocumentHandler.class);
+  private static final SkinLogger _LOG =
+    SkinLogger.createTrinidadLogger(SkinCSSDocumentHandler.class);
     
   private static final Pattern _WHITESPACE_PATTERN =
     Pattern.compile("\\s+");

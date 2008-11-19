@@ -26,7 +26,7 @@ import java.util.Hashtable;
 
 import org.apache.myfaces.trinidad.util.ArrayMap;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Graphics-related utilities.
@@ -449,5 +449,5 @@ public class GraphicsUtils
                    "sansserif",
                    "symbol" };
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(GraphicsUtils.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(GraphicsUtils.class);
 }

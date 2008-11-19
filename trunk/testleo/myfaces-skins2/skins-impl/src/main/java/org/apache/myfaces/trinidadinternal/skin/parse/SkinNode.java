@@ -18,7 +18,7 @@
  */
 package org.apache.myfaces.trinidadinternal.skin.parse;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Object which represents a single &lt;skin&gt; element in trinidad-skins.xml.
@@ -128,6 +128,6 @@ public class SkinNode
   private String _translationSourceExpression;
 
 
-  private static final TrinidadLogger _LOG =
-    TrinidadLogger.createTrinidadLogger( SkinNode.class);
+  private static final SkinLogger _LOG =
+    SkinLogger.createTrinidadLogger( SkinNode.class);
 }

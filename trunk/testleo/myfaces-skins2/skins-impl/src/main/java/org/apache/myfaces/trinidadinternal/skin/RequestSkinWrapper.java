@@ -26,7 +26,7 @@ import java.util.MissingResourceException;
 
 import org.apache.myfaces.trinidad.context.LocaleContext;
 import org.apache.myfaces.trinidad.context.SkinRenderingContext;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidad.skin.Icon;
 import org.apache.myfaces.trinidad.skin.Skin;
 import org.apache.myfaces.trinidad.skin.SkinAddition;
@@ -417,6 +417,6 @@ public class RequestSkinWrapper extends Skin implements DocumentProviderSkin
 
   // Empty map used when StyleProvider.getSkinProperties() fails;
   private static final Map<Object, Object> _NULL_PROPERTIES = Collections.emptyMap();
-  static final private TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(RequestSkinWrapper.class);
+  static final private SkinLogger _LOG = SkinLogger.createTrinidadLogger(RequestSkinWrapper.class);
 
 }

@@ -22,7 +22,7 @@ import java.awt.Image;
 import java.awt.image.ImageObserver;
 import java.awt.image.PixelGrabber;
 import org.apache.myfaces.trinidadinternal.image.painter.ImageLoader;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Reduces an image's color palette by means of an octree quantization method.
@@ -312,7 +312,7 @@ class OctreeQuantizer
 
 
   private OctreeNode _root;   // root node of the tree
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     OctreeQuantizer.class);
 }
 

@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 
 /**
@@ -496,8 +496,8 @@ public class SkinCSSParser
   private static final String[] _EMPTY_STRING_ARRAY = new String[0];
 
      
-  private static final TrinidadLogger _LOG =
-    TrinidadLogger.createTrinidadLogger(SkinCSSParser.class);
+  private static final SkinLogger _LOG =
+    SkinLogger.createTrinidadLogger(SkinCSSParser.class);
 
 
 }

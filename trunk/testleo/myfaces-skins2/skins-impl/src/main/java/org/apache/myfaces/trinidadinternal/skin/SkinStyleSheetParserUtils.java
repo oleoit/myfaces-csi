@@ -31,7 +31,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidad.skin.Icon;
 import org.apache.myfaces.trinidad.util.URLUtils;
 
@@ -911,6 +911,6 @@ class SkinStyleSheetParserUtils
   private static final Pattern _SPACE_PATTERN = Pattern.compile("\\s");
   private static final Pattern _SELECTOR_PATTERN = Pattern.compile("selector\\(");
 
-  static private final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     SkinStyleSheetParserUtils.class);
 }

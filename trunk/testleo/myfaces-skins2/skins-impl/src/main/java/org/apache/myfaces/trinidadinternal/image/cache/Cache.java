@@ -20,7 +20,7 @@ package org.apache.myfaces.trinidadinternal.image.cache;
 
 import java.util.Hashtable;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -330,6 +330,6 @@ class Cache
   // Default size for names cache
   private static final int _NAMES_SIZE = 101;
 
-  static private final TrinidadLogger _LOG =
-    TrinidadLogger.createTrinidadLogger(Cache.class);
+  static private final SkinLogger _LOG =
+    SkinLogger.createTrinidadLogger(Cache.class);
 }

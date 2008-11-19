@@ -34,7 +34,7 @@ import org.xml.sax.SAXParseException;
 
 
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidad.util.URLUtils;
 
 import org.apache.myfaces.trinidadinternal.share.io.InputStreamProvider;
@@ -325,5 +325,5 @@ public class StyleSheetDocumentParser extends BaseNodeParser
   private ArrayList<StyleSheetDocument> _imports;       // Vector of imported StyleSheetDocument
   private String _documentVersion; // Version identifier for the document
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(StyleSheetDocumentParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(StyleSheetDocumentParser.class);
 }

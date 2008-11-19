@@ -33,7 +33,7 @@ import java.util.Set;
 import java.util.Vector;
 import java.util.regex.Pattern;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidadinternal.agent.TrinidadAgent;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.SkinSelectors;
 import org.apache.myfaces.trinidadinternal.style.StyleContext;
@@ -1398,5 +1398,5 @@ public class CSSGenerationUtils
   private static final String[] _EMPTY_STRING_ARRAY = new String[0];
   private static final int _MSIE_SELECTOR_LIMIT = 4095;
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(CSSGenerationUtils.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(CSSGenerationUtils.class);
 }

@@ -21,7 +21,7 @@ package org.apache.myfaces.trinidadinternal.agent.parse;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.text.ParseException;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * An implementation that encapsulates "Name/Version Name/version ..." string and
@@ -529,6 +529,6 @@ class NameVersion
 
   public final static double NO_MATCH = 0x0000;
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     NameVersion.class);
 }

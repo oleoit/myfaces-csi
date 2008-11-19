@@ -23,7 +23,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXParseException;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidadinternal.share.xml.ParseContextImpl;
 
 import org.apache.myfaces.trinidadinternal.share.xml.TreeBuilder;
@@ -201,5 +201,5 @@ public class CapabilitiesDocumentParser extends BaseNodeParser
 
   static final String __BASE_URL = "baseURL";
 
-  static private final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(CapabilitiesDocumentParser.class);
+  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(CapabilitiesDocumentParser.class);
 }

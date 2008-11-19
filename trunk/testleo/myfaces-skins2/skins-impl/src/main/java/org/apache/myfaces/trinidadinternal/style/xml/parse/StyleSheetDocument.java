@@ -36,7 +36,7 @@ import java.util.Stack;
 
 import org.apache.myfaces.trinidad.context.AccessibilityProfile;
 import org.apache.myfaces.trinidad.context.LocaleContext;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidad.util.IntegerUtils;
 
 import org.apache.myfaces.trinidadinternal.agent.TrinidadAgent;
@@ -1425,5 +1425,5 @@ public class StyleSheetDocument
   // Error messages
   private static final String _CIRCULAR_INCLUDE_ERROR =
     "Circular dependency detected in style ";
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(StyleSheetDocument.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(StyleSheetDocument.class);
 }

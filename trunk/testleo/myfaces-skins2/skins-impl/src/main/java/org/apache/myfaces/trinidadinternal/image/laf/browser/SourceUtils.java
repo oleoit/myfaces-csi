@@ -25,7 +25,7 @@ import java.util.Map;
 
 
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 import org.apache.myfaces.trinidadinternal.share.io.InputStreamProvider;
 
@@ -134,5 +134,5 @@ class SourceUtils
   private static final String _IMAGE_ERROR =
     "Could not create image";
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(SourceUtils.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(SourceUtils.class);
 }

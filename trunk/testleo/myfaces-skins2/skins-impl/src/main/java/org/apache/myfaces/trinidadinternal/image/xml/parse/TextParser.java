@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXParseException;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 import org.apache.myfaces.trinidad.context.LocaleContext;
 import org.apache.myfaces.trinidadinternal.share.xml.BaseNodeParser;
@@ -161,5 +161,5 @@ public class TextParser extends BaseNodeParser
   private static final String _KEY_ERROR =
     "Missing translatedText key attribute.";
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(TextParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(TextParser.class);
 }

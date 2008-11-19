@@ -25,7 +25,7 @@ import java.util.Stack;
 
 import javax.el.ValueExpression;
 import javax.faces.context.FacesContext;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidad.context.LocaleContext;
 import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidad.skin.Skin;
@@ -674,5 +674,5 @@ public class SkinExtension extends SkinImpl
   // Error messages
   private static final String _CIRCULAR_INCLUDE_ERROR =
     "Circular dependency detected in skin reference icon ";
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(SkinExtension.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(SkinExtension.class);
 }

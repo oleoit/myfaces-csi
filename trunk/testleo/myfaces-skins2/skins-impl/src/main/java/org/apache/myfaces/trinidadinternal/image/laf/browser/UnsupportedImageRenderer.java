@@ -23,7 +23,7 @@ import java.util.Map;
 import java.awt.Image;
 
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 import org.apache.myfaces.trinidadinternal.image.ImageContext;
 import org.apache.myfaces.trinidadinternal.image.ImageRenderer;
@@ -80,5 +80,5 @@ class UnsupportedImageRenderer implements ImageRenderer
   static private final String _CANT_RENDER_MESSAGE =
     "Dynamic image rendering is not supported on JDK 1.1.  You must\n" +
     "pregenerate the image cache.";
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(UnsupportedImageRenderer.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(UnsupportedImageRenderer.class);
 }

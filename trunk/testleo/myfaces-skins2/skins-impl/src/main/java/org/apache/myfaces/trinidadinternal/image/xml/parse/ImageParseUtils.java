@@ -20,7 +20,7 @@ package org.apache.myfaces.trinidadinternal.image.xml.parse;
 
 import org.xml.sax.Attributes;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 import org.apache.myfaces.trinidadinternal.share.xml.ParseContext;
 import org.apache.myfaces.trinidadinternal.share.xml.ParseErrorUtils;
@@ -100,5 +100,5 @@ public class ImageParseUtils
     "Error while parsing integer attribute value.";
   private static final String _BOOLEAN_ERROR =
     "Error while parsing boolean attribute value.";
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(ImageParseUtils.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(ImageParseUtils.class);
 }

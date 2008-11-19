@@ -18,7 +18,7 @@
  */
 package org.apache.myfaces.trinidadinternal.style.xml.parse;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 /**
  * IncludePropertyNode is used to represent a single &lt;includeProperty%gt; element
  * in a parsed XML Style Sheet Language document.
@@ -140,6 +140,6 @@ public class IncludePropertyNode
   private final String _selector;
   private final String _propertyName;
   private final String _localPropertyName;
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     IncludePropertyNode.class);
 }

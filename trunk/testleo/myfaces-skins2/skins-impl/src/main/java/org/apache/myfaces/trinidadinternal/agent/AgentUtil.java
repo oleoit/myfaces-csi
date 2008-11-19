@@ -24,7 +24,7 @@ import org.apache.myfaces.trinidad.context.Agent;
 import org.apache.myfaces.trinidad.context.SkinRequestContext;
 
 import javax.faces.context.FacesContext;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * agent util class
@@ -144,6 +144,6 @@ public class AgentUtil
     return agent;
   }
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     AgentUtil.class);
 }

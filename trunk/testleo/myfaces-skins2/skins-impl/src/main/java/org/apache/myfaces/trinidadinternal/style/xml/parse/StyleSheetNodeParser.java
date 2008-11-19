@@ -28,7 +28,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.apache.myfaces.trinidad.context.Version;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidadinternal.agent.TrinidadAgent;
 import org.apache.myfaces.trinidadinternal.share.xml.BaseNodeParser;
 import org.apache.myfaces.trinidadinternal.share.xml.NodeParser;
@@ -329,6 +329,6 @@ public class StyleSheetNodeParser extends BaseNodeParser
   private int[]             _platforms;
   private Set<String>       _accProperties;
 
-  static private final TrinidadLogger _LOG =
-    TrinidadLogger.createTrinidadLogger(StyleSheetNodeParser.class);
+  static private final SkinLogger _LOG =
+    SkinLogger.createTrinidadLogger(StyleSheetNodeParser.class);
 }

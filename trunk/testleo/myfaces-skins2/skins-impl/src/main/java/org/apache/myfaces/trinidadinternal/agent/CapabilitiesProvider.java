@@ -19,7 +19,7 @@
 package org.apache.myfaces.trinidadinternal.agent;
 
 import org.apache.myfaces.trinidad.context.Agent;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidadinternal.agent.parse.CapabilitiesDocument;
 import org.apache.myfaces.trinidadinternal.agent.parse.CapabilitiesDocumentParser;
 
@@ -227,6 +227,6 @@ public class CapabilitiesProvider
 
   static private Map<URL, CapabilitiesProvider> _providerMap = 
     new HashMap<URL, CapabilitiesProvider>(4);
-  static final private TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(CapabilitiesProvider.class);
+  static final private SkinLogger _LOG = SkinLogger.createTrinidadLogger(CapabilitiesProvider.class);
 
 }

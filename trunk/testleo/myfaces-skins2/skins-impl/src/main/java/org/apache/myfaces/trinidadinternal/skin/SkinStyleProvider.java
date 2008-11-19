@@ -27,7 +27,7 @@ import org.apache.myfaces.trinidadinternal.style.StyleProvider;
 import org.apache.myfaces.trinidadinternal.style.cache.FileSystemStyleCache;
 import org.apache.myfaces.trinidadinternal.style.xml.StyleSheetDocumentUtils;
 import org.apache.myfaces.trinidadinternal.style.xml.parse.StyleSheetDocument;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 
 /**
@@ -290,6 +290,6 @@ public class SkinStyleProvider extends FileSystemStyleCache
   // Cache of shared SkinStyleProvider instances
   private static final Map<ProviderKey, StyleProvider> _sSharedProviders =
     new HashMap<ProviderKey, StyleProvider>(31);
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     SkinStyleProvider.class);
 }
