@@ -21,7 +21,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"> 
   <modelVersion>4.0.0</modelVersion>
 
-  <name>Apache MyFaces Skins Generic Support</name>
+  <name>Apache MyFaces Skins Tomahawk Support</name>
   <description>Private implementation of the Apache MyFaces Shared Skins project</description>
 
   <parent>
@@ -152,6 +152,12 @@
       <artifactId>jmock-cglib</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.apache.myfaces.skins</groupId>
+      <artifactId>skins-support-shared</artifactId>
+      <version>1.2.1-SNAPSHOT</version>
+    </dependency>
+    
     <!--
     <dependency>
       <groupId>commons-lang</groupId>
