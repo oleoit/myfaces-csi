@@ -1609,7 +1609,7 @@ public class FileSystemStyleCache implements StyleProvider
   /** Prefix to use for short style classes */
   private static final String _SHORT_CLASS_PREFIX = "x";
 
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(FileSystemStyleCache.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(FileSystemStyleCache.class);
 
 
   /**

@@ -117,5 +117,5 @@ public class ImageMetadataParser extends BaseNodeParser
     "Parsing error while loading the image cache.\n" +
     "A Cabo 1.0 IMX file has been detected.  For best results, please\n" +
     "remove any old files from the image cache directory containing:\n";
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(ImageMetadataParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(ImageMetadataParser.class);
 }

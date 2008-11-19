@@ -186,6 +186,6 @@ public final class LocaleUtils
     return new Locale(language, country, variant);
   }
 
-  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(LocaleUtils.class);
+  static private final SkinLogger _LOG = SkinLogger.createSkinLogger(LocaleUtils.class);
 
 }

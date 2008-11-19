@@ -331,5 +331,5 @@ class Cache
   private static final int _NAMES_SIZE = 101;
 
   static private final SkinLogger _LOG =
-    SkinLogger.createTrinidadLogger(Cache.class);
+    SkinLogger.createSkinLogger(Cache.class);
 }

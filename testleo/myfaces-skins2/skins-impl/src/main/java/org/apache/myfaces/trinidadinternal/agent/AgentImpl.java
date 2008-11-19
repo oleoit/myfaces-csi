@@ -165,6 +165,6 @@ public class AgentImpl extends DefaultAgent
   private HashMap<Object, Object> _requestCapabilities;
   private AgentEntry _entry;
   static private final AgentEntry _NULL_AGENT_ENTRY = new AgentEntry();
-  static final private SkinLogger _LOG = SkinLogger.createTrinidadLogger(AgentImpl.class);
+  static final private SkinLogger _LOG = SkinLogger.createSkinLogger(AgentImpl.class);
 
 }

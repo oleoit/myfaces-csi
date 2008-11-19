@@ -133,5 +133,5 @@ public class ColorizedIconParser extends BaseImageProviderRequestParser
   // 6. DARK_COLOR_KEY
   // 7. DARK_ACCENT_COLOR_KEY
   private static final int _PROPERTY_COUNT = 7;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(ColorizedIconParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(ColorizedIconParser.class);
 }

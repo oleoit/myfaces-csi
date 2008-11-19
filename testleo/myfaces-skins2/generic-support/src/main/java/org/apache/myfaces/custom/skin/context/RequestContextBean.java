@@ -37,7 +37,7 @@ import org.apache.myfaces.trinidadinternal.util.nls.LocaleUtils;
 public class RequestContextBean
 {
     static private final SkinLogger _LOG = SkinLogger
-            .createTrinidadLogger(RequestContextBean.class);
+            .createSkinLogger(RequestContextBean.class);
 
     /**
      * output-mode

@@ -674,5 +674,5 @@ public class SkinExtension extends SkinImpl
   // Error messages
   private static final String _CIRCULAR_INCLUDE_ERROR =
     "Circular dependency detected in skin reference icon ";
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(SkinExtension.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(SkinExtension.class);
 }

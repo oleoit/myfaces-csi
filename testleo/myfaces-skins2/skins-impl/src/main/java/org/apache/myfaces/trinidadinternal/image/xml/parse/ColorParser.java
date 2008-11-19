@@ -110,5 +110,5 @@ public class ColorParser extends LeafNodeParser
     "Error while parsing rgb attribute value.  Values must be specified in #RRGGBB format.";
   private static final String _COLOR_ERROR =
     "Error while parsing color attribute value.  Values must be between 0 and 255.";
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(ColorParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(ColorParser.class);
 }

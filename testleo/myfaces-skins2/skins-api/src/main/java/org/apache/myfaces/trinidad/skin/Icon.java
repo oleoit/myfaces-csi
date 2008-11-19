@@ -141,6 +141,6 @@ abstract public class Icon
     return false;
   }
 
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(Icon.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(Icon.class);
 
 }

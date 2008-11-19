@@ -32,7 +32,7 @@ public final class SkinRenderingContextPhaseListener implements PhaseListener
     private static final long serialVersionUID = -3326689809959287245L;
         
     static private final SkinLogger _LOG =
-        SkinLogger.createTrinidadLogger(SkinRenderingContextPhaseListener.class);
+        SkinLogger.createSkinLogger(SkinRenderingContextPhaseListener.class);
     
     public void beforePhase(PhaseEvent event)
     {

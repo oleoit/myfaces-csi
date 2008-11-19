@@ -124,7 +124,7 @@ abstract public class DecimalFormatContext implements Cloneable
     return buffer.toString();
   }
 
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     DecimalFormatContext.class);
 }
 

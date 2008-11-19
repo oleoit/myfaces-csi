@@ -107,6 +107,6 @@ class ComponentNodeParser extends BaseNodeParser implements XMLConstants
 
   private List<IncludeNode> _includeNodes;
   private String _type;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     ComponentNodeParser.class);
 }

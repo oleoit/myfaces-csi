@@ -533,6 +533,6 @@ final class GifEncoder
     public byte theByte;
     public byte[] byteData;
   }
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     GifEncoder.class);
 }

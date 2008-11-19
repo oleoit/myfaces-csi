@@ -93,5 +93,5 @@ public class JaxpXMLProvider implements XMLProvider
   }
 
   private static final SkinLogger _LOG =
-    SkinLogger.createTrinidadLogger(JaxpXMLProvider.class);
+    SkinLogger.createSkinLogger(JaxpXMLProvider.class);
 }

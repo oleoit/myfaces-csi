@@ -279,6 +279,6 @@ public class ParserManager implements Cloneable
 
   static private final ParserManager _sDefaultInstance =
     new ParserManager();
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     ParserManager.class);
 }

@@ -527,6 +527,6 @@ final class PNGEncoder
   private static final int _tRNS = 0x74524e53;
 
   private static final byte[] _TRANSPARENT_DATA = new byte[] { (byte)0 };
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     PNGEncoder.class);
 }

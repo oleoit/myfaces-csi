@@ -100,5 +100,5 @@ public class ImageParseUtils
     "Error while parsing integer attribute value.";
   private static final String _BOOLEAN_ERROR =
     "Error while parsing boolean attribute value.";
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(ImageParseUtils.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(ImageParseUtils.class);
 }

@@ -572,6 +572,6 @@ public class RGBColorFormat extends ColorFormat
   private static final int _BLUE_FIELD  = 2;
   private static final int _ALPHA_FIELD = 3;
   private static final int _FIELD_COUNT = 4;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     RGBColorFormat.class);
 }

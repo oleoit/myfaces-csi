@@ -154,5 +154,5 @@ public class PropertyNodeParser extends BaseNodeParser
     "font-style",        new FontStyleValidater(),
     "text-antialias",    new TextAntialiasValidater(),
   };
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(PropertyNodeParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(PropertyNodeParser.class);
 }

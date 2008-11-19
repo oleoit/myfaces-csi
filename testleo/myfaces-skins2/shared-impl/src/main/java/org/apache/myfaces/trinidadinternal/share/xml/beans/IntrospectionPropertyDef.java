@@ -110,6 +110,6 @@ public class IntrospectionPropertyDef extends BasePropertyDef
   }
 
   private PropertyDescriptor _descriptor;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(IntrospectionPropertyDef.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(IntrospectionPropertyDef.class);
 }
 

@@ -1425,5 +1425,5 @@ public class StyleSheetDocument
   // Error messages
   private static final String _CIRCULAR_INCLUDE_ERROR =
     "Circular dependency detected in style ";
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(StyleSheetDocument.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(StyleSheetDocument.class);
 }

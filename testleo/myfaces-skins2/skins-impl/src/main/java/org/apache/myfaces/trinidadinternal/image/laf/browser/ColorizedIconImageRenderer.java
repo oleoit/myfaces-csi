@@ -273,6 +273,6 @@ public class ColorizedIconImageRenderer implements ImageRenderer
     0xffffcc, // MediumAccent
     0xf7f7e7, // LightAccent
   };
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     ColorizedIconImageRenderer.class);
 }

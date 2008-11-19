@@ -911,6 +911,6 @@ class SkinStyleSheetParserUtils
   private static final Pattern _SPACE_PATTERN = Pattern.compile("\\s");
   private static final Pattern _SELECTOR_PATTERN = Pattern.compile("selector\\(");
 
-  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  static private final SkinLogger _LOG = SkinLogger.createSkinLogger(
     SkinStyleSheetParserUtils.class);
 }

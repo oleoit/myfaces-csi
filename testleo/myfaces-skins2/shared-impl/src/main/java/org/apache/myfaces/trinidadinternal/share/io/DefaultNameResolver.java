@@ -338,6 +338,6 @@ public class DefaultNameResolver implements NameResolver
 
   private File _baseFile;
   private URL  _baseURL;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     DefaultNameResolver.class);
 }

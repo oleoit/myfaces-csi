@@ -312,7 +312,7 @@ class OctreeQuantizer
 
 
   private OctreeNode _root;   // root node of the tree
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     OctreeQuantizer.class);
 }
 

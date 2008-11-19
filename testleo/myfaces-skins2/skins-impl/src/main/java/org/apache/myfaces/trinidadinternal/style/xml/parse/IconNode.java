@@ -69,6 +69,6 @@ public class IconNode
 
   private String      _name;
   private Icon        _icon;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     IconNode.class);
 }

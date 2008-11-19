@@ -1398,5 +1398,5 @@ public class CSSGenerationUtils
   private static final String[] _EMPTY_STRING_ARRAY = new String[0];
   private static final int _MSIE_SELECTOR_LIMIT = 4095;
 
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(CSSGenerationUtils.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(CSSGenerationUtils.class);
 }

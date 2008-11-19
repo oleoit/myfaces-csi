@@ -330,5 +330,5 @@ public final class ClassLoaderUtils
   }
 
   private static final SkinLogger _LOG =
-    SkinLogger.createTrinidadLogger(ClassLoaderUtils.class);
+    SkinLogger.createSkinLogger(ClassLoaderUtils.class);
 }

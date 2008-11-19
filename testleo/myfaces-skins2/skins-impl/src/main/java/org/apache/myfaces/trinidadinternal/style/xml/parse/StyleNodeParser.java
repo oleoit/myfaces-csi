@@ -210,5 +210,5 @@ public class StyleNodeParser extends BaseNodeParser
   // Error messages
   private static final String _INCLUDE_STYLE_ID_ERROR =
     "<includeStyle> element must specify a selector or name attribute";
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(StyleNodeParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(StyleNodeParser.class);
 }

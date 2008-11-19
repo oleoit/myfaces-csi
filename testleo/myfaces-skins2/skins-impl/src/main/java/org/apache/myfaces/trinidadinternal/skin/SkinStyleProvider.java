@@ -290,6 +290,6 @@ public class SkinStyleProvider extends FileSystemStyleCache
   // Cache of shared SkinStyleProvider instances
   private static final Map<ProviderKey, StyleProvider> _sSharedProviders =
     new HashMap<ProviderKey, StyleProvider>(31);
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     SkinStyleProvider.class);
 }

@@ -168,7 +168,7 @@ public class FastMessageFormat
   }
 
   private final char[] _formatText;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     FastMessageFormat.class);
 }
 

@@ -148,5 +148,5 @@ public class BaseNodeParser implements NodeParser
   }
 
   static private final NodeParser _sInstance = new BaseNodeParser();
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(BaseNodeParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(BaseNodeParser.class);
 }

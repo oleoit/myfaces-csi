@@ -111,5 +111,5 @@ class SourceCheckingCacheEntry extends CacheEntry
   private Object _provider;
 
   private static final Object _NULL_PROVIDER = new Object();
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(SourceCheckingCacheEntry.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(SourceCheckingCacheEntry.class);
 }

@@ -359,6 +359,6 @@ class StyleSheetEntry
   private StyleSheetDocument  _document;
 
 
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(StyleSheetEntry.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(StyleSheetEntry.class);
 
 }

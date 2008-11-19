@@ -144,6 +144,6 @@ public class AgentUtil
     return agent;
   }
 
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     AgentUtil.class);
 }

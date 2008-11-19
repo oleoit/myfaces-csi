@@ -325,5 +325,5 @@ public class StyleSheetDocumentParser extends BaseNodeParser
   private ArrayList<StyleSheetDocument> _imports;       // Vector of imported StyleSheetDocument
   private String _documentVersion; // Version identifier for the document
 
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(StyleSheetDocumentParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(StyleSheetDocumentParser.class);
 }

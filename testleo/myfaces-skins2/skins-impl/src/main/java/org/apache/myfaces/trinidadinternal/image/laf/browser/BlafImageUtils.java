@@ -418,5 +418,5 @@ public class BlafImageUtils implements ImageConstants
 
   // Top/bottom padding for Dialog font
   private static ImmInsets _sDialogPadding;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(BlafImageUtils.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(BlafImageUtils.class);
 }

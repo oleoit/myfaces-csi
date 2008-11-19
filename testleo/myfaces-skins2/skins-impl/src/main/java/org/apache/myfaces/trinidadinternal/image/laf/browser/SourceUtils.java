@@ -134,5 +134,5 @@ class SourceUtils
   private static final String _IMAGE_ERROR =
     "Could not create image";
 
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(SourceUtils.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(SourceUtils.class);
 }

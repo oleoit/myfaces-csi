@@ -227,6 +227,6 @@ public class CapabilitiesProvider
 
   static private Map<URL, CapabilitiesProvider> _providerMap = 
     new HashMap<URL, CapabilitiesProvider>(4);
-  static final private SkinLogger _LOG = SkinLogger.createTrinidadLogger(CapabilitiesProvider.class);
+  static final private SkinLogger _LOG = SkinLogger.createSkinLogger(CapabilitiesProvider.class);
 
 }

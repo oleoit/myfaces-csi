@@ -507,5 +507,5 @@ public class BaseImageProviderRequestParser extends BaseNodeParser
   // that gets messy too, as we would need to escape and unescape all
   // text values and attributes.  No thanks.
   static Object __STRIP_MNEMONICS_PROPERTY = "stripMnemonics";
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(BaseImageProviderRequestParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(BaseImageProviderRequestParser.class);
 }

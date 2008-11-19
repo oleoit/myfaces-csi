@@ -127,7 +127,7 @@ class DeviceNodeParser extends BaseNodeParser implements XMLConstants
   private String _extendsId;
   private List<DeviceComponentNode> _componentNodes;
 
-  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(DeviceNodeParser.class);
+  static private final SkinLogger _LOG = SkinLogger.createSkinLogger(DeviceNodeParser.class);
 }
 
 

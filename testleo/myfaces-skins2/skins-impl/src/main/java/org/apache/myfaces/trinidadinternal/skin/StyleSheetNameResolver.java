@@ -285,6 +285,6 @@ class StyleSheetNameResolver implements NameResolver
     "Could not locate the Trinidad styles directory."
     + "Please be sure that the Trinidad installable resources are installed.";
 
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(StyleSheetNameResolver.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(StyleSheetNameResolver.class);
 }
 

@@ -85,6 +85,6 @@ public class ImageProviderRequestImpl implements ImageProviderRequest
   private String     _namespace;
   private String     _name;
   private Map<Object, Object> _properties;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     ImageProviderRequestImpl.class);
 }

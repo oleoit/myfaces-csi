@@ -142,6 +142,6 @@ public class SkinNodeParser extends BaseNodeParser
 
 
   private static final SkinLogger _LOG = 
-    SkinLogger.createTrinidadLogger(SkinNodeParser.class);
+    SkinLogger.createSkinLogger(SkinNodeParser.class);
 
 }

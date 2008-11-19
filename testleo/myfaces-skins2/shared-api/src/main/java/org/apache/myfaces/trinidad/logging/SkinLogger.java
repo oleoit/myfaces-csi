@@ -72,7 +72,7 @@ public class SkinLogger
    *                or javax.swing
    * @return a suitable Logger
    */
-  private static SkinLogger createTrinidadLogger(String name) 
+  private static SkinLogger createSkinLogger(String name) 
   {
     if (name == null)
       throw new IllegalArgumentException(_LOG.getMessage(
@@ -124,7 +124,7 @@ public class SkinLogger
    * @throws IllegalArgumentException if the Logger already exists and uses
    *           a different resource bundle name.
    */
-  private static SkinLogger createTrinidadLogger(String name, String resourceBundleName) 
+  private static SkinLogger createSkinLogger(String name, String resourceBundleName) 
   {
     if (name == null)
       throw new IllegalArgumentException(_LOG.getMessage(
@@ -149,13 +149,13 @@ public class SkinLogger
    * @param c       A class instance for the logger.  
    * @return a suitable Logger
    */
-  public static SkinLogger createTrinidadLogger(Class<?> c) 
+  public static SkinLogger createSkinLogger(Class<?> c) 
   {
     if (c == null)
       throw new IllegalArgumentException(_LOG.getMessage(
         "CLASS_REQUIRED"));
     String name = c.getName();
-    return createTrinidadLogger(name);
+    return createSkinLogger(name);
   }
 
   /**
@@ -174,13 +174,13 @@ public class SkinLogger
    *        
    * @return a suitable Logger
    */
-  public static SkinLogger createTrinidadLogger(Class<?> c, String resourceBundleName) 
+  public static SkinLogger createSkinLogger(Class<?> c, String resourceBundleName) 
   {
     if (c == null)
       throw new IllegalArgumentException(_LOG.getMessage(
         "CLASS_REQUIRED"));
     String name = c.getName();
-    return createTrinidadLogger(name, resourceBundleName);
+    return createSkinLogger(name, resourceBundleName);
   }
 
  /**
@@ -197,13 +197,13 @@ public class SkinLogger
    * @return a suitable Logger
    */
 
-  public static SkinLogger createTrinidadLogger(Package p)
+  public static SkinLogger createSkinLogger(Package p)
   {
     if (p == null)
       throw new IllegalArgumentException(_LOG.getMessage(
         "PACKAGE_REQUIRED"));
     String name = p.getName();
-    return createTrinidadLogger(name);
+    return createSkinLogger(name);
   }
 
 /**
@@ -223,13 +223,13 @@ public class SkinLogger
    * @return a suitable Logger
    */
 
-  public static SkinLogger createTrinidadLogger(Package p, String resourceBundleName)
+  public static SkinLogger createSkinLogger(Package p, String resourceBundleName)
   {
     if (p == null)
       throw new IllegalArgumentException(_LOG.getMessage(
         "PACKAGE_REQUIRED"));
     String name = p.getName();
-    return createTrinidadLogger(name, resourceBundleName);
+    return createSkinLogger(name, resourceBundleName);
   }
 
   /**
@@ -1762,6 +1762,6 @@ public class SkinLogger
   private static final String _API_LOGGER_BUNDLE = "org.apache.myfaces.skins.resource.LoggerBundle";
 
   private static final String _IMPL_LOGGER_BUNDLE = "org.apache.myfaces.skinsinternal.resource.LoggerBundle";
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     SkinLogger.class);
 }

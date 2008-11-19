@@ -158,5 +158,5 @@ abstract public class SkinRenderingContext
                                                            ThreadLocalUtils.newRequestThreadLocal();  
   
   static private final SkinLogger _LOG =
-    SkinLogger.createTrinidadLogger(SkinRenderingContext.class);
+    SkinLogger.createSkinLogger(SkinRenderingContext.class);
 }

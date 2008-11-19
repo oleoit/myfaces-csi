@@ -129,5 +129,5 @@ public class SkinNode
 
 
   private static final SkinLogger _LOG =
-    SkinLogger.createTrinidadLogger( SkinNode.class);
+    SkinLogger.createSkinLogger( SkinNode.class);
 }

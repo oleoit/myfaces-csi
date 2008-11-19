@@ -357,6 +357,6 @@ public class CapabilitiesDocument
 
   static final CapabilitiesDocument EMPTY_DOCUMENT = new CapabilitiesDocument();
 
-  private static SkinLogger _LOG = SkinLogger.createTrinidadLogger(CapabilitiesDocument.class);
+  private static SkinLogger _LOG = SkinLogger.createSkinLogger(CapabilitiesDocument.class);
 
 }

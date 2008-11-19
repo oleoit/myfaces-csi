@@ -1064,6 +1064,6 @@ public class CSSUtils
     _SPECIAL_URI_VALUES.add("inherit");
   }  
   
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(CSSUtils.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(CSSUtils.class);
 
 }

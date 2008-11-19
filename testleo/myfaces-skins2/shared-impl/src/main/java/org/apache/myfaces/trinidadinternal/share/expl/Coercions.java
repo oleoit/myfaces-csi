@@ -618,6 +618,6 @@ public final class Coercions
     return new SimpleDateFormat("yyyy-MM-dd");
   }
 
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     Coercions.class);
 }
