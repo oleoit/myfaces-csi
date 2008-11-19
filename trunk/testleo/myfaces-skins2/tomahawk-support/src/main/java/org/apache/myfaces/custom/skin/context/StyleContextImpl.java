@@ -27,7 +27,7 @@ import javax.faces.context.FacesContext;
 import org.apache.myfaces.trinidad.context.AccessibilityProfile;
 import org.apache.myfaces.trinidad.context.LocaleContext;
 import org.apache.myfaces.trinidad.context.SkinRenderingContext;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidad.skin.Icon;
 import org.apache.myfaces.trinidad.skin.Skin;
 import org.apache.myfaces.trinidadinternal.agent.TrinidadAgent;
@@ -204,6 +204,6 @@ class StyleContextImpl implements StyleContext
   private StyleProvider _styleProvider;
   private StyleMap _styleMap;
 
-  private static final TrinidadLogger _LOG =
-    TrinidadLogger.createTrinidadLogger(StyleContextImpl.class);
+  private static final SkinLogger _LOG =
+    SkinLogger.createTrinidadLogger(StyleContextImpl.class);
 }

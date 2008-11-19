@@ -27,7 +27,7 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.apache.commons.digester.Digester;
 import org.apache.myfaces.custom.skin.context.RequestContextBean;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -100,6 +100,6 @@ public class ConfigParser
 
     static private final String _SKINS_CONFIG_FILE = "/WEB-INF/skins-config.xml";
     static private final String _TRINIDAD_CONFIG_FILE = "/WEB-INF/trinidad-config.xml";
-    static private final TrinidadLogger _LOG = TrinidadLogger
+    static private final SkinLogger _LOG = SkinLogger
             .createTrinidadLogger(ConfigParser.class);
 }
