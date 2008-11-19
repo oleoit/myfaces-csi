@@ -24,7 +24,7 @@ import java.text.FieldPosition;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.ParsePosition;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Format for colors.
@@ -121,6 +121,6 @@ public abstract class ColorFormat extends Format
     Color color,
     StringBuffer toAppendTo,
     FieldPosition pos);
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     ColorFormat.class);
 }

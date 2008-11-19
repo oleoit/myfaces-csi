@@ -21,7 +21,7 @@ package org.apache.myfaces.trinidadinternal.share.config;
 import java.io.File;
 
 import java.util.Hashtable;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 
 /**
@@ -382,6 +382,6 @@ public class ConfigurationImpl extends Configuration
                                          File.separatorChar);
 
   private static final Object _NULL_PATH = new Object();
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     ConfigurationImpl.class);
 }

@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Class wrapping up access to parameters.  This allows
@@ -713,6 +713,6 @@ public class ServletRequestParameters extends RequestParameters
 
   // whether the String arrays returned need to be cloned
   private boolean _cloneArrays;
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     ServletRequestParameters.class);
 }

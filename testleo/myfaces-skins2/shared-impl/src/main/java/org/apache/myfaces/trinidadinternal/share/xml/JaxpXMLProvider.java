@@ -22,7 +22,7 @@ import java.io.IOException;
 
 import java.lang.reflect.UndeclaredThrowableException;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 import org.w3c.dom.Document;
 
@@ -92,6 +92,6 @@ public class JaxpXMLProvider implements XMLProvider
     return null;
   }
 
-  private static final TrinidadLogger _LOG =
-    TrinidadLogger.createTrinidadLogger(JaxpXMLProvider.class);
+  private static final SkinLogger _LOG =
+    SkinLogger.createTrinidadLogger(JaxpXMLProvider.class);
 }

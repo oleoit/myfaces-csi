@@ -18,7 +18,7 @@
  */
 package org.apache.myfaces.trinidadinternal.share.xml;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 import org.apache.myfaces.trinidadinternal.share.expl.PrefixMapper;
 import org.apache.myfaces.trinidadinternal.share.expl.ExpressionContext;
@@ -147,5 +147,5 @@ public final class NamespaceURI
 
   private final String _ns;
   private final String _name;
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(NamespaceURI.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(NamespaceURI.class);
 }

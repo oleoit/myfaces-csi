@@ -26,7 +26,7 @@ import java.util.Map;
 
 import org.xml.sax.Attributes;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 import org.apache.myfaces.trinidadinternal.share.xml.BaseNodeParser;
 import org.apache.myfaces.trinidadinternal.share.xml.NodeParser;
@@ -597,5 +597,5 @@ public class BeanParser extends BaseNodeParser
 
   // Text being accumulated for the default property
   private       String       _defaultPropertyText;
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(BeanParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(BeanParser.class);
 }

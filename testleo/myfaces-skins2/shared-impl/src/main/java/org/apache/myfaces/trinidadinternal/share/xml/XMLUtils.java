@@ -28,7 +28,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 import org.apache.myfaces.trinidadinternal.share.config.Configuration;
 import org.apache.myfaces.trinidadinternal.share.config.ConfigurationImpl;
@@ -434,5 +434,5 @@ public class XMLUtils
   static private final String _SHARE_NAMESPACE  =
     "http://myfaces.apache.org/uix/share";
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(XMLUtils.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(XMLUtils.class);
 }

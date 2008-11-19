@@ -24,7 +24,7 @@ import java.io.IOException;
 
 import java.net.URL;
 import java.net.MalformedURLException;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Default implementation of NameResolver.  This class
@@ -338,6 +338,6 @@ public class DefaultNameResolver implements NameResolver
 
   private File _baseFile;
   private URL  _baseURL;
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     DefaultNameResolver.class);
 }

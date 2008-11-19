@@ -22,7 +22,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * A VERY simple LRU cache.
@@ -57,7 +57,7 @@ public class LRUCache<K, V> extends LinkedHashMap<K, V>
 
   private final int _maxSize;
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(LRUCache.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(LRUCache.class);
 
   private static final long serialVersionUID = 1L;
 }
