@@ -42,7 +42,7 @@ import java.util.Hashtable;
 import java.util.TooManyListenersException;
 import java.util.Vector;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidad.util.ClassLoaderUtils;
 
 
@@ -2021,7 +2021,7 @@ public class JavaIntrospector
   private static boolean _sDeclaredAccessOK = true;
 
   private static String[] _sSearchPath = { "sun.beans.infos" };
-  static private final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(JavaIntrospector.class);
+  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(JavaIntrospector.class);
 }
 
 
@@ -2418,6 +2418,6 @@ class GenericBeanInfo extends SimpleBeanInfo
   private MethodDescriptor[]   _methods;
   private BeanInfo             _targetBeanInfo;
 
-  static private final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(GenericBeanInfo.class);
+  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(GenericBeanInfo.class);
 }
 

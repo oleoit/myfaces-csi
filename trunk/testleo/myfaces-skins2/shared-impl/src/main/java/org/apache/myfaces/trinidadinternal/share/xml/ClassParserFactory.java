@@ -18,7 +18,7 @@
  */
 package org.apache.myfaces.trinidadinternal.share.xml;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 
 import org.apache.myfaces.trinidad.util.ClassLoaderUtils;
@@ -101,5 +101,5 @@ public class ClassParserFactory implements ParserFactory
   }
 
   private Class<?> _class;
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(ClassParserFactory.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(ClassParserFactory.class);
 }

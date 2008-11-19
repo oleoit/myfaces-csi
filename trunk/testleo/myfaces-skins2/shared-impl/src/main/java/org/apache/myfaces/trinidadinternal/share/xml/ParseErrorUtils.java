@@ -22,7 +22,7 @@ import java.util.logging.Level;
 
 import org.xml.sax.Locator;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Error reporting utilities.  Many of these utility methods
@@ -49,7 +49,7 @@ public class ParseErrorUtils
     String       message,
     Exception    e,
     Level        verbosity,
-    TrinidadLogger       log)
+    SkinLogger       log)
   {
     log.log(verbosity, getErrorMessage(context, message), e);
   }
@@ -73,7 +73,7 @@ public class ParseErrorUtils
     int          column,
     String       systemId,
     Level        verbosity,
-    TrinidadLogger       log)
+    SkinLogger       log)
   {
     log.log(verbosity, _getErrorMessage(message, line, column, systemId), e);
   }

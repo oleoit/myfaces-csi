@@ -36,7 +36,7 @@ import org.xml.sax.XMLReader;
 
 import org.apache.myfaces.trinidad.util.ArrayMap;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Class responsible for building a tree of objects from
@@ -825,5 +825,5 @@ public class TreeBuilder
   final Class<?>               _rootClass;
   private EntityResolver       _entityResolver;
   final private ParserManager  _manager;
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(TreeBuilder.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(TreeBuilder.class);
 }

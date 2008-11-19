@@ -18,7 +18,7 @@
  */
 package org.apache.myfaces.trinidadinternal.share.nls;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 /**
  * The DecimalFormatContext class contains all number format parameters.
  *
@@ -124,7 +124,7 @@ abstract public class DecimalFormatContext implements Cloneable
     return buffer.toString();
   }
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     DecimalFormatContext.class);
 }
 

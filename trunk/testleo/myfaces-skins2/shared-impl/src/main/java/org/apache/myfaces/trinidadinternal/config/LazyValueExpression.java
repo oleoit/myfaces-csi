@@ -30,7 +30,7 @@ import javax.el.ValueExpression;
 
 import javax.el.VariableMapper;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
  /**
   * A ValueExpression class that lazily parses the underlying EL expression
@@ -221,5 +221,5 @@ public class LazyValueExpression extends ValueExpression
   private final Class<?>  _expectedType;
 
 
-  static private final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(LazyValueExpression.class);
+  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(LazyValueExpression.class);
 }

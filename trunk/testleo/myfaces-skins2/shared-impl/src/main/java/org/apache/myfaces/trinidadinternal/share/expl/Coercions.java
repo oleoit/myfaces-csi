@@ -35,7 +35,7 @@ import org.apache.myfaces.trinidadinternal.share.xml.NamespaceURI;
 import org.apache.myfaces.trinidadinternal.share.xml.XMLUtils;
 //import org.apache.myfaces.trinidadinternal.style.Style;
 //import org.apache.myfaces.trinidadinternal.style.util.CSSUtils;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Coercions is a utility class to coerce values to their target type.
@@ -618,6 +618,6 @@ public final class Coercions
     return new SimpleDateFormat("yyyy-MM-dd");
   }
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     Coercions.class);
 }

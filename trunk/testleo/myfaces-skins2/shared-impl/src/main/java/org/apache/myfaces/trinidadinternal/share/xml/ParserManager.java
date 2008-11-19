@@ -23,7 +23,7 @@ import org.apache.myfaces.trinidad.util.ArrayMap;
 import org.apache.myfaces.trinidadinternal.share.expl.ExpressionParser;
 import org.apache.myfaces.trinidadinternal.share.expl.Function;
 import org.apache.myfaces.trinidadinternal.share.util.NamespaceMap;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * ParserManager maintains a table of ParserFactories, keyed
@@ -279,6 +279,6 @@ public class ParserManager implements Cloneable
 
   static private final ParserManager _sDefaultInstance =
     new ParserManager();
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     ParserManager.class);
 }
