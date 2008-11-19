@@ -34,7 +34,7 @@ import java.util.concurrent.ConcurrentMap;
 
 //import org.apache.myfaces.trinidad.change.ChangeManager;
 //import org.apache.myfaces.trinidad.config.RegionManager;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 //import org.apache.myfaces.trinidad.util.ComponentUtils;
 //import org.apache.myfaces.trinidad.webapp.UploadedFileProcessor;
 
@@ -595,6 +595,6 @@ abstract public class SkinRequestContext
        new ConcurrentHashMap<ClassLoader, ConcurrentMap<String, Object>>();
   static private final ThreadLocal<SkinRequestContext> _CURRENT_CONTEXT =
     new ThreadLocal<SkinRequestContext>();
-  static private final TrinidadLogger _LOG =
-    TrinidadLogger.createTrinidadLogger(SkinRequestContext.class);
+  static private final SkinLogger _LOG =
+    SkinLogger.createTrinidadLogger(SkinRequestContext.class);
 }

@@ -21,7 +21,7 @@ package org.apache.myfaces.trinidad.context;
 import java.util.Map;
 import java.util.MissingResourceException;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 import org.apache.myfaces.trinidad.skin.Skin;
 import org.apache.myfaces.trinidad.skin.Icon;
@@ -157,6 +157,6 @@ abstract public class SkinRenderingContext
   static private final ThreadLocal<SkinRenderingContext> _CURRENT_CONTEXT = 
                                                            ThreadLocalUtils.newRequestThreadLocal();  
   
-  static private final TrinidadLogger _LOG =
-    TrinidadLogger.createTrinidadLogger(SkinRenderingContext.class);
+  static private final SkinLogger _LOG =
+    SkinLogger.createTrinidadLogger(SkinRenderingContext.class);
 }

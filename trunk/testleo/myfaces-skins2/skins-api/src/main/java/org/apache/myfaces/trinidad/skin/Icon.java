@@ -25,7 +25,7 @@ import java.util.Map;
 import javax.faces.context.FacesContext;
 
 import org.apache.myfaces.trinidad.context.SkinRenderingContext;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 
 /**
@@ -141,6 +141,6 @@ abstract public class Icon
     return false;
   }
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(Icon.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(Icon.class);
 
 }

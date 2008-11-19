@@ -34,7 +34,7 @@ import java.util.List;
 
 import java.util.Set;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Utility methods for accessing classes and resources using an appropriate
@@ -329,6 +329,6 @@ public final class ClassLoaderUtils
     }
   }
 
-  private static final TrinidadLogger _LOG =
-    TrinidadLogger.createTrinidadLogger(ClassLoaderUtils.class);
+  private static final SkinLogger _LOG =
+    SkinLogger.createTrinidadLogger(ClassLoaderUtils.class);
 }
