@@ -18,7 +18,7 @@
  */
 package org.apache.myfaces.trinidad.util;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * The FastMessageFormat class is a greatly reduced version
@@ -168,7 +168,7 @@ public class FastMessageFormat
   }
 
   private final char[] _formatText;
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     FastMessageFormat.class);
 }
 

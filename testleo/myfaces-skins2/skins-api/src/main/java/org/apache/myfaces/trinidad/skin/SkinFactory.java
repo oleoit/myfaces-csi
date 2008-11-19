@@ -23,7 +23,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import javax.faces.context.FacesContext;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 
 /**
@@ -121,6 +121,6 @@ abstract public class SkinFactory
 
   static private final Map<ClassLoader, SkinFactory> _FACTORIES = 
     new WeakHashMap<ClassLoader, SkinFactory>();
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     SkinFactory.class);
 }
