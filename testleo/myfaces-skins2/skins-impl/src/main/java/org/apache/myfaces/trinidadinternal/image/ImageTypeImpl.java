@@ -21,7 +21,7 @@ package org.apache.myfaces.trinidadinternal.image;
 import java.util.Map;
 
 import org.apache.myfaces.trinidad.util.ArrayMap;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * ImageType implementation used by the ImageTypeManager.
@@ -127,6 +127,6 @@ class ImageTypeImpl implements ImageType
   private String   _namespace;
   private String   _name;
   private ArrayMap<Object, Object> _properties;
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     ImageTypeImpl.class);
 }

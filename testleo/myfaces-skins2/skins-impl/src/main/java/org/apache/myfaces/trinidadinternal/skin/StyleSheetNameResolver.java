@@ -29,7 +29,7 @@ import javax.faces.context.FacesContext;
 
 import org.apache.myfaces.trinidad.util.ClassLoaderUtils;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 import org.apache.myfaces.trinidadinternal.share.io.DefaultNameResolver;
 import org.apache.myfaces.trinidadinternal.share.io.FileInputStreamProvider;
@@ -285,6 +285,6 @@ class StyleSheetNameResolver implements NameResolver
     "Could not locate the Trinidad styles directory."
     + "Please be sure that the Trinidad installable resources are installed.";
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(StyleSheetNameResolver.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(StyleSheetNameResolver.class);
 }
 

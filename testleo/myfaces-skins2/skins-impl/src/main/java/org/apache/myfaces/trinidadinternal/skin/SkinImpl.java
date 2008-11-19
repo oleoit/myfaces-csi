@@ -38,7 +38,7 @@ import javax.faces.el.ValueBinding;
 
 import org.apache.myfaces.trinidad.context.LocaleContext;
 import org.apache.myfaces.trinidad.context.SkinRenderingContext;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidad.skin.Icon;
 import org.apache.myfaces.trinidad.skin.Skin;
 import org.apache.myfaces.trinidad.skin.SkinAddition;
@@ -1145,5 +1145,5 @@ abstract public class SkinImpl extends Skin implements DocumentProviderSkin
   private ConcurrentHashMap<Object, Object> _properties= new ConcurrentHashMap<Object, Object>();
 
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(SkinImpl.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(SkinImpl.class);
 }

@@ -18,7 +18,7 @@
  */
 package org.apache.myfaces.trinidadinternal.skin.parse;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidadinternal.share.xml.StringParser;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXParseException;
@@ -124,7 +124,7 @@ public class SkinAdditionNodeParser extends BaseNodeParser
   private String _translationSourceExpression;
 
 
-  private static final TrinidadLogger _LOG = 
-    TrinidadLogger.createTrinidadLogger(SkinAdditionNodeParser.class);
+  private static final SkinLogger _LOG = 
+    SkinLogger.createTrinidadLogger(SkinAdditionNodeParser.class);
 
 }

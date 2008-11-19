@@ -22,7 +22,7 @@ import java.util.Locale;
 
 import org.apache.myfaces.trinidad.context.LocaleContext;
 import javax.faces.context.FacesContext;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Utility class dealing with Locale-related issues, including
@@ -186,6 +186,6 @@ public final class LocaleUtils
     return new Locale(language, country, variant);
   }
 
-  static private final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(LocaleUtils.class);
+  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(LocaleUtils.class);
 
 }

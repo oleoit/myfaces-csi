@@ -18,7 +18,7 @@
  */
 package org.apache.myfaces.trinidadinternal.style.xml.parse;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 /**
  * A SkinProperyNode is a node that
  * contains the selector, the -tr- property, and the value

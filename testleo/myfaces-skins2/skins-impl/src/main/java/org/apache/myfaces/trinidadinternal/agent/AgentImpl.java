@@ -21,7 +21,7 @@ package org.apache.myfaces.trinidadinternal.agent;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 
 /**
@@ -165,6 +165,6 @@ public class AgentImpl extends DefaultAgent
   private HashMap<Object, Object> _requestCapabilities;
   private AgentEntry _entry;
   static private final AgentEntry _NULL_AGENT_ENTRY = new AgentEntry();
-  static final private TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(AgentImpl.class);
+  static final private SkinLogger _LOG = SkinLogger.createTrinidadLogger(AgentImpl.class);
 
 }

@@ -43,7 +43,7 @@ import javax.el.ValueExpression;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.apache.myfaces.trinidad.skin.SkinFactory;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 
 import org.apache.myfaces.trinidad.skin.Icon;
@@ -885,7 +885,7 @@ public class SkinUtils
   static private final String _CONFIG_FILE = "/WEB-INF/trinidad-skins.xml";
   static private final String _META_INF_CONFIG_FILE = "META-INF/trinidad-skins.xml";
   static private final String _META_INF_DIR = "META-INF/";
-  static private final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(SkinUtils.class);
+  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(SkinUtils.class);
 
   // Error messages
   private static final String _UNKNOWN_BASE_SKIN_ERROR =

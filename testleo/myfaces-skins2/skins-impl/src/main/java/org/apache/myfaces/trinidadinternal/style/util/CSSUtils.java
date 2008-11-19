@@ -30,7 +30,7 @@ import java.util.Vector;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidad.util.ArrayMap;
 import org.apache.myfaces.trinidadinternal.style.CSSStyle;
 import org.apache.myfaces.trinidadinternal.style.PropertyParseException;
@@ -1064,6 +1064,6 @@ public class CSSUtils
     _SPECIAL_URI_VALUES.add("inherit");
   }  
   
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(CSSUtils.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(CSSUtils.class);
 
 }

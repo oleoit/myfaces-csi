@@ -20,7 +20,7 @@ package org.apache.myfaces.trinidadinternal.agent.parse;
 
 import org.apache.myfaces.trinidadinternal.share.xml.BaseNodeParser;
 import org.apache.myfaces.trinidadinternal.share.xml.ParseContext;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXParseException;
 
@@ -99,5 +99,5 @@ class IncludeNodeParser extends BaseNodeParser implements XMLConstants
   private String _src;
   private String _refId;
 
-  static private final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(IncludeNodeParser.class);
+  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(IncludeNodeParser.class);
 }

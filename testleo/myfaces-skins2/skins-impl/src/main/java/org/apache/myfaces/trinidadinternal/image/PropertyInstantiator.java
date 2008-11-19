@@ -18,7 +18,7 @@
  */
 package org.apache.myfaces.trinidadinternal.image;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 import org.apache.myfaces.trinidad.util.ClassLoaderUtils;
 
@@ -75,6 +75,6 @@ public class PropertyInstantiator
   }
 
   private String _className;
-  static private final TrinidadLogger _LOG =
-    TrinidadLogger.createTrinidadLogger(PropertyInstantiator.class);
+  static private final SkinLogger _LOG =
+    SkinLogger.createTrinidadLogger(PropertyInstantiator.class);
 }

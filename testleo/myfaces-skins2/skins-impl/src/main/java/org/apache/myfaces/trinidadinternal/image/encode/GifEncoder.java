@@ -27,7 +27,7 @@ import java.io.InterruptedIOException;
 import java.util.Hashtable;
 
 import org.apache.myfaces.trinidadinternal.image.painter.ImageLoader;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Generates a Gif89a graphics file given pixel data.
@@ -533,6 +533,6 @@ final class GifEncoder
     public byte theByte;
     public byte[] byteData;
   }
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     GifEncoder.class);
 }

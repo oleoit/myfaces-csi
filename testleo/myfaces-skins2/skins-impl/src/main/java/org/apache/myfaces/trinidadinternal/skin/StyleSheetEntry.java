@@ -21,7 +21,7 @@ package org.apache.myfaces.trinidadinternal.skin;
 import java.io.IOException;
 
 import java.util.List;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 import org.apache.myfaces.trinidadinternal.share.io.CachingNameResolver;
 import org.apache.myfaces.trinidadinternal.share.io.InputStreamProvider;
@@ -359,6 +359,6 @@ class StyleSheetEntry
   private StyleSheetDocument  _document;
 
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(StyleSheetEntry.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(StyleSheetEntry.class);
 
 }

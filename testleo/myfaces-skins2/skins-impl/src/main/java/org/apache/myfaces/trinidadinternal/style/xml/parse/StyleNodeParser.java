@@ -25,7 +25,7 @@ import org.xml.sax.SAXParseException;
 
 
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 import org.apache.myfaces.trinidadinternal.share.xml.BaseNodeParser;
 import org.apache.myfaces.trinidadinternal.share.xml.NodeParser;
@@ -210,5 +210,5 @@ public class StyleNodeParser extends BaseNodeParser
   // Error messages
   private static final String _INCLUDE_STYLE_ID_ERROR =
     "<includeStyle> element must specify a selector or name attribute";
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(StyleNodeParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(StyleNodeParser.class);
 }

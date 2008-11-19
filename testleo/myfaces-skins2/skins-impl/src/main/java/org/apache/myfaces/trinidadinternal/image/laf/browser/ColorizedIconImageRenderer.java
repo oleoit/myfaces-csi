@@ -37,7 +37,7 @@ import org.apache.myfaces.trinidadinternal.image.painter.ImageLoader;
 import org.apache.myfaces.trinidadinternal.image.painter.ImageUtils;
 
 import org.apache.myfaces.trinidadinternal.style.util.GraphicsUtils;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * ImageRenderer for colorized icons
@@ -273,6 +273,6 @@ public class ColorizedIconImageRenderer implements ImageRenderer
     0xffffcc, // MediumAccent
     0xf7f7e7, // LightAccent
   };
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     ColorizedIconImageRenderer.class);
 }

@@ -47,7 +47,7 @@ import javax.faces.context.FacesContext;
 import org.apache.myfaces.trinidad.context.AccessibilityProfile;
 import org.apache.myfaces.trinidad.context.LocaleContext;
 import org.apache.myfaces.trinidad.context.SkinRenderingContext;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidad.skin.Icon;
 import org.apache.myfaces.trinidad.skin.Skin;
 import org.apache.myfaces.trinidadinternal.agent.TrinidadAgent;
@@ -1609,7 +1609,7 @@ public class FileSystemStyleCache implements StyleProvider
   /** Prefix to use for short style classes */
   private static final String _SHORT_CLASS_PREFIX = "x";
 
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(FileSystemStyleCache.class);
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(FileSystemStyleCache.class);
 
 
   /**

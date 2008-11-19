@@ -32,7 +32,7 @@ import java.util.zip.CRC32;
 import java.util.zip.DeflaterOutputStream;
 
 import org.apache.myfaces.trinidadinternal.image.painter.ImageLoader;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Generates a PNG graphics file given pixel data.
@@ -527,6 +527,6 @@ final class PNGEncoder
   private static final int _tRNS = 0x74524e53;
 
   private static final byte[] _TRANSPARENT_DATA = new byte[] { (byte)0 };
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     PNGEncoder.class);
 }

@@ -16,7 +16,7 @@
 
 package org.apache.myfaces.trinidadinternal.style.xml.parse;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 /**
  * Private implementation of PropertyNode.
  *
@@ -96,6 +96,6 @@ public class PropertyNode
 
   private final String _name;
   private final String _value;
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     PropertyNode.class);
 }
