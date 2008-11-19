@@ -261,6 +261,7 @@
     <module>shared-impl</module>
     <module>skins-api</module>
     <module>skins-impl</module>
+    <module>skins-support-shared</module>
     <module>tomahawk-support</module>
     <module>generic-support</module>
     <!-- 
