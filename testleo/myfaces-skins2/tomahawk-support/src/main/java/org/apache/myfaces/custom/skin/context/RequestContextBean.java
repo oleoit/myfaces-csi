@@ -30,13 +30,13 @@ import javax.faces.context.FacesContext;
 import org.apache.commons.digester.Digester;
 import org.apache.myfaces.custom.skin.util.DateUtils;
 import org.apache.myfaces.trinidad.context.AccessibilityProfile;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidadinternal.config.LazyValueExpression;
 import org.apache.myfaces.trinidadinternal.util.nls.LocaleUtils;
 
 public class RequestContextBean
 {
-    static private final TrinidadLogger _LOG = TrinidadLogger
+    static private final SkinLogger _LOG = SkinLogger
             .createTrinidadLogger(RequestContextBean.class);
 
     /**
