@@ -31,7 +31,7 @@ import org.apache.myfaces.commons.util.ExternalContextUtils;
 import org.apache.myfaces.custom.skin.context.RequestContextFactory;
 import org.apache.myfaces.custom.skin.context.RequestContextFactoryImpl;
 import org.apache.myfaces.trinidad.context.SkinRequestContext;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidad.skin.SkinFactory;
 import org.apache.myfaces.trinidadinternal.skin.SkinFactoryImpl;
 import org.apache.myfaces.trinidadinternal.skin.SkinUtils;
@@ -520,6 +520,6 @@ public final class SkinConfiguratorImpl
     // ThreadLocals
     private AtomicReference<ThreadLocalResetter> _threadResetter = new AtomicReference<ThreadLocalResetter>();
 
-    static private final TrinidadLogger _LOG = TrinidadLogger
+    static private final SkinLogger _LOG = SkinLogger
             .createTrinidadLogger(SkinConfiguratorImpl.class);
 }
