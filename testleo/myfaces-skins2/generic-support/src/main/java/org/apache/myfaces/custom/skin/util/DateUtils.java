@@ -21,7 +21,7 @@ package org.apache.myfaces.custom.skin.util;
 import java.util.HashMap;
 import java.util.TimeZone;
 
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Utility class for Date related functions. 
@@ -52,7 +52,7 @@ public final class DateUtils
       return null;
     }
     
-    static private final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(DateUtils.class);
+    static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(DateUtils.class);
     private static HashMap<String, String> _supportedTimeZoneIdsMap;
 
     static{

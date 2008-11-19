@@ -33,7 +33,7 @@ import org.apache.myfaces.trinidad.context.Agent;
 import org.apache.myfaces.trinidad.context.LocaleContext;
 import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidad.context.SkinRequestContext;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidad.skin.Icon;
 import org.apache.myfaces.trinidad.skin.Skin;
 import org.apache.myfaces.trinidad.skin.SkinFactory;
@@ -751,6 +751,6 @@ public class SkinRenderingContextImpl extends SkinRenderingContext
                             Boolean.FALSE);
   }
 
-  static private final TrinidadLogger _LOG =
-    TrinidadLogger.createTrinidadLogger(SkinRenderingContextImpl.class);
+  static private final SkinLogger _LOG =
+    SkinLogger.createTrinidadLogger(SkinRenderingContextImpl.class);
 }

@@ -24,7 +24,7 @@ import java.util.WeakHashMap;
 import javax.faces.context.ExternalContext;
 
 import org.apache.myfaces.trinidad.context.SkinRequestContext;
-import org.apache.myfaces.trinidad.logging.TrinidadLogger;
+import org.apache.myfaces.trinidad.logging.SkinLogger;
 
 /**
  * Factory for creating RequestContext objects.
@@ -90,6 +90,6 @@ abstract public class RequestContextFactory
 
   static private final Map<ClassLoader, RequestContextFactory> _FACTORIES = 
     new WeakHashMap<ClassLoader, RequestContextFactory>();
-  private static final TrinidadLogger _LOG = TrinidadLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
     RequestContextFactory.class);
 }
