@@ -233,6 +233,6 @@ public class StyleSheetDocumentUtils
   }
 
   private static ParserManager _sDefaultParserManager;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     StyleSheetDocumentUtils.class);
 }

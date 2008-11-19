@@ -330,5 +330,5 @@ public class StyleSheetNodeParser extends BaseNodeParser
   private Set<String>       _accProperties;
 
   static private final SkinLogger _LOG =
-    SkinLogger.createTrinidadLogger(StyleSheetNodeParser.class);
+    SkinLogger.createSkinLogger(StyleSheetNodeParser.class);
 }

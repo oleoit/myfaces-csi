@@ -155,5 +155,5 @@ class CapabilitiesNodeParser extends BaseNodeParser implements XMLConstants
   private NameVersion _platform;
   private List<IncludeNode> _includeNodes;
 
-  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(CapabilitiesNodeParser.class);
+  static private final SkinLogger _LOG = SkinLogger.createSkinLogger(CapabilitiesNodeParser.class);
 }

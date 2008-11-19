@@ -417,6 +417,6 @@ public class RequestSkinWrapper extends Skin implements DocumentProviderSkin
 
   // Empty map used when StyleProvider.getSkinProperties() fails;
   private static final Map<Object, Object> _NULL_PROPERTIES = Collections.emptyMap();
-  static final private SkinLogger _LOG = SkinLogger.createTrinidadLogger(RequestSkinWrapper.class);
+  static final private SkinLogger _LOG = SkinLogger.createSkinLogger(RequestSkinWrapper.class);
 
 }

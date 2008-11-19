@@ -201,5 +201,5 @@ public class CapabilitiesDocumentParser extends BaseNodeParser
 
   static final String __BASE_URL = "baseURL";
 
-  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(CapabilitiesDocumentParser.class);
+  static private final SkinLogger _LOG = SkinLogger.createSkinLogger(CapabilitiesDocumentParser.class);
 }

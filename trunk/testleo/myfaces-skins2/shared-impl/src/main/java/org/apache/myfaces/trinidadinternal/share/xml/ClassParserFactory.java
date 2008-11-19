@@ -101,5 +101,5 @@ public class ClassParserFactory implements ParserFactory
   }
 
   private Class<?> _class;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(ClassParserFactory.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(ClassParserFactory.class);
 }

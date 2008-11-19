@@ -57,7 +57,7 @@ public class LRUCache<K, V> extends LinkedHashMap<K, V>
 
   private final int _maxSize;
 
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(LRUCache.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(LRUCache.class);
 
   private static final long serialVersionUID = 1L;
 }

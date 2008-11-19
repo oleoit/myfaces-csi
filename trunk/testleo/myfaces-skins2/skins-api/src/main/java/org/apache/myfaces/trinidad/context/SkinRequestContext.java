@@ -596,5 +596,5 @@ abstract public class SkinRequestContext
   static private final ThreadLocal<SkinRequestContext> _CURRENT_CONTEXT =
     new ThreadLocal<SkinRequestContext>();
   static private final SkinLogger _LOG =
-    SkinLogger.createTrinidadLogger(SkinRequestContext.class);
+    SkinLogger.createSkinLogger(SkinRequestContext.class);
 }

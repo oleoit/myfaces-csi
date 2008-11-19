@@ -752,5 +752,5 @@ public class SkinRenderingContextImpl extends SkinRenderingContext
   }
 
   static private final SkinLogger _LOG =
-    SkinLogger.createTrinidadLogger(SkinRenderingContextImpl.class);
+    SkinLogger.createSkinLogger(SkinRenderingContextImpl.class);
 }

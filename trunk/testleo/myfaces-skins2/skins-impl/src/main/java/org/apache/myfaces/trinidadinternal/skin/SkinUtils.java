@@ -885,7 +885,7 @@ public class SkinUtils
   static private final String _CONFIG_FILE = "/WEB-INF/trinidad-skins.xml";
   static private final String _META_INF_CONFIG_FILE = "META-INF/trinidad-skins.xml";
   static private final String _META_INF_DIR = "META-INF/";
-  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(SkinUtils.class);
+  static private final SkinLogger _LOG = SkinLogger.createSkinLogger(SkinUtils.class);
 
   // Error messages
   private static final String _UNKNOWN_BASE_SKIN_ERROR =

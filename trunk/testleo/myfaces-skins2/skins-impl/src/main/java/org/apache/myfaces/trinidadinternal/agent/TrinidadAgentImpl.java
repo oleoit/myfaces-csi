@@ -390,7 +390,7 @@ public class TrinidadAgentImpl implements TrinidadAgent, Cloneable
 
 
   static final private SkinLogger _LOG =
-    SkinLogger.createTrinidadLogger(TrinidadAgentImpl.class);
+    SkinLogger.createSkinLogger(TrinidadAgentImpl.class);
 
   private static boolean _deviceRepositoryLoaded;
   private static DeviceRepository _deviceRepository;

@@ -177,6 +177,6 @@ public class SkinFactoryImpl extends SkinFactory
   static private final String _SIMPLE_PDA = "simple.pda";
   static private final String _SIMPLE_DESKTOP = "simple.desktop";
   static private final String _SIMPLE_PORTLET = "simple.portlet";
-  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(SkinFactoryImpl.class);
+  static private final SkinLogger _LOG = SkinLogger.createSkinLogger(SkinFactoryImpl.class);
 
 }

@@ -101,5 +101,5 @@ public class ConfigParser
     static private final String _SKINS_CONFIG_FILE = "/WEB-INF/skins-config.xml";
     static private final String _TRINIDAD_CONFIG_FILE = "/WEB-INF/trinidad-config.xml";
     static private final SkinLogger _LOG = SkinLogger
-            .createTrinidadLogger(ConfigParser.class);
+            .createSkinLogger(ConfigParser.class);
 }

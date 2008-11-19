@@ -597,5 +597,5 @@ public class BeanParser extends BaseNodeParser
 
   // Text being accumulated for the default property
   private       String       _defaultPropertyText;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(BeanParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(BeanParser.class);
 }

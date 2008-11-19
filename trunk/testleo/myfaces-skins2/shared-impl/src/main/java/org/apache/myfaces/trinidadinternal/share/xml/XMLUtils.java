@@ -434,5 +434,5 @@ public class XMLUtils
   static private final String _SHARE_NAMESPACE  =
     "http://myfaces.apache.org/uix/share";
 
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(XMLUtils.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(XMLUtils.class);
 }

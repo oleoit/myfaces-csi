@@ -147,5 +147,5 @@ public final class NamespaceURI
 
   private final String _ns;
   private final String _name;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(NamespaceURI.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(NamespaceURI.class);
 }

@@ -224,5 +224,5 @@ public class FontParser extends BaseNodeParser
     "Error while parsing font size value.  Font size must be an integer.";
   private static final String _STYLE_ERROR =
     "Error while parsing font style value.  Valid values are \"plain\", \"bold\" or \"italic\"";
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(FontParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(FontParser.class);
 }

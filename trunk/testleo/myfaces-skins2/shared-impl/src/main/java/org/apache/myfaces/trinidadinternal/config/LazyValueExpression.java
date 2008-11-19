@@ -221,5 +221,5 @@ public class LazyValueExpression extends ValueExpression
   private final Class<?>  _expectedType;
 
 
-  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(LazyValueExpression.class);
+  static private final SkinLogger _LOG = SkinLogger.createSkinLogger(LazyValueExpression.class);
 }

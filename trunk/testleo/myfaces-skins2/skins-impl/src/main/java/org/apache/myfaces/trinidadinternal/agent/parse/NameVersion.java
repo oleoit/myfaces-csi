@@ -529,6 +529,6 @@ class NameVersion
 
   public final static double NO_MATCH = 0x0000;
 
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     NameVersion.class);
 }

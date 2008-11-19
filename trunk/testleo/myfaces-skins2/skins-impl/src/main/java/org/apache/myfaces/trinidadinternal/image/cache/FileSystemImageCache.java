@@ -1821,5 +1821,5 @@ public class FileSystemImageCache implements ImageProvider, ImageConstants
   private static final Hashtable<String, String> _sCanonicalPaths = 
     new Hashtable<String, String>(19);
   
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(FileSystemImageCache.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(FileSystemImageCache.class);
 }

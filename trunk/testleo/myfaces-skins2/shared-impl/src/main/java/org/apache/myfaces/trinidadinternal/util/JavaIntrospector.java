@@ -2021,7 +2021,7 @@ public class JavaIntrospector
   private static boolean _sDeclaredAccessOK = true;
 
   private static String[] _sSearchPath = { "sun.beans.infos" };
-  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(JavaIntrospector.class);
+  static private final SkinLogger _LOG = SkinLogger.createSkinLogger(JavaIntrospector.class);
 }
 
 
@@ -2418,6 +2418,6 @@ class GenericBeanInfo extends SimpleBeanInfo
   private MethodDescriptor[]   _methods;
   private BeanInfo             _targetBeanInfo;
 
-  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(GenericBeanInfo.class);
+  static private final SkinLogger _LOG = SkinLogger.createSkinLogger(GenericBeanInfo.class);
 }
 

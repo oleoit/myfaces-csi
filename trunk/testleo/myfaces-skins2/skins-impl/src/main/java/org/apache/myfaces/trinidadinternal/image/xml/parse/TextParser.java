@@ -161,5 +161,5 @@ public class TextParser extends BaseNodeParser
   private static final String _KEY_ERROR =
     "Missing translatedText key attribute.";
 
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(TextParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(TextParser.class);
 }

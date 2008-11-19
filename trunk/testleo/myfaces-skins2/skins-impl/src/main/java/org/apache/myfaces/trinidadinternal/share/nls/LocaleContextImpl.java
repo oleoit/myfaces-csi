@@ -456,6 +456,6 @@ public class LocaleContextImpl extends LocaleContext
   private TimeZone _timeZone;
 
   private int _readingDirection = LocaleUtils.DIRECTION_DEFAULT;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     LocaleContextImpl.class);
 }

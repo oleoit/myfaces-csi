@@ -382,6 +382,6 @@ public class ConfigurationImpl extends Configuration
                                          File.separatorChar);
 
   private static final Object _NULL_PATH = new Object();
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     ConfigurationImpl.class);
 }

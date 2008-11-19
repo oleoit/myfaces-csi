@@ -121,6 +121,6 @@ public abstract class ColorFormat extends Format
     Color color,
     StringBuffer toAppendTo,
     FieldPosition pos);
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     ColorFormat.class);
 }

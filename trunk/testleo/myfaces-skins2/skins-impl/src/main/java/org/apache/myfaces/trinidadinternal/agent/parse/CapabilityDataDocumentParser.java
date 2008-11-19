@@ -162,6 +162,6 @@ public class CapabilityDataDocumentParser  extends BaseNodeParser
 
   private List<Object> _capList;
 
-  static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(CapabilityDataDocumentParser.class);
+  static private final SkinLogger _LOG = SkinLogger.createSkinLogger(CapabilityDataDocumentParser.class);
 
 }

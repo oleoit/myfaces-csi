@@ -644,7 +644,7 @@ public class SkinCSSDocumentHandler
 
   private Map<String, String> _namespaceMap = new HashMap<String, String>();
   private static final SkinLogger _LOG =
-    SkinLogger.createTrinidadLogger(SkinCSSDocumentHandler.class);
+    SkinLogger.createSkinLogger(SkinCSSDocumentHandler.class);
     
   private static final Pattern _WHITESPACE_PATTERN =
     Pattern.compile("\\s+");

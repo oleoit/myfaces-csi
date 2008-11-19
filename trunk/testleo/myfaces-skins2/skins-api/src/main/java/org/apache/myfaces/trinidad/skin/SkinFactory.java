@@ -121,6 +121,6 @@ abstract public class SkinFactory
 
   static private final Map<ClassLoader, SkinFactory> _FACTORIES = 
     new WeakHashMap<ClassLoader, SkinFactory>();
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     SkinFactory.class);
 }

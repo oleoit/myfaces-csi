@@ -825,5 +825,5 @@ public class TreeBuilder
   final Class<?>               _rootClass;
   private EntityResolver       _entityResolver;
   final private ParserManager  _manager;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(TreeBuilder.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(TreeBuilder.class);
 }

@@ -449,5 +449,5 @@ public class GraphicsUtils
                    "sansserif",
                    "symbol" };
 
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(GraphicsUtils.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(GraphicsUtils.class);
 }

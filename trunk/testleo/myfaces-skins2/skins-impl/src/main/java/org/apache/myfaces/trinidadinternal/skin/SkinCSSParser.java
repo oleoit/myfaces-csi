@@ -497,7 +497,7 @@ public class SkinCSSParser
 
      
   private static final SkinLogger _LOG =
-    SkinLogger.createTrinidadLogger(SkinCSSParser.class);
+    SkinLogger.createSkinLogger(SkinCSSParser.class);
 
 
 }

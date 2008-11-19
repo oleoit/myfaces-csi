@@ -90,6 +90,6 @@ abstract public class RequestContextFactory
 
   static private final Map<ClassLoader, RequestContextFactory> _FACTORIES = 
     new WeakHashMap<ClassLoader, RequestContextFactory>();
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     RequestContextFactory.class);
 }

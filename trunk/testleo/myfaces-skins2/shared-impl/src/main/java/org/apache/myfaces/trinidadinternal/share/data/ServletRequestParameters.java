@@ -713,6 +713,6 @@ public class ServletRequestParameters extends RequestParameters
 
   // whether the String arrays returned need to be cloned
   private boolean _cloneArrays;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     ServletRequestParameters.class);
 }

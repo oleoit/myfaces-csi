@@ -80,5 +80,5 @@ class UnsupportedImageRenderer implements ImageRenderer
   static private final String _CANT_RENDER_MESSAGE =
     "Dynamic image rendering is not supported on JDK 1.1.  You must\n" +
     "pregenerate the image cache.";
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(UnsupportedImageRenderer.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(UnsupportedImageRenderer.class);
 }

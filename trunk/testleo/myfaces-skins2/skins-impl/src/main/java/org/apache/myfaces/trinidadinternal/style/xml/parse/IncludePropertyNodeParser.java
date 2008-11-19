@@ -71,5 +71,5 @@ public class IncludePropertyNodeParser extends LeafNodeParser
 
   private static final String _INCLUDE_PROPERTY_ID_ERROR =
     "<includeProperty> element must specify a selector or name attribute";
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(IncludePropertyNodeParser.class);
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(IncludePropertyNodeParser.class);
 }

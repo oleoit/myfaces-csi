@@ -127,6 +127,6 @@ class ImageTypeImpl implements ImageType
   private String   _namespace;
   private String   _name;
   private ArrayMap<Object, Object> _properties;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     ImageTypeImpl.class);
 }

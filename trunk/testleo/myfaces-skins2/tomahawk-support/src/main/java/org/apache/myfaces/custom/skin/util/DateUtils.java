@@ -52,7 +52,7 @@ public final class DateUtils
       return null;
     }
     
-    static private final SkinLogger _LOG = SkinLogger.createTrinidadLogger(DateUtils.class);
+    static private final SkinLogger _LOG = SkinLogger.createSkinLogger(DateUtils.class);
     private static HashMap<String, String> _supportedTimeZoneIdsMap;
 
     static{

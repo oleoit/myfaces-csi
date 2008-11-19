@@ -205,5 +205,5 @@ class StyleContextImpl implements StyleContext
   private StyleMap _styleMap;
 
   private static final SkinLogger _LOG =
-    SkinLogger.createTrinidadLogger(StyleContextImpl.class);
+    SkinLogger.createSkinLogger(StyleContextImpl.class);
 }

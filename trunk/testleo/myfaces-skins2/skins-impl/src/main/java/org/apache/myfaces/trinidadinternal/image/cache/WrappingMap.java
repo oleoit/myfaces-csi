@@ -113,6 +113,6 @@ class WrappingMap<K, V> implements Map<K, V>
   }
 
   private Map<K, V> _wrappedMap;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     WrappingMap.class);
 }

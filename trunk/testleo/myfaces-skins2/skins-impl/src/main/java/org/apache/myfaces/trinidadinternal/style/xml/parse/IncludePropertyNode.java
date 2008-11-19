@@ -140,6 +140,6 @@ public class IncludePropertyNode
   private final String _selector;
   private final String _propertyName;
   private final String _localPropertyName;
-  private static final SkinLogger _LOG = SkinLogger.createTrinidadLogger(
+  private static final SkinLogger _LOG = SkinLogger.createSkinLogger(
     IncludePropertyNode.class);
 }

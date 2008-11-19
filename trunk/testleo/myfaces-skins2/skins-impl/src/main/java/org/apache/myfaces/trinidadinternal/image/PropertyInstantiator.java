@@ -76,5 +76,5 @@ public class PropertyInstantiator
 
   private String _className;
   static private final SkinLogger _LOG =
-    SkinLogger.createTrinidadLogger(PropertyInstantiator.class);
+    SkinLogger.createSkinLogger(PropertyInstantiator.class);
 }

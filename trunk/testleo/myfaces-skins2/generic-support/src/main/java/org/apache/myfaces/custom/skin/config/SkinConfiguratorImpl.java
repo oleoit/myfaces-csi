@@ -521,5 +521,5 @@ public final class SkinConfiguratorImpl
     private AtomicReference<ThreadLocalResetter> _threadResetter = new AtomicReference<ThreadLocalResetter>();
 
     static private final SkinLogger _LOG = SkinLogger
-            .createTrinidadLogger(SkinConfiguratorImpl.class);
+            .createSkinLogger(SkinConfiguratorImpl.class);
 }
