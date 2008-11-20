@@ -34,6 +34,7 @@ import org.apache.myfaces.trinidad.util.ArrayMap;
 
 import org.apache.myfaces.trinidadinternal.agent.TrinidadAgent;
 import org.apache.myfaces.trinidad.context.SkinRenderingContext;
+import org.apache.myfaces.trinidad.context.SkinRequestContext;
 //import org.apache.myfaces.trinidad.render.CoreRenderer;
 import org.apache.myfaces.trinidad.skin.Icon;
 
@@ -168,6 +169,11 @@ public class OutputUtils
     {
       writer.writeAttribute("summary", summary, null);
     }*/
+    //SKINFIX: replaced the code above with this:
+    if(!isInaccessibleMode(arc))
+    {
+        writer.writeAttribute("summary", summary, null);
+    }
   }
   /**
   * Renders only the alt attribute
@@ -204,6 +210,11 @@ public class OutputUtils
       writer.writeAttribute("alt", textValue, null);
     }
     */
+    //SKINFIX: substituted the code block above with this:
+    if(!wroteTitle || !isInaccessibleMode(afc))
+    {
+        writer.writeAttribute("alt", textValue, null);
+    }
   }
 
   /**
@@ -396,5 +407,10 @@ public class OutputUtils
   static public Color getBackgroundColor(SkinRenderingContext arc)
   {
     return Color.WHITE;
+  }
+  
+  static public boolean isInaccessibleMode(SkinRenderingContext afc)
+  {
+      return (afc.getAccessibilityMode() == SkinRequestContext.Accessibility.INACCESSIBLE);
   }
 }
