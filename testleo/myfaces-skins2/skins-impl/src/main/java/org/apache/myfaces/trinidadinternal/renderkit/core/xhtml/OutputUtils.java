@@ -396,6 +396,12 @@ public class OutputUtils
     {
       CoreRenderer.renderStyleClass(context, arc, styleClass);
     }*/
+    // SKINFIX: replaced the code above with this:
+    if (styleClass != null)
+    {
+      styleClass = arc.getStyleClass(styleClass);
+      context.getResponseWriter().writeAttribute("class", styleClass, null);
+    }
 
     writer.endElement("img");
   }
