@@ -120,7 +120,13 @@ class StyleContextImpl implements StyleContext
     FacesContext fContext = FacesContext.getCurrentInstance();
     // SKINFIX: What to do here?
     //return HtmlRenderer.isStandardsModeDisabled(fContext);
-    return false;
+    
+    // SKINFIX: replaced the code above with this:
+    String disableStandardsMode = 
+        fContext.getExternalContext().getInitParameter(_DISABLE_STANDARDS_MODE);
+    
+    return ((disableStandardsMode != null) &&
+            disableStandardsMode.equalsIgnoreCase("true"));
   }
 
   public AccessibilityProfile getAccessibilityProfile()
@@ -198,6 +204,9 @@ class StyleContextImpl implements StyleContext
     private static StyleProvider _sInstance;
   }
 
+  // SKINFIX: moved constant from HtmlRenderer
+  static private final String _DISABLE_STANDARDS_MODE=
+      "org.apache.myfaces.trinidad.ENABLE_QUIRKS_MODE";
 
   private SkinRenderingContext _arc;
   private String  _generatedFilesPath;
