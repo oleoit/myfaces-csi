@@ -18,27 +18,22 @@
  */
 package org.apache.myfaces.trinidadinternal.share.xml;
 
-import java.io.InputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
-
 import org.apache.myfaces.trinidad.logging.SkinLogger;
-
 import org.apache.myfaces.trinidadinternal.share.config.Configuration;
-import org.apache.myfaces.trinidadinternal.share.config.ConfigurationImpl;
-
+import org.apache.myfaces.trinidadinternal.share.expl.JavaMethod;
 import org.apache.myfaces.trinidadinternal.share.io.CachingInputStreamProvider;
 import org.apache.myfaces.trinidadinternal.share.io.DefaultNameResolver;
 import org.apache.myfaces.trinidadinternal.share.io.InputStreamProvider;
 import org.apache.myfaces.trinidadinternal.share.io.NameResolver;
-
-import org.apache.myfaces.trinidadinternal.share.expl.JavaMethod;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 /**
  * Utility class for XML parsing.
@@ -256,13 +251,14 @@ public class XMLUtils
    * Convenience function for setting an XML provider on a
    * configuration.
    */
-  static public void setXMLProvider(
-    ConfigurationImpl config,
-    String            providerClassName)
-  {
-    config.putProperty(Configuration.XML_PROVIDER,
-                       providerClassName);
-  }
+  //SKINFIX: this is not related to skinning
+//  static public void setXMLProvider(
+//    ConfigurationImpl config,
+//    String            providerClassName)
+//  {
+//    config.putProperty(Configuration.XML_PROVIDER,
+//                       providerClassName);
+//  }
 
 
   /**
