@@ -23,7 +23,5 @@
  <factory>
   <faces-context-factory>org.apache.myfaces.custom.skin.context.SkinFacesContextFactory</faces-context-factory>
  </factory>
- <lifecycle>
-    <phase-listener>org.apache.myfaces.custom.skin.lifecycle.SkinRenderingContextPhaseListener</phase-listener> 
- </lifecycle>
+ 
 </faces-config>
