@@ -36,7 +36,8 @@ public class DefaultSkinStyleSheetRenderer extends SkinStyleSheetRenderer
         ExternalContext externalContext = context
                 .getExternalContext();
         String contextUri = externalContext.getRequestContextPath();
-        String baseUrl = contextUri + XhtmlConstants.STYLES_CACHE_DIRECTORY;
+        
+        String baseUrl = contextUri + XhtmlConstants.SKINS_RESOURCE_SERVLET;
         
         for (String uri : uris)
         {
