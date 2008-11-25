@@ -26,7 +26,7 @@ import org.apache.myfaces.custom.skin.context.SkinRenderingContextImpl;
 import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidad.logging.SkinLogger;
 
-public final class SkinRenderingContextPhaseListener implements PhaseListener
+public class SkinRenderingContextPhaseListener implements PhaseListener
 {
     
     private static final long serialVersionUID = -3326689809959287245L;
