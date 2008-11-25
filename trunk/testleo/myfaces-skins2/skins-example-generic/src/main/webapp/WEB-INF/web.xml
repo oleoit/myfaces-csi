@@ -212,7 +212,7 @@
   <!-- Skin Resource Servlet Mapping -->
   <servlet-mapping>
     <servlet-name>Skin Resource Servlet</servlet-name>
-    <url-pattern>/adf/styles/cache/*</url-pattern>
+    <url-pattern>/mfskins/styles/cache/*</url-pattern>
   </servlet-mapping>
   
 	<!-- Welcome files -->
@@ -220,5 +220,4 @@
 		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
-
 </web-app>
