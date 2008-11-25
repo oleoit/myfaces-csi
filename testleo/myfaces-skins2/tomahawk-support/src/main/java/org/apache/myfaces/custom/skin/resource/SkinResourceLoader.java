@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.myfaces.renderkit.html.util.ResourceLoader;
 import org.apache.myfaces.trinidad.util.URLUtils;
-import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.XhtmlConstants;
+import org.apache.myfaces.trinidadinternal.share.config.SkinConfiguration;
 
 /**
  * This class handle resource created on temp directory.
@@ -65,7 +65,7 @@ public class SkinResourceLoader implements ResourceLoader
         File tempdir = (File) context
                 .getAttribute("javax.servlet.context.tempdir");
 
-        URL url = findResource(tempdir, XhtmlConstants.STYLES_CACHE_DIRECTORY + resourceUri);
+        URL url = findResource(tempdir, SkinConfiguration.getStylesCacheDir(context) + resourceUri);
 
         // Make sure the resource is available
         if (url == null)
