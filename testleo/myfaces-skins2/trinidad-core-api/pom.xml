@@ -41,6 +41,16 @@
     </dependency>
     
     <dependency>
+      <groupId>org.apache.myfaces.skins</groupId>
+      <artifactId>trinidad-shared-api</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.myfaces.skins</groupId>
+      <artifactId>skins-api</artifactId>
+    </dependency>
+    
+    <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
     </dependency>
@@ -139,16 +149,15 @@
           </includes>
         </configuration>
       </plugin>
-<!--
+
       <plugin>
         <groupId>org.apache.myfaces.trinidadbuild</groupId>
         <artifactId>maven-faces-plugin</artifactId>
         <configuration>
           <typePrefix>org.apache</typePrefix>
           <packageContains>org.apache</packageContains>
-          <jsfVersion>#{jsf-spec.version}</jsfVersion> -->
+          <jsfVersion>#{jsf-spec.version}</jsfVersion>
           <!--suppressListenerMethods>true</suppressListenerMethods-->
-<!--
           <force>true</force>
         </configuration>
         <executions>
@@ -159,7 +168,7 @@
           </execution>
         </executions>
       </plugin>
--->
+
       <plugin>
         <groupId>org.apache.myfaces.trinidadbuild</groupId>
         <artifactId>maven-i18n-plugin</artifactId>
