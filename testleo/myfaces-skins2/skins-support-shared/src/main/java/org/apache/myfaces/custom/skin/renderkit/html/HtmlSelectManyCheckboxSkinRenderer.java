@@ -18,7 +18,13 @@
  */
 package org.apache.myfaces.custom.skin.renderkit.html;
 
+import org.apache.myfaces.buildtools.maven2.plugin.builder.annotation.JSFRenderer;
 
+
+@JSFRenderer(
+        renderKitId = "SkinRenderKit", 
+        family = "javax.faces.SelectMany", 
+        type = "javax.faces.Checkbox")
 public class HtmlSelectManyCheckboxSkinRenderer extends
         HtmlSelectOneOrManySkinRenderer
 {

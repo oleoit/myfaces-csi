@@ -25,12 +25,17 @@ import javax.faces.component.UIGraphic;
 import javax.faces.component.html.HtmlGraphicImage;
 import javax.faces.context.FacesContext;
 
+import org.apache.myfaces.buildtools.maven2.plugin.builder.annotation.JSFRenderer;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.custom.skin.SkinConstants;
 import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidad.skin.Icon;
 import org.apache.myfaces.trinidadinternal.skin.icon.ContextImageIcon;
 
+@JSFRenderer(
+        renderKitId = "SkinRenderKit", 
+        family = "javax.faces.Graphic", 
+        type = "javax.faces.Image")
 public class HtmlGraphicImageSkinRenderer extends AdapterSkinRenderer
 {
 

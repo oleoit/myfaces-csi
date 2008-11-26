@@ -25,9 +25,14 @@ import java.util.Map;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
+import org.apache.myfaces.buildtools.maven2.plugin.builder.annotation.JSFRenderer;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 
+@JSFRenderer(
+        renderKitId = "SkinRenderKit", 
+        family = "javax.faces.Data", 
+        type = "javax.faces.Table")
 public class HtmlDataTableSkinRenderer extends AdapterSkinRenderer
 {
 

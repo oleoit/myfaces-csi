@@ -27,11 +27,16 @@ import javax.faces.context.FacesContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.myfaces.buildtools.maven2.plugin.builder.annotation.JSFRenderer;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 import org.apache.myfaces.custom.skin.SkinConstants;
 import org.apache.myfaces.trinidad.context.SkinRenderingContext;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.OutputUtils;
 
+@JSFRenderer(
+        renderKitId = "SkinRenderKit", 
+        family = "javax.faces.Output", 
+        type = "javax.faces.Label")
 public class HtmlOutputLabelSkinRenderer extends AdapterSkinRenderer
 {
 
