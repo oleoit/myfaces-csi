@@ -18,14 +18,12 @@
  */
 package org.apache.myfaces.custom.skin.renderkit.html;
 
-import java.io.IOException;
+import org.apache.myfaces.buildtools.maven2.plugin.builder.annotation.JSFRenderer;
 
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-
-import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
-import org.apache.myfaces.trinidad.context.SkinRenderingContext;
-
+@JSFRenderer(
+        renderKitId = "SkinRenderKit", 
+        family = "javax.faces.SelectMany", 
+        type = "javax.faces.Menu")
 public class HtmlSelectManyMenuSkinRenderer extends
         HtmlSelectOneOrManySkinRenderer
 {

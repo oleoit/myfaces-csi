@@ -18,8 +18,13 @@
  */
 package org.apache.myfaces.custom.skin.renderkit.html;
 
+import org.apache.myfaces.buildtools.maven2.plugin.builder.annotation.JSFRenderer;
 import org.apache.myfaces.custom.skin.AdapterSkinRenderer;
 
+@JSFRenderer(
+        renderKitId = "SkinRenderKit", 
+        family = "javax.faces.Output", 
+        type = "javax.faces.Text")
 public class HtmlOutputTextSkinRenderer extends AdapterSkinRenderer
 {
 

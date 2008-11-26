@@ -18,7 +18,13 @@
  */
 package org.apache.myfaces.custom.skin.renderkit.html;
 
+import org.apache.myfaces.buildtools.maven2.plugin.builder.annotation.JSFRenderer;
 
+
+@JSFRenderer(
+        renderKitId = "SkinRenderKit", 
+        family = "javax.faces.SelectOne", 
+        type = "javax.faces.Radio")
 public class HtmlSelectOneRadioSkinRenderer extends
         HtmlSelectOneOrManySkinRenderer
 {
