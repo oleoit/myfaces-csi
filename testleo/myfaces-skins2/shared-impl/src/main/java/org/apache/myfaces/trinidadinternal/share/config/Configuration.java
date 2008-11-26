@@ -169,8 +169,7 @@ abstract public class Configuration
    * @exception DirectoryUnavailableException if the directory is
    *    unavailable
    */
-  // SKINFIX: this is not related to skinning
-//  abstract public String getURI(Object key, String contextURI);
+  abstract public String getURI(Object key, String contextURI);
 
 
   /**
@@ -184,8 +183,7 @@ abstract public class Configuration
    * @exception DirectoryUnavailableException if the directory is
    *    unavailable
    */
-  //SKINFIX: this is not needed in skinning
-//  abstract public String getPath(Object key, String contextPath);
+  abstract public String getPath(Object key, String contextPath);
 
 
   /**
@@ -194,8 +192,7 @@ abstract public class Configuration
    * @return the registered object, or null if no object
    *    was registered.
    */
-  //SKINFIX: this is not needed in skinning
-//  abstract public Object getProperty(Object key);
+  abstract public Object getProperty(Object key);
 
 
   /**
