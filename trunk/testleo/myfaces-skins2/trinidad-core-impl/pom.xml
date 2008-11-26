@@ -77,6 +77,16 @@
     </dependency>
 
     <dependency>
+      <groupId>org.apache.myfaces.skins</groupId>
+      <artifactId>trinidad-shared-impl</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.myfaces.skins</groupId>
+      <artifactId>skins-impl</artifactId>
+    </dependency>
+    
+    <dependency>
       <groupId>com.sun.facelets</groupId>
       <artifactId>jsf-facelets</artifactId>
     </dependency>
@@ -191,7 +201,7 @@
           </execution>
         </executions>
       </plugin>
-<!--
+
       <plugin>
         <groupId>org.apache.myfaces.trinidadbuild</groupId>
         <artifactId>maven-faces-plugin</artifactId>
@@ -219,7 +229,7 @@
           </execution>
         </executions>
       </plugin>
--->
+
       <plugin>
         <groupId>org.apache.myfaces.trinidadbuild</groupId>
         <artifactId>maven-i18n-plugin</artifactId>
