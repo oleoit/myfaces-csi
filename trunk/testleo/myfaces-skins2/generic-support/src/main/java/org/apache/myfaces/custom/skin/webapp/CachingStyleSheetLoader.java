@@ -7,14 +7,14 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.util.Calendar;
 
-import javax.servlet.ServletContext;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.myfaces.trinidadinternal.share.config.SkinConfiguration;
+import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.XhtmlConstants;
 
 /**
  * This is an implementation of StyleSheetLoader that caches the stylesheet
@@ -29,10 +29,10 @@ public class CachingStyleSheetLoader implements StyleSheetLoader
      * Loads the stylesheet only if the file has been modified or
      * the cache has expired.
      */
-    public void loadStyleSheet(HttpServletRequest req, HttpServletResponse resp, ServletContext context)
+    public void loadStyleSheet(HttpServletRequest req, HttpServletResponse resp, ServletConfig config)
             throws IOException
     {
-        File file = getFile(req, context);
+        File file = getFile(req, config);
         if(file != null && file.exists())
         {
             if(isFileModified(file, req))
@@ -64,16 +64,16 @@ public class CachingStyleSheetLoader implements StyleSheetLoader
      * @param config
      * @return Returns the stylesheet file.
      */
-    private File getFile(HttpServletRequest request, ServletContext context)
+    private File getFile(HttpServletRequest request, ServletConfig config)
     {
         String uri = request.getRequestURI();
         String filename = uri.substring(uri.lastIndexOf('/')+1); 
         
         File file = null;
-        File tempDir = (File)context.getAttribute("javax.servlet.context.tempdir");
+        File tempDir = (File)config.getServletContext().getAttribute("javax.servlet.context.tempdir");
         if(tempDir != null && tempDir.exists())
         {
-            String absPath = tempDir.getAbsolutePath() + SkinConfiguration.getStylesCacheDir(context) + filename;
+            String absPath = tempDir.getAbsolutePath() + XhtmlConstants.STYLES_CACHE_DIRECTORY + filename;
             file = new File(absPath);
         }
         
