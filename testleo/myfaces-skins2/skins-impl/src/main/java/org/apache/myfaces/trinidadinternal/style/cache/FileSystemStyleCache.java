@@ -54,7 +54,6 @@ import org.apache.myfaces.trinidadinternal.agent.TrinidadAgent;
 import org.apache.myfaces.trinidadinternal.renderkit.core.SkinableRenderingContext;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.SkinSelectors;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.XhtmlConstants;
-import org.apache.myfaces.trinidadinternal.share.config.SkinConfiguration;
 import org.apache.myfaces.trinidadinternal.share.io.CachingNameResolver;
 import org.apache.myfaces.trinidadinternal.share.io.DefaultNameResolver;
 import org.apache.myfaces.trinidadinternal.share.io.InputStreamProvider;
@@ -1029,8 +1028,7 @@ public class FileSystemStyleCache implements StyleProvider
   /**
    * Create an array of all the namespace prefixes in the xss/css file. E.g., "af|" or "tr|"
    */
-  //SKINFIX: removed static modifier
-  private String[] _getNamespacePrefixes(
+  private static String[] _getNamespacePrefixes(
     StyleContext       context,
     StyleSheetDocument document)
   {
@@ -1061,8 +1059,7 @@ public class FileSystemStyleCache implements StyleProvider
    * Create the map of full style classes to short style classes
    * Do not shorten styleclasses that start with SkinSelectors.STATE_PREFIX
    */
-  //SKINFIX: removed static modifier
-  private Map<String, String> _getShortStyleClassMap(
+  private static Map<String, String> _getShortStyleClassMap(
     StyleContext       context,
     StyleSheetDocument document,
     String[]           namespacePrefixes)
@@ -1179,8 +1176,7 @@ public class FileSystemStyleCache implements StyleProvider
    * are likely to be added and removed on the client as the state changes, and
    * we don't want to require the shortened map on the client.
    */
-  //SKINFIX: removed static modifier
-  private void _putStyleClassInShortMap(String styleClass, Map map)
+  private static void _putStyleClassInShortMap(String styleClass, Map map)
   {
     if (styleClass != null &&
         !styleClass.startsWith(SkinSelectors.STATE_PREFIX) &&
@@ -1195,41 +1191,11 @@ public class FileSystemStyleCache implements StyleProvider
    * short style class selector.  The count is the number of style
    * classes seen so far.
    */
-  //SKINFIX: removed static modifier
-  private String _getShortStyleClass(int count)
+  private static String _getShortStyleClass(int count)
   {
     // At the moment the short style class is just based on the nubmer
     // of style classes and not the style class itself.
-    return getShortClassPrefix() + Integer.toString(count, Character.MAX_RADIX);
-  }
-  
-  /**
-   * This method will return the default short class prefix
-   * used in style class name compression.
-   * @return The default short class prefix.
-   */
-  //SKINFIX: this is a new method.  Added this to allow support
-  //modules to have their own short class prefix
-  protected String getDefaultShortClassPrefix()
-  {
-      return _SHORT_CLASS_PREFIX;
-  }
-  
-  /**
-   * This method checks for the org.apache.myfaces.skins.SHORT_CLASS_PREFIX parameter
-   * in web.xml and returns its value as the short style prefix.  If the parameter is null,
-   * it will return the default short class prefix.
-   * @return The short class prefix used in style class name compression.
-   */
-  //SKINFIX: this is a new method
-  protected String getShortClassPrefix()
-  {
-      String shortClassPrefix = SkinConfiguration.getShortClassPrefix(FacesContext.getCurrentInstance());
-      if(shortClassPrefix != null)
-      {
-          return shortClassPrefix;
-      }
-      return getDefaultShortClassPrefix();
+    return _SHORT_CLASS_PREFIX + Integer.toString(count, Character.MAX_RADIX);
   }
 
 

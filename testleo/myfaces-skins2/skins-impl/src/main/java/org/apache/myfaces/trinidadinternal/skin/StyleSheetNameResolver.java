@@ -21,19 +21,22 @@ package org.apache.myfaces.trinidadinternal.skin;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.faces.context.FacesContext;
 
-import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidad.util.ClassLoaderUtils;
-import org.apache.myfaces.trinidadinternal.share.config.SkinConfiguration;
+
+import org.apache.myfaces.trinidad.logging.SkinLogger;
+
 import org.apache.myfaces.trinidadinternal.share.io.DefaultNameResolver;
 import org.apache.myfaces.trinidadinternal.share.io.FileInputStreamProvider;
 import org.apache.myfaces.trinidadinternal.share.io.InputStreamProvider;
 import org.apache.myfaces.trinidadinternal.share.io.NameResolver;
 import org.apache.myfaces.trinidadinternal.share.io.URLInputStreamProvider;
+
 import org.apache.myfaces.trinidadinternal.style.StyleContext;
 
 
@@ -233,9 +236,7 @@ class StyleSheetNameResolver implements NameResolver
     if (contextPath == null)
       return null;
 
-    //SKINFIX: styles directory should not be hard-coded to /adf/styles
-    //String stylesPath = contextPath + "/adf/styles";
-    String stylesPath = contextPath + SkinConfiguration.getStylesCacheDir(FacesContext.getCurrentInstance());
+    String stylesPath = contextPath + "/adf/styles";
 
     // Convert the path to a File
     File stylesDir = new File(stylesPath);

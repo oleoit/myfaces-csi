@@ -311,5 +311,4 @@ public final class XhtmlConstants
   public static final String NON_JS_BROWSER = "_noJavaScript";
   public static final String NON_JS_BROWSER_TRUE = "true";
 
-  public static final String SKINS_RESOURCE_SERVLET = "/mfskins/styles/cache/";
 }
