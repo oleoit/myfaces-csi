@@ -41,6 +41,10 @@ import org.apache.myfaces.buildtools.maven2.plugin.builder.annotation.JSFRenderK
  * The objective of this class is decorate CoreRenderKit class, for
  * decorate with properly SkinRenderer classes the original renderers.
  * 
+ * A custom decorator Renderer should be registered inside this RenderKit,
+ * with the same component-family and renderer-type that is registered its
+ * base renderer in HTML_BASIC.
+ * 
  * @author Leonardo
  *
  */
