@@ -34,9 +34,7 @@ import org.apache.myfaces.trinidadinternal.agent.TrinidadAgent;
 import org.apache.myfaces.trinidadinternal.renderkit.core.SkinableRenderingContext;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.XhtmlConstants;
 import org.apache.myfaces.trinidadinternal.share.config.Configuration;
-import org.apache.myfaces.trinidadinternal.share.config.SkinConfiguration;
 import org.apache.myfaces.trinidadinternal.skin.SkinStyleProvider;
-import org.apache.myfaces.trinidadinternal.skin.SkinStyleProviderFactory;
 import org.apache.myfaces.trinidadinternal.style.StyleContext;
 import org.apache.myfaces.trinidadinternal.style.StyleMap;
 import org.apache.myfaces.trinidadinternal.style.StyleProvider;
@@ -139,17 +137,11 @@ class StyleContextImpl implements StyleContext
   // Creates a default StyleProvider
   private StyleProvider _getDefaultStyleProvider(Skin skin)
   {
-    // SKINFIX: the new skins framework should not have the cache dir
-    // hard-coded to /adf/styles/cache
-    //String cachePath =  _generatedFilesPath + "/adf/styles/cache/";
-    String cachePath =  _generatedFilesPath + SkinConfiguration.getStylesCacheDir(FacesContext.getCurrentInstance());
+    String cachePath =  _generatedFilesPath + "/adf/styles/cache/";
 
     try
     {
-      //SKINFIX: using a factory method instead to remove static modifiers
-      //in SkinStyleProvider
-      //return SkinStyleProvider.getSkinStyleProvider(skin, cachePath);
-      return getSkinStyleProviderFactory().getSkinStyleProvider(skin, cachePath);
+      return SkinStyleProvider.getSkinStyleProvider(skin, cachePath);
     }
     catch (RuntimeException e)
     {
@@ -159,15 +151,6 @@ class StyleContextImpl implements StyleContext
     // Return a non-null StyleProvider instance
     return NullStyleProvider.getInstance();
   }
-  
-  /**
-   * Returns an instance of SkinStyleProviderFactory.
-   * @return an instance of SkinStyleProviderFactory
-   */
-  protected SkinStyleProviderFactory getSkinStyleProviderFactory()
-  {
-      return SkinStyleProviderFactory.getInstance();
-  }
 
   public boolean isPortletMode()
   {
@@ -176,8 +159,7 @@ class StyleContextImpl implements StyleContext
 
   // Implementation of StyleProvider which does nothing - used as a
   // placeholder when we can't get the real StyleProvider
-  //SKINFIX: changed access modifier from private to protected
-  static protected class NullStyleProvider implements StyleProvider
+  static private class NullStyleProvider implements StyleProvider
   {
     private NullStyleProvider() {}
 
