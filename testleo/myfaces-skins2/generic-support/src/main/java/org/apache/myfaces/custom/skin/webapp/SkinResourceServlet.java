@@ -49,7 +49,7 @@ public class SkinResourceServlet extends HttpServlet
         String uri = req.getRequestURI();
         if(uri != null && uri.endsWith(".css"))
         {
-            loader.loadStyleSheet(req, resp, getServletContext());
+            loader.loadStyleSheet(req, resp, getServletConfig());
         }
     }
 }
