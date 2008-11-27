@@ -34,20 +34,19 @@ The code available on http://myfaces-csi.googlecode.com/svn/trunk/testleo/myface
 
 The temporal layout for this project is this:
 
-shared-api: Utilitary code used by skin-api but not related to it (some parts should be on myfaces commons utils but others could be on skin-api)
-shared-impl: Utilitary code used by skin-impl but not related directly to it (for example, code related to parse xml files,...) Maybe this code could be bundled with skin-impl.
+||shared-api|| Utilitary code used by skin-api but not related to it (some parts should be on myfaces commons utils but others could be on skin-api).||
+||shared-impl|| Utilitary code used by skin-impl but not related directly to it (for example, code related to parse xml files,...) Maybe this code could be bundled with skin-impl.||
 
-skin-api: Code that comes from trinidad-api related to skinning.
-skin-impl: Code that comes from trinidad-impl related to skinning but not trinidad specific.
+||skin-api|| Code that comes from trinidad-api related to skinning.||
+||skin-impl|| Code that comes from trinidad-impl related to skinning but not trinidad specific.||
 
-trinidad-core-api: Trinidad 1.2.x version that uses skin-api, just to check compatibility and track changes necessary to do so.
-trinidad-core-impl: Trinidad 1.2.x version that uses skin-api, just to check compatibility and track changes necessary to do so.
+||trinidad-core-api|| Trinidad 1.2.x version that uses skin-api, just to check compatibility and track changes necessary to do so||
+||trinidad-core-impl|| Trinidad 1.2.x version that uses skin-api, just to check compatibility and track changes necessary to do so||
 
-skins-support-shared: Classes required to add skin support, common to other support modules.
-tomahawk-support: Tomahawk support for skinning. Contains tomahawk specific classes to use skin-api and skin-impl with tomahawk. It uses AddResource api to serve css files.
-generic-support: Generic support for skinning. Contains specific classes to use skin-api and skin-impl with tomahawk. It uses SkinResourceServlet to serve css files.
+||skins-support-shared|| Classes required to add skin support, common to other support modules.||
+||tomahawk-support|| Tomahawk support for skinning. Contains tomahawk specific classes to use skin-api and skin-impl with tomahawk. It uses AddResource api to serve css files.||
+||generic-support|| Generic support for skinning. Contains specific classes to use skin-api and skin-impl with tomahawk. It uses SkinResourceServlet to serve css files.||
 
-skins-example-generic: Demo using generic support.
-skins-example-tomahawk: Demo using tomahawk support.
-
-trinidad-examples: Copy of trinidad examples module to check that trinidad-core-api and trinidad-core-impl works correctly.
+||skins-example-generic|| Demo using generic support.||
+||skins-example-tomahawk|| Demo using tomahawk support.||
+||trinidad-examples|| Copy of trinidad examples module to check that trinidad-core-api and trinidad-core-impl works correctly.||
