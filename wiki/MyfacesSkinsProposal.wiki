@@ -2,7 +2,7 @@
 
 = Summary =
 
- The objective of this project is provide a framework for skin JSF components, refactoring the existing trinidad skin code. Do this allows other JSF component frameworks like trinidad itself, tomahawk or tobago use it.
+The objective of this project is provide a framework for skin JSF components, refactoring the existing trinidad skin code. Do this allows other JSF component frameworks like trinidad itself, tomahawk or tobago use it.
 
 = Background =
 
@@ -14,8 +14,18 @@ A big question raised on that time where how to separate skin code in order to r
 
 = Objectives =
 
- * 
+ * Provide a single skinning api that can be use by JSF component frameworks like trinidad, tomahawk or tobago.
+
+= Restrictions =
+
+ * Any solution proposed must be compatible with trinidad (Read "compatible" as trinidad could use it in the future with little changes).
+
+= Benefits =
+
+ * Enhance component set integration for Myfaces frameworks.
 
 = Plan =
 
 = Proposed Code =
+
+The code available on http://myfaces-csi.googlecode.com/svn/trunk/testleo/myfaces-skins2/ contains a solution for this project.
