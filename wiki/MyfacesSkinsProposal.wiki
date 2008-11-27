@@ -30,7 +30,15 @@ A big question raised on that time where how to separate skin code in order to r
 
 = Proposed Code =
 
-The code available on http://myfaces-csi.googlecode.com/svn/trunk/testleo/myfaces-skins2/ contains a solution for this project.
+The code available on http://myfaces-csi.googlecode.com/svn/trunk/testleo/myfaces-skins2/ contains a partial solution for this project. There are some pending issues to be solved, but the structure is settled for discussion.
+
+The guidelines for work on the code are these:
+
+ * Try apply high cohesion low coupling patterns, separating the code in modules.
+ * There are some classes like RenderingContext, RequestContext and others that has code related to skinning and other trinidad specific code. It is necessary to decouple it (could be done creating a SkinXXXX or BaseXXX class and doing a small hierarchy, so the changes on trinidad are minimal).
+ * Since compatibility with trinidad should be maintained, an alternative copy of trinidad code should be included, so exisiting tests and demos helps to remain it.
+ * There is always a comment with a SKINFIX word to check what code changes by some reason on skin api, skin impl or trinidad alternate copy.
+ * Trinidad specific code should not be part of skin api or impl. All trinidad specific classes should be moved outside core skin api or impl.
 
 The temporal layout for this project is this:
 
