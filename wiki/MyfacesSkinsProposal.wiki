@@ -1,0 +1,21 @@
+#summary Proposal for project myfaces-skinning
+
+= Summary =
+
+ The objective of this project is provide a framework for skin JSF components, refactoring the existing trinidad skin code. Do this allows other JSF component frameworks like trinidad itself, tomahawk or tobago use it.
+
+= Background =
+
+On year 2007, several efforts where made in this field during GSOC 2007. A discussion about a myfaces skinning module where done here:
+
+http://markmail.org/message/swxy73e3cth5zzaj?q=%5BSkinning%5D+independent+MyFaces+skinning+module
+
+A big question raised on that time where how to separate skin code in order to remain compatibility with trinidad.
+
+= Objectives =
+
+ * 
+
+= Plan =
+
+= Proposed Code =
