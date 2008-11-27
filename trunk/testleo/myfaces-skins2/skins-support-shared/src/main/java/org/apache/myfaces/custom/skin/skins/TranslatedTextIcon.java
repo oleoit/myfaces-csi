@@ -16,40 +16,33 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.apache.myfaces.trinidadinternal.renderkit.core.skin;
+package org.apache.myfaces.custom.skin.skins;
 
-import javax.el.ValueExpression;
-
-import org.apache.myfaces.trinidadinternal.skin.SkinImpl;
+import org.apache.myfaces.trinidad.context.SkinRenderingContext;
+import org.apache.myfaces.trinidadinternal.skin.icon.TextIcon;
 
 /**
- *  Base Skin implementation
+ * Translated text Icon used by simple skin.
+ *
  * @version $Name:  $ ($Revision$) $Date$
  */
-public class BaseSkin extends SkinImpl
+class TranslatedTextIcon extends TextIcon
 {
-  public BaseSkin()
+  public TranslatedTextIcon(String key)
   {
-  }
+    super(null);
 
+    _key = key;
+  }
+  
   /**
-   * Returns the name of the XSS style sheet for this Skin.
+   * Returns the text to render.
    */
   @Override
-  public String getStyleSheetName()
+  protected String getText(SkinRenderingContext arc)
   {
-    return null;
+    return arc.getTranslatedString(_key);
   }
 
-  @Override
-  protected String getBundleName()
-  {
-    return null;
-  }
-
-  @Override
-  protected ValueExpression getTranslationSourceValueExpression()
-  {
-    return null;
-  }
+  private String _key;
 }

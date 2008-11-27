@@ -16,50 +16,35 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.apache.myfaces.trinidadinternal.skin;
+package org.apache.myfaces.custom.skin;
 
 import java.io.IOException;
-
 import java.io.InputStream;
-
 import java.net.URL;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
-
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-
 import java.util.Set;
-import java.util.Stack;
-
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 
 import javax.el.ValueExpression;
-
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.apache.myfaces.trinidad.skin.SkinFactory;
+import org.apache.myfaces.custom.skin.skins.MinimalDesktopSkinExtension;
+import org.apache.myfaces.custom.skin.skins.MinimalPdaSkinExtension;
+import org.apache.myfaces.custom.skin.skins.MinimalPortletSkinExtension;
+import org.apache.myfaces.custom.skin.skins.SimpleDesktopSkin;
+import org.apache.myfaces.custom.skin.skins.SimplePdaSkin;
+import org.apache.myfaces.custom.skin.skins.SimplePortletSkin;
 import org.apache.myfaces.trinidad.logging.SkinLogger;
-
-
-import org.apache.myfaces.trinidad.skin.Icon;
 import org.apache.myfaces.trinidad.skin.Skin;
 import org.apache.myfaces.trinidad.skin.SkinAddition;
+import org.apache.myfaces.trinidad.skin.SkinFactory;
 import org.apache.myfaces.trinidadinternal.config.LazyValueExpression;
-import org.apache.myfaces.trinidadinternal.renderkit.core.skin.MinimalDesktopSkinExtension;
-import org.apache.myfaces.trinidadinternal.renderkit.core.skin.MinimalPdaSkinExtension;
-import org.apache.myfaces.trinidadinternal.renderkit.core.skin.MinimalPortletSkinExtension;
-import org.apache.myfaces.trinidadinternal.renderkit.core.skin.SimpleDesktopSkin;
-import org.apache.myfaces.trinidadinternal.renderkit.core.skin.SimplePdaSkin;
-import org.apache.myfaces.trinidadinternal.renderkit.core.skin.SimplePortletSkin;
-
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-
 import org.apache.myfaces.trinidadinternal.share.io.NameResolver;
 import org.apache.myfaces.trinidadinternal.share.xml.ClassParserFactory;
 import org.apache.myfaces.trinidadinternal.share.xml.ParseContextImpl;
@@ -68,12 +53,15 @@ import org.apache.myfaces.trinidadinternal.share.xml.ParserManager;
 import org.apache.myfaces.trinidadinternal.share.xml.TreeBuilder;
 import org.apache.myfaces.trinidadinternal.share.xml.XMLProvider;
 import org.apache.myfaces.trinidadinternal.share.xml.XMLUtils;
-
-import org.apache.myfaces.trinidadinternal.skin.icon.ReferenceIcon;
-import org.apache.myfaces.trinidadinternal.skin.parse.XMLConstants;
+import org.apache.myfaces.trinidadinternal.skin.BaseSkinUtils;
+import org.apache.myfaces.trinidadinternal.skin.SkinExtension;
+import org.apache.myfaces.trinidadinternal.skin.SkinFactoryImpl;
 import org.apache.myfaces.trinidadinternal.skin.parse.SkinAdditionNode;
 import org.apache.myfaces.trinidadinternal.skin.parse.SkinNode;
 import org.apache.myfaces.trinidadinternal.skin.parse.SkinsNode;
+import org.apache.myfaces.trinidadinternal.skin.parse.XMLConstants;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 /**
  * Utility functions for creating Skin objects and SkinExtension objects 
@@ -81,7 +69,7 @@ import org.apache.myfaces.trinidadinternal.skin.parse.SkinsNode;
  * adding them to the SkinFactory. It also adds SkinAdditions to the Skin objects.
  * @version $Name:  $ ($Revision$) $Date$
  */
-public class SkinUtils
+public class SkinUtils extends BaseSkinUtils
 {
 
   /**
@@ -138,12 +126,14 @@ public class SkinUtils
    * @param refIcon a ReferenceIcon instance
    * @return icon which is resolved. i.e., it is not a ReferenceIcon.
    */
+  /*
    static public Icon resolveReferenceIcon(
      Skin          skin,
      ReferenceIcon refIcon)
    {
      return _resolveReferenceIcon(skin, refIcon, null);
    }
+   */
 
   /**
    * Helper for resolveReferenceIcon which uses a Stack of icon names
@@ -155,6 +145,7 @@ public class SkinUtils
    *          already been visited.  Used to detect circular dependencies.
    * @return icon which is resolved. i.e., it is not a ReferenceIcon.
    */
+  /*
   static private Icon _resolveReferenceIcon(
     Skin          skin,
     ReferenceIcon refIcon,
@@ -189,7 +180,7 @@ public class SkinUtils
     }
 
     return icon;
-  }
+  }*/
 
   /**
    * Create a SkinExtension off a generic SAX input source, using

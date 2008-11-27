@@ -6,9 +6,9 @@
  *  to you under the Apache License, Version 2.0 (the
  *  "License"); you may not use this file except in compliance
  *  with the License.  You may obtain a copy of the License at
- * 
+ *
  *  http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *  Unless required by applicable law or agreed to in writing,
  *  software distributed under the License is distributed on an
  *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -16,33 +16,31 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.apache.myfaces.trinidadinternal.renderkit.core.skin;
+package org.apache.myfaces.custom.skin.skins;
 
-import org.apache.myfaces.trinidad.context.SkinRenderingContext;
-import org.apache.myfaces.trinidadinternal.skin.icon.TextIcon;
+
+import org.apache.myfaces.trinidad.skin.Skin;
+import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.XhtmlConstants;
+import org.apache.myfaces.trinidadinternal.skin.SkinExtension;
 
 /**
- * Translated text Icon used by simple skin.
- *
- * @version $Name:  $ ($Revision$) $Date$
- */
-class TranslatedTextIcon extends TextIcon
-{
-  public TranslatedTextIcon(String key)
-  {
-    super(null);
+  * Implementation the Minimal Portlet Skin for desktop
+  * browsers.
+  */
+ public class MinimalPortletSkinExtension extends SkinExtension
 
-    _key = key;
-  }
-  
-  /**
-   * Returns the text to render.
-   */
-  @Override
-  protected String getText(SkinRenderingContext arc)
-  {
-    return arc.getTranslatedString(_key);
-  }
+ {
+   /**
+    * Creates an MinimalPortletSkinExtension instance which extends
+    * the specified base Skin. (should be SimplePortletSkin)
+    */
+   public MinimalPortletSkinExtension(Skin baseSkin)
+   {
+     super(baseSkin,
+           "minimal.portlet",
+           "minimal",
+           XhtmlConstants.OUTPUT_MODE_PORTLET,
+           "META-INF/adf/styles/simple-portlet.xss");
+   }
 
-  private String _key;
-}
+ }

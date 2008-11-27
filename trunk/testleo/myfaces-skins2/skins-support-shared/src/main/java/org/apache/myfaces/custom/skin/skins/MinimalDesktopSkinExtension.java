@@ -16,7 +16,7 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.apache.myfaces.trinidadinternal.renderkit.core.skin;
+package org.apache.myfaces.custom.skin.skins;
 
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.XhtmlConstants;
 import org.apache.myfaces.trinidad.skin.Skin;
@@ -25,30 +25,35 @@ import org.apache.myfaces.trinidadinternal.skin.SkinExtension;
 /**
  * @version $Name:  $ ($Revision$) $Date$
  */
-public class MinimalPdaSkinExtension extends SkinExtension
+public class MinimalDesktopSkinExtension extends SkinExtension
 {
 
   /**
-   * Creates an MinimalPdaSkinExtension instance which extends
-   * the specified base Skin. (should be SimplePdaSkin)
+   * Creates an MinimalDesktopSkinExtension instance which extends
+   * the specified base Skin. (should be SimpleDesktopSkin)
    */
-  public MinimalPdaSkinExtension(Skin baseSkin)
+  public MinimalDesktopSkinExtension(Skin baseSkin)
   {
      // Create a SkinExtension for Minimal
     super(baseSkin,
-          _MINIMAL_PDA_ID,
+          _MINIMAL_DESKTOP_ID,
           _MINIMAL_FAMILY,
-          XhtmlConstants.APACHE_TRINIDAD_PDA);
+          XhtmlConstants.APACHE_TRINIDAD_DESKTOP);
 
     // Register our style sheet
     setStyleSheetName(_MINIMAL_STYLE_SHEET_NAME);
 
   }
+  
 
   // Minimal skin family name
   private static final String _MINIMAL_FAMILY = "minimal";
-  private static final String _MINIMAL_PDA_ID = "minimal.pda";
+
+  // Minimal skin id
+  private static final String _MINIMAL_DESKTOP_ID = "minimal.desktop";
+
+
   // Minimal skin style sheet name
   private static final String _MINIMAL_STYLE_SHEET_NAME =
-    "META-INF/adf/styles/minimal-pda.xss";
+    "META-INF/adf/styles/minimal-desktop.xss";
 }

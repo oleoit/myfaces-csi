@@ -28,13 +28,13 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletRequestWrapper;
 
 import org.apache.myfaces.commons.util.ExternalContextUtils;
+import org.apache.myfaces.custom.skin.SkinUtils;
 import org.apache.myfaces.custom.skin.context.RequestContextFactory;
 import org.apache.myfaces.custom.skin.context.RequestContextFactoryImpl;
 import org.apache.myfaces.trinidad.context.SkinRequestContext;
 import org.apache.myfaces.trinidad.logging.SkinLogger;
 import org.apache.myfaces.trinidad.skin.SkinFactory;
 import org.apache.myfaces.trinidadinternal.skin.SkinFactoryImpl;
-import org.apache.myfaces.trinidadinternal.skin.SkinUtils;
 
 /**
  * This is the implementation of the Trinidad's Global configurator. It provides the entry point for
