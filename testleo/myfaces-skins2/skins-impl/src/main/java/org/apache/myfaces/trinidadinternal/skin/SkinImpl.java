@@ -214,7 +214,8 @@ abstract public class SkinImpl extends Skin implements DocumentProviderSkin
       if (icon instanceof ReferenceIcon)
       {
         // find the true icon, not a ReferenceIcon
-        icon = SkinUtils.resolveReferenceIcon(this, (ReferenceIcon)icon);
+        // SKINFIX: Use BaseSkinUtils instead
+        icon = BaseSkinUtils.resolveReferenceIcon(this, (ReferenceIcon)icon);
       }
     }
 

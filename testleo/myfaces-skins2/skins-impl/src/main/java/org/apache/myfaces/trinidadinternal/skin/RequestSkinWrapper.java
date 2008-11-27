@@ -188,7 +188,8 @@ public class RequestSkinWrapper extends Skin implements DocumentProviderSkin
       if (resolveIcon)
       {
         if (icon instanceof ReferenceIcon)
-          icon = SkinUtils.resolveReferenceIcon(this, (ReferenceIcon)icon);
+          // SKINFIX: Use BaseSkinUtils instead
+          icon = BaseSkinUtils.resolveReferenceIcon(this, (ReferenceIcon)icon);
 
         // We ended up having to do two lookups for icons
         // which are not available in the StyleProvider

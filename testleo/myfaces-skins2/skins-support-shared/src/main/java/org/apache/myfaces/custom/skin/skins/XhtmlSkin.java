@@ -16,8 +16,10 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.apache.myfaces.trinidadinternal.renderkit.core.skin;
+package org.apache.myfaces.custom.skin.skins;
 
+import org.apache.myfaces.trinidadinternal.renderkit.core.skin.BaseSkin;
+import org.apache.myfaces.trinidadinternal.renderkit.core.skin.CoreBaseSkinUtils;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.SkinProperties;
 import org.apache.myfaces.trinidadinternal.renderkit.core.xhtml.SkinSelectors;
 import org.apache.myfaces.trinidadinternal.skin.icon.ContextImageIcon;
