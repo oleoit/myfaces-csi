@@ -25,4 +25,18 @@ public class SkinConstants
     public final static String STYLE_CLASS_SUFFIX = "::style";
     public final static String DISABLED_CLASS_SUFFIX = "::disabled";
 
+    /**
+     * Disables optimizations that are normally performed by the
+     * Skin Renderers to reduce content size.
+     * <p>
+     * This Boolean property controls whether or not Skin Renderer
+     * implementations should attempt to reduce the size of generated
+     * content, for example, by compressing style class names.  These
+     * optimizations are enabled by default.  In general,
+     * users should not need to disable these optimizations.  However,
+     * users who want to build custom skins for MyFaces will find this
+     * setting essential.  Use Boolean.TRUE to disable compression.
+     */
+    static public final String DISABLE_CONTENT_COMPRESSION = 
+        "org.apache.myfaces.trinidad.DISABLE_CONTENT_COMPRESSION";
 }
