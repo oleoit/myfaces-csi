@@ -40,7 +40,7 @@ public class AdapterSkinRenderer extends SkinRenderer
     public AdapterSkinRenderer(String namespace, String componentTag)
     {
         this.setNamespace(namespace);
-        this.setComponentTag(namespace + "|" + componentTag);
+        this.setComponentTagName(namespace + "|" + componentTag);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class AdapterSkinRenderer extends SkinRenderer
     public String getBaseStyleName(UIComponent component)
     {
 
-        String baseStyleClass = this.getComponentTag();
+        String baseStyleClass = this.getComponentTagName();
 
         if (baseStyleClass == null)
         {

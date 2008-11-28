@@ -53,9 +53,9 @@ public abstract class SkinRenderer extends Renderer
      */
     private static final Log log = LogFactory.getLog(SkinRenderer.class);
 
-    private String componentTag = null;
+    private String _componentTagName = null;
 
-    private String namespace = null;
+    private String _namespace = null;
 
     /**
      * Constructor
@@ -496,24 +496,24 @@ public abstract class SkinRenderer extends Renderer
         }
     }
 
-    public String getComponentTag()
+    public String getComponentTagName()
     {
-        return componentTag;
+        return _componentTagName;
     }
 
-    public void setComponentTag(String componentTag)
+    public void setComponentTagName(String componentTag)
     {
-        this.componentTag = componentTag;
+        this._componentTagName = componentTag;
     }
 
     public String getNamespace()
     {
-        return namespace;
+        return _namespace;
     }
 
     public void setNamespace(String namespace)
     {
-        this.namespace = namespace;
+        this._namespace = namespace;
     }
 
 }
