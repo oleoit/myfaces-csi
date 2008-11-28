@@ -213,7 +213,7 @@ public abstract class SkinRenderer extends Renderer
             if (styleClass != null)
             {
                 if (styleClass.startsWith((this.getNamespace() == null) ? "af_"
-                        : this.getNamespace()))
+                        : this.getNamespace()) && !isDisableContentCompression(context))
                 {
                     //no styleClass found
                     return;
@@ -262,7 +262,7 @@ public abstract class SkinRenderer extends Renderer
             if (styleClass != null)
             {
                 if (styleClass.startsWith((this.getNamespace() == null) ? "af_"
-                        : this.getNamespace()))
+                        : this.getNamespace()) && !isDisableContentCompression(context))
                 {
                     //no styleClass found
                     return;
@@ -311,7 +311,7 @@ public abstract class SkinRenderer extends Renderer
             if (styleClass != null)
             {
                 if (styleClass.startsWith((this.getNamespace() == null) ? "af_"
-                        : this.getNamespace()))
+                        : this.getNamespace()) && !isDisableContentCompression(context))
                 {
                     //no styleClass found
                     return;
@@ -360,8 +360,9 @@ public abstract class SkinRenderer extends Renderer
             if (styleClasses[i] != null)
             {
                 String styleClass = arc.getStyleClass(styleClasses[i]);
+                
                 if (styleClass.startsWith((this.getNamespace() == null) ? "af_"
-                        : this.getNamespace()))
+                        : this.getNamespace()) && !isDisableContentCompression(context))
                 {
                     //No add any that startsWith af_
                     styleClass = null;
@@ -516,4 +517,15 @@ public abstract class SkinRenderer extends Renderer
         this._namespace = namespace;
     }
 
+    private boolean isDisableContentCompression(FacesContext context)
+    {
+        boolean disableContentCompression = false;
+        if(context.getExternalContext() != null)
+        {
+            disableContentCompression = ("true").equalsIgnoreCase(context.getExternalContext().
+                    getInitParameter(SkinConstants.DISABLE_CONTENT_COMPRESSION));              
+        }
+        
+        return disableContentCompression;
+    }
 }
