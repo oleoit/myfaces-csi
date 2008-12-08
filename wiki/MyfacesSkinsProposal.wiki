@@ -53,7 +53,7 @@ The temporal layout for this project is this:
 
 ||skins-support-shared|| Classes required to add skin support, common to other support modules.||
 ||tomahawk-support|| Tomahawk support for skinning. Contains tomahawk specific classes to use skin-api and skin-impl with tomahawk. It uses AddResource api to serve css files.||
-||generic-support|| Generic support for skinning. Contains specific classes to use skin-api and skin-impl with tomahawk. It uses SkinResourceServlet to serve css files.||
+||generic-support|| Generic support for skinning. Contains specific classes to use skin-api and skin-impl with any component library. It uses SkinResourceServlet to serve css files.||
 
 ||skins-example-generic|| Demo using generic support.||
 ||skins-example-tomahawk|| Demo using tomahawk support.||
