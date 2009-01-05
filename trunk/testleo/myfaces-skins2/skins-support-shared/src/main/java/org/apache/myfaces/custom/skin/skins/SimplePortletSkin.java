@@ -115,6 +115,9 @@ public class SimplePortletSkin  extends BaseDesktopSkin
     "af|selectOneRadio::label",
     SkinSelectors.AF_MENU_CHOICE_LABEL_STYLE_CLASS,
     SkinSelectors.SHUTTLE_HEADER_STYLE_CLASS,
+    
+    //SKINFIX: portlet styles for core components
+    "h|outputLabel::style"
   };
 
   // all these map to portlet-form-input-field
@@ -128,6 +131,11 @@ public class SimplePortletSkin  extends BaseDesktopSkin
     SkinSelectors.AF_SELECT_INPUT_DATE_CONTENT_STYLE_CLASS,
     "af|inputListOfValues::content",
     "af|panelLabelAndMessage::content",
+    
+    //SKINFIX: portlet styles for core components
+    "h|inputSecret::style",
+    "h|inputText::style",
+    "h|inputTextarea::style"
   };
 
   // all these map to portlet-form-field - Text for a field (not input field. e.g., checkboxes)
@@ -142,7 +150,16 @@ public class SimplePortletSkin  extends BaseDesktopSkin
     "af|selectOneChoice::content",
     "af|selectOneListbox::content",
     "af|selectOneRadio::content",
-    "af|selectOrderShuttle::content"
+    "af|selectOrderShuttle::content",
+    
+    //SKINFIX: portlet styles for core components
+    "h|selectBooleanCheckbox::style",
+    "h|selectManyCheckbox::enabled",
+    "h|selectManyListbox::style",
+    "h|selectManyMenu::style",
+    "h|selectOneListbox::style",
+    "h|selectOneMenu::style",
+    "h|selectOneRadio::enabled"
   };
 
   // portlet-form-button
@@ -151,7 +168,10 @@ public class SimplePortletSkin  extends BaseDesktopSkin
     SkinSelectors.AF_COMMAND_BUTTON_STYLE_CLASS,
     SkinSelectors.AF_GO_BUTTON_STYLE_CLASS,
     SkinSelectors.AF_RESET_BUTTON_STYLE_CLASS,
-    SkinSelectors.AF_NAVIGATION_LEVEL_CHOICE_BUTTON_STYLE_CLASS
+    SkinSelectors.AF_NAVIGATION_LEVEL_CHOICE_BUTTON_STYLE_CLASS,
+    
+    //SKINFIX: portlet styles for core components
+    "h|commandButton::style"    
   };
 
 
@@ -265,6 +285,17 @@ public class SimplePortletSkin  extends BaseDesktopSkin
     _STYLES_MAP.put(SkinSelectors.AF_MESSAGES_ERROR_STYLE_CLASS,"portlet-msg-error");
     // just to give it the same background color as table's header.
     _STYLES_MAP.put(SkinSelectors.AF_MESSAGES_STYLE_CLASS, "portlet-table-header");
+    
+    //SKINFIX: portlet styles for core components
+    _STYLES_MAP.put("h|message::info","portlet-msg-info");
+    _STYLES_MAP.put("h|messages::info","portlet-msg-info");
+    _STYLES_MAP.put("h|message::warn","portlet-msg-alert");
+    _STYLES_MAP.put("h|messages::warn","portlet-msg-alert");
+    _STYLES_MAP.put("h|message::error","portlet-msg-error");
+    _STYLES_MAP.put("h|messages::error","portlet-msg-error");
+    _STYLES_MAP.put("h|message::fatal","portlet-msg-error");
+    _STYLES_MAP.put("h|messages::fatal","portlet-msg-error");
+    
     // End message mappings      //
     // ------------------------- //
 
@@ -285,6 +316,11 @@ public class SimplePortletSkin  extends BaseDesktopSkin
     _STYLES_MAP.put(SkinSelectors.AF_CHOOSE_DATE_HEADER_STYLE_CLASS, "portlet-table-header");
     _STYLES_MAP.put(SkinSelectors.AF_CHOOSE_DATE_CONTENT_STYLE_CLASS, "portlet-table-body");
 
+    //SKINFIX: portlet styles for core components
+    _STYLES_MAP.put("h|dataTable::header", "portlet-table-header");
+    _STYLES_MAP.put("h|dataTable::footer", "portlet-table-footer");
+    _STYLES_MAP.put("h|dataTable::row", "portlet-table-body");
+    
     // add portlet-table-body + itself
     for (int i=0; i < _TABLE_BODY_PLUS_ITSELF.length; i++)
     {
